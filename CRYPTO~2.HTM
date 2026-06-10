@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>⚡ Crypto Market Pulse — June 10, 2026</title>
+<style>
+:root {
+  --bg: #0d1117;
+  --card: #161b22;
+  --card2: #1c2330;
+  --green: #00ff88;
+  --red: #ff4444;
+  --yellow: #ffd700;
+  --blue: #58a6ff;
+  --purple: #bc8cff;
+  --text: #e6edf3;
+  --muted: #8b949e;
+  --border: #30363d;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, 'Inter', system-ui, sans-serif; min-height: 100vh; }
+
+/* HEADER */
+.header { background: linear-gradient(135deg, #161b22 0%, #1a2332 100%); border-bottom: 1px solid var(--border); padding: 18px 24px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 14px; }
+.header-left { display: flex; align-items: center; gap: 16px; }
+.profile-pic { width: 64px; height: 64px; border-radius: 50%; object-fit: cover; object-position: center top; border: 2px solid var(--green); box-shadow: 0 0 12px rgba(0,255,136,0.3); filter: grayscale(20%); }
+.header-title { font-size: 22px; font-weight: 700; background: linear-gradient(90deg, var(--green), var(--blue)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.header-sub { font-size: 12px; color: var(--muted); margin-top: 3px; }
+.social-links { display: flex; gap: 8px; margin-top: 6px; flex-wrap: wrap; }
+.social-badge { display: inline-flex; align-items: center; gap: 5px; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 600; text-decoration: none; transition: opacity 0.2s; }
+.social-badge:hover { opacity: 0.8; }
+.x-badge { background: rgba(255,255,255,0.08); color: #e6edf3; border: 1px solid rgba(255,255,255,0.15); }
+.tg-badge { background: rgba(0,136,204,0.15); color: #29b6f6; border: 1px solid rgba(0,136,204,0.3); }
+.mood-badge { padding: 8px 18px; border-radius: 20px; font-size: 13px; font-weight: 700; letter-spacing: 0.5px; }
+.mood-bullish { background: rgba(0,255,136,0.12); color: var(--green); border: 1px solid rgba(0,255,136,0.3); }
+.mood-bearish { background: rgba(255,68,68,0.12); color: var(--red); border: 1px solid rgba(255,68,68,0.3); }
+.mood-neutral { background: rgba(255,215,0,0.12); color: var(--yellow); border: 1px solid rgba(255,215,0,0.3); }
+
+/* LANG TOGGLE */
+.lang-bar { display: flex; justify-content: flex-end; padding: 8px 24px; background: var(--bg); }
+.lang-btn { background: var(--card); border: 1px solid var(--border); color: var(--muted); padding: 5px 14px; border-radius: 20px; cursor: pointer; font-size: 12px; font-weight: 600; transition: all 0.2s; }
+.lang-btn:hover { border-color: var(--blue); color: var(--blue); }
+.lang-btn.active { border-color: var(--green); color: var(--green); background: rgba(0,255,136,0.07); }
+
+/* ALERTS */
+.alert-banner { margin: 16px 24px; background: rgba(255,68,68,0.08); border: 1px solid rgba(255,68,68,0.3); border-radius: 10px; padding: 14px 18px; }
+.alert-banner.warn { background: rgba(255,215,0,0.08); border-color: rgba(255,215,0,0.3); }
+.alert-title { font-size: 13px; font-weight: 700; color: var(--red); margin-bottom: 8px; }
+.alert-banner.warn .alert-title { color: var(--yellow); }
+.alert-item { font-size: 12px; color: var(--text); margin: 4px 0; line-height: 1.5; }
+
+/* STATS ROW */
+.stats-row { display: flex; gap: 12px; padding: 0 24px; flex-wrap: wrap; margin-bottom: 8px; }
+.stat-card { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 14px 18px; flex: 1; min-width: 140px; }
+.stat-label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; }
+.stat-value { font-size: 20px; font-weight: 700; color: var(--green); margin-top: 4px; }
+.stat-value.red { color: var(--red); }
+.stat-value.yellow { color: var(--yellow); }
+
+/* SECTION */
+.section { padding: 16px 24px; }
+.section-title { font-size: 16px; font-weight: 700; color: var(--text); margin-bottom: 14px; display: flex; align-items: center; gap: 8px; }
+.section-title::after { content: ''; flex: 1; height: 1px; background: var(--border); margin-left: 8px; }
+
+/* CARDS GRID */
+.cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 14px; }
+
+/* COIN CARD */
+.coin-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; cursor: pointer; transition: border-color 0.2s, box-shadow 0.2s; }
+.coin-card:hover { border-color: rgba(0,255,136,0.4); box-shadow: 0 0 20px rgba(0,255,136,0.07); }
+.coin-header { padding: 14px 16px 10px; display: flex; justify-content: space-between; align-items: flex-start; }
+.coin-rank { width: 26px; height: 26px; border-radius: 50%; background: linear-gradient(135deg, var(--card2), var(--border)); font-size: 12px; font-weight: 700; color: var(--muted); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.coin-rank.top3 { background: linear-gradient(135deg, rgba(255,215,0,0.2), rgba(255,165,0,0.1)); color: var(--yellow); border: 1px solid rgba(255,215,0,0.3); }
+.coin-name { flex: 1; padding: 0 10px; }
+.coin-name h3 { font-size: 15px; font-weight: 700; }
+.coin-name span { font-size: 11px; color: var(--muted); }
+.trend-score { text-align: right; }
+.trend-score .score { font-size: 22px; font-weight: 800; color: var(--green); line-height: 1; }
+.trend-score .score-label { font-size: 9px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; }
+.coin-body { padding: 0 16px 14px; }
+.sentiment-badge { display: inline-flex; align-items: center; gap: 4px; padding: 2px 10px; border-radius: 20px; font-size: 11px; font-weight: 600; margin-bottom: 8px; }
+.sent-bullish { background: rgba(0,255,136,0.1); color: var(--green); border: 1px solid rgba(0,255,136,0.2); }
+.sent-bearish { background: rgba(255,68,68,0.1); color: var(--red); border: 1px solid rgba(255,68,68,0.2); }
+.sent-neutral { background: rgba(139,148,158,0.1); color: var(--muted); border: 1px solid rgba(139,148,158,0.2); }
+.sent-mixed { background: rgba(255,215,0,0.1); color: var(--yellow); border: 1px solid rgba(255,215,0,0.2); }
+.bar-row { margin-bottom: 6px; }
+.bar-label { display: flex; justify-content: space-between; font-size: 10px; color: var(--muted); margin-bottom: 3px; }
+.bar-track { background: var(--card2); border-radius: 4px; height: 5px; overflow: hidden; }
+.bar-fill { height: 100%; border-radius: 4px; background: linear-gradient(90deg, var(--green), #00c864); transition: width 1s ease; }
+.bar-fill.red { background: linear-gradient(90deg, var(--red), #c83200); }
+.bar-fill.yellow { background: linear-gradient(90deg, var(--yellow), #c8a000); }
+.coin-summary { font-size: 12px; color: var(--muted); line-height: 1.6; margin-top: 8px; }
+.price-context { font-size: 11px; color: var(--blue); margin-top: 6px; }
+.influencer-note { font-size: 11px; color: var(--purple); margin-top: 4px; }
+.momentum-badge { display: inline-block; font-size: 13px; margin-top: 4px; }
+
+/* DEEP DIVE */
+.deep-dive { background: var(--card2); border-top: 1px solid var(--border); padding: 0; max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.3s ease; }
+.deep-dive.open { max-height: 600px; padding: 14px 16px; }
+.deep-dive h4 { font-size: 12px; font-weight: 700; color: var(--blue); margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.5px; }
+.deep-dive p { font-size: 12px; color: var(--muted); line-height: 1.7; margin-bottom: 10px; }
+.source-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 8px; }
+.source-tag { font-size: 10px; padding: 2px 8px; border-radius: 12px; border: 1px solid var(--border); color: var(--muted); }
+.expand-hint { font-size: 10px; color: var(--muted); text-align: right; padding: 6px 16px 8px; opacity: 0.6; }
+
+/* FOOTER */
+.footer { border-top: 1px solid var(--border); padding: 14px 24px; font-size: 11px; color: var(--muted); line-height: 1.6; margin-top: 24px; }
+
+/* RTL */
+body.rtl { direction: rtl; text-align: right; }
+body.rtl .header { flex-direction: row-reverse; }
+body.rtl .header-left { flex-direction: row-reverse; }
+body.rtl .lang-bar { justify-content: flex-start; }
+body.rtl .coin-header { flex-direction: row-reverse; }
+body.rtl .coin-name { padding: 0 10px; }
+body.rtl .trend-score { text-align: left; }
+body.rtl .section-title::after { margin-left: 0; margin-right: 8px; }
+body.rtl .bar-label { flex-direction: row-reverse; }
+body.rtl .expand-hint { text-align: left; }
+
+@media (max-width: 600px) {
+  .header { padding: 14px 16px; }
+  .section { padding: 12px 16px; }
+  .stats-row { padding: 0 16px; }
+  .alert-banner { margin: 12px 16px; }
+  .cards-grid { grid-template-columns: 1fr; }
+}
+
+/* SHARE BUTTON */
+.share-btn { background: linear-gradient(135deg, rgba(0,255,136,0.15), rgba(88,166,255,0.1)); border: 1px solid rgba(0,255,136,0.4); color: var(--green); padding: 8px 18px; border-radius: 20px; font-size: 13px; font-weight: 700; cursor: pointer; display: flex; align-items: center; gap: 7px; transition: all 0.2s; }
+.share-btn:hover { background: rgba(0,255,136,0.25); box-shadow: 0 0 16px rgba(0,255,136,0.2); }
+.share-modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.7); z-index: 1000; align-items: center; justify-content: center; }
+.share-modal-overlay.open { display: flex; }
+.share-modal { background: #161b22; border: 1px solid #30363d; border-radius: 16px; padding: 24px; width: 320px; max-width: 90vw; }
+.share-modal h3 { font-size: 16px; font-weight: 700; margin-bottom: 6px; }
+.share-modal p { font-size: 12px; color: var(--muted); margin-bottom: 18px; line-height: 1.5; }
+.share-option { display: flex; align-items: center; gap: 12px; padding: 12px 14px; border-radius: 10px; border: 1px solid var(--border); margin-bottom: 10px; cursor: pointer; transition: all 0.2s; text-decoration: none; color: var(--text); }
+.share-option:hover { border-color: var(--green); background: rgba(0,255,136,0.05); }
+.share-option-icon { font-size: 22px; width: 36px; text-align: center; }
+.share-option-text strong { display: block; font-size: 13px; }
+.share-option-text span { font-size: 11px; color: var(--muted); }
+.share-close { width: 100%; padding: 9px; border-radius: 10px; border: 1px solid var(--border); background: transparent; color: var(--muted); font-size: 13px; cursor: pointer; margin-top: 4px; }
+.share-close:hover { border-color: var(--red); color: var(--red); }
+.copy-feedback { font-size: 11px; color: var(--green); text-align: center; margin-top: 8px; min-height: 16px; }
+
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-left">
+    <img class="profile-pic" src="https://unavatar.io/twitter/zooz1" onerror="this.src='https://ui-avatars.com/api/?name=zooz1&background=00ff88&color=0d1117&size=64'" alt="zooz1 profile">
+    <div>
+      <div class="header-title" data-en="⚡ Crypto Market Pulse" data-ar="⚡ نبض سوق الكريبتو">⚡ Crypto Market Pulse</div>
+      <div class="header-sub" data-en="June 10, 2026 · Generated via Web Intelligence" data-ar="10 يونيو 2026 · مُولَّد عبر استخبارات الويب">June 10, 2026 · Generated via Web Intelligence</div>
+      <div class="social-links">
+        <a href="https://x.com/zooz1" target="_blank" class="social-badge x-badge">𝕏 @zooz1</a>
+        <a href="https://t.me/zooz1_M" target="_blank" class="social-badge tg-badge">✈ @zooz1_M</a>
+      </div>
+    </div>
+  </div>
+  <button class="share-btn" onclick="openShare()">📤 Share</button>
+  <div class="mood-badge mood-neutral" id="moodBadge" data-en="⚡ Cautiously Bullish" data-ar="⚡ حذر متفائل">⚡ Cautiously Bullish</div>
+</div>
+
+<!-- LANG TOGGLE -->
+<div class="lang-bar">
+  <button class="lang-btn active" id="langBtn" onclick="toggleLang()">🌐 EN | عربي</button>
+</div>
+
+<!-- ALERTS -->
+<div class="alert-banner">
+  <div class="alert-title" data-en="🚨 SPIKE ALERTS" data-ar="🚨 تنبيهات الارتفاع المفاجئ">🚨 SPIKE ALERTS</div>
+  <div class="alert-item" data-en="• XLM (Stellar): 80% surge in 7 days · 900% volume spike · DTCC $114T securities tokenization partnership" data-ar="• XLM (ستيلار): ارتفاع 80% في 7 أيام · انفجار حجم بـ 900% · شراكة DTCC لترميز الأوراق المالية بـ 114 تريليون دولار">• XLM (Stellar): 80% surge in 7 days · 900% volume spike · DTCC $114T securities tokenization partnership</div>
+  <div class="alert-item" data-en="• ENA (Ethena): +22% in 24h · 414% volume spike ($498M) · Coinbase + Anchorage Digital institutional backing" data-ar="• ENA (إيثينا): +22% في 24 ساعة · ارتفاع حجم 414% (498 مليون دولار) · دعم مؤسسي من Coinbase + Anchorage Digital">• ENA (Ethena): +22% in 24h · 414% volume spike ($498M) · Coinbase + Anchorage Digital institutional backing</div>
+</div>
+
+<div class="alert-banner warn" style="margin-top:8px;">
+  <div class="alert-title" data-en="⚠️ EVENT RISKS & BREAKING NEWS" data-ar="⚠️ مخاطر الأحداث والأخبار العاجلة">⚠️ EVENT RISKS & BREAKING NEWS</div>
+  <div class="alert-item" data-en="• 🔥 HBAR ETF SEC Decision TOMORROW (June 11) — Could make Hedera only the 3rd crypto with a U.S. spot ETF" data-ar="• 🔥 قرار هيئة الأوراق المالية بشأن ETF لـ HBAR غداً (11 يونيو) — قد يجعل هيدرا ثالث عملة كريبتو لديها ETF فوري في الولايات المتحدة">• 🔥 HBAR ETF SEC Decision TOMORROW (June 11) — Could make Hedera only the 3rd crypto with a U.S. spot ETF</div>
+  <div class="alert-item" data-en="• 📰 CLARITY Act cleared Senate Banking Committee — Major U.S. crypto regulatory framework milestone" data-ar="• 📰 قانون CLARITY اجتاز لجنة مجلس الشيوخ المصرفية — إنجاز تنظيمي رئيسي للكريبتو الأمريكي">• 📰 CLARITY Act cleared Senate Banking Committee — Major U.S. crypto regulatory framework milestone</div>
+  <div class="alert-item" data-en="• 📉 Macro pressure: BTC retreating ~$70,200 ahead of U.S. inflation data today · Spot BTC ETF outflows: $401M in May" data-ar="• 📉 ضغط كلي: BTC يتراجع نحو 70,200 دولار قبيل بيانات التضخم الأمريكية اليوم · تدفقات خروج من ETF البيتكوين الفورية: 401 مليون دولار في مايو">• 📉 Macro pressure: BTC retreating ~$70,200 ahead of U.S. inflation data today · Spot BTC ETF outflows: $401M in May</div>
+  <div class="alert-item" data-en="• 🟢 SEC approved iShares Bitcoin Premium Income ETF (actively managed, call-writing strategy)" data-ar="• 🟢 وافقت هيئة الأوراق المالية على ETF دخل بيتكوين المتميز من iShares (مُدار بفاعلية، استراتيجية كتابة خيارات)">• 🟢 SEC approved iShares Bitcoin Premium Income ETF (actively managed, call-writing strategy)</div>
+</div>
+
+<!-- STATS -->
+<div class="stats-row" style="margin-top:16px;">
+  <div class="stat-card">
+    <div class="stat-label" data-en="Coins Tracked" data-ar="العملات المرصودة">Coins Tracked</div>
+    <div class="stat-value">10</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-label" data-en="Top Spike" data-ar="أعلى ارتفاع">Top Spike</div>
+    <div class="stat-value">XLM +80%</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-label" data-en="Market Mood" data-ar="مزاج السوق">Market Mood</div>
+    <div class="stat-value yellow" data-en="Cautious ⚡" data-ar="حذر ⚡">Cautious ⚡</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-label" data-en="Key Event" data-ar="حدث رئيسي">Key Event</div>
+    <div class="stat-value" style="font-size:13px;">HBAR ETF Tomorrow</div>
+  </div>
+</div>
+
+<!-- TOP 10 -->
+<div class="section">
+  <div class="section-title" data-en="📊 Top 10 Trending Coins — Ranked by Trend Score" data-ar="📊 أفضل 10 عملات رائجة — مرتبة بحسب نقاط الاتجاه">📊 Top 10 Trending Coins — Ranked by Trend Score</div>
+  <div class="cards-grid" id="cardsGrid"></div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer" data-en="Sources: X (Twitter), Reddit r/CryptoCurrency, CoinDesk, CoinTelegraph, BeInCrypto, Crypto-Economy, CryptoTimes, CCN, BanklessTimes, CaptainAltcoin · Telegram: limited public data available · Generated June 10, 2026" data-ar="المصادر: X (تويتر)، Reddit r/CryptoCurrency، CoinDesk، CoinTelegraph، BeInCrypto، Crypto-Economy، CryptoTimes، CCN، BanklessTimes، CaptainAltcoin · تيليغرام: بيانات عامة محدودة · تم التوليد في 10 يونيو 2026">Sources: X (Twitter), Reddit r/CryptoCurrency, CoinDesk, CoinTelegraph, BeInCrypto, Crypto-Economy, CryptoTimes, CCN, BanklessTimes, CaptainAltcoin · Telegram: limited public data available · Generated June 10, 2026</div>
+
+<script>
+const coins = [
+  {
+    rank: 1,
+    name: "Stellar", ticker: "XLM",
+    score: 8.8,
+    sentiment: "bullish",
+    buzz: 9, momentum: 9,
+    momentumArrow: "↑↑",
+    priceContext: "+80% in 7 days · $34M shorts liquidated · Volume +900%",
+    influencer: "DTCC (Depository Trust & Clearing) backed integration",
+    summary_en: "Stellar exploded following the DTCC announcement to connect tokenized securities (stocks, ETFs, Treasuries) to the Stellar blockchain by H1 2027. The single most significant institutional endorsement in XLM's history, jumping from $0.15 to nearly $0.30.",
+    summary_ar: "انطلقت ستيلار بعد إعلان DTCC بربط الأوراق المالية الرمزية (أسهم، ETFs، سندات خزانة) بشبكة ستيلار بحلول النصف الأول من 2027. أبرز دعم مؤسسي في تاريخ XLM، قفزت من 0.15 إلى ما يقارب 0.30 دولار.",
+    deep_en: "The DTCC — the US's central securities clearing and settlement infrastructure — announced it will connect its tokenized assets platform to Stellar with a 2027 launch target. Tokenized stocks, ETFs, and US Treasuries custodied by DTCC's Depository Trust Company will be available on Stellar. This triggered a massive short squeeze (~$34M liquidated) and a 900% volume surge to nearly $1B daily. Reddit and X are dominated by XLM narratives, with calls ranging from $1 to $11 targets. Macro tailwind from the CLARITY Act and growing RWA tokenization narrative amplifies the story.",
+    deep_ar: "أعلنت DTCC — البنية التحتية المركزية لتسوية الأوراق المالية الأمريكية — عن ربط منصة الأصول الرمزية الخاصة بها بشبكة ستيلار بحلول 2027. ستتوفر الأسهم والصناديق المتداولة والسندات الرمزية التي تحتضنها Depository Trust Company على شبكة ستيلار. أدى ذلك إلى اندفاع ضخم في تغطية المراكز القصيرة (~34 مليون دولار مُصفَّى) وارتفاع حجم التداول 900% ليقترب من مليار دولار يومياً.",
+    sources: ["X/Twitter", "CoinDesk", "CCN", "BanklessTimes", "Reddit"]
+  },
+  {
+    rank: 2,
+    name: "Ethena", ticker: "ENA",
+    score: 8.0,
+    sentiment: "bullish",
+    buzz: 8, momentum: 8,
+    momentumArrow: "↑↑",
+    priceContext: "+22% in 24h · Volume: $498M (+414%) · Price: ~$0.1057",
+    influencer: "Coinbase publicly backed Ethena (June 2) · Anchorage Digital integration",
+    summary_en: "ENA surged 22% after Coinbase publicly endorsed Ethena's institutional push and Anchorage Digital Bank integrated its synthetic dollar protocol. Volume/market cap ratio hit 52% — indicating intense trader rotation.",
+    summary_ar: "ارتفع ENA بنسبة 22% بعد أن دعم Coinbase علناً دفعة Ethena المؤسسية وأدمجت Anchorage Digital Bank بروتوكول الدولار الاصطناعي الخاص به. بلغت نسبة الحجم إلى القيمة السوقية 52% — مما يشير إلى دوران مكثف للمتداولين.",
+    deep_en: "Ethena's synthetic dollar protocol (USDe) is gaining institutional traction. Coinbase publicly backed adoption on June 2, followed by Anchorage Digital Bank tapping Ethena's Atlas platform for regulated custody, collateral management, and crypto credit access. The move signals Ethena is in a deliberate institutional positioning phase. With volume-to-market-cap at 52%, this is high-conviction rotation, not passive accumulation. X sentiment is overwhelmingly bullish with targets ranging from $0.15 to $0.25 in near term.",
+    deep_ar: "يكتسب بروتوكول الدولار الاصطناعي (USDe) من Ethena زخماً مؤسسياً. دعم Coinbase التبني علناً في 2 يونيو، تلاه تكامل Anchorage Digital Bank مع منصة Atlas الخاصة بـ Ethena للحضانة المنظمة وإدارة الضمانات والوصول إلى الائتمان الكريبتو.",
+    sources: ["CryptoTimes", "CoinMarketCap", "X/Twitter", "CoinDesk"]
+  },
+  {
+    rank: 3,
+    name: "Hedera", ticker: "HBAR",
+    score: 7.8,
+    sentiment: "bullish",
+    buzz: 8, momentum: 8,
+    momentumArrow: "↑↑",
+    priceContext: "ETF catalyst tomorrow — could be 3rd U.S. spot crypto ETF",
+    influencer: "Canary Capital HBAR ETF (HBR) on Nasdaq · 21Shares ETP on Euronext",
+    summary_en: "HBAR's SEC ETF decision lands TOMORROW (June 11). The Canary Capital HBAR ETF already holds 549M HBAR on Nasdaq. If approved, Hedera becomes only the 3rd crypto with a U.S. spot ETF after BTC and ETH.",
+    summary_ar: "قرار هيئة الأوراق المالية بشأن ETF لـ HBAR يصدر غداً (11 يونيو). يحتوي ETF لـ Canary Capital بالفعل على 549 مليون HBAR على Nasdaq. في حال الموافقة، تصبح هيدرا ثالث عملة كريبتو لديها ETF فوري أمريكي بعد BTC وETH.",
+    deep_en: "The SEC has until June 11 to rule on whether to approve or disapprove the Canary Capital HBAR spot ETF. Separately, Grayscale has filed for a spot HBAR ETF with the same June 11 decision window. Analysts rank HBAR among the top ETF approval candidates alongside Litecoin. The anticipation is building significant pre-event buzz on X and Reddit. 21Shares simultaneously launched a Hedera ETP on Euronext Amsterdam, signaling European demand is already there. The risk: a delay or denial would likely cause a sharp pullback given pre-event positioning.",
+    deep_ar: "لدى هيئة الأوراق المالية حتى 11 يونيو للبت في الموافقة على ETF الفوري لـ HBAR من Canary Capital أو رفضه. في المقابل، تقدمت Grayscale بطلب ETF فوري لـ HBAR بنفس نافذة قرار 11 يونيو. يصنف المحللون HBAR ضمن أبرز المرشحين للموافقة على ETF إلى جانب Litecoin. في الوقت ذاته، أطلقت 21Shares ETP لهيدرا على بورصة Euronext أمستردام.",
+    sources: ["TheBlock", "CryptoSlate", "CryptoBriefing", "SEC.gov", "X/Twitter"]
+  },
+  {
+    rank: 4,
+    name: "Chainlink", ticker: "LINK",
+    score: 7.3,
+    sentiment: "bullish",
+    buzz: 8, momentum: 7,
+    momentumArrow: "↑",
+    priceContext: "Active wallets hit 535K (3-year high) · ETF assets: $101M+",
+    influencer: "FIFA World Cup 2026 oracle partner · First CFTC-regulated LINK perps on Kalshi",
+    summary_en: "LINK jumped to #15 trending on X. Key catalysts: ADI Predictstreet named Chainlink exclusive oracle for FIFA World Cup 2026, Kalshi launched first CFTC-regulated LINK perpetuals, and ETF inflows crossed $101M.",
+    summary_ar: "قفز LINK إلى المرتبة 15 في الترند على X. المحفزات الرئيسية: تم تعيين Chainlink أوراكل حصري لـ ADI Predictstreet في كأس العالم FIFA 2026، وأطلق Kalshi أول عقود LINK الدائمة المنظمة من CFTC، وتجاوزت تدفقات ETF 101 مليون دولار.",
+    deep_en: "Chainlink is converging multiple bullish narratives simultaneously. FIFA World Cup 2026 oracle adoption puts LINK in mainstream infrastructure conversation. Kalshi's CFTC-regulated LINK perpetuals (launched June 8) open a new investor class. The DTCC tokenization connection to Stellar also benefits LINK, which powers cross-chain oracle infrastructure for tokenization projects. Reddit mentions surged 750% in 24h. Accumulation chatter on X points to support zone $6.75–$7.50 with strong institutional interest below $10.",
+    deep_ar: "تتقاطع روايات صعودية متعددة في Chainlink في آنٍ واحد. يضع تبني كأس العالم FIFA 2026 كأوراكل لـ LINK في نقاش البنية التحتية السائدة. تفتح عقود LINK الدائمة المنظمة من CFTC على Kalshi (أُطلقت 8 يونيو) فئة مستثمرين جديدة. يستفيد LINK أيضاً من ربط DTCC للتوكنية بستيلار، إذ يدعم البنية التحتية للأوراكل عبر السلاسل.",
+    sources: ["CaptainAltcoin", "AMBCrypto", "CryptoNews", "Reddit", "X/Twitter"]
+  },
+  {
+    rank: 5,
+    name: "Bitcoin", ticker: "BTC",
+    score: 6.7,
+    sentiment: "mixed",
+    buzz: 8, momentum: 5,
+    momentumArrow: "↓",
+    priceContext: "~$70,200 · Retreating ahead of US inflation data release",
+    influencer: "BlackRock iShares Bitcoin Premium Income ETF approved by SEC",
+    summary_en: "BTC is holding around $70,200 but under pressure from sticky US inflation (ISM Prices Paid >80, 10yr yield ~4.43%). Spot BTC ETF saw $401M in net outflows in May. New actively managed iShares ETF approved.",
+    summary_ar: "يتماسك BTC حول 70,200 دولار لكنه تحت ضغط من التضخم الأمريكي المتمسك (ISM Prices Paid >80، عائد 10 سنوات ~4.43%). شهدت ETFs BTC الفورية تدفقات خروج صافية بـ 401 مليون دولار في مايو. تمت الموافقة على ETF iShares المُدار بفاعلية.",
+    deep_en: "Bitcoin is navigating a complex macro environment heading into June 10. Inflation data (US CPI) due today is the dominant near-term risk. The 10-year Treasury yield hovering at 4.43% and ISM Manufacturing Prices Paid above 80 signal persistent price pressure that limits risk appetite. However, longer-term sentiment remains constructive: Grayscale's 2026 Institutional Outlook and Coinbase Institutional report both cite institutional adoption as a secular trend. SEC approval of the new iShares Premium Income ETF is a net positive for the ecosystem even amid spot market weakness.",
+    deep_ar: "يتنقل البيتكوين في بيئة كلية معقدة في 10 يونيو. بيانات التضخم الأمريكية (مؤشر أسعار المستهلكين) المستحقة اليوم هي المخاطرة الرئيسية على المدى القريب. يُشير عائد السندات لأجل 10 سنوات عند 4.43% ومؤشر ISM Prices Paid فوق 80 إلى ضغط أسعار مستمر يُقيّد شهية المخاطرة. لكن المشاعر على المدى البعيد تظل بنّاءة.",
+    sources: ["CoinDesk", "Capital.com", "Grayscale Research", "Coinbase Institutional", "X/Twitter"]
+  },
+  {
+    rank: 6,
+    name: "NEAR Protocol", ticker: "NEAR",
+    score: 6.3,
+    sentiment: "bullish",
+    buzz: 6, momentum: 7,
+    momentumArrow: "↑",
+    priceContext: "+13% on the day · ~$2.15 · Broke resistance at $1.40 in May",
+    influencer: "Technical breakout catalysts · BeInCrypto coverage",
+    summary_en: "NEAR is up ~13% today, continuing its breakout from May 18 when it cleared key resistance at $1.40. Social chatter is picking up with momentum traders targeting higher levels.",
+    summary_ar: "ارتفع NEAR بنسبة ~13% اليوم، مواصلاً اختراقه من 18 مايو حين تجاوز مقاومة رئيسية عند 1.40 دولار. يتصاعد النقاش الاجتماعي مع تتبع متداولي الزخم لمستويات أعلى.",
+    deep_en: "NEAR Protocol has been on a multi-week uptrend following a May 18 breakout above $1.40 resistance. The current move to ~$2.15 represents roughly 53% gains from that breakout. On-chain activity and developer momentum narratives are circulating on X. The token appeared in BeInCrypto's 'Altcoins to Watch' list for the second week of June 2026. Fading volume concern is a risk — charts need to confirm sustained demand at current levels.",
+    deep_ar: "شهد NEAR Protocol اتجاهاً صعودياً متعدد الأسابيع إثر اختراق 18 مايو فوق مقاومة 1.40 دولار. تمثل الحركة الحالية نحو ~2.15 دولار مكاسب تبلغ نحو 53% من نقطة الاختراق. تتداول روايات النشاط على السلسلة وزخم المطورين على X.",
+    sources: ["BeInCrypto", "Crypto-Economy", "CoinDesk", "X/Twitter"]
+  },
+  {
+    rank: 7,
+    name: "BNB", ticker: "BNB",
+    score: 6.3,
+    sentiment: "mixed",
+    buzz: 7, momentum: 6,
+    momentumArrow: "→",
+    priceContext: "~$671 · Pulling back from 2025 ATH >$1,300",
+    influencer: "1.569M BNB ($1.02B) burned in latest quarterly burn",
+    summary_en: "BNB trades near $671, consolidating after its 2025 ATH above $1,300. The latest quarterly burn destroyed 1.569M BNB worth $1.02B — a continued deflationary signal. Sentiment is 48% bullish, essentially neutral.",
+    summary_ar: "يتداول BNB قرب 671 دولاراً، يتماسك بعد قمته التاريخية فوق 1,300 دولار في 2025. أتلف أحدث حرق ربع سنوي 1.569 مليون BNB بقيمة 1.02 مليار دولار — إشارة انكماشية مستمرة. المشاعر 48% صعودية، أي محايدة فعلياً.",
+    deep_en: "BNB is a steady performer with strong fundamental support through token burns. The quarterly burn of 1.569M BNB (~$1.02B) continues the long-running deflationary mechanism. BNB Chain ecosystem activity remains elevated with multiple DeFi and GameFi projects launching. X sentiment is split: long-term holders point to the burn as bullish, while shorter-term traders see the $1,300 ATH rejection as near-term resistance. The CLARITY Act passing would benefit BNB Chain's DeFi ecosystem.",
+    deep_ar: "يعدّ BNB أداءً ثابتاً مع دعم أساسي قوي من خلال عمليات الحرق. يواصل الحرق الربع سنوي بـ 1.569 مليون BNB (~1.02 مليار دولار) الآلية الانكماشية طويلة الأمد. يظل نشاط نظام BNB Chain مرتفعاً مع إطلاق مشاريع DeFi وGameFi متعددة.",
+    sources: ["Crypto-Reporter", "CoinDCX", "ZebPay", "X/Twitter"]
+  },
+  {
+    rank: 8,
+    name: "Audiera", ticker: "BEAT",
+    score: 6.6,
+    sentiment: "bullish",
+    buzz: 5, momentum: 9,
+    momentumArrow: "↑↑",
+    priceContext: "~$4.37 · +65%+ in 24h · Two confirmed volume spikes",
+    influencer: "Low-cap altcoin screener alerts · BeInCrypto coverage",
+    summary_en: "BEAT (Audiera) is up 65%+ in a single day with two confirmed volume spikes — one in late May and one in the current rally. A high-momentum, high-risk micro-cap move with limited fundamental data available.",
+    summary_ar: "ارتفع BEAT (أوديرا) بأكثر من 65% في يوم واحد مع تأكيد انفجارَي حجم — أحدهما في أواخر مايو والآخر في التجمع الحالي. حركة ذات زخم عالٍ ومخاطر مرتفعة لرمز ذي رأسمال سوقي صغير جداً.",
+    deep_en: "Audiera (BEAT) is a micro-cap altcoin showing textbook breakout patterns. The first volume spike in late May established a breakout above prior resistance, and the current 65%+ move has confirmed with a second volume spike. BeInCrypto flagged it as one of the '3 Altcoins to Watch' in the second week of June 2026. Caution: with micro-cap tokens, these moves can reverse as fast as they come. Limited fundamental data available — this is primarily a momentum trade with elevated risk.",
+    deep_ar: "تُظهر Audiera (BEAT) أنماط اختراق كلاسيكية. أنشأ انفجار الحجم الأول في أواخر مايو اختراقاً فوق مقاومة سابقة، والحركة الحالية بأكثر من 65% تأكدت بانفجار حجم ثانٍ. رصدها BeInCrypto ضمن '3 عملات يجب مراقبتها' في الأسبوع الثاني من يونيو 2026. تحذير: مع الرموز ذات القيمة السوقية الصغيرة جداً، يمكن أن تنعكس هذه التحركات بنفس السرعة.",
+    sources: ["BeInCrypto", "Crypto-Economy", "X/Twitter"]
+  },
+  {
+    rank: 9,
+    name: "Ethereum", ticker: "ETH",
+    score: 6.0,
+    sentiment: "neutral",
+    buzz: 7, momentum: 5,
+    momentumArrow: "→",
+    priceContext: "~$1,965–$2,361 range · ETF outflows continued",
+    influencer: "Institutional year-end targets diverge: $3,175–$7,500",
+    summary_en: "ETH is in a macro-constrained consolidation phase. Model targets cluster at $1,965–$2,361 near-term. ETF outflows have continued into Q2 2026 with $401M in May. Regulatory clarity via the CLARITY Act could be a catalyst.",
+    summary_ar: "يمر ETH بمرحلة تماسك مقيدة كلياً. تتمركز أهداف النماذج عند 1,965–2,361 دولاراً على المدى القريب. استمرت تدفقات الخروج من ETFs في الربع الثاني من 2026 بـ 401 مليون دولار في مايو. يمكن أن تكون وضوح اللوائح عبر قانون CLARITY محفزاً.",
+    deep_en: "Ethereum is caught between macro headwinds and long-term institutional optimism. Near-term, ETF outflows (~$401M in May) and the sticky inflation environment weigh on price. Capital.com's model puts near-term range at $1,965–$2,361. However, institutional year-end targets are sharply divergent: some target $3,175 while others go as high as $7,500 depending on regulatory clarity, ETF flow reversal, and macro recovery. The CLARITY Act clearing the Senate Banking Committee is the most significant near-term catalyst for ETH fundamentals.",
+    deep_ar: "يقع ETH بين رياح كلية معاكسة وتفاؤل مؤسسي على المدى البعيد. على المدى القريب، تُثقل تدفقات الخروج من ETFs (~401 مليون دولار في مايو) وبيئة التضخم المتمسك السعرَ. غير أن الأهداف المؤسسية في نهاية العام متباينة بشدة: يستهدف بعضها 3,175 دولاراً بينما يصل بعضها إلى 7,500 دولار.",
+    sources: ["Capital.com", "CoinDesk", "Grayscale Research", "X/Twitter", "Reddit"]
+  },
+  {
+    rank: 10,
+    name: "BlockDAG", ticker: "BDAG",
+    score: 5.8,
+    sentiment: "bullish",
+    buzz: 6, momentum: 6,
+    momentumArrow: "↑",
+    priceContext: "Presale phase · Listed among top trending 2026 coins",
+    influencer: "Multiple 2026 trending coin lists · Presale community momentum",
+    summary_en: "BlockDAG is among the top trending coins on multiple aggregator lists for 2026. Still in presale phase, driven by community momentum and DAG-based scalability narrative. High risk, high social buzz.",
+    summary_ar: "يُعدّ BlockDAG من بين أبرز العملات الرائجة في قوائم متعددة لعام 2026. لا يزال في مرحلة البيع المسبق، مدفوعاً بزخم المجتمع ورواية قابلية التوسع المستندة إلى DAG. مخاطر عالية وضجة اجتماعية مرتفعة.",
+    deep_en: "BlockDAG (BDAG) appears consistently in 2026 trending coin rankings alongside BNB, TRON, Stellar, and Hedera. It is a DAG (Directed Acyclic Graph) based blockchain project promising high throughput and scalability. Currently in presale phase — meaning this is a speculative, community-driven narrative without exchange listing liquidity. CT is discussing BDAG as a high-upside pre-listing opportunity. Note: presale-stage projects carry elevated rug-pull and delay risk. Verify project fundamentals independently before engaging.",
+    deep_ar: "يظهر BlockDAG (BDAG) باستمرار في تصنيفات العملات الرائجة لعام 2026 إلى جانب BNB وTRON وStellar وHedera. إنه مشروع بلوكتشين مبني على DAG (الرسم البياني الحلقي المُوجَّه) يعد بإنتاجية عالية وقابلية للتوسع. يوجد حالياً في مرحلة البيع المسبق — مما يعني أن هذه رواية تأملية مجتمعية دون سيولة إدراج في البورصة.",
+    sources: ["Crypto-Reporter", "CoinDCX", "ZebPay", "X/Twitter"]
+  }
+];
+
+let isArabic = false;
+
+function toggleLang() {
+  isArabic = !isArabic;
+  document.body.classList.toggle('rtl', isArabic);
+  const btn = document.getElementById('langBtn');
+  btn.classList.toggle('active', !isArabic);
+  document.querySelectorAll('[data-en]').forEach(el => {
+    el.textContent = isArabic ? el.getAttribute('data-ar') : el.getAttribute('data-en');
+  });
+  renderCards();
+}
+
+function getSentimentLabel(s, ar) {
+  const map = { bullish: ['📈 Bullish','📈 صاعد'], bearish: ['📉 Bearish','📉 هابط'], neutral: ['➡️ Neutral','➡️ محايد'], mixed: ['🔀 Mixed','🔀 متذبذب'] };
+  return ar ? map[s][1] : map[s][0];
+}
+
+function renderCards() {
+  const grid = document.getElementById('cardsGrid');
+  grid.innerHTML = coins.map((c,i) => `
+    <div class="coin-card" id="card-${i}" onclick="toggleDeep(${i})">
+      <div class="coin-header">
+        <div class="coin-rank ${c.rank<=3?'top3':''}">${c.rank}</div>
+        <div class="coin-name">
+          <h3>${c.name} <span style="color:var(--muted);font-weight:400">${c.ticker}</span></h3>
+          <div class="sentiment-badge sent-${c.sentiment}">${getSentimentLabel(c.sentiment, isArabic)}</div>
+        </div>
+        <div class="trend-score">
+          <div class="score">${c.score.toFixed(1)}</div>
+          <div class="score-label">${isArabic?'نقاط الترند':'Trend Score'}</div>
+        </div>
+      </div>
+      <div class="coin-body">
+        <div class="bar-row">
+          <div class="bar-label"><span>${isArabic?'الضجة':'Buzz'}</span><span>${c.buzz}/10</span></div>
+          <div class="bar-track"><div class="bar-fill" style="width:${c.buzz*10}%"></div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label"><span>${isArabic?'الزخم':'Momentum'}</span><span>${c.momentum}/10 ${c.momentumArrow}</span></div>
+          <div class="bar-track"><div class="bar-fill ${c.momentum>=7?'':'yellow'}" style="width:${c.momentum*10}%"></div></div>
+        </div>
+        <div class="price-context">💰 ${c.priceContext}</div>
+        <div class="influencer-note">🎯 ${c.influencer}</div>
+        <div class="coin-summary">${isArabic ? c.summary_ar : c.summary_en}</div>
+      </div>
+      <div class="expand-hint">${isArabic?'▼ اضغط للتفاصيل الكاملة':'▼ Click for deep dive'}</div>
+      <div class="deep-dive" id="deep-${i}">
+        <h4>${isArabic?'التحليل التفصيلي':'Deep Dive Analysis'}</h4>
+        <p>${isArabic ? c.deep_ar : c.deep_en}</p>
+        <div class="source-tags">${c.sources.map(s=>`<span class="source-tag">${s}</span>`).join('')}</div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function toggleDeep(i) {
+  const el = document.getElementById(`deep-${i}`);
+  el.classList.toggle('open');
+}
+
+renderCards();
+
+function openShare() { document.getElementById('shareModal').classList.add('open'); }
+function closeShare() { document.getElementById('shareModal').classList.remove('open'); }
+
+function downloadReport() {
+  const blob = new Blob([document.documentElement.outerHTML], {type: 'text/html'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'crypto-pulse-2026-06-10.html';
+  a.click();
+  showFeedback('⬇️ Download started!');
+}
+
+function copyHTML() {
+  navigator.clipboard.writeText(document.documentElement.outerHTML).then(() => {
+    showFeedback('✅ HTML copied to clipboard!');
+  }).catch(() => {
+    showFeedback('⚠️ Copy failed — try downloading instead');
+  });
+}
+
+function nativeShare() {
+  if (navigator.share) {
+    navigator.share({ title: '⚡ Crypto Market Pulse — June 10, 2026', text: 'Check out today\'s crypto market intelligence report by @zooz1', url: window.location.href });
+  }
+}
+
+function showFeedback(msg) {
+  const el = document.getElementById('copyFeedback');
+  el.textContent = msg;
+  setTimeout(() => el.textContent = '', 3000);
+}
+
+if (navigator.share) document.getElementById('nativeShareBtn').style.display = 'flex';
+
+</script>
+
+<!-- SHARE MODAL -->
+<div class="share-modal-overlay" id="shareModal" onclick="if(event.target===this)closeShare()">
+  <div class="share-modal">
+    <h3>📤 Share This Report</h3>
+    <p>Choose how you want to share the Crypto Market Pulse dashboard:</p>
+
+    <a class="share-option" href="https://tiiny.host" target="_blank">
+      <div class="share-option-icon">🌐</div>
+      <div class="share-option-text">
+        <strong>Get a Public Link</strong>
+        <span>Upload to tiiny.host → get a shareable URL</span>
+      </div>
+    </a>
+
+    <div class="share-option" onclick="downloadReport()">
+      <div class="share-option-icon">⬇️</div>
+      <div class="share-option-text">
+        <strong>Download File</strong>
+        <span>Save .html file to send via WhatsApp / Telegram</span>
+      </div>
+    </div>
+
+    <div class="share-option" onclick="copyHTML()">
+      <div class="share-option-icon">📋</div>
+      <div class="share-option-text">
+        <strong>Copy HTML Source</strong>
+        <span>Paste into any HTML host or email</span>
+      </div>
+    </div>
+
+    <div class="share-option" onclick="nativeShare()" id="nativeShareBtn" style="display:none">
+      <div class="share-option-icon">📱</div>
+      <div class="share-option-text">
+        <strong>Share via App</strong>
+        <span>Use your device's native share menu</span>
+      </div>
+    </div>
+
+    <div class="copy-feedback" id="copyFeedback"></div>
+    <button class="share-close" onclick="closeShare()">✕ Close</button>
+  </div>
+</div>
+
+</body>
+</html>
