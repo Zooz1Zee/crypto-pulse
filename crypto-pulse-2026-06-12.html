@@ -1,0 +1,1044 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>⚡ Market Pulse — June 12, 2026</title>
+<style>
+:root{--bg:#0d1117;--card:#161b22;--border:#30363d;--green:#00ff88;--red:#ff4444;--yellow:#ffd700;--blue:#58a6ff;--text:#e6edf3;--muted:#8b949e;--card2:#1c2128;--orange:#ff8c00;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,sans-serif;min-height:100vh;}
+body.rtl{direction:rtl;text-align:right;}
+#lang-wrap{position:fixed;top:16px;right:16px;z-index:999;display:flex;gap:6px;}
+.lang-btn{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:5px 12px;cursor:pointer;font-size:12px;font-weight:600;color:var(--muted);transition:all 0.2s;}
+.lang-btn.active,.lang-btn:hover{color:var(--blue);border-color:var(--blue);}
+.header{background:linear-gradient(135deg,#0d1117 0%,#161b22 100%);border-bottom:1px solid var(--border);padding:20px;}
+.header-inner{max-width:960px;margin:0 auto;display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
+.profile-pic{width:56px;height:56px;border-radius:50%;object-fit:cover;border:2px solid var(--green);box-shadow:0 0 12px rgba(0,255,136,0.3);flex-shrink:0;}
+.header-text{flex:1;}
+.header-title{font-size:20px;font-weight:700;background:linear-gradient(90deg,var(--green),var(--blue));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.header-sub{color:var(--muted);font-size:12px;margin-top:2px;}
+.social-links{display:flex;gap:6px;margin-top:5px;flex-wrap:wrap;}
+.social-badge{display:inline-flex;align-items:center;gap:4px;padding:3px 9px;border-radius:20px;font-size:11px;font-weight:600;text-decoration:none;}
+.social-badge:hover{opacity:0.8;}
+.x-badge{background:rgba(255,255,255,0.08);color:#e6edf3;border:1px solid rgba(255,255,255,0.15);}
+.tg-badge{background:rgba(0,136,204,0.15);color:#29b6f6;border:1px solid rgba(0,136,204,0.3);}
+.mood-badge{padding:5px 14px;border-radius:20px;font-size:12px;font-weight:700;margin-left:auto;white-space:nowrap;background:rgba(255,215,0,0.15);color:var(--yellow);border:1px solid rgba(255,215,0,0.3);}
+.tab-nav{max-width:960px;margin:0 auto;padding:14px 16px 0;display:flex;gap:4px;}
+.tab-btn{padding:8px 20px;border-radius:8px 8px 0 0;border:1px solid var(--border);border-bottom:none;background:var(--card2);color:var(--muted);font-size:13px;font-weight:600;cursor:pointer;transition:all 0.2s;}
+.tab-btn.active{background:var(--card);color:var(--text);}
+.tab-btn:hover:not(.active){color:var(--text);}
+.tab-divider{max-width:960px;margin:0 auto;padding:0 16px;}
+.tab-divider hr{border:none;border-top:1px solid var(--border);margin:0;}
+.tab-pane{display:none;}.tab-pane.active{display:block;}
+.alerts{max-width:960px;margin:14px auto;padding:0 16px;}
+.alert-banner{border-radius:8px;padding:12px 16px;margin-bottom:8px;}
+.alert-red{background:rgba(255,68,68,0.1);border:1px solid rgba(255,68,68,0.3);}
+.alert-orange{background:rgba(255,140,0,0.1);border:1px solid rgba(255,140,0,0.3);}
+.alert-blue{background:rgba(88,166,255,0.1);border:1px solid rgba(88,166,255,0.3);}
+.alert-title{font-weight:700;font-size:13px;margin-bottom:3px;}
+.alert-red .alert-title{color:var(--red);}.alert-orange .alert-title{color:var(--orange);}.alert-blue .alert-title{color:var(--blue);}
+.alert-body{font-size:12px;color:var(--muted);}
+.stats-bar{max-width:960px;margin:0 auto 14px;padding:0 16px;}
+.stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:8px;}
+.stat-card{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:10px 14px;}
+.stat-label{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;margin-bottom:3px;}
+.stat-value{font-size:16px;font-weight:700;}
+.stat-change{font-size:11px;margin-top:2px;}
+.up{color:var(--green);}.down{color:var(--red);}
+.section{max-width:960px;margin:0 auto 20px;padding:0 16px;}
+.section-title{font-size:13px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid var(--border);}
+/* COMPACT COIN CARDS */
+.coin-card{background:var(--card);border:1px solid var(--border);border-radius:10px;margin-bottom:6px;overflow:hidden;cursor:pointer;transition:border-color 0.2s;}
+.coin-card:hover{border-color:var(--blue);}
+.coin-card.gold{border-color:rgba(255,215,0,0.35);}
+.coin-card.spike-card{border-color:rgba(255,68,68,0.35);}
+/* compact row - always visible */
+.coin-row{display:flex;align-items:center;gap:10px;padding:10px 14px;}
+.c-rank{width:26px;height:26px;border-radius:50%;background:var(--card2);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:var(--muted);flex-shrink:0;}
+.gold .c-rank{background:rgba(255,215,0,0.18);color:var(--yellow);}
+.c-icon{font-size:18px;flex-shrink:0;width:28px;text-align:center;}
+.c-name{font-size:13px;font-weight:700;flex:1;}
+.c-ticker{font-size:11px;color:var(--muted);}
+.c-price{font-size:12px;color:var(--yellow);white-space:nowrap;}
+.c-score{font-size:18px;font-weight:800;color:var(--green);min-width:36px;text-align:right;}
+.spike-card .c-score{color:var(--red);}
+.c-sent{padding:2px 8px;border-radius:12px;font-size:10px;font-weight:700;white-space:nowrap;}
+.sent-bull{background:rgba(0,255,136,0.15);color:var(--green);border:1px solid rgba(0,255,136,0.3);}
+.sent-bear{background:rgba(255,68,68,0.15);color:var(--red);border:1px solid rgba(255,68,68,0.3);}
+.sent-mixed{background:rgba(255,215,0,0.15);color:var(--yellow);border:1px solid rgba(255,215,0,0.3);}
+.sent-spike{background:rgba(255,68,68,0.2);color:var(--red);border:1px solid var(--red);}
+.c-chevron{color:var(--muted);font-size:14px;transition:transform 0.3s;flex-shrink:0;}
+/* expandable detail */
+.coin-detail{max-height:0;overflow:hidden;transition:max-height 0.4s ease;}
+.coin-detail.open{max-height:700px;border-top:1px solid var(--border);}
+.coin-detail-inner{padding:12px 14px;}
+.bar-row{display:flex;align-items:center;gap:8px;margin-bottom:5px;}
+.bar-label{font-size:10px;color:var(--muted);width:66px;flex-shrink:0;text-transform:uppercase;}
+.bar-track{flex:1;height:5px;background:var(--card2);border-radius:3px;overflow:hidden;}
+.bar-fill{height:100%;border-radius:3px;}
+.bar-green{background:linear-gradient(90deg,#00cc6a,var(--green));}
+.bar-blue{background:linear-gradient(90deg,#2060cc,var(--blue));}
+.bar-val{font-size:11px;font-weight:600;width:20px;text-align:right;}
+.ctx-line{font-size:12px;color:var(--yellow);margin-top:8px;}
+.inf-line{font-size:12px;color:var(--blue);margin-top:4px;}
+.sum-text{font-size:12px;color:var(--muted);line-height:1.6;margin-top:8px;}
+.src-row{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px;}
+.src-badge{background:var(--card2);border:1px solid var(--border);border-radius:5px;padding:2px 7px;font-size:10px;color:var(--muted);}
+/* STOCK TAB */
+.stock-intro{max-width:960px;margin:14px auto;padding:0 16px;}
+.intro-box{background:var(--card);border:1px solid rgba(88,166,255,0.3);border-radius:10px;padding:18px 20px;}
+.intro-title{font-size:16px;font-weight:700;margin-bottom:6px;background:linear-gradient(90deg,var(--blue),var(--green));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.intro-sub{font-size:12px;color:var(--muted);line-height:1.7;}
+.warn-box{background:rgba(255,215,0,0.06);border:1px solid rgba(255,215,0,0.25);border-radius:8px;padding:10px 14px;margin-top:10px;font-size:12px;color:var(--yellow);}
+.workflow{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:8px;margin-top:12px;}
+.wf-step{background:var(--card2);border:1px solid var(--border);border-radius:8px;padding:10px 12px;}
+.wf-num{font-size:10px;font-weight:700;color:var(--blue);margin-bottom:3px;text-transform:uppercase;}
+.wf-title{font-size:12px;font-weight:700;}
+.wf-desc{font-size:11px;color:var(--muted);margin-top:2px;}
+/* CMD SECTIONS */
+.cmd-sec{max-width:960px;margin:0 auto 6px;padding:0 16px;}
+.cmd-sec-hdr{display:flex;align-items:center;gap:10px;padding:10px 14px;background:var(--card);border:1px solid var(--border);border-radius:10px;cursor:pointer;user-select:none;transition:border-color 0.2s;}
+.cmd-sec-hdr:hover{border-color:var(--blue);}
+.cmd-sec-icon{font-size:20px;flex-shrink:0;}
+.cmd-sec-info{flex:1;}
+.cmd-sec-title{font-size:14px;font-weight:700;}
+.cmd-sec-sub{font-size:11px;color:var(--muted);}
+.cmd-sec-count{font-size:11px;color:var(--muted);background:var(--card2);border:1px solid var(--border);border-radius:12px;padding:2px 8px;}
+.cmd-sec-chev{color:var(--muted);font-size:16px;transition:transform 0.3s;}
+.cmd-sec-body{overflow:hidden;transition:max-height 0.5s ease;}
+/* CMD CARDS */
+.cmd-cards{padding:8px 0 0;}
+.cmd-card{background:var(--card2);border:1px solid var(--border);border-radius:8px;margin-bottom:6px;overflow:hidden;}
+.cmd-hdr{display:flex;align-items:center;gap:10px;padding:10px 14px;cursor:pointer;}
+.cmd-hdr:hover{background:rgba(255,255,255,0.03);}
+.cmd-num-badge{background:rgba(88,166,255,0.15);color:var(--blue);border:1px solid rgba(88,166,255,0.3);border-radius:5px;padding:2px 7px;font-size:10px;font-weight:700;flex-shrink:0;}
+.cmd-title-txt{font-size:13px;font-weight:700;flex:1;}
+.cmd-purpose-txt{font-size:11px;color:var(--muted);}
+.cmd-chev{color:var(--muted);font-size:14px;transition:transform 0.3s;flex-shrink:0;}
+.cmd-body{max-height:0;overflow:hidden;transition:max-height 0.45s ease;}
+.cmd-body.open{max-height:600px;border-top:1px solid var(--border);}
+.cmd-body-inner{padding:14px;}
+.lang-tabs{display:flex;gap:6px;margin-bottom:10px;}
+.lt-btn{padding:4px 12px;border-radius:16px;border:1px solid var(--border);background:var(--card);color:var(--muted);font-size:11px;font-weight:600;cursor:pointer;}
+.lt-btn.active{background:rgba(88,166,255,0.15);color:var(--blue);border-color:rgba(88,166,255,0.4);}
+.prompt-box{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:12px 14px;font-size:12px;line-height:1.7;color:var(--text);position:relative;white-space:pre-wrap;}
+.copy-btn{position:absolute;top:8px;right:8px;background:var(--card2);border:1px solid var(--border);border-radius:5px;padding:3px 9px;font-size:10px;font-weight:700;color:var(--blue);cursor:pointer;}
+.copy-btn:hover{background:rgba(88,166,255,0.15);}
+.copy-btn.copied{color:var(--green);border-color:var(--green);}
+/* INPUT TEMPLATE */
+.inp-tmpl{max-width:960px;margin:12px auto 24px;padding:0 16px;}
+.it-box{background:var(--card);border:1px solid rgba(255,215,0,0.3);border-radius:10px;padding:18px 20px;}
+.it-title{font-size:14px;font-weight:700;color:var(--yellow);margin-bottom:12px;}
+.it-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:8px;}
+.it-field{background:var(--card2);border:1px solid var(--border);border-radius:7px;padding:9px 12px;}
+.it-label{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.4px;margin-bottom:3px;}
+.it-val{font-size:12px;color:var(--text);}
+footer{max-width:960px;margin:0 auto;padding:20px 16px;border-top:1px solid var(--border);text-align:center;color:var(--muted);font-size:11px;}
+footer a{color:var(--blue);text-decoration:none;}
+@media(max-width:580px){.stats-grid{grid-template-columns:repeat(2,1fr);}.mood-badge{margin-left:0;}.c-price{display:none;}}
+
+.sector-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;padding:0 20px 16px;}
+@media(max-width:700px){.sector-grid{grid-template-columns:repeat(2,1fr);}}
+.sector-card{border-radius:8px;padding:10px;text-align:center;border:1px solid var(--border);}
+.sector-card.up{background:rgba(0,255,136,0.08);border-color:rgba(0,255,136,0.25);}
+.sector-card.down{background:rgba(255,68,68,0.08);border-color:rgba(255,68,68,0.25);}
+.sector-card.flat{background:rgba(255,255,255,0.03);border-color:var(--border);}
+.sec-name{font-size:11px;color:var(--muted);margin-bottom:4px;}
+.sec-val{font-size:13px;font-weight:700;}
+.sector-card.up .sec-val{color:var(--green);}
+.sector-card.down .sec-val{color:var(--red);}
+.sector-card.flat .sec-val{color:var(--muted);}
+.sent-mix{background:rgba(88,166,255,0.15);color:#58a6ff;border-color:rgba(88,166,255,0.4);}
+.src-line{font-size:11px;color:var(--muted);margin-top:10px;padding-top:8px;border-top:1px solid var(--border);}
+</style>
+</head>
+<body>
+<div id="lang-wrap"><button class="lang-btn active" onclick="switchLang('en',this)">🇬🇧 EN</button><button class="lang-btn" onclick="switchLang('ar',this)">🇸🇦 عربي</button><button class="lang-btn" onclick="switchLang('fr',this)">🇫🇷 FR</button></div>
+<div class="header">
+<div class="header-inner">
+<img class="profile-pic" src="https://unavatar.io/twitter/zooz1" onerror="this.src='https://ui-avatars.com/api/?name=zooz1&background=00ff88&color=0d1117&size=64'" alt="zooz1">
+<div class="header-text">
+<div class="header-title" data-en="⚡ Market Pulse" data-ar="⚡ نبضة السوق">⚡ Market Pulse</div>
+<div class="header-sub" data-en="June 12, 2026 · Crypto &amp; Stocks · Generated via Web" data-ar="12 يونيو 2026 · كريبتو وأسهم · مُولَّد عبر الإنترنت">June 12, 2026 · Crypto &amp; Stocks · Generated via Web</div>
+<div class="social-links">
+<a class="social-badge x-badge" href="https://x.com/zooz1" target="_blank">𝕏 @zooz1</a>
+<a class="social-badge tg-badge" href="https://t.me/zooz1_M" target="_blank">✈ @zooz1_M</a>
+</div>
+</div>
+<div class="mood-badge" data-en="⚠️ Cautiously Bullish" data-ar="⚠️ صعود حذر">⚠️ Cautiously Bullish</div>
+</div>
+</div>
+<div class="tab-nav">
+<button class="tab-btn active" onclick="switchTab('crypto',this)" data-en="₿ Crypto" data-ar="₿ كريبتو">₿ Crypto</button>
+<button class="tab-btn" onclick="switchTab('stocks',this)" data-en="📈 Stocks" data-ar="📈 أسهم">📈 Stocks</button>
+</div>
+<div class="tab-divider"><hr></div>
+
+<!-- CRYPTO TAB -->
+<div id="tab-crypto" class="tab-pane active">
+<div class="alerts">
+<div class="alert-banner alert-red"><div class="alert-title" data-en="🚨 SPIKE — Stargate Finance (STG) +35.83%" data-ar="🚨 ارتفاع — STG +35.83%">🚨 SPIKE — Stargate Finance (STG) +35.83%</div><div class="alert-body" data-en="Largest 24h gain in top 100. Cross-chain bridge narrative on fire. Watch for continuation or reversal." data-ar="أكبر مكسب يومي في أعلى 100. سردية جسر السلاسل تشتعل.">Largest 24h gain in top 100. Cross-chain bridge narrative on fire. Watch for continuation or reversal.</div></div>
+<div class="alert-banner alert-orange"><div class="alert-title" data-en="📰 BREAKING — Trump Claims Iran War Ended" data-ar="📰 عاجل — ترامب يُعلن انتهاء الحرب مع إيران">📰 BREAKING — Trump Claims Iran War Ended</div><div class="alert-body" data-en="Risk-on surge: BTC, ETH, stocks all gaining. Deal may finalize this weekend." data-ar="موجة صعود: BTC وETH والأسهم ترتفع. الصفقة قد تُبرم هذا الأسبوع.">Risk-on surge: BTC, ETH, stocks all gaining. Deal may finalize this weekend.</div></div>
+<div class="alert-banner alert-blue"><div class="alert-title" data-en="📰 INSTITUTIONAL — BlackRock Bitcoin Income ETF Filed" data-ar="📰 مؤسسي — BlackRock يودع ETF دخل البيتكوين">📰 INSTITUTIONAL — BlackRock Bitcoin Income ETF Filed</div><div class="alert-body" data-en="Expected debut next week. CT consensus: bullish catalyst for BTC." data-ar="من المتوقع إطلاقه الأسبوع القادم. توافق CT: محفّز صعودي لـ BTC.">Expected debut next week. CT consensus: bullish catalyst for BTC.</div></div>
+</div>
+<div class="stats-bar"><div class="stats-grid">
+<div class="stat-card"><div class="stat-label" data-en="Bitcoin" data-ar="بيتكوين">Bitcoin</div><div class="stat-value">$63,718</div><div class="stat-change up">▲ +3.4%</div></div>
+<div class="stat-card"><div class="stat-label" data-en="Ethereum" data-ar="إيثيريوم">Ethereum</div><div class="stat-value">$1,672</div><div class="stat-change up">▲ +3.2%</div></div>
+<div class="stat-card"><div class="stat-label" data-en="Market Cap" data-ar="القيمة السوقية">Market Cap</div><div class="stat-value">$2.25T</div><div class="stat-change up">▲ +1.7%</div></div>
+<div class="stat-card"><div class="stat-label" data-en="Fear &amp; Greed" data-ar="الخوف والطمع">Fear &amp; Greed</div><div class="stat-value" style="color:var(--red)">12</div><div class="stat-change down" data-en="Extreme Fear" data-ar="خوف شديد">Extreme Fear</div></div>
+<div class="stat-card"><div class="stat-label" data-en="BTC Dominance" data-ar="هيمنة BTC">BTC Dominance</div><div class="stat-value">58.59%</div><div class="stat-change up">▲ +0.16%</div></div>
+<div class="stat-card"><div class="stat-label" data-en="24h Volume" data-ar="حجم 24 ساعة">24h Volume</div><div class="stat-value">$80.67B</div><div class="stat-change up">▲ +8.49%</div></div>
+</div></div>
+<div class="section">
+<div class="section-title" data-en="📊 Top 10 Trending — Click to Expand" data-ar="📊 أعلى 10 رائجة — انقر للتفاصيل">📊 Top 10 Trending — Click to Expand</div>
+
+<div class="coin-card gold" onclick="toggleCoin(this)">
+<div class="coin-row">
+<div class="c-rank">1</div>
+<div class="c-icon">₿</div>
+<div class="c-name">Bitcoin <span class="c-ticker">BTC</span></div>
+<span class="c-price">$63,718 · +3.4%</span>
+<span class="c-sent sent-bull" data-en="📈 Bullish" data-ar="📈 صاعد">📈 Bullish</span>
+<span style="font-size:13px;font-weight:700;margin:0 4px;">↑↑</span>
+<div class="c-score" >8.2</div>
+<span class="c-chevron">▼</span>
+</div>
+<div class="coin-detail">
+<div class="coin-detail-inner">
+<div class="bar-row"><span class="bar-label" data-en="Buzz" data-ar="الضجة">Buzz</span><div class="bar-track"><div class="bar-fill bar-green" style="width:90%"></div></div><span class="bar-val">9</span></div>
+<div class="bar-row"><span class="bar-label" data-en="Momentum" data-ar="الزخم">Momentum</span><div class="bar-track"><div class="bar-fill bar-blue" style="width:70%"></div></div><span class="bar-val">7</span></div>
+<div class="ctx-line" data-en="💰 Geopolitical relief from Iran deal + BlackRock ETF news driving strong demand" data-ar="💰 الراحة الجيوسياسية من صفقة إيران + أخبار ETF BlackRock تدفع الطلب">💰 Geopolitical relief from Iran deal + BlackRock ETF news driving strong demand</div>
+<div class="inf-line" data-en="🤝 CT & Reddit aligned bullish — institutional accumulation confirmed" data-ar="🤝 CT وReddit متوافقان صعوديًا — تراكم مؤسسي مؤكد">🤝 CT & Reddit aligned bullish — institutional accumulation confirmed</div>
+<div class="sum-text" data-en="BTC is the dominant narrative today. Geopolitical relief + BlackRock ETF filing pushing BTC back toward $64K resistance. Bitcoin dominance at 58.59% with extreme fear index at 12 — contrarians see this as a buy signal." data-ar="BTC هو السردية المهيمنة اليوم. الراحة الجيوسياسية + إيداع BlackRock ETF يدفعان BTC نحو مقاومة $64K. هيمنة BTC عند 58.59% مع مؤشر خوف شديد عند 12.">BTC is the dominant narrative today. Geopolitical relief + BlackRock ETF filing pushing BTC back toward $64K resistance. Bitcoin dominance at 58.59% with extreme fear index at 12 — contrarians see this as a buy signal.</div>
+<div class="src-row"><span class="src-badge">𝕏 CT</span><span class="src-badge">Reddit r/Bitcoin</span><span class="src-badge">Yahoo Finance</span></div>
+</div>
+</div>
+</div>
+<div class="coin-card spike-card" onclick="toggleCoin(this)">
+<div class="coin-row">
+<div class="c-rank">2</div>
+<div class="c-icon">🌉</div>
+<div class="c-name">Stargate Finance <span class="c-ticker">STG</span></div>
+<span class="c-price">+35.83% 24h</span>
+<span class="c-sent sent-spike" data-en="🚨 SPIKE" data-ar="🚨 ارتفاع">🚨 SPIKE</span>
+<span style="font-size:13px;font-weight:700;margin:0 4px;">↑↑</span>
+<div class="c-score" style="color:var(--red)">7.9</div>
+<span class="c-chevron">▼</span>
+</div>
+<div class="coin-detail">
+<div class="coin-detail-inner">
+<div class="bar-row"><span class="bar-label" data-en="Buzz" data-ar="الضجة">Buzz</span><div class="bar-track"><div class="bar-fill bar-green" style="width:80%"></div></div><span class="bar-val">8</span></div>
+<div class="bar-row"><span class="bar-label" data-en="Momentum" data-ar="الزخم">Momentum</span><div class="bar-track"><div class="bar-fill bar-blue" style="width:90%"></div></div><span class="bar-val">9</span></div>
+<div class="ctx-line" data-en="💰 +35.83% in 24h — largest gain in top 100. Cross-chain bridge FOMO" data-ar="💰 +35.83% خلال 24 ساعة — أكبر ارتفاع في أعلى 100. FOMO جسر السلاسل">💰 +35.83% in 24h — largest gain in top 100. Cross-chain bridge FOMO</div>
+<div class="inf-line" data-en="📡 DYOR.net flagged unusual volume spike signal on STG" data-ar="📡 DYOR.net رصد إشارة ارتفاع حجم غير عادي على STG">📡 DYOR.net flagged unusual volume spike signal on STG</div>
+<div class="sum-text" data-en="Stargate Finance +35.83% — omnichain bridge enabling asset transfers across ETH, BNB, ARB, OP, Polygon. Spike correlated with DeFi sector up 5.2%. Technical analysis shows sell signal from 6/9 indicators — overbought risk." data-ar="Stargate Finance +35.83% — جسر عبر السلاسل يمكّن نقل الأصول. الارتفاع يتزامن مع ارتفاع قطاع DeFi 5.2%. التحليل الفني يُظهر إشارة بيع من 6/9 مؤشرات.">Stargate Finance +35.83% — omnichain bridge enabling asset transfers across ETH, BNB, ARB, OP, Polygon. Spike correlated with DeFi sector up 5.2%. Technical analysis shows sell signal from 6/9 indicators — overbought risk.</div>
+<div class="src-row"><span class="src-badge">CoinMarketCap</span><span class="src-badge">Intellectia.AI</span><span class="src-badge">DYOR.net</span></div>
+</div>
+</div>
+</div>
+<div class="coin-card " onclick="toggleCoin(this)">
+<div class="coin-row">
+<div class="c-rank">3</div>
+<div class="c-icon">Ξ</div>
+<div class="c-name">Ethereum <span class="c-ticker">ETH</span></div>
+<span class="c-price">$1,672 · +3.2%</span>
+<span class="c-sent sent-bull" data-en="📈 Bullish" data-ar="📈 صاعد">📈 Bullish</span>
+<span style="font-size:13px;font-weight:700;margin:0 4px;">↑</span>
+<div class="c-score" >7.5</div>
+<span class="c-chevron">▼</span>
+</div>
+<div class="coin-detail">
+<div class="coin-detail-inner">
+<div class="bar-row"><span class="bar-label" data-en="Buzz" data-ar="الضجة">Buzz</span><div class="bar-track"><div class="bar-fill bar-green" style="width:80%"></div></div><span class="bar-val">8</span></div>
+<div class="bar-row"><span class="bar-label" data-en="Momentum" data-ar="الزخم">Momentum</span><div class="bar-track"><div class="bar-fill bar-blue" style="width:70%"></div></div><span class="bar-val">7</span></div>
+<div class="ctx-line" data-en="💰 DeFi sector up 5.2% — ETH L2 ecosystem seeing broad recovery" data-ar="💰 قطاع DeFi ارتفع 5.2% — نظام ETH L2 يشهد انتعاشًا واسعًا">💰 DeFi sector up 5.2% — ETH L2 ecosystem seeing broad recovery</div>
+<div class="inf-line" data-en="CT cautiously optimistic: ETH targeting $1,600 as structural base" data-ar="CT متفائل بحذر: ETH يستهدف $1,600 كقاعدة هيكلية">CT cautiously optimistic: ETH targeting $1,600 as structural base</div>
+<div class="sum-text" data-en="ETH recovered to $1,672 on macro tailwind from Iran peace deal. DeFi protocols on Ethereum L2s seeing renewed activity with 5.2% sector-wide gains. Community discussions focus on ETH/BTC ratio recovery." data-ar="تعافى ETH إلى $1,672 بفضل الرياح الكلية المواتية. بروتوكولات DeFi على L2 تشهد نشاطًا متجددًا مع مكاسب 5.2% على مستوى القطاع.">ETH recovered to $1,672 on macro tailwind from Iran peace deal. DeFi protocols on Ethereum L2s seeing renewed activity with 5.2% sector-wide gains. Community discussions focus on ETH/BTC ratio recovery.</div>
+<div class="src-row"><span class="src-badge">𝕏 CT</span><span class="src-badge">CoinGabbar</span><span class="src-badge">Yahoo Finance</span></div>
+</div>
+</div>
+</div>
+<div class="coin-card " onclick="toggleCoin(this)">
+<div class="coin-row">
+<div class="c-rank">4</div>
+<div class="c-icon">🔥</div>
+<div class="c-name">Hyperliquid <span class="c-ticker">HYPE</span></div>
+<span class="c-price">Top 10 altcoin</span>
+<span class="c-sent sent-bull" data-en="📈 Bullish" data-ar="📈 صاعد">📈 Bullish</span>
+<span style="font-size:13px;font-weight:700;margin:0 4px;">↑↑</span>
+<div class="c-score" >7.3</div>
+<span class="c-chevron">▼</span>
+</div>
+<div class="coin-detail">
+<div class="coin-detail-inner">
+<div class="bar-row"><span class="bar-label" data-en="Buzz" data-ar="الضجة">Buzz</span><div class="bar-track"><div class="bar-fill bar-green" style="width:70%"></div></div><span class="bar-val">7</span></div>
+<div class="bar-row"><span class="bar-label" data-en="Momentum" data-ar="الزخم">Momentum</span><div class="bar-track"><div class="bar-fill bar-blue" style="width:80%"></div></div><span class="bar-val">8</span></div>
+<div class="ctx-line" data-en="💰 Entered top 10 altcoins by market cap — surpassed ADA & DOGE" data-ar="💰 دخل أعلى 10 عملات بديلة — تجاوز ADA وDOGE">💰 Entered top 10 altcoins by market cap — surpassed ADA & DOGE</div>
+<div class="inf-line" data-en="CT framing HYPE as the decentralized perpetuals exchange that delivered" data-ar="CT يُصوّر HYPE كبورصة عقود دائمة لامركزية وفّت بوعودها">CT framing HYPE as the decentralized perpetuals exchange that delivered</div>
+<div class="sum-text" data-en="Hyperliquid enters top 10 altcoins, overtaking Cardano and Dogecoin. The on-chain order book perpetuals DEX is winning market share from centralized venues with institutional-grade UX. CT consensus: constructively bullish with strong fundamentals." data-ar="Hyperliquid يدخل أعلى 10 عملات، متجاوزًا Cardano وDogecoin. بورصة العقود الدائمة اللامركزية تكتسب حصة سوقية.">Hyperliquid enters top 10 altcoins, overtaking Cardano and Dogecoin. The on-chain order book perpetuals DEX is winning market share from centralized venues with institutional-grade UX. CT consensus: constructively bullish with strong fundamentals.</div>
+<div class="src-row"><span class="src-badge">CoinMarketCap</span><span class="src-badge">KuCoin</span><span class="src-badge">𝕏 CT</span></div>
+</div>
+</div>
+</div>
+<div class="coin-card " onclick="toggleCoin(this)">
+<div class="coin-row">
+<div class="c-rank">5</div>
+<div class="c-icon">🏦</div>
+<div class="c-name">Ondo Finance <span class="c-ticker">ONDO</span></div>
+<span class="c-price">+59% · 30 days</span>
+<span class="c-sent sent-bull" data-en="📈 Bullish" data-ar="📈 صاعد">📈 Bullish</span>
+<span style="font-size:13px;font-weight:700;margin:0 4px;">↑↑</span>
+<div class="c-score" >6.9</div>
+<span class="c-chevron">▼</span>
+</div>
+<div class="coin-detail">
+<div class="coin-detail-inner">
+<div class="bar-row"><span class="bar-label" data-en="Buzz" data-ar="الضجة">Buzz</span><div class="bar-track"><div class="bar-fill bar-green" style="width:70%"></div></div><span class="bar-val">7</span></div>
+<div class="bar-row"><span class="bar-label" data-en="Momentum" data-ar="الزخم">Momentum</span><div class="bar-track"><div class="bar-fill bar-blue" style="width:80%"></div></div><span class="bar-val">8</span></div>
+<div class="ctx-line" data-en="💰 +59% over 30d · +50% over 90d · RWA sector defying market slump" data-ar="💰 +59% خلال 30 يومًا · قطاع RWA يتحدى تراجع السوق">💰 +59% over 30d · +50% over 90d · RWA sector defying market slump</div>
+<div class="inf-line" data-en="🤝 CT consensus: ONDO is the strongest fundamental narrative of 2026" data-ar="🤝 توافق CT: ONDO السردية الأساسية الأقوى في 2026">🤝 CT consensus: ONDO is the strongest fundamental narrative of 2026</div>
+<div class="sum-text" data-en="Ondo Finance leads the Real World Asset (RWA) sector — tokenized US Treasuries gaining institutional traction. CT is broadly bullish because RWA adoption is driven by TradFi demand, not speculation. Canton Network also gaining as a complementary RWA play." data-ar="Ondo Finance يقود قطاع أصول العالم الحقيقي (RWA) — سندات الخزانة الأمريكية المُرمَّزة تكتسب زخمًا مؤسسيًا.">Ondo Finance leads the Real World Asset (RWA) sector — tokenized US Treasuries gaining institutional traction. CT is broadly bullish because RWA adoption is driven by TradFi demand, not speculation. Canton Network also gaining as a complementary RWA play.</div>
+<div class="src-row"><span class="src-badge">KuCoin</span><span class="src-badge">Crypto.com</span><span class="src-badge">𝕏 CT</span></div>
+</div>
+</div>
+</div>
+<div class="coin-card " onclick="toggleCoin(this)">
+<div class="coin-row">
+<div class="c-rank">6</div>
+<div class="c-icon">✕</div>
+<div class="c-name">XRP <span class="c-ticker">XRP</span></div>
+<span class="c-price">$1.13 · +2.69%</span>
+<span class="c-sent sent-bull" data-en="📈 Bullish" data-ar="📈 صاعد">📈 Bullish</span>
+<span style="font-size:13px;font-weight:700;margin:0 4px;">↑</span>
+<div class="c-score" >6.8</div>
+<span class="c-chevron">▼</span>
+</div>
+<div class="coin-detail">
+<div class="coin-detail-inner">
+<div class="bar-row"><span class="bar-label" data-en="Buzz" data-ar="الضجة">Buzz</span><div class="bar-track"><div class="bar-fill bar-green" style="width:70%"></div></div><span class="bar-val">7</span></div>
+<div class="bar-row"><span class="bar-label" data-en="Momentum" data-ar="الزخم">Momentum</span><div class="bar-track"><div class="bar-fill bar-blue" style="width:70%"></div></div><span class="bar-val">7</span></div>
+<div class="ctx-line" data-en="💰 Risk-on tailwind from Iran deal lifting major assets" data-ar="💰 الرياح المواتية من صفقة إيران ترفع الأصول الكبرى">💰 Risk-on tailwind from Iran deal lifting major assets</div>
+<div class="inf-line" data-en="No XRP-specific catalyst today — broad market move" data-ar="لا محفّز خاص بـ XRP اليوم — تحرك السوق العام">No XRP-specific catalyst today — broad market move</div>
+<div class="sum-text" data-en="XRP climbed 2.69% to $1.13 on broad risk-on sentiment. No coin-specific catalyst — move attributed to macro relief. Community focus remains on long-term regulatory clarity and cross-border payment corridors." data-ar="ارتفع XRP بنسبة 2.69% إلى $1.13 على مشاعر المخاطرة العامة. لا محفّز خاص بالعملة — التحرك منسوب للراحة الكلية.">XRP climbed 2.69% to $1.13 on broad risk-on sentiment. No coin-specific catalyst — move attributed to macro relief. Community focus remains on long-term regulatory clarity and cross-border payment corridors.</div>
+<div class="src-row"><span class="src-badge">Intellectia.AI</span><span class="src-badge">Yahoo Finance</span></div>
+</div>
+</div>
+</div>
+<div class="coin-card " onclick="toggleCoin(this)">
+<div class="coin-row">
+<div class="c-rank">7</div>
+<div class="c-icon">◎</div>
+<div class="c-name">Solana <span class="c-ticker">SOL</span></div>
+<span class="c-price">Top L1 pick</span>
+<span class="c-sent sent-bull" data-en="📈 Bullish" data-ar="📈 صاعد">📈 Bullish</span>
+<span style="font-size:13px;font-weight:700;margin:0 4px;">↑</span>
+<div class="c-score" >6.5</div>
+<span class="c-chevron">▼</span>
+</div>
+<div class="coin-detail">
+<div class="coin-detail-inner">
+<div class="bar-row"><span class="bar-label" data-en="Buzz" data-ar="الضجة">Buzz</span><div class="bar-track"><div class="bar-fill bar-green" style="width:70%"></div></div><span class="bar-val">7</span></div>
+<div class="bar-row"><span class="bar-label" data-en="Momentum" data-ar="الزخم">Momentum</span><div class="bar-track"><div class="bar-fill bar-blue" style="width:60%"></div></div><span class="bar-val">6</span></div>
+<div class="ctx-line" data-en="💰 4,000+ TPS · Strong DeFi + NFT + payments ecosystem" data-ar="💰 4,000+ معاملة/ثانية · نظام DeFi وNFT ومدفوعات قوي">💰 4,000+ TPS · Strong DeFi + NFT + payments ecosystem</div>
+<div class="inf-line" data-en="Multiple analysts named SOL top short-term pick alongside BNB" data-ar="محللون متعددون صنّفوا SOL كخيار أول قصير الأجل">Multiple analysts named SOL top short-term pick alongside BNB</div>
+<div class="sum-text" data-en="Solana remains the strongest L1 story in 2026 with 4,000+ TPS throughput and a rapidly maturing ecosystem across DeFi, NFT, and payments. CT discussions are fundamentals-driven — developers continue shipping." data-ar="Solana تظل أقوى قصة L1 في 2026 مع أكثر من 4,000 معاملة/ثانية ونظام بيئي ناضج.">Solana remains the strongest L1 story in 2026 with 4,000+ TPS throughput and a rapidly maturing ecosystem across DeFi, NFT, and payments. CT discussions are fundamentals-driven — developers continue shipping.</div>
+<div class="src-row"><span class="src-badge">CoinDCX</span><span class="src-badge">ZebPay</span><span class="src-badge">𝕏 CT</span></div>
+</div>
+</div>
+</div>
+<div class="coin-card " onclick="toggleCoin(this)">
+<div class="coin-row">
+<div class="c-rank">8</div>
+<div class="c-icon">🔒</div>
+<div class="c-name">Monero <span class="c-ticker">XMR</span></div>
+<span class="c-price">~+10% weekly</span>
+<span class="c-sent sent-bull" data-en="📈 Bullish" data-ar="📈 صاعد">📈 Bullish</span>
+<span style="font-size:13px;font-weight:700;margin:0 4px;">↑↑</span>
+<div class="c-score" >6.4</div>
+<span class="c-chevron">▼</span>
+</div>
+<div class="coin-detail">
+<div class="coin-detail-inner">
+<div class="bar-row"><span class="bar-label" data-en="Buzz" data-ar="الضجة">Buzz</span><div class="bar-track"><div class="bar-fill bar-green" style="width:60%"></div></div><span class="bar-val">6</span></div>
+<div class="bar-row"><span class="bar-label" data-en="Momentum" data-ar="الزخم">Momentum</span><div class="bar-track"><div class="bar-fill bar-blue" style="width:80%"></div></div><span class="bar-val">8</span></div>
+<div class="ctx-line" data-en="💰 Privacy coins held firm during market selloff — sustained accumulation since June 7" data-ar="💰 عملات الخصوصية صمدت خلال تراجع السوق — تراكم مستمر منذ 7 يونيو">💰 Privacy coins held firm during market selloff — sustained accumulation since June 7</div>
+<div class="inf-line" data-en="Volume rising steadily since June 7 — accumulation-driven, not speculative" data-ar="حجم التداول يرتفع بثبات منذ 7 يونيو — مدفوع بالتراكم وليس المضاربة">Volume rising steadily since June 7 — accumulation-driven, not speculative</div>
+<div class="sum-text" data-en="Monero gained ~10% this week while holding firm during the broader market downturn. Buying volume has risen steadily since June 7 — suggesting institutional accumulation. Privacy narratives strengthen during geopolitical uncertainty like the Iran conflict period." data-ar="ارتفع Monero بنحو 10% هذا الأسبوع مع صموده خلال تراجع السوق. حجم الشراء يرتفع منذ 7 يونيو.">Monero gained ~10% this week while holding firm during the broader market downturn. Buying volume has risen steadily since June 7 — suggesting institutional accumulation. Privacy narratives strengthen during geopolitical uncertainty like the Iran conflict period.</div>
+<div class="src-row"><span class="src-badge">Market Research</span><span class="src-badge">Volume Analysis</span></div>
+</div>
+</div>
+</div>
+<div class="coin-card " onclick="toggleCoin(this)">
+<div class="coin-row">
+<div class="c-rank">9</div>
+<div class="c-icon">🤖</div>
+<div class="c-name">Siren <span class="c-ticker">SIREN</span></div>
+<span class="c-price">-13.27% today / +1,500% YTD</span>
+<span class="c-sent sent-mixed" data-en="🔀 Mixed" data-ar="🔀 متذبذب">🔀 Mixed</span>
+<span style="font-size:13px;font-weight:700;margin:0 4px;">→</span>
+<div class="c-score" style="color:var(--yellow)">5.3</div>
+<span class="c-chevron">▼</span>
+</div>
+<div class="coin-detail">
+<div class="coin-detail-inner">
+<div class="bar-row"><span class="bar-label" data-en="Buzz" data-ar="الضجة">Buzz</span><div class="bar-track"><div class="bar-fill bar-green" style="width:60%"></div></div><span class="bar-val">6</span></div>
+<div class="bar-row"><span class="bar-label" data-en="Momentum" data-ar="الزخم">Momentum</span><div class="bar-track"><div class="bar-fill bar-blue" style="width:50%"></div></div><span class="bar-val">5</span></div>
+<div class="ctx-line" data-en="💰 Down 13.27% today — but up 1,500%+ YTD. Profit-taking after extraordinary run" data-ar="💰 -13.27% اليوم — لكن +1,500% من بداية العام. جني أرباح بعد ارتفاع استثنائي">💰 Down 13.27% today — but up 1,500%+ YTD. Profit-taking after extraordinary run</div>
+<div class="inf-line" data-en="CT split: some see dip as opportunity, others warn of AI hype cycles" data-ar="CT منقسم: بعضهم يرى الانخفاض فرصة، آخرون يحذرون من دورات مبالغة AI">CT split: some see dip as opportunity, others warn of AI hype cycles</div>
+<div class="sum-text" data-en="Siren (AI agent coin) is down 13.27% today after a +1,500% YTD run. The correction appears to be profit-taking. AI agent coins remain the hottest narrative in 2026 but show extreme volatility. CT is split on the dip." data-ar="Siren (عملة وكيل AI) تنخفض 13.27% اليوم بعد ارتفاع +1,500% من بداية العام. التصحيح يبدو جني أرباح.">Siren (AI agent coin) is down 13.27% today after a +1,500% YTD run. The correction appears to be profit-taking. AI agent coins remain the hottest narrative in 2026 but show extreme volatility. CT is split on the dip.</div>
+<div class="src-row"><span class="src-badge">CoinMarketCap</span><span class="src-badge">Intellectia.AI</span></div>
+</div>
+</div>
+</div>
+<div class="coin-card " onclick="toggleCoin(this)">
+<div class="coin-row">
+<div class="c-rank">10</div>
+<div class="c-icon">🇺🇸</div>
+<div class="c-name">World Liberty Fi <span class="c-ticker">WLFI</span></div>
+<span class="c-price">+3.547% today</span>
+<span class="c-sent sent-mixed" data-en="🔀 Mixed" data-ar="🔀 متذبذب">🔀 Mixed</span>
+<span style="font-size:13px;font-weight:700;margin:0 4px;">↑</span>
+<div class="c-score" style="color:var(--yellow)">5.0</div>
+<span class="c-chevron">▼</span>
+</div>
+<div class="coin-detail">
+<div class="coin-detail-inner">
+<div class="bar-row"><span class="bar-label" data-en="Buzz" data-ar="الضجة">Buzz</span><div class="bar-track"><div class="bar-fill bar-green" style="width:50%"></div></div><span class="bar-val">5</span></div>
+<div class="bar-row"><span class="bar-label" data-en="Momentum" data-ar="الزخم">Momentum</span><div class="bar-track"><div class="bar-fill bar-blue" style="width:50%"></div></div><span class="bar-val">5</span></div>
+<div class="ctx-line" data-en="💰 Trump-linked token gaining on geopolitical news — highly correlated with Trump news cycle" data-ar="💰 الرمز المرتبط بترامب يرتفع على الأخبار الجيوسياسية">💰 Trump-linked token gaining on geopolitical news — highly correlated with Trump news cycle</div>
+<div class="inf-line" data-en="CT divided: Trump trade vs. weak fundamentals debate" data-ar="CT منقسم: صفقة ترامب مقابل نقاش الأساسيات الضعيفة">CT divided: Trump trade vs. weak fundamentals debate</div>
+<div class="sum-text" data-en="WLFI up 3.547% — directly correlated with Trump's Iran deal announcement. Political tokens move with Trump news. CT is divided: supporters see it as a high-beta Trump trade; skeptics question long-term fundamentals." data-ar="WLFI ارتفع 3.547% — مرتبط مباشرةً بإعلان صفقة إيران. الرمز السياسي يتحرك مع أخبار ترامب.">WLFI up 3.547% — directly correlated with Trump's Iran deal announcement. Political tokens move with Trump news. CT is divided: supporters see it as a high-beta Trump trade; skeptics question long-term fundamentals.</div>
+<div class="src-row"><span class="src-badge">Intellectia.AI</span><span class="src-badge">𝕏 CT</span></div>
+</div>
+</div>
+</div>
+</div><!-- /section -->
+<footer>
+<div data-en="Sources: X/CT · Reddit · CoinTelegraph · CoinDesk · CoinMarketCap · Yahoo Finance · Intellectia.AI · CoinGabbar · DYOR.net | Telegram: limited public data" data-ar="المصادر: X/CT · Reddit · CoinTelegraph · CoinDesk · CoinMarketCap · Yahoo Finance · Intellectia.AI · DYOR.net | تيليغرام: بيانات محدودة">Sources: X/CT · Reddit · CoinTelegraph · CoinDesk · CoinMarketCap · Yahoo Finance · Intellectia.AI · CoinGabbar · DYOR.net | Telegram: limited public data</div>
+<div style="margin-top:6px" data-en="Generated June 12, 2026 · ⚡ Market Pulse · Not financial advice" data-ar="مُولَّد 12 يونيو 2026 · ⚡ نبضة السوق · ليس نصيحة مالية">Generated June 12, 2026 · ⚡ Market Pulse · Not financial advice</div>
+<div style="margin-top:6px"><a href="https://x.com/zooz1" target="_blank">𝕏 @zooz1</a> &nbsp;·&nbsp; <a href="https://t.me/zooz1_M" target="_blank">✈ @zooz1_M</a></div>
+</footer>
+</div><!-- /tab-crypto -->
+
+<!-- STOCKS TAB -->
+<div id="tab-stocks" class="tab-pane">
+
+<!-- ALERT BANNERS -->
+<div class="alerts-wrap">
+<div class="alert-banner alert-red">
+  <div class="alert-title" data-en="🚨 MEGA IPO — SpaceX (SPCX) +19% on Nasdaq Debut" data-ar="🚨 طرح تاريخي — SpaceX (SPCX) +19% في أول يوم" data-fr="🚨 MEGA IPO — SpaceX (SPCX) +19% à ses débuts Nasdaq">🚨 MEGA IPO — SpaceX (SPCX) +19% on Nasdaq Debut</div>
+  <div class="alert-body" data-en="Largest IPO in history — $75B raised at $135/share, closed at $160.95. Elon Musk becomes world's first trillionaire. Capital rotating out of AMZN (-2.17%) and AAPL (-1.95%)." data-ar="أكبر طرح عام في التاريخ — جمع $75 مليار. أسهم AMZN وAAPL تتراجع بسبب تدفق الأموال إلى SPCX." data-fr="Plus grand IPO de l'histoire — 75 Mds$ levés à 135$/action, clôture à 160,95$. Rotation des capitaux hors AMZN (-2,17%) et AAPL (-1,95%).">Largest IPO in history — $75B raised at $135/share, closed at $160.95. Elon Musk becomes world's first trillionaire. Capital rotating out of AMZN (-2.17%) and AAPL (-1.95%).</div>
+</div>
+<div class="alert-banner alert-orange">
+  <div class="alert-title" data-en="📰 US–Iran Peace Deal Near — Risk-On Surge Across Markets" data-ar="📰 اتفاقية سلام أمريكية إيرانية قريبة — موجة شراء في الأسواق" data-fr="📰 Accord de Paix USA–Iran Proche — Élan Risqué sur les Marchés">📰 US–Iran Peace Deal Near — Risk-On Surge Across Markets</div>
+  <div class="alert-body" data-en="Trump confirms MoU largely negotiated. Strait of Hormuz reopening. Tech, Industrials, Materials lead gains. Energy and Staples give back conflict premium." data-ar="ترامب يؤكد التفاوض على مذكرة تفاهم. التكنولوجيا والصناعة والمواد تقود المكاسب. الطاقة والاستهلاكية تتراجع." data-fr="Trump confirme l'accord de principe. Détroit d'Ormuz en cours de réouverture. Tech, Industriels, Matériaux en tête. Énergie et Produits de Base en baisse.">Trump confirms MoU largely negotiated. Strait of Hormuz reopening. Tech, Industrials, Materials lead gains. Energy and Staples give back conflict premium.</div>
+</div>
+<div class="alert-banner alert-blue">
+  <div class="alert-title" data-en="🤝 Bank of America Sticks with NVDA & AAPL as June Top Picks" data-ar="🤝 بنك أمريكا يبقي على NVDA وAAPL كأفضل اختياراته ليونيو" data-fr="🤝 Bank of America Maintient NVDA &amp; AAPL comme Choix de Juin">🤝 Bank of America Sticks with NVDA &amp; AAPL as June Top Picks</div>
+  <div class="alert-body" data-en="AI infrastructure demand driving NVDA thesis. AAPL seen recovering after iPhone cycle concerns. WSB 2026 Index crowdsourced picks: RKLB, ASTS, GOOGL, NBIS leading." data-ar="الطلب على بنية تحتية للذكاء الاصطناعي يدعم أطروحة NVDA. WSB 2026: RKLB وASTS وGOOGL وNBIS في المقدمة." data-fr="Demande en infrastructure IA soutient la thèse NVDA. AAPL en reprise après les inquiétudes du cycle iPhone. WSB 2026 : RKLB, ASTS, GOOGL, NBIS en tête.">Bank of America Sticks with NVDA &amp; AAPL as June Top Picks. AI infrastructure demand driving NVDA thesis. WSB 2026 Index: RKLB, ASTS leading Reddit sentiment.</div>
+</div>
+</div>
+
+<!-- STAT CARDS -->
+<div class="stats-grid">
+  <div class="stat-card"><div class="stat-label" data-en="S&amp;P 500" data-ar="S&amp;P 500" data-fr="S&amp;P 500">S&amp;P 500</div><div class="stat-value">7,419</div><div class="stat-change up">▲ +0.34%</div></div>
+  <div class="stat-card"><div class="stat-label" data-en="Nasdaq" data-ar="ناسداك" data-fr="Nasdaq">Nasdaq</div><div class="stat-value">25,968</div><div class="stat-change up">▲ +0.54%</div></div>
+  <div class="stat-card"><div class="stat-label" data-en="Dow Jones" data-ar="داو جونز" data-fr="Dow Jones">Dow Jones</div><div class="stat-value">51,161</div><div class="stat-change up">▲ +0.61%</div></div>
+  <div class="stat-card"><div class="stat-label" data-en="VIX" data-ar="VIX" data-fr="VIX">VIX</div><div class="stat-value" style="color:var(--yellow)">19.25</div><div class="stat-change down">▼ -0.98%</div></div>
+  <div class="stat-card"><div class="stat-label" data-en="Fear &amp; Greed" data-ar="الخوف والطمع" data-fr="Peur &amp; Cupidité">Fear &amp; Greed</div><div class="stat-value" style="color:var(--yellow)">37</div><div class="stat-change down" data-en="Fear" data-ar="خوف" data-fr="Peur">Fear</div></div>
+  <div class="stat-card"><div class="stat-label" data-en="SpaceX IPO" data-ar="طرح SpaceX" data-fr="IPO SpaceX">SpaceX IPO</div><div class="stat-value" style="color:var(--green)">$160.95</div><div class="stat-change up">▲ +19.2%</div></div>
+</div>
+
+<!-- SECTOR HEATMAP -->
+<div class="section-title" data-en="🌡️ Sector Performance — June 12, 2026" data-ar="🌡️ أداء القطاعات — 12 يونيو 2026" data-fr="🌡️ Performance Sectorielle — 12 juin 2026">🌡️ Sector Performance — June 12, 2026</div>
+<div class="sector-grid">
+  <div class="sector-card up"><div class="sec-name" data-en="Technology" data-ar="التكنولوجيا" data-fr="Technologie">Technology</div><div class="sec-val">▲ +1.2%</div></div>
+  <div class="sector-card up"><div class="sec-name" data-en="Industrials" data-ar="الصناعة" data-fr="Industrie">Industrials</div><div class="sec-val">▲ +0.9%</div></div>
+  <div class="sector-card up"><div class="sec-name" data-en="Materials" data-ar="المواد" data-fr="Matériaux">Materials</div><div class="sec-val">▲ +0.8%</div></div>
+  <div class="sector-card up"><div class="sec-name" data-en="Financials" data-ar="المالية" data-fr="Finance">Financials</div><div class="sec-val">▲ +0.5%</div></div>
+  <div class="sector-card up"><div class="sec-name" data-en="Comm. Services" data-ar="خدمات الاتصال" data-fr="Comm. Services">Comm. Services</div><div class="sec-val">▲ +0.3%</div></div>
+  <div class="sector-card flat"><div class="sec-name" data-en="Utilities" data-ar="المرافق" data-fr="Services Publics">Utilities</div><div class="sec-val">→ +0.1%</div></div>
+  <div class="sector-card flat"><div class="sec-name" data-en="Real Estate" data-ar="العقارات" data-fr="Immobilier">Real Estate</div><div class="sec-val">→ -0.1%</div></div>
+  <div class="sector-card down"><div class="sec-name" data-en="Consumer Staples" data-ar="السلع الأساسية" data-fr="Cons. de Base">Consumer Staples</div><div class="sec-val">▼ -0.4%</div></div>
+  <div class="sector-card down"><div class="sec-name" data-en="Health Care" data-ar="الرعاية الصحية" data-fr="Santé">Health Care</div><div class="sec-val">▼ -0.6%</div></div>
+  <div class="sector-card down"><div class="sec-name" data-en="Energy" data-ar="الطاقة" data-fr="Énergie">Energy</div><div class="sec-val">▼ -1.1%</div></div>
+</div>
+
+<!-- TOP 10 STOCKS -->
+<div class="section-title" data-en="📊 Top 10 Trending Stocks — Click to Expand" data-ar="📊 أعلى 10 أسهم رائجة — انقر للتفاصيل" data-fr="📊 Top 10 Actions Tendance — Cliquer pour développer">📊 Top 10 Trending Stocks — Click to Expand</div>
+<div class="coins-list">
+
+<!-- #1 SPCX -->
+<div class="coin-card"><div class="coin-row" onclick="toggleCoin(this)">
+  <div class="c-rank" style="background:linear-gradient(135deg,#ffd700,#ff8c00);color:#000;font-weight:800;font-size:12px;display:flex;align-items:center;justify-content:center">1</div>
+  <div style="width:38px;height:38px;border-radius:50%;background:#000;border:2px solid #00ff88;display:flex;align-items:center;justify-content:center;font-size:16px">🚀</div>
+  <div style="flex:1">
+    <div style="font-weight:700;font-size:14px">SpaceX <span style="color:var(--muted);font-size:12px">SPCX</span></div>
+    <div style="font-size:11px;color:var(--muted)">Nasdaq · Space &amp; Launch</div>
+  </div>
+  <div class="c-score">9.8</div>
+  <span class="c-sent sent-spike" data-en="🚨 IPO" data-ar="🚨 طرح" data-fr="🚨 IPO">🚨 IPO</span>
+  <span class="c-chevron">▼</span>
+</div>
+<div class="coin-detail"><div class="coin-detail-inner">
+  <div class="bar-row"><span class="bar-label" data-en="Buzz" data-ar="الضجة" data-fr="Buzz">Buzz</span><div class="bar-track"><div class="bar-fill bar-green" style="width:100%"></div></div><span class="bar-val">10</span></div>
+  <div class="bar-row"><span class="bar-label" data-en="Momentum" data-ar="الزخم" data-fr="Momentum">Momentum</span><div class="bar-track"><div class="bar-fill bar-blue" style="width:100%"></div></div><span class="bar-val">10</span></div>
+  <div class="ctx-line" data-en="💰 IPO priced $135 → closed $160.95 (+19%). $75B raise = largest IPO ever. $2.25T market cap Day 1." data-ar="💰 سعر الطرح $135 → أغلق عند $160.95 (+19%). جمع $75 مليار = أكبر طرح في التاريخ." data-fr="💰 Prix d'IPO 135$ → clôture 160,95$ (+19%). Levée 75 Mds$ = plus grand IPO de l'histoire. Capitalisation $2,25 Billions J1.">💰 IPO priced $135 → closed $160.95 (+19%). $75B raise = largest IPO ever. $2.25T market cap Day 1.</div>
+  <div class="inf-line" data-en="🤝 Elon Musk becomes world's first trillionaire. CNBC, NPR, Bloomberg saturated with coverage. 360M+ shares traded." data-ar="🤝 إيلون ماسك يصبح أول تريليونير في العالم. تداولات تجاوزت 360 مليون سهم." data-fr="🤝 Elon Musk devient le premier trillionnaire mondial. CNBC, NPR, Bloomberg saturés. +360M actions échangées.">🤝 Elon Musk becomes world's first trillionaire. 360M+ shares traded in first hours.</div>
+  <div class="sum-text" data-en="SpaceX debuted on Nasdaq as SPCX, making history as the largest IPO ever at $75B. Shares soared as much as 30% intraday before closing +19% at $160.95. The debut sucked capital from existing Mag-7 names — AMZN -2.17%, AAPL -1.95%. Bulls see a generational space monopoly; bears cite $135 entry valuation at 100x+ forward earnings." data-ar="SpaceX انطلقت في ناسداك كـ SPCX في أكبر طرح عام بالتاريخ بـ $75 مليار. الأسهم قفزت 30% في أعلى نقطة قبل الإغلاق على +19%. المتفائلون يرون احتكارًا فضائيًا تاريخيًا، المتشائمون يستشهدون بتقييم 100x+ على الأرباح المستقبلية." data-fr="SpaceX a fait ses débuts sur Nasdaq sous SPCX, devenant le plus grand IPO de l'histoire avec 75 Mds$. Les actions ont bondi jusqu'à +30% en séance avant de clôturer à +19%. L'IPO a aspiré des capitaux des Mag-7 existants — AMZN -2,17%, AAPL -1,95%. Les haussiers voient un monopole spatial générationnel ; les baissiers citent une valorisation à 100x+ les bénéfices prévisionnels.">SpaceX debuted on Nasdaq as SPCX, making history as the largest IPO ever at $75B. Shares soared as much as 30% intraday before closing +19% at $160.95. The debut sucked capital from existing Mag-7 — AMZN -2.17%, AAPL -1.95%. Bulls see a generational space monopoly; bears cite $135 IPO price at 100x+ forward earnings.</div>
+  <div class="src-line">Sources: CNBC, NPR, Investing.com, Motley Fool · June 12, 2026</div>
+</div></div></div>
+
+<!-- #2 NVDA -->
+<div class="coin-card"><div class="coin-row" onclick="toggleCoin(this)">
+  <div class="c-rank" style="background:linear-gradient(135deg,#76b900,#00aa44);color:#fff;font-weight:800;font-size:12px;display:flex;align-items:center;justify-content:center">2</div>
+  <div style="width:38px;height:38px;border-radius:50%;background:#76b900;display:flex;align-items:center;justify-content:center;font-size:16px">🟢</div>
+  <div style="flex:1">
+    <div style="font-weight:700;font-size:14px">Nvidia <span style="color:var(--muted);font-size:12px">NVDA</span></div>
+    <div style="font-size:11px;color:var(--muted)">Nasdaq · AI Semiconductors</div>
+  </div>
+  <div class="c-score">8.3</div>
+  <span class="c-sent sent-bull" data-en="📈 Bullish" data-ar="📈 صاعد" data-fr="📈 Haussier">📈 Bullish</span>
+  <span class="c-chevron">▼</span>
+</div>
+<div class="coin-detail"><div class="coin-detail-inner">
+  <div class="bar-row"><span class="bar-label" data-en="Buzz" data-ar="الضجة" data-fr="Buzz">Buzz</span><div class="bar-track"><div class="bar-fill bar-green" style="width:90%"></div></div><span class="bar-val">9</span></div>
+  <div class="bar-row"><span class="bar-label" data-en="Momentum" data-ar="الزخم" data-fr="Momentum">Momentum</span><div class="bar-track"><div class="bar-fill bar-blue" style="width:80%"></div></div><span class="bar-val">8</span></div>
+  <div class="ctx-line" data-en="💰 AI data center buildout driving record demand. BofA top pick heading into June with strong AI Score on Reddit." data-ar="💰 بناء مراكز بيانات الذكاء الاصطناعي يدفع الطلب إلى مستويات قياسية. الأول في قائمة بنك أمريكا ويونيو." data-fr="💰 Construction de centres de données IA alimentant une demande record. Premier choix BofA en juin avec un AI Score élevé sur Reddit.">💰 AI data center buildout driving record demand. BofA top pick for June with strong Reddit AI Score.</div>
+  <div class="inf-line" data-en="🤝 Bank of America: top pick · Reddit NVDA mentions surge · Strong institutional accumulation signals." data-ar="🤝 بنك أمريكا: الخيار الأول · ذكر NVDA يرتفع على Reddit · إشارات تجميع مؤسسي." data-fr="🤝 Bank of America : premier choix · Mentions NVDA en hausse sur Reddit · Signaux d'accumulation institutionnelle forts.">🤝 Bank of America top pick · Reddit NVDA mentions surge · Institutional accumulation signals.</div>
+  <div class="sum-text" data-en="NVDA remains the consensus AI infrastructure play. Reddit and institutional sentiment both strongly bullish — the stock is the most mentioned on r/stocks and r/investing this week. Energy sector losing its premium as Iran peace talks progress, while AI data center power demand is a sustained NVDA tailwind independent of geopolitics." data-ar="NVDA تبقى اللاعب الأول في بنية تحتية الذكاء الاصطناعي. مشاعر Reddit والمؤسسات صاعدة بقوة. الطاقة تخسر علاوتها مع تقدم محادثات السلام." data-fr="NVDA reste le consensus en infrastructure IA. Sentiment Reddit et institutionnel fortement haussier — l'action la plus mentionnée sur r/stocks et r/investing cette semaine. La demande en énergie des centres de données IA est un vent favorable indépendant de la géopolitique.">NVDA remains the consensus AI infrastructure play. Most mentioned on r/stocks and r/investing this week. AI data center power demand is a sustained tailwind independent of geopolitics. Energy sector giving back its premium as Iran peace confirms.</div>
+  <div class="src-line">Sources: Reddit/AltIndex, Bank of America via CNBC, Yahoo Finance · June 12, 2026</div>
+</div></div></div>
+
+<!-- #3 RKLB -->
+<div class="coin-card"><div class="coin-row" onclick="toggleCoin(this)">
+  <div class="c-rank" style="background:linear-gradient(135deg,#58a6ff,#1f6feb);color:#fff;font-weight:800;font-size:12px;display:flex;align-items:center;justify-content:center">3</div>
+  <div style="width:38px;height:38px;border-radius:50%;background:#1a1a2e;border:2px solid #58a6ff;display:flex;align-items:center;justify-content:center;font-size:16px">🛰️</div>
+  <div style="flex:1">
+    <div style="font-weight:700;font-size:14px">Rocket Lab <span style="color:var(--muted);font-size:12px">RKLB</span></div>
+    <div style="font-size:11px;color:var(--muted)">Nasdaq · Small Launch Vehicles</div>
+  </div>
+  <div class="c-score">7.6</div>
+  <span class="c-sent sent-bull" data-en="📈 Bullish" data-ar="📈 صاعد" data-fr="📈 Haussier">📈 Bullish</span>
+  <span class="c-chevron">▼</span>
+</div>
+<div class="coin-detail"><div class="coin-detail-inner">
+  <div class="bar-row"><span class="bar-label" data-en="Buzz" data-ar="الضجة" data-fr="Buzz">Buzz</span><div class="bar-track"><div class="bar-fill bar-green" style="width:80%"></div></div><span class="bar-val">8</span></div>
+  <div class="bar-row"><span class="bar-label" data-en="Momentum" data-ar="الزخم" data-fr="Momentum">Momentum</span><div class="bar-track"><div class="bar-fill bar-blue" style="width:80%"></div></div><span class="bar-val">8</span></div>
+  <div class="ctx-line" data-en="💰 SpaceX IPO halo effect driving RKLB and ASTS as the pure-play space beneficiaries. WSB screaming '50 million catalysts hitting RKLB at once'." data-ar="💰 تأثير هالة طرح SpaceX يدفع RKLB وASTS كمستفيدين من قطاع الفضاء. WSB يصرخ '50 مليون محفز تضرب RKLB'." data-fr="💰 Effet de halo de l'IPO SpaceX propulsant RKLB et ASTS comme bénéficiaires du secteur spatial. WSB crie '50 millions de catalyseurs frappent RKLB à la fois'.">💰 SpaceX IPO halo driving RKLB as pure-play space beneficiary. WSB: "50 million catalysts hitting RKLB at once".</div>
+  <div class="inf-line" data-en="📡 WSB 2026 Index top pick · SpaceX IPO halo effect · AST SpaceMobile (ASTS) follow-on beneficiary." data-ar="📡 الخيار الأول في مؤشر WSB 2026 · تأثير هالة SpaceX · ASTS مستفيد مرافق." data-fr="📡 Top pick WSB 2026 Index · Effet de halo IPO SpaceX · AST SpaceMobile (ASTS) bénéficiaire secondaire.">📡 WSB 2026 Index top pick · SpaceX halo · ASTS secondary beneficiary.</div>
+  <div class="sum-text" data-en="Rocket Lab is the clearest SpaceX adjacency play. As the world's second-most-prolific launch company, RKLB is expected to benefit from the legitimization of commercial space as an asset class. WSB has been piling in since SpaceX filed its S-1, with RKLB being the most mentioned space stock on WallStreetBets today. The WSB 2026 crowdsourced index lists RKLB as a top holding alongside ASTS and GOOGL." data-ar="Rocket Lab هو الأكثر وضوحًا كرهان مجاور لـ SpaceX. WSB يتدفق على RKLB كأكثر أسهم الفضاء ذكرًا. مؤشر WSB 2026 يضعه كأحد أفضل الممتلكات." data-fr="Rocket Lab est le jeu adjacent à SpaceX le plus évident. En tant que deuxième société de lancement la plus prolifique au monde, RKLB devrait bénéficier de la légitimation de l'espace commercial comme classe d'actifs. WSB a massivement acheté depuis le S-1 de SpaceX, RKLB étant l'action spatiale la plus mentionnée aujourd'hui.">Rocket Lab is the clearest SpaceX adjacency play. WSB piling in since SpaceX S-1 filing — RKLB most mentioned space stock on WallStreetBets today. WSB 2026 Index lists RKLB as a top holding alongside ASTS and GOOGL.</div>
+  <div class="src-line">Sources: WallStreetBets/AltIndex, Finviz WSB 2026 Index, SiriusInvestors · June 12, 2026</div>
+</div></div></div>
+
+<!-- #4 MSFT -->
+<div class="coin-card"><div class="coin-row" onclick="toggleCoin(this)">
+  <div class="c-rank" style="background:linear-gradient(135deg,#00a4ef,#0078d4);color:#fff;font-weight:800;font-size:12px;display:flex;align-items:center;justify-content:center">4</div>
+  <div style="width:38px;height:38px;border-radius:50%;background:#0078d4;display:flex;align-items:center;justify-content:center;font-size:16px">🪟</div>
+  <div style="flex:1">
+    <div style="font-weight:700;font-size:14px">Microsoft <span style="color:var(--muted);font-size:12px">MSFT</span></div>
+    <div style="font-size:11px;color:var(--muted)">Nasdaq · Cloud &amp; AI Platform</div>
+  </div>
+  <div class="c-score">7.0</div>
+  <span class="c-sent sent-bull" data-en="📈 Bullish" data-ar="📈 صاعد" data-fr="📈 Haussier">📈 Bullish</span>
+  <span class="c-chevron">▼</span>
+</div>
+<div class="coin-detail"><div class="coin-detail-inner">
+  <div class="bar-row"><span class="bar-label" data-en="Buzz" data-ar="الضجة" data-fr="Buzz">Buzz</span><div class="bar-track"><div class="bar-fill bar-green" style="width:70%"></div></div><span class="bar-val">7</span></div>
+  <div class="bar-row"><span class="bar-label" data-en="Momentum" data-ar="الزخم" data-fr="Momentum">Momentum</span><div class="bar-track"><div class="bar-fill bar-blue" style="width:70%"></div></div><span class="bar-val">7</span></div>
+  <div class="ctx-line" data-en="💰 Trending on WSB alongside RKLB. Azure AI cloud revenue strong. Copilot adoption accelerating across enterprise." data-ar="💰 رائج على WSB جانب RKLB. إيرادات Azure AI قوية. تسريع تبني Copilot في المؤسسات." data-fr="💰 Tendance sur WSB aux côtés de RKLB. Revenus Azure AI solides. Adoption de Copilot en accélération dans les entreprises.">💰 Trending on WSB alongside RKLB. Azure AI cloud revenue strong. Copilot adoption accelerating.</div>
+  <div class="inf-line" data-en="🤝 WSB 2026 second most mentioned this week · Institutional favorite · Anthropic competition narrative adding volatility." data-ar="🤝 الثاني على WSB هذا الأسبوع · المفضل المؤسسي · منافسة Anthropic تضيف تقلبًا." data-fr="🤝 2e plus mentionné sur WSB cette semaine · Favori institutionnel · Narrative concurrence Anthropic ajoutant de la volatilité.">🤝 WSB 2026 second most mentioned · Institutional favorite · Anthropic Claude competition narrative adding volatility.</div>
+  <div class="sum-text" data-en="Microsoft is the steady Mag-7 anchor in today's volatility. Azure AI cloud segment continues to outperform, with Copilot enterprise adoption beating guidance. The narrative headwind: Anthropic's Claude Cowork (launched January 2026) has rattled software sector stocks, but MSFT's diversified cloud base makes it more resilient than pure-play SaaS names." data-ar="Microsoft هو المرساة الثابتة من Mag-7 في تقلبات اليوم. Azure AI يتفوق على التوقعات. Cowork من Anthropic يزلزل الأسهم البرمجية لكن تنويع MSFT يجعله أكثر مرونة." data-fr="Microsoft est l'ancre stable du Mag-7 dans la volatilité d'aujourd'hui. Azure AI continue de surperformer. Anthropic Claude Cowork (lancé janvier 2026) a ébranlé les actions SaaS mais la base cloud diversifiée de MSFT le rend plus résilient.">MSFT is the steady Mag-7 anchor in today's volatility. Azure AI outperforming, Copilot enterprise adoption beating guidance. Anthropic Claude Cowork (Jan 2026 launch) rattling pure-play SaaS, but MSFT's diversified cloud base makes it resilient.</div>
+  <div class="src-line">Sources: WSB/AltIndex, Yahoo Finance Tech Stocks Live, Tradestie · June 12, 2026</div>
+</div></div></div>
+
+<!-- #5 ASTS -->
+<div class="coin-card"><div class="coin-row" onclick="toggleCoin(this)">
+  <div class="c-rank" style="background:linear-gradient(135deg,#a371f7,#6e40c9);color:#fff;font-weight:800;font-size:12px;display:flex;align-items:center;justify-content:center">5</div>
+  <div style="width:38px;height:38px;border-radius:50%;background:#1a1a2e;border:2px solid #a371f7;display:flex;align-items:center;justify-content:center;font-size:16px">📡</div>
+  <div style="flex:1">
+    <div style="font-weight:700;font-size:14px">AST SpaceMobile <span style="color:var(--muted);font-size:12px">ASTS</span></div>
+    <div style="font-size:11px;color:var(--muted)">Nasdaq · Satellite Broadband</div>
+  </div>
+  <div class="c-score">6.8</div>
+  <span class="c-sent sent-bull" data-en="📈 Bullish" data-ar="📈 صاعد" data-fr="📈 Haussier">📈 Bullish</span>
+  <span class="c-chevron">▼</span>
+</div>
+<div class="coin-detail"><div class="coin-detail-inner">
+  <div class="bar-row"><span class="bar-label" data-en="Buzz" data-ar="الضجة" data-fr="Buzz">Buzz</span><div class="bar-track"><div class="bar-fill bar-green" style="width:70%"></div></div><span class="bar-val">7</span></div>
+  <div class="bar-row"><span class="bar-label" data-en="Momentum" data-ar="الزخم" data-fr="Momentum">Momentum</span><div class="bar-track"><div class="bar-fill bar-blue" style="width:70%"></div></div><span class="bar-val">7</span></div>
+  <div class="ctx-line" data-en="💰 WSB 2026 Index #1 crowdsourced pick. SpaceX IPO bringing renewed investor attention to satellite broadband plays." data-ar="💰 الخيار الأول في مؤشر WSB 2026. طرح SpaceX يجلب اهتمامًا متجددًا لأسهم الإنترنت الفضائي." data-fr="💰 Choix n°1 du WSB 2026 Index. L'IPO SpaceX attire un intérêt renouvelé sur les actions de haut débit satellitaire.">💰 WSB 2026 Index #1 crowdsourced pick. SpaceX IPO bringing renewed attention to satellite broadband plays.</div>
+  <div class="inf-line" data-en="📡 WSB 2026 Index top holding · SpaceX halo beneficiary · Direct-to-cell satellite network going live." data-ar="📡 أكبر ممتلكات مؤشر WSB 2026 · مستفيد من هالة SpaceX · شبكة الاتصال الفضائي المباشر تبدأ التشغيل." data-fr="📡 Première position WSB 2026 Index · Bénéficiaire halo SpaceX · Réseau satellite direct-to-cell en cours de déploiement.">📡 WSB 2026 Index top holding · SpaceX halo beneficiary · Direct-to-cell network going live.</div>
+  <div class="sum-text" data-en="AST SpaceMobile is building a global cellular broadband network accessible directly from standard mobile devices via satellites. WSB has crowned it the #1 crowdsourced pick in the 2026 index, ahead of GOOGL and AMZN. The SpaceX IPO is a tailwind — it validates commercial space as a mainstream asset class and brings fresh money into the sector." data-ar="AST SpaceMobile تبني شبكة إنترنت فضائية عالمية تدعم الهواتف العادية. WSB اختارها الأولى في مؤشر 2026. طرح SpaceX ريح خلفية لها." data-fr="AST SpaceMobile construit un réseau haut débit cellulaire mondial accessible directement depuis des appareils mobiles standard via des satellites. WSB l'a couronnée premier choix du 2026 Index. L'IPO SpaceX est un vent favorable qui valide l'espace commercial comme classe d'actifs grand public.">ASTS is building a global cellular broadband network via satellites — accessible from standard phones. WSB crowned it #1 in the 2026 crowdsourced index. SpaceX IPO is a tailwind validating commercial space as a mainstream asset class.</div>
+  <div class="src-line">Sources: WallStreetBets/AltIndex, SiriusInvestors, Finviz WSB Index · June 12, 2026</div>
+</div></div></div>
+
+<!-- #6 TSLA -->
+<div class="coin-card"><div class="coin-row" onclick="toggleCoin(this)">
+  <div class="c-rank" style="background:linear-gradient(135deg,#e31937,#cc0000);color:#fff;font-weight:800;font-size:12px;display:flex;align-items:center;justify-content:center">6</div>
+  <div style="width:38px;height:38px;border-radius:50%;background:#cc0000;display:flex;align-items:center;justify-content:center;font-size:16px">⚡</div>
+  <div style="flex:1">
+    <div style="font-weight:700;font-size:14px">Tesla <span style="color:var(--muted);font-size:12px">TSLA</span></div>
+    <div style="font-size:11px;color:var(--muted)">Nasdaq · EV &amp; Energy</div>
+  </div>
+  <div class="c-score">6.5</div>
+  <span class="c-sent sent-mix" data-en="🔀 Mixed" data-ar="🔀 مختلط" data-fr="🔀 Mixte">🔀 Mixed</span>
+  <span class="c-chevron">▼</span>
+</div>
+<div class="coin-detail"><div class="coin-detail-inner">
+  <div class="bar-row"><span class="bar-label" data-en="Buzz" data-ar="الضجة" data-fr="Buzz">Buzz</span><div class="bar-track"><div class="bar-fill bar-green" style="width:80%"></div></div><span class="bar-val">8</span></div>
+  <div class="bar-row"><span class="bar-label" data-en="Momentum" data-ar="الزخم" data-fr="Momentum">Momentum</span><div class="bar-track"><div class="bar-fill" style="width:50%;background:var(--yellow)"></div></div><span class="bar-val">5</span></div>
+  <div class="ctx-line" data-en="💰 -2% today as SpaceX IPO siphons attention and capital from TSLA. Q2 deliveries expected +19% but demand concerns persist." data-ar="💰 -2% اليوم مع سحب طرح SpaceX الاهتمام والأموال من TSLA. توقعات بزيادة 19% في تسليمات الربع الثاني لكن مخاوف الطلب مستمرة." data-fr="💰 -2% aujourd'hui alors que l'IPO SpaceX détourne attention et capitaux de TSLA. Livraisons T2 attendues en hausse de 19% mais inquiétudes sur la demande persistantes.">💰 -2% today as SpaceX IPO siphons capital from TSLA. Q2 deliveries expected +19% but demand concerns persist.</div>
+  <div class="inf-line" data-en="🔀 Musk distraction narrative returns — CEO divided between Tesla, SpaceX, X. Analysts split on whether SPCX debut is bullish or bearish for TSLA." data-ar="🔀 تعود قصة تشتت ماسك — المدير التنفيذي منقسم بين Tesla وSpaceX وX. المحللون منقسمون حول تأثير SPCX على TSLA." data-fr="🔀 Narrative de distraction Musk de retour — PDG partagé entre Tesla, SpaceX, X. Analystes divisés sur si le début de SPCX est haussier ou baissier pour TSLA.">🔀 Musk distraction narrative returns — CEO divided between Tesla, SpaceX, X. Analysts split on SPCX debut impact on TSLA.</div>
+  <div class="sum-text" data-en="Tesla is having a complex day: massive buzz driven by the Musk/SpaceX narrative, but the stock is -2% as investors rotate capital into the SpaceX IPO. The 'Musk attention risk' narrative is back — can a CEO effectively run Tesla, SpaceX, X, and DOGE simultaneously? Bulls argue the SpaceX IPO strengthens Musk's empire; bears say Tesla needs undivided management focus. Q2 delivery estimates are positive (+19%) but demand visibility remains uncertain." data-ar="يوم معقد لـ Tesla: ضجة ضخمة بسبب SpaceX/Musk لكن السهم -2% مع تحويل المستثمرين لـ SpaceX IPO. 'مخاطر انتباه ماسك' تعود من جديد." data-fr="Tesla vit une journée complexe : buzz massif grâce au récit Musk/SpaceX, mais l'action est à -2% alors que les investisseurs font pivoter les capitaux vers l'IPO SpaceX. Le récit 'risque d'attention Musk' est de retour. Les estimations de livraisons T2 sont positives (+19%) mais la visibilité sur la demande reste incertaine.">Tesla has complex buzz today: massive driven by Musk/SpaceX narrative, but the stock is -2% as investors rotate capital into SPCX IPO. 'Musk attention risk' narrative is back. Q2 delivery estimates positive (+19%) but demand visibility uncertain. Bulls: SpaceX strengthens the empire. Bears: Tesla needs undivided management focus.</div>
+  <div class="src-line">Sources: Yahoo Finance, TheStreet, 247WallSt · June 12, 2026</div>
+</div></div></div>
+
+<!-- #7 AAPL -->
+<div class="coin-card"><div class="coin-row" onclick="toggleCoin(this)">
+  <div class="c-rank" style="background:linear-gradient(135deg,#888,#555);color:#fff;font-weight:800;font-size:12px;display:flex;align-items:center;justify-content:center">7</div>
+  <div style="width:38px;height:38px;border-radius:50%;background:#555;display:flex;align-items:center;justify-content:center;font-size:16px">🍎</div>
+  <div style="flex:1">
+    <div style="font-weight:700;font-size:14px">Apple <span style="color:var(--muted);font-size:12px">AAPL</span></div>
+    <div style="font-size:11px;color:var(--muted)">Nasdaq · Consumer Tech</div>
+  </div>
+  <div class="c-score">6.0</div>
+  <span class="c-sent sent-mix" data-en="🔀 Mixed" data-ar="🔀 مختلط" data-fr="🔀 Mixte">🔀 Mixed</span>
+  <span class="c-chevron">▼</span>
+</div>
+<div class="coin-detail"><div class="coin-detail-inner">
+  <div class="bar-row"><span class="bar-label" data-en="Buzz" data-ar="الضجة" data-fr="Buzz">Buzz</span><div class="bar-track"><div class="bar-fill bar-green" style="width:70%"></div></div><span class="bar-val">7</span></div>
+  <div class="bar-row"><span class="bar-label" data-en="Momentum" data-ar="الزخم" data-fr="Momentum">Momentum</span><div class="bar-track"><div class="bar-fill" style="width:50%;background:var(--yellow)"></div></div><span class="bar-val">5</span></div>
+  <div class="ctx-line" data-en="💰 -1.95% as SpaceX IPO diverts capital. Initial earnings beat reversed by smartphone market warning. BofA still sees it as a June top pick." data-ar="💰 -1.95% مع تحويل طرح SpaceX للأموال. ارتفاع مبدئي بعد الأرباح انعكس بسبب تحذير سوق الهواتف. بنك أمريكا يبقيه في قائمته." data-fr="💰 -1,95% avec la diversion de capitaux vers l'IPO SpaceX. Hausse initiale post-résultats inversée par un avertissement sur le marché des smartphones. BofA maintient son classement.">💰 -1.95% as SpaceX IPO diverts capital. Earnings beat reversed on smartphone market warning. BofA maintains as June top pick.</div>
+  <div class="inf-line" data-en="🤝 BofA top pick heading into June · Mag-7 Magnificent 7 most followed stock on Instagram &amp; TikTok globally." data-ar="🤝 خيار بنك أمريكا لشهر يونيو · الأكثر متابعة في Mag-7 على Instagram وTikTok عالميًا." data-fr="🤝 Top pick BofA en juin · Action Mag-7 la plus suivie sur Instagram &amp; TikTok mondialement.">🤝 BofA top pick for June · Most followed Mag-7 stock on Instagram &amp; TikTok globally.</div>
+  <div class="sum-text" data-en="Apple initially jumped on a chip designer earnings beat but surrendered gains after a smartphone market warning. The SpaceX IPO siphoned additional capital. Despite today's weakness, AAPL remains BofA's June top pick alongside NVDA, citing the upcoming iPhone AI cycle as a catalyst. It's also the most popular stock on Instagram and TikTok globally, keeping retail sentiment engaged." data-ar="Apple قفزت أولًا بعد نتائج مصمم الشرائح ثم تراجعت مع تحذير من سوق الهواتف. SpaceX سحبت المزيد من الأموال. لكنها تبقى خيار بنك أمريكا الثاني." data-fr="Apple a d'abord bondi après les résultats d'un fabricant de puces mais a perdu ses gains suite à un avertissement sur le marché des smartphones. Malgré la faiblesse d'aujourd'hui, AAPL reste le second choix de BofA en juin avec NVDA, citant le prochain cycle iPhone IA comme catalyseur.">Apple initially jumped on chip earnings beat, surrendered gains on smartphone market warning. SpaceX IPO siphoned additional capital. Despite weakness, BofA keeps AAPL as June top pick alongside NVDA — upcoming iPhone AI cycle is the thesis. Most popular Mag-7 stock on Instagram &amp; TikTok globally.</div>
+  <div class="src-line">Sources: CNBC/BofA, Yahoo Finance, 247WallSt · June 12, 2026</div>
+</div></div></div>
+
+<!-- #8 GOOGL -->
+<div class="coin-card"><div class="coin-row" onclick="toggleCoin(this)">
+  <div class="c-rank" style="background:linear-gradient(135deg,#fbbc04,#ea4335);color:#fff;font-weight:800;font-size:12px;display:flex;align-items:center;justify-content:center">8</div>
+  <div style="width:38px;height:38px;border-radius:50%;background:#1a1a2e;border:2px solid #fbbc04;display:flex;align-items:center;justify-content:center;font-size:16px">🔍</div>
+  <div style="flex:1">
+    <div style="font-weight:700;font-size:14px">Alphabet <span style="color:var(--muted);font-size:12px">GOOGL</span></div>
+    <div style="font-size:11px;color:var(--muted)">Nasdaq · Search &amp; AI Cloud</div>
+  </div>
+  <div class="c-score">6.0</div>
+  <span class="c-sent sent-bull" data-en="📈 Bullish" data-ar="📈 صاعد" data-fr="📈 Haussier">📈 Bullish</span>
+  <span class="c-chevron">▼</span>
+</div>
+<div class="coin-detail"><div class="coin-detail-inner">
+  <div class="bar-row"><span class="bar-label" data-en="Buzz" data-ar="الضجة" data-fr="Buzz">Buzz</span><div class="bar-track"><div class="bar-fill bar-green" style="width:60%"></div></div><span class="bar-val">6</span></div>
+  <div class="bar-row"><span class="bar-label" data-en="Momentum" data-ar="الزخم" data-fr="Momentum">Momentum</span><div class="bar-track"><div class="bar-fill bar-blue" style="width:60%"></div></div><span class="bar-val">6</span></div>
+  <div class="ctx-line" data-en="💰 WSB 2026 Index top holding. Google Cloud and Gemini AI monetization beating estimates. YouTube AI features driving engagement." data-ar="💰 ضمن أفضل ممتلكات مؤشر WSB 2026. Google Cloud وGemini AI يتجاوزان التوقعات." data-fr="💰 Top holding WSB 2026 Index. Google Cloud et Gemini AI dépassant les estimations. Fonctionnalités YouTube IA stimulant l'engagement.">💰 WSB 2026 Index holding. Google Cloud &amp; Gemini AI monetization beating estimates.</div>
+  <div class="inf-line" data-en="🤝 WSB 2026 Index crowdsourced holding · Strong Gemini AI narrative · $3 trillion club candidate." data-ar="🤝 ممتلك في مؤشر WSB 2026 · سردية Gemini AI قوية · مرشح لنادي التريليون الثلاثة." data-fr="🤝 Holding WSB 2026 Index · Narrative Gemini AI fort · Candidat au club des 3 Billions$.">🤝 WSB 2026 Index crowdsourced holding · Strong Gemini AI narrative · $3T club candidate.</div>
+  <div class="sum-text" data-en="Alphabet is a steady performer in today's complex tape. Google Cloud and Gemini AI are beating revenue estimates, and YouTube's AI-powered recommendations are driving engagement. GOOGL is part of the WSB 2026 crowdsourced index and is cited by analysts as a possible $3 trillion club member. The main risk: antitrust scrutiny remains an overhang." data-ar="Alphabet أداء ثابت في سوق اليوم. Google Cloud وGemini AI يتخطيان التوقعات. GOOGL في مؤشر WSB 2026 ومرشح لنادي $3 تريليون." data-fr="Alphabet est une valeur stable dans le marché complexe d'aujourd'hui. Google Cloud et Gemini AI dépassent les estimations de revenus. GOOGL fait partie du WSB 2026 Index et est cité comme possible membre du club des 3 billions$. Principal risque : surveillance antitrust persistante.">Alphabet is steady in today's tape. Google Cloud &amp; Gemini AI beating revenue estimates. YouTube AI-powered engagement strong. WSB 2026 crowdsourced index holding and $3T club candidate. Main risk: antitrust overhang.</div>
+  <div class="src-line">Sources: Yahoo Finance, WSB/AltIndex, SiriusInvestors · June 12, 2026</div>
+</div></div></div>
+
+<!-- #9 NBIS -->
+<div class="coin-card"><div class="coin-row" onclick="toggleCoin(this)">
+  <div class="c-rank" style="background:linear-gradient(135deg,#30a3dc,#1a5d8a);color:#fff;font-weight:800;font-size:12px;display:flex;align-items:center;justify-content:center">9</div>
+  <div style="width:38px;height:38px;border-radius:50%;background:#1a1a2e;border:2px solid #30a3dc;display:flex;align-items:center;justify-content:center;font-size:16px">🤖</div>
+  <div style="flex:1">
+    <div style="font-weight:700;font-size:14px">Nebius Group <span style="color:var(--muted);font-size:12px">NBIS</span></div>
+    <div style="font-size:11px;color:var(--muted)">Nasdaq · AI Infrastructure</div>
+  </div>
+  <div class="c-score">5.8</div>
+  <span class="c-sent sent-bull" data-en="📈 Bullish" data-ar="📈 صاعد" data-fr="📈 Haussier">📈 Bullish</span>
+  <span class="c-chevron">▼</span>
+</div>
+<div class="coin-detail"><div class="coin-detail-inner">
+  <div class="bar-row"><span class="bar-label" data-en="Buzz" data-ar="الضجة" data-fr="Buzz">Buzz</span><div class="bar-track"><div class="bar-fill bar-green" style="width:50%"></div></div><span class="bar-val">5</span></div>
+  <div class="bar-row"><span class="bar-label" data-en="Momentum" data-ar="الزخم" data-fr="Momentum">Momentum</span><div class="bar-track"><div class="bar-fill bar-blue" style="width:70%"></div></div><span class="bar-val">7</span></div>
+  <div class="ctx-line" data-en="💰 WSB 2026 Index pick. European AI infrastructure play — GPU cloud services for AI training and inference. Benefiting from non-US AI spend diversification." data-ar="💰 اختيار مؤشر WSB 2026. رهان بنية تحتية AI أوروبي — خدمات GPU السحابية للتدريب والاستنتاج." data-fr="💰 Choix WSB 2026 Index. Acteur européen d'infrastructure IA — services GPU cloud pour l'entraînement et l'inférence. Bénéficiaire de la diversification des dépenses IA non-US.">💰 WSB 2026 Index pick. European AI infrastructure GPU cloud play — AI training &amp; inference workloads.</div>
+  <div class="inf-line" data-en="📡 WSB 2026 crowdsourced index · Non-US AI infrastructure diversification · NVDA alternative thesis." data-ar="📡 مؤشر WSB 2026 · تنويع بنية AI خارج الولايات المتحدة · أطروحة بديل NVDA." data-fr="📡 WSB 2026 Index · Diversification infrastructure IA non-US · Thèse alternative NVDA.">📡 WSB 2026 crowdsourced index · Non-US AI infrastructure diversification · NVDA alternative thesis.</div>
+  <div class="sum-text" data-en="Nebius Group is an under-the-radar AI infrastructure pick that WSB has included in its 2026 crowdsourced index. It operates GPU cloud infrastructure for AI training and inference, primarily targeting European enterprise customers. The thesis: AI compute demand is global and supply is constrained, making non-US GPU clouds attractive. Lower profile than NVDA but benefiting from the same macro tailwind." data-ar="Nebius Group اختيار AI تحتية منخفض الأضواء أدرجه WSB في مؤشر 2026. يشغّل بنية GPU سحابية لتدريب واستنتاج AI، يستهدف المؤسسات الأوروبية. الطلب على الحوسبة AI عالمي والعرض محدود." data-fr="Nebius Group est un choix d'infrastructure IA discret inclus par WSB dans son 2026 Index. Il exploite une infrastructure GPU cloud pour l'entraînement et l'inférence IA, ciblant principalement les entreprises européennes. La thèse : la demande en calcul IA est mondiale et l'offre limitée, rendant les GPU clouds non-US attractifs.">Nebius Group is WSB's under-the-radar AI infrastructure pick in the 2026 crowdsourced index. Operates GPU cloud for AI training &amp; inference, targeting European enterprise. Thesis: AI compute demand is global, supply constrained — non-US GPU clouds benefit. Same macro tailwind as NVDA, lower profile.</div>
+  <div class="src-line">Sources: WSB/AltIndex, SiriusInvestors, Finviz WSB 2026 Index · June 12, 2026</div>
+</div></div></div>
+
+<!-- #10 AMZN -->
+<div class="coin-card"><div class="coin-row" onclick="toggleCoin(this)">
+  <div class="c-rank" style="background:linear-gradient(135deg,#ff9900,#c45500);color:#fff;font-weight:800;font-size:12px;display:flex;align-items:center;justify-content:center">10</div>
+  <div style="width:38px;height:38px;border-radius:50%;background:#c45500;display:flex;align-items:center;justify-content:center;font-size:16px">📦</div>
+  <div style="flex:1">
+    <div style="font-weight:700;font-size:14px">Amazon <span style="color:var(--muted);font-size:12px">AMZN</span></div>
+    <div style="font-size:11px;color:var(--muted)">Nasdaq · E-Commerce &amp; AWS</div>
+  </div>
+  <div class="c-score">5.0</div>
+  <span class="c-sent sent-bear" data-en="📉 Bearish" data-ar="📉 هابط" data-fr="📉 Baissier">📉 Bearish</span>
+  <span class="c-chevron">▼</span>
+</div>
+<div class="coin-detail"><div class="coin-detail-inner">
+  <div class="bar-row"><span class="bar-label" data-en="Buzz" data-ar="الضجة" data-fr="Buzz">Buzz</span><div class="bar-track"><div class="bar-fill bar-green" style="width:60%"></div></div><span class="bar-val">6</span></div>
+  <div class="bar-row"><span class="bar-label" data-en="Momentum" data-ar="الزخم" data-fr="Momentum">Momentum</span><div class="bar-track"><div class="bar-fill" style="width:40%;background:var(--red)"></div></div><span class="bar-val">4</span></div>
+  <div class="ctx-line" data-en="💰 -2.17% — largest Mag-7 decliner today. SpaceX IPO siphoning the most capital from AMZN. AWS growth narrative competing with Azure and Google Cloud." data-ar="💰 -2.17% — أكبر متراجع في Mag-7 اليوم. طرح SpaceX يسحب الأموال من AMZN. AWS في منافسة مع Azure وGoogle Cloud." data-fr="💰 -2,17% — plus grand déclinant du Mag-7 aujourd'hui. L'IPO SpaceX aspire le plus de capitaux d'AMZN. Narrative de croissance AWS en concurrence avec Azure et Google Cloud.">💰 -2.17% — biggest Mag-7 decliner today. SpaceX IPO siphoning capital. AWS competing with Azure &amp; Google Cloud.</div>
+  <div class="inf-line" data-en="⚠️ SpaceX IPO capital rotation hitting AMZN hardest in Mag-7 · AWS market share under pressure · Claude Cowork disruption narrative." data-ar="⚠️ دوران رأس المال نحو SpaceX يضرب AMZN الأشد في Mag-7 · حصة سوق AWS تحت الضغط · سردية اضطراب Claude Cowork." data-fr="⚠️ Rotation capital SpaceX frappant AMZN le plus fort dans le Mag-7 · Part de marché AWS sous pression · Narrative perturbation Claude Cowork.">⚠️ SpaceX capital rotation hitting AMZN hardest in Mag-7 · AWS market share under pressure · Claude Cowork disruption narrative.</div>
+  <div class="sum-text" data-en="Amazon is today's biggest Mag-7 loser, down -2.17%. The SpaceX IPO is drawing capital aggressively from the existing Mag-7 roster, with AMZN taking the biggest hit. AWS faces a narrative headwind: Azure and Google Cloud are closing the gap, and Anthropic's Claude Cowork platform is disrupting the enterprise software ecosystem that AWS hosts. Long-term AWS fundamentals remain strong, but today's tape is decidedly negative." data-ar="Amazon أكبر خاسر في Mag-7 اليوم بـ -2.17%. طرح SpaceX يسحب الأموال من Mag-7 بشكل عدواني. AWS تواجه Azure وGoogle Cloud في اللحق ببعضهم." data-fr="Amazon est le plus grand perdant du Mag-7 aujourd'hui, en baisse de -2,17%. L'IPO SpaceX aspire agressivement les capitaux du Mag-7 existant, AMZN prenant le plus grand coup. AWS fait face à Azure et Google Cloud qui comblent l'écart. Les fondamentaux long terme restent solides mais le marché est décidément négatif aujourd'hui.">Amazon is today's biggest Mag-7 loser at -2.17%. SpaceX IPO drawing capital most aggressively from AMZN. AWS faces narrative headwind: Azure &amp; Google Cloud closing the gap, Anthropic Claude Cowork disrupting the enterprise software layer. Long-term AWS fundamentals remain solid — today's tape is a rotation story, not a fundamental story.</div>
+  <div class="src-line">Sources: 247WallSt, Yahoo Finance, TheStreet · June 12, 2026</div>
+</div></div></div>
+
+</div><!-- /coins-list -->
+
+<footer data-en="⚡ Market Pulse · Stocks · June 12, 2026 · Not financial advice · Sources: TheStreet, 247WallSt, CNBC, NPR, Yahoo Finance, WSB/AltIndex · 𝕏 @zooz1 · ✈ @zooz1_M" data-ar="⚡ نبضة السوق · الأسهم · 12 يونيو 2026 · ليس نصيحة مالية · 𝕏 @zooz1 · ✈ @zooz1_M" data-fr="⚡ Pouls du Marché · Actions · 12 juin 2026 · Pas un conseil financier · 𝕏 @zooz1 · ✈ @zooz1_M">
+⚡ Market Pulse · Stocks · June 12, 2026 · Not financial advice · 
+<a href="https://x.com/zooz1" target="_blank">𝕏 @zooz1</a> · <a href="https://t.me/zooz1_M" target="_blank">✈ @zooz1_M</a><br>
+<span style="font-size:11px;color:var(--muted)">Sources: TheStreet · 247WallSt · CNBC · NPR · Yahoo Finance · WallStreetBets/AltIndex · SiriusInvestors</span>
+</footer>
+</div><!-- /tab-stocks -->
+
+<script>
+// ── Language System ──────────────────────────────────────────────────────────
+let currentLang = 'en';
+
+const frUI = {
+  "⚡ Market Pulse":"⚡ Pouls du Marché",
+  "June 12, 2026 · Crypto &amp; Stocks · Generated via Web":"12 juin 2026 · Crypto &amp; Actions · Généré via Internet",
+  "⚠️ Cautiously Bullish":"⚠️ Prudemment Haussier",
+  "₿ Crypto":"₿ Crypto","📈 Stocks":"📈 Actions",
+  "Bitcoin":"Bitcoin","Ethereum":"Ethereum","Market Cap":"Capitalisation",
+  "Fear &amp; Greed":"Peur &amp; Cupidité","Extreme Fear":"Peur Extrême",
+  "BTC Dominance":"Dominance BTC","24h Volume":"Volume 24h",
+  "📊 Top 10 Trending — Click to Expand":"📊 Top 10 Tendances — Cliquer pour développer",
+  "📈 Bullish":"📈 Haussier","📉 Bearish":"📉 Baissier",
+  "➡️ Neutral":"➡️ Neutre","🔀 Mixed":"🔀 Mixte","🚨 SPIKE":"🚨 SPIKE",
+  "Buzz":"Buzz","Momentum":"Momentum","Score":"Score",
+  "Sources":"Sources","Deep Dive":"Analyse approfondie",
+  // Stock tab UI
+  "📈 Stock Market Analysis — Command Library":"📈 Analyse Boursière — Bibliothèque de Commandes",
+  "34 bilingual prompts across 6 categories. Follow the recommended sequence for best results: Macro first → Sector rotation → Breadth → Individual stock → Risk control.":"34 commandes bilingues en 6 catégories. Suivre la séquence recommandée : Macro → Rotation sectorielle → Largeur du marché → Action individuelle → Contrôle du risque.",
+  "⚠️ Decision-support tools only — not financial advice. Always verify live data, filings, and earnings before trading.":"⚠️ Outils d'aide à la décision uniquement — pas de conseil financier. Vérifiez toujours les données en direct, les documents officiels et les résultats avant de trader.",
+  "Macro Pulse":"Signal Macro","Market regime first":"Le régime de marché d'abord",
+  "Sector Rotation":"Rotation Sectorielle","Confirm sector direction":"Confirmez la direction du secteur",
+  "Breadth Check":"Vérification de Largeur","Is rally healthy?":"La hausse est-elle saine ?",
+  "Stock Analysis":"Analyse d'Actions","Fundamentals + valuation":"Fondamentaux + valorisation",
+  "Risk Control":"Contrôle du Risque","Size before you enter":"Calibrez avant d'entrer",
+  "A. Market Pulse & Macro":"A. Pouls du Marché & Macro",
+  "7 commands · Daily/weekly market regime, sectors, breadth, sentiment":"7 commandes · Régime quotidien/hebdomadaire, secteurs, largeur, sentiment",
+  "B. Trading & Technical Execution":"B. Trading & Exécution Technique",
+  "2 commands · Trade setups and technical analysis":"2 commandes · Configurations de trades et analyse technique",
+  "C. Single-Stock Research":"C. Recherche sur une Action Unique",
+  "7 commands · Deep dive, valuation, earnings, bull vs. bear":"7 commandes · Analyse approfondie, valorisation, résultats, débat",
+  "D. Portfolio Risk, Hedging & Quant":"D. Risque de Portefeuille, Couverture & Quant",
+  "7 commands · Risk management, hedging, screening":"7 commandes · Gestion du risque, couverture, screening",
+  "E. Options, Backtesting & Discipline":"E. Options, Backtesting & Discipline",
+  "4 commands · Options strategy, backtesting, journal, daily plan":"4 commandes · Stratégie d'options, backtesting, journal, plan quotidien",
+  "F. ETF, Dividend & Income Investing":"F. ETF, Dividendes & Revenus",
+  "7 commands · ETF portfolios, dividend safety, income strategies":"7 commandes · Portefeuilles ETF, sécurité des dividendes, stratégies de revenus",
+  // Command titles
+  "Market Pulse Command Center":"Centre de Commandement du Marché",
+  "Top-Down Macro Analysis":"Analyse Macro Descendante",
+  "3-6 Month Macro Outlook":"Perspectives Macro 3-6 Mois",
+  "Sector Rotation Strategy":"Stratégie de Rotation Sectorielle",
+  "Market Breadth & Sentiment Dashboard":"Tableau de Bord — Largeur & Sentiment",
+  "Institutional Positioning & Money Flow":"Positionnement Institutionnel & Flux",
+  "News-to-Trade Converter":"Convertisseur Actualités → Trades",
+  "Trade Idea Generator":"Générateur d'Idées de Trading",
+  "Automated Technical Analyst":"Analyste Technique Automatisé",
+  "Single-Stock Research Deep Dive":"Analyse Approfondie d'Action",
+  "5-Year Financial Statement Breakdown":"Décomposition des États Financiers 5 Ans",
+  "Valuation & Fair Value Analysis":"Analyse de Valorisation et Juste Valeur",
+  "Competitive Moat Analysis":"Analyse du Fossé Concurrentiel",
+  "Earnings Pulse Analyst":"Analyste du Signal Résultats",
+  "Bull vs. Bear Debate":"Débat Haussier vs. Baissier",
+  "Final Buy / Hold / Avoid Verdict":"Verdict Final : Acheter / Conserver / Éviter",
+  "Portfolio Risk Manager":"Gestionnaire de Risque de Portefeuille",
+  "Bridgewater-Style Risk Assessment":"Évaluation du Risque Style Bridgewater",
+  "Portfolio Hedging Strategy":"Stratégie de Couverture de Portefeuille",
+  "Crisis Correlation Map":"Carte des Corrélations en Crise",
+  "Quantitative Stock Screener":"Screener d'Actions Quantitatif",
+  "Sentiment vs. Fundamentals Arbitrage":"Arbitrage Sentiment vs. Fondamentaux",
+  "Short-Squeeze Filter":"Filtre Short-Squeeze",
+  "Options Strategy Builder":"Constructeur de Stratégie d'Options",
+  "Strategy Backtester":"Testeur Historique de Stratégie",
+  "Trading Journal Analyzer":"Analyseur de Journal de Trading",
+  "Daily Trading Operating Plan":"Plan de Trading Quotidien",
+  "ETF Portfolio Builder":"Constructeur de Portefeuille ETF",
+  "Dividend Safety Screener":"Screener de Sécurité des Dividendes",
+  "Yield-Trap Detector":"Détecteur de Piège de Rendement",
+  "Dividend Growth Portfolio":"Portefeuille de Croissance des Dividendes",
+  "DRIP vs. Cash Decision":"Décision DRIP vs. Cash",
+  "Bonds vs. Dividend Income":"Obligations vs. Revenus de Dividendes",
+  "Dividend Tax Optimizer":"Optimiseur Fiscal des Dividendes",
+  // Purposes
+  "Daily/weekly macro, sector, breadth, sentiment, and risk overview":"Vue d'ensemble quotidienne/hebdomadaire : macro, secteurs, largeur, sentiment et risques",
+  "Translate macro data into sector and asset-class positioning":"Traduire les données macro en positionnement sectoriel et par classe d'actifs",
+  "Medium-term market regime and positioning":"Régime de marché et positionnement à moyen terme",
+  "Detect where money is moving":"Détecter où se déplacent les capitaux",
+  "Confirm whether index gains are healthy or narrow":"Confirmer si la hausse des indices est saine ou concentrée",
+  "Find where large investors are adding or trimming":"Identifier où les grands investisseurs accumulent ou allègent",
+  "Convert new catalysts into positioning":"Convertir les nouveaux catalyseurs en positionnement",
+  "Generate trade setups from the current tape":"Générer des configurations de trades à partir du marché actuel",
+  "Read trend, levels, and momentum":"Lire la tendance, les niveaux et le momentum",
+  "Full equity research note":"Note de recherche actions complète",
+  "Detect financial quality and red flags":"Détecter la qualité financière et les signaux d'alarme",
+  "Judge overvaluation vs. undervaluation":"Évaluer la survalorisation vs. sous-valorisation",
+  "Assess durability of competitive advantage":"Évaluer la durabilité de l'avantage concurrentiel",
+  "Pre/post earnings decision support":"Aide à la décision avant/après résultats",
+  "Expose blind spots before buying":"Révéler les angles morts avant d'acheter",
+  "Decision-focused stock answer":"Réponse axée sur la décision d'investissement",
+  "Find overexposure and fragility in your portfolio":"Identifier la surexposition et la fragilité du portefeuille",
+  "Stress-test single stock or portfolio":"Test de résistance d'une action ou d'un portefeuille",
+  "Protect against downside":"Se protéger contre la baisse",
+  "Detect unusual cross-asset signals":"Détecter les signaux inhabituels entre classes d'actifs",
+  "Rank opportunities systematically":"Classer les opportunités de façon systématique",
+  "Find mispriced pessimism or euphoria":"Trouver le pessimisme ou l'euphorie mal valorisés",
+  "Identify high-risk/high-volatility setups":"Identifier les configurations à risque élevé et forte volatilité",
+  "Structure options trades with controlled risk":"Structurer des trades d'options avec risque maîtrisé",
+  "Test rules before risking capital":"Tester les règles avant de risquer du capital",
+  "Improve execution and behavior":"Améliorer l'exécution et le comportement",
+  "A daily workflow from pre-market to close":"Un flux de travail quotidien du pré-marché à la clôture",
+  "Build diversified long-term exposure":"Construire une exposition diversifiée à long terme",
+  "Separate safe income from yield traps":"Distinguer les revenus sûrs des pièges de rendement",
+  "Detect dangerous high yields":"Détecter les rendements élevés dangereux",
+  "Build income that grows over time":"Construire un revenu qui croît dans le temps",
+  "Choose between compounding and income":"Choisir entre capitalisation et revenu",
+  "Decide income mix under current rates":"Décider du mix de revenus selon les taux actuels",
+  "Maximize after-tax income":"Maximiser le revenu après impôt",
+  // Input template
+  "📋 Input Template — Paste Before Any Stock Prompt":"📋 Modèle de Saisie — Coller avant chaque commande",
+  "Ticker / Symbol":"Ticker / Symbole","Market / Exchange":"Marché / Bourse",
+  "Time Horizon":"Horizon Temporel","day / swing / 6-12m / 3-5yr":"jour / swing / 6-12m / 3-5ans",
+  "Account Type":"Type de Compte","taxable / IRA / Roth / other":"imposable / IRA / Roth / autre",
+  "Current Position":"Position Actuelle","shares, cost basis, alloc %":"actions, coût moyen, % d'alloc",
+  "Risk Tolerance":"Tolérance au Risque","low / medium / high":"faible / moyen / élevé",
+  "Goal":"Objectif","trade / long-term / income / hedge":"trade / long terme / revenus / couverture",
+  "Max Loss Acceptable":"Perte Max Acceptable",
+  "Special Constraints":"Contraintes Spéciales","halal / no options / no leverage":"halal / sans options / sans levier",
+  "Step 1":"Étape 1","Step 2":"Étape 2","Step 3":"Étape 3","Step 4":"Étape 4","Step 5":"Étape 5"
+};
+
+// French stock prompts
+const frPrompts = {
+  "1": "Agis en tant que stratégiste de marché. Analyse le régime actuel en utilisant les dernières données disponibles : indices majeurs, performance sectorielle, rendements obligataires, spreads de crédit, volatilité, largeur du marché, révisions de bénéfices, anticipations Fed, matières premières, dollar, et sentiment des investisseurs. Classe le marché en : Risk-On, Risk-On Sélectif, Neutre, Défensif, ou Risk-Off. Fournis : 1) ce qui a changé, 2) secteurs les plus forts et faibles, 3) niveaux clés à surveiller, 4) risques principaux, 5) 3 idées de positionnement, 6) ce qui changerait ton analyse.",
+  "2": "Analyse le tableau macro actuel : inflation, marché du travail, PIB, politique de la Fed, courbe des taux, conditions de crédit, liquidités, dollar, matières premières et risques mondiaux. Traduis ces données en allocation d'actifs pratique : surpondérer/neutre/sous-pondérer pour actions, obligations, cash, or, énergie, technologie, valeurs défensives, petites capitalisations et marchés internationaux. Précise le niveau de confiance et les 5 données clés à surveiller.",
+  "3": "Construis des perspectives de marché à 3-6 mois : dynamique économique, trajectoire de l'inflation, politique des banques centrales, attentes de bénéfices, valorisations, stress crédit, liquidités, largeur du marché, sentiment, saisonnalité et risques géopolitiques. Propose un scénario central, optimiste et pessimiste. Conclus avec un plan de positionnement et des mesures de gestion du risque.",
+  "4": "Analyse la rotation sectorielle sur 1 semaine, 1 mois, 3 mois et 6 mois. Classe les secteurs selon le momentum relatif, les révisions de bénéfices, la valorisation, les flux de fonds, la sensibilité macro et le profil défensif/offensif. Identifie les 3 meilleurs secteurs à surpondérer, 3 à éviter, et le meilleur ETF ou action représentative pour chaque secteur favori.",
+  "5": "Construis un tableau de bord de largeur de marché et de sentiment. Analyse les tendances avance/déclin, le pourcentage d'actions au-dessus des moyennes 20/50/200 jours, nouveaux plus hauts vs plus bas, indice équipondéré vs capitalisé, ratios put/call, structure des VIX, AAII et positions extrêmes. Détermine si la hausse/baisse est large, fragile, surpeuplée ou s'améliorant.",
+  "6": "En utilisant les dernières données de détention institutionnelle, résumés 13F, flux ETF, transactions des initiés et commentaires des grands fonds, identifie les secteurs et actions où l'accumulation ou la distribution institutionnelle semble significative. Sépare le signal du bruit et liste 3-5 idées actionnables.",
+  "7": "Résume les dernières actualités pour [entreprise/secteur]. Sépare les faits confirmés des spéculations. Évalue l'impact prix à court terme, l'impact business à long terme, les pairs affectés, les révisions d'analystes probables et les attentes du marché. Crée une carte de trading : configuration haussière, baissière, neutre/attente, zone d'entrée, niveau d'invalidation, objectifs et ratio risque/rendement.",
+  "8": "Scanne le marché d'aujourd'hui pour [action/indice/secteur/thème] et génère 5 configurations de trading à haute probabilité. Pour chaque configuration : catalyseur, condition de tendance, zone d'entrée, stop-loss, deux objectifs de profit, ratio risque/rendement, durée prévue de détention et ce qui invaliderait le trade. Classe les idées de la meilleure à la moins bonne.",
+  "9": "Analyse [ticker] sur les unités de temps quotidiennes et hebdomadaires. Identifie la direction de la tendance, support et résistance majeurs, moyennes 20/50/100/200 jours, RSI, MACD, Bandes de Bollinger, comportement du volume, figures chartistes et niveaux de Fibonacci si pertinent. Donne un signal clair : Achat, Conservation, Attente, Réduction ou Éviter. Inclus entrée, stop, objectifs et score de confiance.",
+  "10": "Agis en analyste actions senior. Analyse [ticker/entreprise] comme une note de recherche formelle. Couvre le modèle économique, segments de revenus, marges, flux de trésorerie libre, bilan, fossé concurrentiel, qualité du management, valorisation vs historique et pairs, catalyseurs, risques, scénarios optimiste/central/pessimiste, fourchette de juste valeur et recommandation finale : Achat, Conservation, Éviter ou Vente.",
+  "11": "Analyse les 5 dernières années d'états financiers pour [ticker]. Décompose la croissance du chiffre d'affaires, marges brutes/opérationnelles/nettes, qualité du BPA, flux de trésorerie libre, capex, dette, liquidité, dilution/rachats d'actions, ROIC/ROE et tendances du besoin en fonds de roulement. Souligne les forces, signaux d'alarme et si la tendance financière s'améliore ou se détériore.",
+  "12": "Réalise une analyse de valorisation pour [ticker]. Utilise les multiples pertinents, comparaison avec les pairs, fourchettes historiques, hypothèses DCF, croissance des revenus/bénéfices, hypothèses de marges et sensibilité au taux d'actualisation. Produis une fourchette de juste valeur, % de hausse/baisse, marge de sécurité et verdict de valorisation.",
+  "13": "Évalue le fossé concurrentiel de [entreprise]. Analyse la marque, l'échelle, les effets de réseau, les coûts de changement, l'avantage de coût, la technologie/PI, la distribution, les barrières réglementaires, la concentration des clients et les menaces concurrentielles. Note le fossé de 1 à 10 et explique s'il s'élargit, est stable ou s'érode.",
+  "14": "Analyse [ticker] autour des résultats. Examine les 6 derniers trimestres, revenus/BPA vs estimations, guidances, tendances des segments, marges, KPI clés, attentes des analystes, mouvement implicite options, mouvement historique le jour des résultats et setup de valorisation actuel. Recommande : acheter avant les résultats, attendre, couvrir, vendre ou trader après la publication.",
+  "15": "Crée un débat entre un analyste haussier et un analyste baissier sur [ticker]. Chaque partie doit utiliser des chiffres, la valorisation, les faits concurrentiels, les attentes du marché, les catalyseurs et les risques. Agis ensuite comme un comité d'investissement neutre et décide quel côté a l'argument le plus solide aujourd'hui.",
+  "16": "Évalue si [ticker] mérite d'être acheté aujourd'hui. Inclus le setup sur 1 an, la thèse sur 3-5 ans, la valorisation, la tendance technique, les catalyseurs et risques clés, les conseils de sizing de position et le prix qui le rendrait attractif ou non. Conclus avec une recommandation Achat/Conservation/Éviter/Vente et un score de conviction.",
+  "17": "Évalue mon portefeuille : [tickers, coût moyen, valeur actuelle, % d'allocation, type de compte]. Identifie la surexposition, les positions faibles, les corrélations cachées, la concentration sectorielle, l'exposition aux facteurs, le risque de drawdown, le risque de liquidité et les problèmes fiscaux. Teste une baisse de 10%, 20% et 35% du marché. Recommande rééquilibrage, couvertures, allègements, ajouts et règles de surveillance.",
+  "18": "Évalue le risque complet de [action/portefeuille]. Analyse volatilité, bêta, historique de drawdown, temps de récupération, corrélation avec le S&P 500, risque sectoriel, sensibilité aux taux, risque sur les bénéfices, liquidité, levier et tests de résistance pour : récession, choc d'inflation, choc de crédit et krach boursier. Conclus avec un tableau de bord des risques et une couverture spécifique.",
+  "19": "Mon portefeuille est exposé à [secteur/marché/tickers]. Conçois une stratégie de couverture avec des instruments pratiques : cash, ETF obligataires, puts protecteurs, collars, ETF inverses ou ajustement de la taille des positions. Montre le coût, le ratio de couverture, la durée, les risques, quand entrer et sortir, et quel signal de marché confirme que la couverture fonctionne.",
+  "20": "Dans l'environnement macro actuel, analyse les corrélations inhabituelles entre actions, obligations, or, pétrole, dollar, Bitcoin, volatilité et spreads de crédit. Explique ce que ces corrélations signifient habituellement, ce qu'elles signifient maintenant et comment se positionner ou se couvrir si le signal persiste.",
+  "21": "Construis un screener d'actions multi-facteurs pour [univers]. Note chaque action de 1 à 100 en utilisant valeur, qualité, momentum, croissance, solidité du bilan, révisions de bénéfices, sentiment et risque. Retourne le top 10, le bas 10, la répartition sectorielle, les risques clés et pourquoi chaque action du top mérite une recherche approfondie.",
+  "22": "Trouve des actions où le sentiment de marché diverge des fondamentaux. Cherche des mauvaises nouvelles avec des fondamentaux qui s'améliorent, ou de l'enthousiasme avec des fondamentaux qui se détériorent. Pour chaque idée : sentiment, réalité fondamentale, valorisation, catalyseur de réévaluation, risque et plan de trade/investissement.",
+  "23": "Trouve des actions avec un short interest élevé, beaucoup de jours pour couvrir, un momentum prix qui s'améliore, un fort potentiel de catalyseur et une liquidité suffisante. Classe-les par probabilité de short squeeze, mais explique aussi le risque de dilution, le risque d'emprunt, les faiblesses fondamentales et pourquoi le trade peut échouer rapidement.",
+  "24": "Conçois une stratégie d'options pour [ticker] basée sur ma vue : [haussière/baissière/neutre], horizon temporel, limite de risque et plage de prix attendue. Compare au moins trois structures : call/put, spread, collar, iron condor ou covered call. Montre profit max, perte max, point d'équilibre, Greeks, probabilité, plan d'ajustement et règles de sortie.",
+  "25": "Backteste [stratégie] sur [ticker/indice] sur [période]. Définis les règles d'entrée et de sortie exactes, taille de position, stop-loss, take-profit, frais/slippage et benchmark. Rapporte le taux de réussite, gain/perte moyens, facteur de profit, drawdown maximum, ratio de Sharpe si possible, meilleures/pires périodes et améliorations sans sur-optimisation.",
+  "26": "Examine mes 20 derniers trades : [ticker, thèse, entrée, sortie, taille, résultat, émotion, erreur]. Identifie les erreurs récurrentes, occasions manquées, mauvaise gestion du risque, biais comportementaux et inadéquation avec les conditions de marché. Crée 3 règles non négociables et une checklist pré-trade adaptée à mon profil.",
+  "27": "Conçois un plan de trading opérationnel quotidien pour [marché/actifs]. Inclus le scan pré-marché, actualités clés, niveaux des indices, leaders/retardataires sectoriels, liste de surveillance, déclencheurs d'entrée, risque maximum par trade, plan de séance d'ouverture, revue de mi-journée, revue de fin de journée et modèle de journal. Rends-le horodaté et basé sur des règles.",
+  "28": "Construis un portefeuille ETF pour [objectif, âge, tolérance au risque, type de compte, montant investi]. Inclus l'allocation d'actifs, les ETF spécifiques, les ratios de frais, le rôle de chaque ETF, l'exposition US/internationale/obligations/cash, les inclinaisons tactiques, les règles de rééquilibrage, les considérations fiscales et le calendrier DCA.",
+  "29": "Examine les actions à dividendes et sépare les entreprises sûres des pièges de rendement. Utilise l'historique de croissance des dividendes, le taux de distribution sur bénéfices et flux de trésorerie libre, l'endettement, la couverture des intérêts, la stabilité des flux de trésorerie, la cyclicité, le rendement vs historique et la valorisation. Note chaque action de 1 à 10 pour la sécurité des dividendes.",
+  "30": "Analyse [ticker] pour déterminer si son rendement élevé est une opportunité ou un danger. Examine le taux de distribution, la tendance du flux de trésorerie libre, les échéances de dette, la stabilité des bénéfices, l'historique de coupure de dividende, les commentaires du management et la valorisation du marché. Note : Sûr, Surveillance ou Piège.",
+  "31": "Construis un portefeuille de croissance des dividendes pour [montant, objectif, tolérance au risque]. Inclus l'allocation sectorielle, 10-15 actions ou ETF candidats, rendement actuel, croissance attendue des dividendes, sécurité du dividende, discipline de valorisation et règles de remplacement des positions.",
+  "32": "Analyse s'il est préférable de réinvestir les dividendes ou de les percevoir en cash selon [âge, besoin de revenus, type de compte, situation fiscale, taille du portefeuille, objectifs]. Compare les résultats sur 10/20/30 ans, stabilité des revenus, impact fiscal, coût d'opportunité et plan de transition accumulation → revenus.",
+  "33": "Compare obligations, ETF obligataires, fonds monétaires, actions à dividendes et ETF dividendes dans l'environnement de taux actuel. Évalue rendement, risque de duration, risque de crédit, risque actions, traitement fiscal, protection contre l'inflation, liquidité et allocation adaptée à [âge, objectif, tolérance au risque].",
+  "34": "Analyse mes positions de revenus/dividendes dans les comptes imposables, IRA traditionnels/401(k) et Roth. Recommande quels actifs vont dans chaque compte, comment utiliser les dividendes qualifiés, comment réduire le revenu imposable légalement et quelles erreurs éviter. Inclus un tableau d'actions simple."
+};
+
+function switchLang(lang, btn) {
+  currentLang = lang;
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+  if(btn) btn.classList.add('active');
+  const isAr = lang === 'ar';
+  document.documentElement.setAttribute('dir', isAr ? 'rtl' : 'ltr');
+  document.documentElement.setAttribute('lang', lang);
+  document.querySelectorAll('[data-en]').forEach(el => {
+    let val;
+    if (lang === 'ar') {
+      val = el.getAttribute('data-ar') || el.getAttribute('data-en');
+    } else if (lang === 'fr') {
+      const enVal = el.getAttribute('data-en');
+      val = frUI[enVal] || enVal;
+    } else {
+      val = el.getAttribute('data-en');
+    }
+    if (val !== null) el.innerHTML = val;
+  });
+  // update prompt boxes
+  document.querySelectorAll('.cmd-card').forEach(card => {
+    const num = card.querySelector('.cmd-num-badge')?.textContent.replace('#','');
+    const enBox = card.querySelector('.prompt-box[data-lang="en"]');
+    const arBox = card.querySelector('.prompt-box[data-lang="ar"]');
+    let frBox = card.querySelector('.prompt-box[data-lang="fr"]');
+    if (!frBox && enBox) {
+      frBox = enBox.cloneNode(true);
+      frBox.setAttribute('data-lang','fr');
+      frBox.style.display = 'none';
+      frBox.style.direction = 'ltr';
+      const btn = frBox.querySelector('.copy-btn');
+      if(btn) { btn.textContent = 'Copier'; btn.setAttribute('onclick','copyPrompt(this,"fr")'); }
+      const frText = frPrompts[num];
+      if (frText) frBox.firstChild.textContent = frText;
+      enBox.parentNode.insertBefore(frBox, arBox ? arBox.nextSibling : null);
+    }
+    if (lang === 'en') {
+      if(enBox) enBox.style.display=''; if(arBox) arBox.style.display='none'; if(frBox) frBox.style.display='none';
+      card.querySelectorAll('.lt-btn').forEach((b,i)=>b.classList.toggle('active',i===0));
+    } else if (lang === 'ar') {
+      if(enBox) enBox.style.display='none'; if(arBox) arBox.style.display=''; if(frBox) frBox.style.display='none';
+      const ltBtns = card.querySelectorAll('.lt-btn');
+      ltBtns.forEach((b,i)=>b.classList.toggle('active',i===1));
+    } else if (lang === 'fr') {
+      if(enBox) enBox.style.display='none'; if(arBox) arBox.style.display='none'; if(frBox) frBox.style.display='';
+      card.querySelectorAll('.lt-btn').forEach((b,i)=>b.classList.toggle('active',false));
+    }
+  });
+}
+
+// ── Tab switching ─────────────────────────────────────────────────────────────
+function switchTab(tab, btn) {
+  document.querySelectorAll('.tab-pane').forEach(p => p.style.display = 'none');
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + tab).style.display = 'block';
+  btn.classList.add('active');
+}
+
+// ── Coin cards ───────────────────────────────────────────────────────────────
+function toggleCoin(el) {
+  const card = el.closest('.coin-card');
+  const detail = card.querySelector('.coin-detail');
+  const chev = card.querySelector('.c-chevron');
+  const open = detail.classList.toggle('open');
+  chev.style.transform = open ? 'rotate(180deg)' : '';
+  if (open) detail.style.maxHeight = detail.scrollHeight + 'px';
+  else detail.style.maxHeight = '0';
+}
+
+// ── Section accordion (stocks) ───────────────────────────────────────────────
+function toggleSec(hdr) {
+  const sec = hdr.closest('.cmd-sec');
+  const body = sec.querySelector('.cmd-sec-body');
+  const chev = hdr.querySelector('.cmd-sec-chev');
+  const isOpen = body.style.maxHeight && body.style.maxHeight !== '0px';
+  if (isOpen) { body.style.maxHeight = '0'; chev.textContent = '▼'; }
+  else { body.style.maxHeight = body.scrollHeight + 2000 + 'px'; chev.textContent = '▲'; }
+}
+
+// ── Command card (stocks) ────────────────────────────────────────────────────
+function toggleCmd(hdr) {
+  const card = hdr.closest('.cmd-card');
+  const body = card.querySelector('.cmd-body');
+  const chev = hdr.querySelector('.cmd-chev');
+  const isOpen = body.style.maxHeight && body.style.maxHeight !== '0px';
+  if (isOpen) { body.style.maxHeight = '0'; chev.textContent = '▼'; }
+  else {
+    body.style.maxHeight = '2000px';
+    chev.textContent = '▲';
+    // inject FR button if missing
+    const ltWrap = card.querySelector('.lang-tabs');
+    if (ltWrap && !ltWrap.querySelector('[data-l="fr"]')) {
+      const frBtn = document.createElement('button');
+      frBtn.className = 'lt-btn';
+      frBtn.setAttribute('data-l','fr');
+      frBtn.textContent = '🇫🇷 Français';
+      frBtn.onclick = function(){ showPrompt(this,'fr'); };
+      ltWrap.appendChild(frBtn);
+    }
+  }
+}
+
+// ── Prompt language tabs ─────────────────────────────────────────────────────
+function showPrompt(btn, lang) {
+  const card = btn.closest('.cmd-card');
+  card.querySelectorAll('.lt-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  const num = card.querySelector('.cmd-num-badge')?.textContent.replace('#','');
+  let enBox = card.querySelector('.prompt-box[data-lang="en"]');
+  let arBox = card.querySelector('.prompt-box[data-lang="ar"]');
+  let frBox = card.querySelector('.prompt-box[data-lang="fr"]');
+  if (lang === 'fr' && !frBox && enBox) {
+    frBox = document.createElement('div');
+    frBox.className = 'prompt-box';
+    frBox.setAttribute('data-lang','fr');
+    frBox.style.position = 'relative';
+    const frText = frPrompts[num] || enBox.textContent.trim();
+    frBox.textContent = frText;
+    const copyBtn = document.createElement('button');
+    copyBtn.className = 'copy-btn';
+    copyBtn.textContent = 'Copier';
+    copyBtn.onclick = function(){ copyPrompt(this,'fr'); };
+    frBox.appendChild(copyBtn);
+    enBox.parentNode.insertBefore(frBox, arBox ? arBox.nextSibling : enBox.nextSibling);
+  }
+  if(enBox) enBox.style.display = lang==='en'?'':'none';
+  if(arBox) arBox.style.display = lang==='ar'?'':'none';
+  if(frBox) frBox.style.display = lang==='fr'?'':'none';
+}
+
+// ── Copy prompt ──────────────────────────────────────────────────────────────
+function copyPrompt(btn, lang) {
+  const box = btn.closest('.prompt-box');
+  const text = box.textContent.replace(btn.textContent,'').trim();
+  navigator.clipboard.writeText(text).then(() => {
+    const orig = btn.textContent;
+    btn.textContent = '✓ Copied!';
+    btn.style.color = '#00ff88';
+    setTimeout(() => { btn.textContent = orig; btn.style.color = ''; }, 1800);
+  });
+}
+
+// ── Additional CSS for stocks tab ───────────────────────────────────────────
+const extraCSS = `
+.stock-intro{padding:20px 20px 0;}.intro-box{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;}
+.intro-title{font-size:18px;font-weight:700;color:var(--blue);margin-bottom:8px;}
+.intro-sub{color:var(--muted);font-size:13px;line-height:1.6;margin-bottom:12px;}
+.warn-box{background:rgba(255,215,0,0.08);border:1px solid rgba(255,215,0,0.3);border-radius:8px;padding:10px 14px;font-size:12px;color:#ffd700;margin-bottom:16px;}
+.workflow{display:flex;gap:8px;flex-wrap:wrap;}
+.wf-step{background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:8px;padding:10px;flex:1;min-width:90px;text-align:center;}
+.wf-num{font-size:11px;color:var(--muted);margin-bottom:4px;}
+.wf-title{font-size:13px;font-weight:700;color:var(--green);margin-bottom:2px;}
+.wf-desc{font-size:11px;color:var(--muted);}
+.cmd-sec{margin:16px 20px 0;border-radius:12px;overflow:hidden;background:var(--card);border:1px solid var(--border);}
+.cmd-sec-hdr{display:flex;align-items:center;gap:12px;padding:14px 16px;cursor:pointer;border-left:3px solid transparent;transition:background 0.2s;}
+.cmd-sec-hdr:hover{background:rgba(255,255,255,0.03);}
+.cmd-sec-icon{font-size:20px;}
+.cmd-sec-info{flex:1;}
+.cmd-sec-title{font-size:15px;font-weight:700;color:var(--text);}
+.cmd-sec-sub{font-size:12px;color:var(--muted);margin-top:2px;}
+.cmd-sec-count{font-size:12px;color:var(--blue);background:rgba(88,166,255,0.12);padding:3px 10px;border-radius:20px;}
+.cmd-sec-chev{color:var(--muted);font-size:13px;transition:transform 0.3s;}
+.cmd-sec-body{overflow:hidden;transition:max-height 0.45s ease;}
+.cmd-cards{padding:12px 12px 16px;}
+.cmd-card{background:rgba(255,255,255,0.02);border:1px solid var(--border);border-radius:10px;margin-bottom:8px;overflow:hidden;}
+.cmd-hdr{display:flex;align-items:flex-start;gap:10px;padding:12px 14px;cursor:pointer;transition:background 0.2s;}
+.cmd-hdr:hover{background:rgba(255,255,255,0.03);}
+.cmd-num-badge{background:rgba(88,166,255,0.15);color:var(--blue);font-weight:700;font-size:11px;padding:3px 8px;border-radius:20px;white-space:nowrap;}
+.cmd-title-txt{font-size:14px;font-weight:700;color:var(--text);}
+.cmd-purpose-txt{font-size:12px;color:var(--muted);margin-top:2px;}
+.cmd-chev{color:var(--muted);font-size:13px;margin-left:auto;transition:transform 0.3s;}
+.cmd-body{overflow:hidden;transition:max-height 0.45s ease;max-height:0;}
+.cmd-body-inner{padding:14px 16px;border-top:1px solid var(--border);}
+.lang-tabs{display:flex;gap:6px;margin-bottom:10px;}
+.lt-btn{background:transparent;border:1px solid var(--border);border-radius:16px;padding:4px 12px;font-size:12px;color:var(--muted);cursor:pointer;transition:all 0.2s;}
+.lt-btn.active{color:var(--blue);border-color:var(--blue);background:rgba(88,166,255,0.1);}
+.prompt-box{background:rgba(0,0,0,0.25);border:1px solid var(--border);border-radius:8px;padding:12px 44px 12px 14px;font-size:13px;color:#c9d1d9;line-height:1.7;}
+.copy-btn{position:absolute;top:8px;right:8px;background:rgba(88,166,255,0.15);border:1px solid rgba(88,166,255,0.3);color:var(--blue);border-radius:6px;padding:4px 10px;font-size:11px;cursor:pointer;transition:all 0.2s;}
+.copy-btn:hover{background:rgba(88,166,255,0.3);}
+.inp-tmpl{padding:20px;}.it-box{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;}
+.it-title{font-size:15px;font-weight:700;color:var(--blue);margin-bottom:14px;}
+.it-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+@media(max-width:600px){.it-grid{grid-template-columns:1fr;}.workflow{flex-direction:column;}}
+.it-field{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:8px;padding:10px;}
+.it-label{font-size:11px;color:var(--muted);margin-bottom:4px;font-weight:600;}
+.it-val{font-size:13px;color:var(--text);}
+footer{text-align:center;padding:24px;color:var(--muted);font-size:12px;}
+footer a{color:var(--blue);text-decoration:none;}
+`;
+const style = document.createElement('style');
+style.textContent = extraCSS;
+document.head.appendChild(style);
+</script>
+</body>
+</html>
