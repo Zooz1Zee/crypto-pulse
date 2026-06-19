@@ -204,6 +204,26 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 .fng-btc-season   { color: #ff8c42; }
 .fng-alt-season   { color: var(--green); }
 
+
+/* ── SECTOR HEATMAP ── */
+.sector-section { padding: 0 0 4px; }
+.sector-title { padding: 10px 16px 6px; font-size: 10px; font-weight: 700;
+  color: var(--muted); letter-spacing: 1px; text-transform: uppercase; }
+.sector-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px;
+  padding: 0 16px 12px; }
+.sector-cell { background: var(--surface); border: 1px solid var(--border);
+  border-radius: 8px; padding: 8px 6px; text-align: center; transition: transform .15s; }
+.sector-cell:hover { transform: translateY(-1px); }
+.sector-cell.s-up   { border-color: rgba(0,214,143,0.4); background: rgba(0,214,143,0.07); }
+.sector-cell.s-down { border-color: rgba(255,77,106,0.4); background: rgba(255,77,106,0.07); }
+.sector-cell.s-flat { border-color: rgba(255,209,102,0.3); background: rgba(255,209,102,0.05); }
+.sector-name { font-size: 9px; color: var(--muted); font-weight: 700;
+  letter-spacing: 0.3px; margin-bottom: 5px; line-height: 1.2; }
+.sector-pct  { font-size: 14px; font-weight: 800; }
+.sector-cell.s-up   .sector-pct { color: var(--green); }
+.sector-cell.s-down .sector-pct { color: var(--red); }
+.sector-cell.s-flat .sector-pct { color: var(--yellow); }
+.sector-ticker { font-size: 9px; color: var(--muted); margin-top: 2px; }
 </style>
 </head>
 <body>
@@ -220,7 +240,8 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
         <a href="https://t.me/zooz1_M" class="social-badge tg-badge">✈ @zooz1_M</a>
       </div>
     </div>
-    <div class="mood-pill mood-neutral">⚡ Cautious</div>
+    <div id="mood-crypto" class="mood-pill mood-neutral">⚡ Cautious</div>
+    <div id="mood-stocks" class="mood-pill mood-bullish" style="display:none">📈 Bullish</div>
   </div>
   <div class="header-right">
     <div class="lang-bar">
@@ -636,6 +657,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       <div class="change neutral">On Hold</div>
     </div>
   </div>
+  <div class="sector-section"><div class="sector-title"><span class="t" data-en="Sector Performance" data-ar="أداء القطاعات" data-fr="Performance Sectorielle">Sector Performance</span></div><div class="sector-grid"><div class="sector-cell s-up"><div class="sector-name">Technology</div><div class="sector-pct">+2.1%</div><div class="sector-ticker">AVGO NVDA AAPL</div></div><div class="sector-cell s-up"><div class="sector-name">Comm Svcs</div><div class="sector-pct">+1.8%</div><div class="sector-ticker">META GOOGL DIS</div></div><div class="sector-cell s-up"><div class="sector-name">Consumer Disc</div><div class="sector-pct">+1.5%</div><div class="sector-ticker">AMZN TSLA HD</div></div><div class="sector-cell s-up"><div class="sector-name">Industrials</div><div class="sector-pct">+1.2%</div><div class="sector-ticker">RTX LMT CAT</div></div><div class="sector-cell s-up"><div class="sector-name">Financials</div><div class="sector-pct">+0.9%</div><div class="sector-ticker">JPM GS BAC</div></div><div class="sector-cell s-flat"><div class="sector-name">Materials</div><div class="sector-pct">+0.4%</div><div class="sector-ticker">LIN FCX NEM</div></div><div class="sector-cell s-flat"><div class="sector-name">Healthcare</div><div class="sector-pct">-0.3%</div><div class="sector-ticker">JNJ UNH MRK</div></div><div class="sector-cell s-flat"><div class="sector-name">Utilities</div><div class="sector-pct">-0.2%</div><div class="sector-ticker">NEE DUK SO</div></div><div class="sector-cell s-down"><div class="sector-name">Energy</div><div class="sector-pct">-0.6%</div><div class="sector-ticker">XOM CVX COP</div></div><div class="sector-cell s-down"><div class="sector-name">Real Estate</div><div class="sector-pct">-1.1%</div><div class="sector-ticker">AMT PLD SPG</div></div></div></div>
   <div class="events-section">
   <div class="events-header">📅 <span class="t" data-en="Market Events &amp; Seasonality" data-ar="أحداث السوق والموسمية" data-fr="Événements &amp; Saisonnalité">Market Events &amp; Seasonality</span></div>
   <div class="events-grid">
@@ -717,7 +739,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 
 <div class="updated">
   <span class="t" data-en="Updated" data-ar="آخر تحديث" data-fr="Mis à jour">Updated</span>: Thursday, June 18 2026 · 10:00 AM
-  &nbsp;·&nbsp; Sources: X/CT, Reddit, CoinDesk, CoinTelegraph, Schwab
+  &nbsp;·&nbsp; Crypto: X/CT, Reddit, CoinDesk, CoinTelegraph &nbsp;·&nbsp; Stocks: Bloomberg, MarketWatch, Seeking Alpha, Schwab
   &nbsp;·&nbsp; <a href="https://zooz1zee.github.io/crypto-pulse/" style="color:var(--accent);text-decoration:none">zooz1zee.github.io/crypto-pulse</a>
 </div>
 
@@ -731,7 +753,24 @@ function setTab(name) {
   var si = document.getElementById('intel-stocks');
   if (ci) ci.style.display = (name === 'crypto') ? 'flex' : 'none';
   if (si) si.style.display = (name === 'stocks') ? 'flex' : 'none';
+  var mc = document.getElementById('mood-crypto');
+  var ms = document.getElementById('mood-stocks');
+  if (mc) mc.style.display = (name === 'crypto') ? '' : 'none';
+  if (ms) ms.style.display = (name === 'stocks') ? '' : 'none';
 }
+function buildTrendBars() {
+  document.querySelectorAll('.acc-trend').forEach(function(el) {
+    var score = parseInt(el.textContent, 10);
+    if (isNaN(score) || score === 0) return;
+    var color = score >= 65 ? 'var(--green)' : score >= 40 ? 'var(--yellow)' : 'var(--red)';
+    el.innerHTML =
+      '<div style="width:34px;background:var(--surface2);border-radius:3px;overflow:hidden;height:5px;margin:0 auto 2px">' +
+        '<div style="width:' + Math.min(score,100) + '%;height:100%;background:' + color + ';border-radius:3px"></div>' +
+      '</div>' +
+      '<div style="font-size:9px;color:var(--muted);line-height:1">' + score + '</div>';
+  });
+}
+document.addEventListener('DOMContentLoaded', buildTrendBars);
 function toggle(header) {
   const body = header.nextElementSibling;
   const isOpen = header.classList.contains('open');
