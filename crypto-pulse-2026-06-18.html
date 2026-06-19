@@ -232,7 +232,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 </div>
 
 <!-- ══ TABS ══ -->
-<div class="intel-bar">
+<div class="intel-bar" id="intel-crypto">
   <div class="intel-stat">
     <div class="i-label"><span class="t" data-en="Coins Tracked" data-ar="عملات مرصودة" data-fr="Cryptos suivies">Coins Tracked</span></div>
     <div class="i-value">20</div>
@@ -250,6 +250,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     <div class="i-value"><span class="t" data-en="HBAR ETF Tomorrow" data-ar="ETF هيديرا غداً" data-fr="ETF HBAR Demain">HBAR ETF Tomorrow</span></div>
   </div>
 </div>
+<div class="intel-bar" id="intel-stocks" style="display:none;"><div class="intel-stat"><div class="intel-label"><span class="t" data-en="STOCKS TRACKED" data-ar="الأسهم المتتبعة" data-fr="ACTIONS SUIVIES">STOCKS TRACKED</span></div><div class="intel-value">20</div></div><div class="intel-stat"><div class="intel-label"><span class="t" data-en="TOP GAINER" data-ar="أكبر رابح" data-fr="MEILLEURE HAUSSE">TOP GAINER</span></div><div class="intel-value">AVGO +7.8%</div></div><div class="intel-stat"><div class="intel-label"><span class="t" data-en="S&amp;P MOOD" data-ar="مزاج السوق" data-fr="HUMEUR S&amp;P">S&amp;P MOOD</span></div><div class="intel-value">📈&nbsp;Bullish</div></div><div class="intel-stat"><div class="intel-label"><span class="t" data-en="KEY EVENT" data-ar="الحدث الرئيسي" data-fr="ÉVÉNEMENT CLÉ">KEY EVENT</span></div><div class="intel-value">⚡ Quad Witching Tomorrow</div></div></div>
 
 <div class="tab-bar">
   <div class="tab active" onclick="setTab('crypto')" id="tab-crypto">🪙 <span class="t" data-en="Crypto" data-ar="كريبتو" data-fr="Crypto">Crypto</span></div>
@@ -726,6 +727,10 @@ function setTab(name) {
   document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
   document.getElementById('tab-' + name).classList.add('active');
   document.getElementById('tab-content-' + name).classList.add('active');
+  var ci = document.getElementById('intel-crypto');
+  var si = document.getElementById('intel-stocks');
+  if (ci) ci.style.display = (name === 'crypto') ? 'flex' : 'none';
+  if (si) si.style.display = (name === 'stocks') ? 'flex' : 'none';
 }
 function toggle(header) {
   const body = header.nextElementSibling;
