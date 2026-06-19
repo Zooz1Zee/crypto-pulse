@@ -158,6 +158,15 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 .alert-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 4px; }
 .alert-list li { font-size: 12px; color: var(--text); line-height: 1.55; padding-left: 12px; }
 [dir="rtl"] .alert-list li { padding-left: 0; padding-right: 12px; }
+/* -- FEAR & GREED / ALTCOIN SEASON COLORS -- */
+.fng-extreme-fear { color: #ff2d55; }
+.fng-fear         { color: #ff8c42; }
+.fng-neutral      { color: var(--yellow); }
+.fng-greed        { color: #48bb78; }
+.fng-extreme-greed{ color: var(--green); }
+.fng-btc-season   { color: #ff8c42; }
+.fng-alt-season   { color: var(--green); }
+
 </style>
 </head>
 <body>
@@ -174,7 +183,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
         <a href="https://t.me/zooz1_M" class="social-badge tg-badge">✈ @zooz1_M</a>
       </div>
     </div>
-    <div class="mood-pill mood-bearish">🐻 Bearish</div>
+    <div class="mood-pill mood-neutral">⚡ Cautious</div>
   </div>
   <div class="header-right">
     <div class="lang-bar">
@@ -191,6 +200,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     <div class="alert-section-header">🚨 <span class="t" data-en="SPIKE ALERTS" data-ar="تنبيهات الارتفاع الحاد" data-fr="ALERTES HAUSSE">SPIKE ALERTS</span></div>
     <ul class="alert-list">
       <li>• <span class="t" data-en="BTC: 24h volume surged +36% to $32.5B on a down day · active selling pressure confirms distribution, not a passive dip" data-ar="BTC: حجم 24 ساعة ارتفع 36% إلى 32.5 مليار دولار في يوم هابط · ضغط بيع نشط يؤكد التوزيع لا مجرد انخفاض" data-fr="BTC: volume 24h +36% à $32,5G un jour baissier · pression vendeuse active — distribution, pas simple baisse">BTC: 24h volume surged +36% to $32.5B on a down day · active selling pressure confirms distribution, not a passive dip</span></li>
+      <li>• <span class="t" data-en="XLM: volume spike +80% above 7-day average · Stellar payment network activity surging" data-ar="XLM: ارتفاع حجم +80% فوق المتوسط 7 أيام · نشاط شبكة ستيلار للمدفوعات يتسارع" data-fr="XLM: pic volume +80% au-dessus de la moyenne 7j · activité réseau paiement Stellar en hausse">XLM: volume spike +80% above 7-day average · Stellar payment network activity surging</span></li>
     </ul>
   </div>
   <div class="alert-section news-section">
@@ -200,6 +210,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       <li>🟡 <span class="t" data-en="US regulators propose bank-style customer ID rules for stablecoin issuers — CT watching closely" data-ar="المنظمون الأمريكيون يقترحون قواعد تعريف عملاء مصرفية لمصدري العملات المستقرة — CT تراقب عن كثب" data-fr="Régulateurs US proposent règles d'identification bancaire pour stablecoins — CT surveille de près">US regulators propose bank-style customer ID rules for stablecoin issuers — CT watching closely</span></li>
       <li>🟡 <span class="t" data-en="GENIUS Act stablecoin implementation deadline approaching July 18, 2026 — industry on alert" data-ar="موعد تطبيق قانون GENIUS للعملات المستقرة يقترب في 18 يوليو 2026 — الصناعة في حالة تأهب" data-fr="Délai GENIUS Act stablecoins approche le 18 juillet 2026 — industrie en alerte">GENIUS Act stablecoin implementation deadline approaching July 18, 2026 — industry on alert</span></li>
       <li>🟢 <span class="t" data-en="Crypto-equities divergence today: S&amp;P +1.15% on Iran deal while BTC -1.6% · rate-hike odds now at 60%" data-ar="انفصال الكريبتو عن الأسهم اليوم: S&amp;P +1.15% بفضل اتفاقية إيران بينما BTC -1.6% · احتمالات رفع الفائدة 60%" data-fr="Divergence crypto-actions: S&amp;P +1,15% sur accord Iran tandis que BTC -1,6% · probabilité hausse taux à 60%">Crypto-equities divergence today: S&amp;P +1.15% on Iran deal while BTC -1.6% · rate-hike odds now at 60%</span></li>
+      <li>🔵 <span class="t" data-en="HBAR ETF filing expected tomorrow — Hedera ecosystem buzzing with anticipation" data-ar="تقديم ETF لـ HBAR متوقع غداً — نظام هيديرا البيئي يتوقع بفارغ الصبر" data-fr="Dépôt ETF HBAR attendu demain — écosystème Hedera en effervescence">HBAR ETF filing expected tomorrow — Hedera ecosystem buzzing with anticipation</span></li>
     </ul>
   </div>
 </div>
@@ -208,19 +219,19 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 <div class="intel-bar">
   <div class="intel-stat">
     <div class="i-label"><span class="t" data-en="Coins Tracked" data-ar="عملات مرصودة" data-fr="Cryptos suivies">Coins Tracked</span></div>
-    <div class="i-value">10</div>
+    <div class="i-value">20</div>
   </div>
   <div class="intel-stat">
     <div class="i-label"><span class="t" data-en="Top Volume Spike" data-ar="أكبر ارتفاع في الحجم" data-fr="Pic de volume">Top Volume Spike</span></div>
-    <div class="i-value">BTC +36%</div>
+    <div class="i-value">XLM +80%</div>
   </div>
   <div class="intel-stat">
     <div class="i-label"><span class="t" data-en="Market Mood" data-ar="مزاج السوق" data-fr="Humeur du marché">Market Mood</span></div>
-    <div class="i-value">🐻 <span class="t" data-en="Bearish" data-ar="هابط" data-fr="Baissier">Bearish</span></div>
+    <div class="i-value">⚡ <span class="t" data-en="Cautious" data-ar="حذر" data-fr="Prudent">Cautious</span></div>
   </div>
   <div class="intel-stat">
     <div class="i-label"><span class="t" data-en="Key Event" data-ar="حدث رئيسي" data-fr="Événement clé">Key Event</span></div>
-    <div class="i-value"><span class="t" data-en="GENIUS Act deadline Jul 18" data-ar="موعد GENIUS Act 18 يوليو" data-fr="Délai GENIUS Act 18 juil">GENIUS Act deadline Jul 18</span></div>
+    <div class="i-value"><span class="t" data-en="HBAR ETF Tomorrow" data-ar="ETF هيديرا غداً" data-fr="ETF HBAR Demain">HBAR ETF Tomorrow</span></div>
   </div>
 </div>
 
@@ -244,6 +255,16 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     <div class="market-stat">
       <div class="label"><span class="t" data-en="24h Volume" data-ar="حجم 24 ساعة" data-fr="Vol. 24h">24h Volume</span></div>
       <div class="value">$91B</div>
+    </div>
+    <div class="market-stat">
+      <div class="label">😨 <span class="t" data-en="Fear &amp; Greed" data-ar="مؤشر الخوف والجشع" data-fr="Peur &amp; Avidité">Fear &amp; Greed</span></div>
+      <div class="value fng-fear">42</div>
+      <div class="change fng-fear">Fear</div>
+    </div>
+    <div class="market-stat">
+      <div class="label">🔄 <span class="t" data-en="Altcoin Index" data-ar="مؤشر موسم الألتكوين" data-fr="Indice Altcoin">Altcoin Index</span></div>
+      <div class="value fng-btc-season">38</div>
+      <div class="change fng-btc-season">Bitcoin Season</div>
     </div>
   </div>
   <div class="mood-bar">
@@ -403,6 +424,156 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       <div class="headline-box">Polygon (POL) slides with Layer-2 sector amid macro pressure</div>
       <div class="social-box">Low social signal. POL rebrand narrative fading; CT focus on BTC macro story today.</div>
     </div></div>
+    <!-- TRX -->
+    <div class="acc-row"><div class="acc-header" onclick="toggle(this)">
+      <span class="acc-rank">11</span>
+      <div class="acc-info"><div class="acc-name">Tron</div><div class="acc-ticker">TRX</div></div>
+      <div class="acc-price">$0.2847</div>
+      <div class="acc-change down">-1.8%</div>
+      <div class="acc-trend">3.5</div>
+      <span class="acc-sentiment bearish">Bearish</span>
+      <span class="acc-chevron">▼</span>
+    </div><div class="acc-body">
+      <div class="detail-row"><span class="detail-label">Market Cap</span><span class="detail-val">$24.6B</span></div>
+      <div class="detail-row"><span class="detail-label">24h Volume</span><span class="detail-val">$980M</span></div>
+      <div class="headline-box">Tron holds up relatively well; USDT on TRX remains highest-volume stablecoin corridor</div>
+      <div class="social-box">Tron CT quiet. Stablecoin volume narrative intact; traders using TRX as a stable transfer layer in volatile conditions.</div>
+    </div></div>
+    <!-- LINK -->
+    <div class="acc-row"><div class="acc-header" onclick="toggle(this)">
+      <span class="acc-rank">12</span>
+      <div class="acc-info"><div class="acc-name">Chainlink</div><div class="acc-ticker">LINK</div></div>
+      <div class="acc-price">$14.20</div>
+      <div class="acc-change down">-2.8%</div>
+      <div class="acc-trend">4.1</div>
+      <span class="acc-sentiment bearish">Bearish</span>
+      <span class="acc-chevron">▼</span>
+    </div><div class="acc-body">
+      <div class="detail-row"><span class="detail-label">Market Cap</span><span class="detail-val">$9.0B</span></div>
+      <div class="detail-row"><span class="detail-label">24h Volume</span><span class="detail-val">$580M</span></div>
+      <div class="headline-box">Chainlink CCIP adoption grows despite price weakness; cross-chain volume hits new highs</div>
+      <div class="social-box">DeFi-oriented CT bullish on LINK fundamentals but cautious short-term. CCIP narrative gaining traction among builders.</div>
+    </div></div>
+    <!-- TON -->
+    <div class="acc-row"><div class="acc-header" onclick="toggle(this)">
+      <span class="acc-rank">13</span>
+      <div class="acc-info"><div class="acc-name">Toncoin</div><div class="acc-ticker">TON</div></div>
+      <div class="acc-price">$3.45</div>
+      <div class="acc-change down">-3.2%</div>
+      <div class="acc-trend">4.5</div>
+      <span class="acc-sentiment bearish">Bearish</span>
+      <span class="acc-chevron">▼</span>
+    </div><div class="acc-body">
+      <div class="detail-row"><span class="detail-label">Market Cap</span><span class="detail-val">$8.7B</span></div>
+      <div class="detail-row"><span class="detail-label">24h Volume</span><span class="detail-val">$310M</span></div>
+      <div class="headline-box">Toncoin retreats from recent highs; Telegram mini-apps ecosystem growth continues quietly</div>
+      <div class="social-box">TON CT cautiously optimistic long-term on Telegram integration. Short-term price action disappointing bulls who expected a bigger Telegram-driven breakout.</div>
+    </div></div>
+    <!-- XLM -->
+    <div class="acc-row"><div class="acc-header" onclick="toggle(this)">
+      <span class="acc-rank">14</span>
+      <div class="acc-info"><div class="acc-name">Stellar</div><div class="acc-ticker">XLM</div></div>
+      <div class="acc-price">$0.1120</div>
+      <div class="acc-change up">+2.1%</div>
+      <div class="acc-trend">6.8</div>
+      <span class="acc-sentiment neutral-pill">Neutral</span>
+      <span class="acc-chevron">▼</span>
+    </div><div class="acc-body">
+      <div class="detail-row"><span class="detail-label">Market Cap</span><span class="detail-val">$3.3B</span></div>
+      <div class="detail-row"><span class="detail-label">24h Volume</span><span class="detail-val">$1.2B</span></div>
+      <div class="headline-box">Stellar bucks bearish trend with +2.1% gain; payment corridor volume spikes 80% on cross-border settlement demand</div>
+      <div class="social-box">XLM standing out green on a sea of red — CT flagging as a relative strength play. Payment narrative vs speculative coins resonating today.</div>
+    </div></div>
+    <!-- HBAR -->
+    <div class="acc-row"><div class="acc-header" onclick="toggle(this)">
+      <span class="acc-rank">15</span>
+      <div class="acc-info"><div class="acc-name">Hedera</div><div class="acc-ticker">HBAR</div></div>
+      <div class="acc-price">$0.0843</div>
+      <div class="acc-change up">+1.5%</div>
+      <div class="acc-trend">7.2</div>
+      <span class="acc-sentiment neutral-pill">Neutral</span>
+      <span class="acc-chevron">▼</span>
+    </div><div class="acc-body">
+      <div class="detail-row"><span class="detail-label">Market Cap</span><span class="detail-val">$3.0B</span></div>
+      <div class="detail-row"><span class="detail-label">24h Volume</span><span class="detail-val">$420M</span></div>
+      <div class="headline-box">Hedera outperforms market on ETF filing anticipation; HBAR ETF expected tomorrow</div>
+      <div class="social-box">CT heavily focused on the HBAR ETF catalyst. Considered the next crypto ETF approval after HBAR's enterprise adoption story. Sentiment cautiously bullish.</div>
+    </div></div>
+    <!-- LTC -->
+    <div class="acc-row"><div class="acc-header" onclick="toggle(this)">
+      <span class="acc-rank">16</span>
+      <div class="acc-info"><div class="acc-name">Litecoin</div><div class="acc-ticker">LTC</div></div>
+      <div class="acc-price">$68.50</div>
+      <div class="acc-change down">-1.9%</div>
+      <div class="acc-trend">2.8</div>
+      <span class="acc-sentiment bearish">Bearish</span>
+      <span class="acc-chevron">▼</span>
+    </div><div class="acc-body">
+      <div class="detail-row"><span class="detail-label">Market Cap</span><span class="detail-val">$5.1B</span></div>
+      <div class="detail-row"><span class="detail-label">24h Volume</span><span class="detail-val">$490M</span></div>
+      <div class="headline-box">Litecoin declines modestly; holds support above $67 amid broad market weakness</div>
+      <div class="social-box">Low CT energy around LTC. Viewed as a safe-haven alt by some; others exiting into BTC dominance. No notable narrative today.</div>
+    </div></div>
+    <!-- SHIB -->
+    <div class="acc-row"><div class="acc-header" onclick="toggle(this)">
+      <span class="acc-rank">17</span>
+      <div class="acc-info"><div class="acc-name">Shiba Inu</div><div class="acc-ticker">SHIB</div></div>
+      <div class="acc-price">$0.00000985</div>
+      <div class="acc-change down">-4.1%</div>
+      <div class="acc-trend">2.2</div>
+      <span class="acc-sentiment bearish">Bearish</span>
+      <span class="acc-chevron">▼</span>
+    </div><div class="acc-body">
+      <div class="detail-row"><span class="detail-label">Market Cap</span><span class="detail-val">$5.8B</span></div>
+      <div class="detail-row"><span class="detail-label">24h Volume</span><span class="detail-val">$310M</span></div>
+      <div class="headline-box">Shiba Inu drops 4%; meme sector under-performs broader market in risk-off session</div>
+      <div class="social-box">Meme CT quiet. SHIB sentiment weak as retail pulls back from risk assets. No major Shibarium or burn news to catalyze buying.</div>
+    </div></div>
+    <!-- UNI -->
+    <div class="acc-row"><div class="acc-header" onclick="toggle(this)">
+      <span class="acc-rank">18</span>
+      <div class="acc-info"><div class="acc-name">Uniswap</div><div class="acc-ticker">UNI</div></div>
+      <div class="acc-price">$6.85</div>
+      <div class="acc-change down">-3.3%</div>
+      <div class="acc-trend">3.3</div>
+      <span class="acc-sentiment bearish">Bearish</span>
+      <span class="acc-chevron">▼</span>
+    </div><div class="acc-body">
+      <div class="detail-row"><span class="detail-label">Market Cap</span><span class="detail-val">$4.1B</span></div>
+      <div class="detail-row"><span class="detail-label">24h Volume</span><span class="detail-val">$250M</span></div>
+      <div class="headline-box">Uniswap v4 deployment discussion overshadowed by macro selling; DEX volumes decline</div>
+      <div class="social-box">DeFi CT cautious. UNI governance tokens remain unloved in bear sessions. v4 narrative noted but not enough to counter macro headwinds.</div>
+    </div></div>
+    <!-- SUI -->
+    <div class="acc-row"><div class="acc-header" onclick="toggle(this)">
+      <span class="acc-rank">19</span>
+      <div class="acc-info"><div class="acc-name">Sui</div><div class="acc-ticker">SUI</div></div>
+      <div class="acc-price">$2.34</div>
+      <div class="acc-change down">-4.5%</div>
+      <div class="acc-trend">4.0</div>
+      <span class="acc-sentiment bearish">Bearish</span>
+      <span class="acc-chevron">▼</span>
+    </div><div class="acc-body">
+      <div class="detail-row"><span class="detail-label">Market Cap</span><span class="detail-val">$7.0B</span></div>
+      <div class="detail-row"><span class="detail-label">24h Volume</span><span class="detail-val">$480M</span></div>
+      <div class="headline-box">Sui Network drops 4.5% despite strong DeFi TVL growth; macro pressure overrides fundamentals</div>
+      <div class="social-box">Sui CT torn — strong on-chain metrics vs weak price action. Builders bullish but traders exiting. TVL growth narrative being overshadowed.</div>
+    </div></div>
+    <!-- OP -->
+    <div class="acc-row"><div class="acc-header" onclick="toggle(this)">
+      <span class="acc-rank">20</span>
+      <div class="acc-info"><div class="acc-name">Optimism</div><div class="acc-ticker">OP</div></div>
+      <div class="acc-price">$0.89</div>
+      <div class="acc-change down">-5.1%</div>
+      <div class="acc-trend">2.8</div>
+      <span class="acc-sentiment bearish">Bearish</span>
+      <span class="acc-chevron">▼</span>
+    </div><div class="acc-body">
+      <div class="detail-row"><span class="detail-label">Market Cap</span><span class="detail-val">$1.2B</span></div>
+      <div class="detail-row"><span class="detail-label">24h Volume</span><span class="detail-val">$195M</span></div>
+      <div class="headline-box">Optimism leads Layer-2 declines; OP ecosystem airdrop fatigue weighs on holders</div>
+      <div class="social-box">CT bearish on OP short-term. Airdrop farming narrative hurts organic holder sentiment. Superchain thesis intact but price action weak.</div>
+    </div></div>
   </div><!-- end accordion -->
 </div><!-- end crypto tab -->
 
@@ -422,6 +593,12 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     <div class="acc-row"><div class="acc-header" onclick="toggle(this)"><span class="acc-rank">3</span><div class="acc-info"><div class="acc-name">AST SpaceMobile</div><div class="acc-ticker">ASTS</div></div><div class="acc-price">$38.20</div><div class="acc-change up">+5.0%</div><div class="acc-trend"></div><span class="acc-sentiment bullish"><span class="t" data-en="Bullish" data-ar="صاعد" data-fr="Haussier">Bullish</span></span><span class="acc-chevron">▼</span></div><div class="acc-body"><div class="detail-row"><span class="detail-label">Sector</span><span class="detail-val">Technology</span></div><div class="headline-box">SpaceX puts three ASTS satellites into orbit; broadband space milestone approaching</div></div></div>
     <div class="acc-row"><div class="acc-header" onclick="toggle(this)"><span class="acc-rank">4</span><div class="acc-info"><div class="acc-name">SpaceX</div><div class="acc-ticker">SPCX</div></div><div class="acc-price">$209.80</div><div class="acc-change up">+4.8%</div><div class="acc-trend"></div><span class="acc-sentiment bullish"><span class="t" data-en="Bullish" data-ar="صاعد" data-fr="Haussier">Bullish</span></span><span class="acc-chevron">▼</span></div><div class="acc-body"><div class="detail-row"><span class="detail-label">Sector</span><span class="detail-val">Aerospace</span></div><div class="headline-box">SpaceX crosses $200/share, becomes 6th largest publicly traded US company</div></div></div>
     <div class="acc-row"><div class="acc-header" onclick="toggle(this)"><span class="acc-rank">5</span><div class="acc-info"><div class="acc-name">Intel</div><div class="acc-ticker">INTC</div></div><div class="acc-price">$119.22</div><div class="acc-change up">+3.6%</div><div class="acc-trend"></div><span class="acc-sentiment bullish"><span class="t" data-en="Bullish" data-ar="صاعد" data-fr="Haussier">Bullish</span></span><span class="acc-chevron">▼</span></div><div class="acc-body"><div class="detail-row"><span class="detail-label">Sector</span><span class="detail-val">Technology</span></div><div class="headline-box">Intel begins production of most advanced chip node; Trump backs domestic manufacturing</div></div></div>
+    <div class="acc-row"><div class="acc-header" onclick="toggle(this)"><span class="acc-rank">6</span><div class="acc-info"><div class="acc-name">Tesla</div><div class="acc-ticker">TSLA</div></div><div class="acc-price">$312.40</div><div class="acc-change up">+3.2%</div><div class="acc-trend"></div><span class="acc-sentiment bullish"><span class="t" data-en="Bullish" data-ar="صاعد" data-fr="Haussier">Bullish</span></span><span class="acc-chevron">▼</span></div><div class="acc-body"><div class="detail-row"><span class="detail-label">Sector</span><span class="detail-val">Technology / EV</span></div><div class="headline-box">Tesla bounces from oversold levels as EV demand data beats estimates; Optimus robot pre-orders open</div></div></div>
+    <div class="acc-row"><div class="acc-header" onclick="toggle(this)"><span class="acc-rank">7</span><div class="acc-info"><div class="acc-name">NVIDIA</div><div class="acc-ticker">NVDA</div></div><div class="acc-price">$142.60</div><div class="acc-change up">+2.8%</div><div class="acc-trend"></div><span class="acc-sentiment bullish"><span class="t" data-en="Bullish" data-ar="صاعد" data-fr="Haussier">Bullish</span></span><span class="acc-chevron">▼</span></div><div class="acc-body"><div class="detail-row"><span class="detail-label">Sector</span><span class="detail-val">Technology</span></div><div class="headline-box">NVIDIA extends AI chip dominance; Blackwell GPU backlog grows to 18 months</div></div></div>
+    <div class="acc-row"><div class="acc-header" onclick="toggle(this)"><span class="acc-rank">8</span><div class="acc-info"><div class="acc-name">Meta Platforms</div><div class="acc-ticker">META</div></div><div class="acc-price">$735.20</div><div class="acc-change up">+2.5%</div><div class="acc-trend"></div><span class="acc-sentiment bullish"><span class="t" data-en="Bullish" data-ar="صاعد" data-fr="Haussier">Bullish</span></span><span class="acc-chevron">▼</span></div><div class="acc-body"><div class="detail-row"><span class="detail-label">Sector</span><span class="detail-val">Communication</span></div><div class="headline-box">Meta ad revenue beats Q2 estimates; Llama AI monetization ahead of schedule</div></div></div>
+    <div class="acc-row"><div class="acc-header" onclick="toggle(this)"><span class="acc-rank">9</span><div class="acc-info"><div class="acc-name">Amazon</div><div class="acc-ticker">AMZN</div></div><div class="acc-price">$226.80</div><div class="acc-change up">+2.1%</div><div class="acc-trend"></div><span class="acc-sentiment bullish"><span class="t" data-en="Bullish" data-ar="صاعد" data-fr="Haussier">Bullish</span></span><span class="acc-chevron">▼</span></div><div class="acc-body"><div class="detail-row"><span class="detail-label">Sector</span><span class="detail-val">Technology</span></div><div class="headline-box">Amazon AWS revenue accelerates; AI cloud infrastructure spending hits record</div></div></div>
+    <div class="acc-row"><div class="acc-header" onclick="toggle(this)"><span class="acc-rank">10</span><div class="acc-info"><div class="acc-name">Microsoft</div><div class="acc-ticker">MSFT</div></div><div class="acc-price">$498.50</div><div class="acc-change up">+1.8%</div><div class="acc-trend"></div><span class="acc-sentiment bullish"><span class="t" data-en="Bullish" data-ar="صاعد" data-fr="Haussier">Bullish</span></span><span class="acc-chevron">▼</span></div><div class="acc-body"><div class="detail-row"><span class="detail-label">Sector</span><span class="detail-val">Technology</span></div><div class="headline-box">Microsoft Copilot 365 seat growth exceeds analyst estimates; Azure AI workloads +41% YoY</div></div></div>
+
   </div>
 
   <div class="section-title"><span class="t" data-en="Top Losers" data-ar="أكبر الخاسرين" data-fr="Plus Grosses Baisses">Top Losers</span></div>
@@ -430,7 +607,12 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     <div class="acc-row"><div class="acc-header" onclick="toggle(this)"><span class="acc-rank">2</span><div class="acc-info"><div class="acc-name">Carvana</div><div class="acc-ticker">CVNA</div></div><div class="acc-price">$185.40</div><div class="acc-change down">-10.3%</div><div class="acc-trend"></div><span class="acc-sentiment bearish"><span class="t" data-en="Bearish" data-ar="هابط" data-fr="Baissier">Bearish</span></span><span class="acc-chevron">▼</span></div><div class="acc-body"><div class="detail-row"><span class="detail-label">Sector</span><span class="detail-val">Consumer Discretionary</span></div><div class="headline-box">Carvana slides as used-car market pressures and rate-hike fears weigh on growth outlook</div></div></div>
     <div class="acc-row"><div class="acc-header" onclick="toggle(this)"><span class="acc-rank">3</span><div class="acc-info"><div class="acc-name">Lionsgate Studios</div><div class="acc-ticker">LION</div></div><div class="acc-price">$11.80</div><div class="acc-change down">-6.0%</div><div class="acc-trend"></div><span class="acc-sentiment bearish"><span class="t" data-en="Bearish" data-ar="هابط" data-fr="Baissier">Bearish</span></span><span class="acc-chevron">▼</span></div><div class="acc-body"><div class="detail-row"><span class="detail-label">Sector</span><span class="detail-val">Communication</span></div><div class="headline-box">Netflix denies Lionsgate acquisition reports, erasing prior session's surge</div></div></div>
     <div class="acc-row"><div class="acc-header" onclick="toggle(this)"><span class="acc-rank">4</span><div class="acc-info"><div class="acc-name">CME Group</div><div class="acc-ticker">CME</div></div><div class="acc-price">$248.30</div><div class="acc-change down">-4.0%</div><div class="acc-trend"></div><span class="acc-sentiment bearish"><span class="t" data-en="Bearish" data-ar="هابط" data-fr="Baissier">Bearish</span></span><span class="acc-chevron">▼</span></div><div class="acc-body"><div class="detail-row"><span class="detail-label">Sector</span><span class="detail-val">Financials</span></div><div class="headline-box">CME drops after CEO Terry Duffy announces he will step down early next year</div></div></div>
-    <div class="acc-row"><div class="acc-header" onclick="toggle(this)"><span class="acc-rank">5</span><div class="acc-info"><div class="acc-name">Lumentum</div><div class="acc-ticker">LITE</div></div><div class="acc-price">$68.40</div><div class="acc-change down">-3.2%</div><div class="acc-trend"></div><span class="acc-sentiment bearish"><span class="t" data-en="Bearish" data-ar="هابط" data-fr="Baissier">Bearish</span></span><span class="acc-chevron">▼</span></div><div class="acc-body"><div class="detail-row"><span class="detail-label">Sector</span><span class="detail-val">Technology</span></div><div class="headline-box">Lumentum extends two-day slide as photonics sector faces ongoing demand uncertainty</div></div></div>
+    <div class="acc-row"><div class="acc-header" onclick="toggle(this)"><span class="acc-rank">5</span><div class="acc-info"><div class="acc-name">Lumentum</div><div class="acc-ticker">LITE</div></div><div class="acc-price">$68.40</div><div class="acc-change down">-3.2%</div><div class="acc-trend"></div><span class="acc-sentiment bearish"><span class="t" data-en="Bearish" data-ar="هابط" data-fr="Baissier">Bearish</span></span><span class="acc-chevron">▼</span></div><div class="acc-body"><div class="detail-row"><span class="detail-label">Sector</span><span class="detail-val">Technology</span></div><div class="headline-box">Lumentum extends two-day slide as photonics sector faces ongoing demand uncertainty</div>    <div class="acc-row"><div class="acc-header" onclick="toggle(this)"><span class="acc-rank">6</span><div class="acc-info"><div class="acc-name">Coinbase</div><div class="acc-ticker">COIN</div></div><div class="acc-price">$218.40</div><div class="acc-change down">-4.2%</div><div class="acc-trend"></div><span class="acc-sentiment bearish"><span class="t" data-en="Bearish" data-ar="هابط" data-fr="Baissier">Bearish</span></span><span class="acc-chevron">▼</span></div><div class="acc-body"><div class="detail-row"><span class="detail-label">Sector</span><span class="detail-val">Financials</span></div><div class="headline-box">Coinbase falls with crypto markets; trading volume drops 18% as retail sentiment cools</div></div></div>
+    <div class="acc-row"><div class="acc-header" onclick="toggle(this)"><span class="acc-rank">7</span><div class="acc-info"><div class="acc-name">MicroStrategy</div><div class="acc-ticker">MSTR</div></div><div class="acc-price">$1,640</div><div class="acc-change down">-5.6%</div><div class="acc-trend"></div><span class="acc-sentiment bearish"><span class="t" data-en="Bearish" data-ar="هابط" data-fr="Baissier">Bearish</span></span><span class="acc-chevron">▼</span></div><div class="acc-body"><div class="detail-row"><span class="detail-label">Sector</span><span class="detail-val">Technology</span></div><div class="headline-box">MicroStrategy slides as BTC proxy selling accelerates; Bitcoin treasury strategy under pressure</div></div></div>
+    <div class="acc-row"><div class="acc-header" onclick="toggle(this)"><span class="acc-rank">8</span><div class="acc-info"><div class="acc-name">Riot Platforms</div><div class="acc-ticker">RIOT</div></div><div class="acc-price">$8.45</div><div class="acc-change down">-6.1%</div><div class="acc-trend"></div><span class="acc-sentiment bearish"><span class="t" data-en="Bearish" data-ar="هابط" data-fr="Baissier">Bearish</span></span><span class="acc-chevron">▼</span></div><div class="acc-body"><div class="detail-row"><span class="detail-label">Sector</span><span class="detail-val">Financials</span></div><div class="headline-box">Riot mining stock leads crypto-equity declines as BTC sells off; hash rate economics tighten</div></div></div>
+    <div class="acc-row"><div class="acc-header" onclick="toggle(this)"><span class="acc-rank">9</span><div class="acc-info"><div class="acc-name">Netflix</div><div class="acc-ticker">NFLX</div></div><div class="acc-price">$1,082</div><div class="acc-change down">-2.5%</div><div class="acc-trend"></div><span class="acc-sentiment bearish"><span class="t" data-en="Bearish" data-ar="هابط" data-fr="Baissier">Bearish</span></span><span class="acc-chevron">▼</span></div><div class="acc-body"><div class="detail-row"><span class="detail-label">Sector</span><span class="detail-val">Communication</span></div><div class="headline-box">Netflix dips after denying Lionsgate deal; market questions streaming consolidation timeline</div></div></div>
+    <div class="acc-row"><div class="acc-header" onclick="toggle(this)"><span class="acc-rank">10</span><div class="acc-info"><div class="acc-name">Walt Disney</div><div class="acc-ticker">DIS</div></div><div class="acc-price">$96.80</div><div class="acc-change down">-2.8%</div><div class="acc-trend"></div><span class="acc-sentiment bearish"><span class="t" data-en="Bearish" data-ar="هابط" data-fr="Baissier">Bearish</span></span><span class="acc-chevron">▼</span></div><div class="acc-body"><div class="detail-row"><span class="detail-label">Sector</span><span class="detail-val">Communication</span></div><div class="headline-box">Disney underperforms on streaming subscriber concerns; ESPN spin-off timeline questioned</div></div></div>
+</div></div>
   </div>
 </div><!-- end stocks tab -->
 
