@@ -158,6 +158,43 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 .alert-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 4px; }
 .alert-list li { font-size: 12px; color: var(--text); line-height: 1.55; padding-left: 12px; }
 [dir="rtl"] .alert-list li { padding-left: 0; padding-right: 12px; }
+
+/* -- EVENTS & SEASONALITY SECTION -- */
+.events-section { margin-bottom: 18px; }
+.events-header { font-size: 11px; font-weight: 800; letter-spacing: 0.8px;
+  text-transform: uppercase; color: var(--accent); margin-bottom: 10px; }
+.events-grid { display: flex; flex-direction: column; gap: 6px; }
+.event-card { display: flex; align-items: flex-start; gap: 12px;
+  padding: 10px 14px; border-radius: 8px; border: 1px solid var(--border);
+  background: var(--surface); }
+.event-card.critical { border-left: 3px solid var(--red); background: rgba(255,77,106,0.06); }
+.event-card.warning  { border-left: 3px solid var(--yellow); background: rgba(255,209,102,0.06); }
+.event-card.info     { border-left: 3px solid var(--accent); background: rgba(108,99,255,0.06); }
+.event-card.positive { border-left: 3px solid var(--green); background: rgba(0,214,143,0.06); }
+.event-card.season   { border-left: 3px solid #7c83a0; background: rgba(124,131,160,0.06); }
+.event-badge { font-size: 10px; font-weight: 800; letter-spacing: 0.5px;
+  white-space: nowrap; min-width: 90px; margin-top: 1px; }
+.event-card.critical .event-badge { color: var(--red); }
+.event-card.warning  .event-badge { color: var(--yellow); }
+.event-card.info     .event-badge { color: var(--accent); }
+.event-card.positive .event-badge { color: var(--green); }
+.event-card.season   .event-badge { color: #7c83a0; }
+.event-body { flex: 1; }
+.event-name { font-size: 13px; font-weight: 700; color: var(--text); margin-bottom: 2px; }
+.event-desc { font-size: 11px; color: var(--muted); line-height: 1.55; }
+
+/* -- SEASONALITY GAUGE -- */
+.season-bar { margin-bottom: 18px; background: var(--surface);
+  border: 1px solid var(--border); border-radius: 10px; padding: 12px 16px; }
+.season-bar-header { font-size: 10px; color: var(--muted); text-transform: uppercase;
+  letter-spacing: 0.5px; margin-bottom: 8px; }
+.season-months { display: flex; gap: 3px; }
+.s-month { flex: 1; height: 22px; border-radius: 3px; display: flex;
+  align-items: center; justify-content: center; font-size: 9px; font-weight: 700; }
+.s-weak   { background: rgba(255,77,106,0.25); color: var(--red); }
+.s-strong { background: rgba(0,214,143,0.20); color: var(--green); }
+.s-mixed  { background: rgba(255,209,102,0.20); color: var(--yellow); }
+.s-now    { outline: 2px solid var(--accent); outline-offset: 1px; }
 /* -- FEAR & GREED / ALTCOIN SEASON COLORS -- */
 .fng-extreme-fear { color: #ff2d55; }
 .fng-fear         { color: #ff8c42; }
@@ -194,27 +231,6 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   </div>
 </div>
 
-<!-- ══ ALERT BANNER ══ -->
-<div class="alert-wrapper">
-  <div class="alert-section spike-section">
-    <div class="alert-section-header">🚨 <span class="t" data-en="SPIKE ALERTS" data-ar="تنبيهات الارتفاع الحاد" data-fr="ALERTES HAUSSE">SPIKE ALERTS</span></div>
-    <ul class="alert-list">
-      <li>• <span class="t" data-en="BTC: 24h volume surged +36% to $32.5B on a down day · active selling pressure confirms distribution, not a passive dip" data-ar="BTC: حجم 24 ساعة ارتفع 36% إلى 32.5 مليار دولار في يوم هابط · ضغط بيع نشط يؤكد التوزيع لا مجرد انخفاض" data-fr="BTC: volume 24h +36% à $32,5G un jour baissier · pression vendeuse active — distribution, pas simple baisse">BTC: 24h volume surged +36% to $32.5B on a down day · active selling pressure confirms distribution, not a passive dip</span></li>
-      <li>• <span class="t" data-en="XLM: volume spike +80% above 7-day average · Stellar payment network activity surging" data-ar="XLM: ارتفاع حجم +80% فوق المتوسط 7 أيام · نشاط شبكة ستيلار للمدفوعات يتسارع" data-fr="XLM: pic volume +80% au-dessus de la moyenne 7j · activité réseau paiement Stellar en hausse">XLM: volume spike +80% above 7-day average · Stellar payment network activity surging</span></li>
-    </ul>
-  </div>
-  <div class="alert-section news-section">
-    <div class="alert-section-header">⚠️ <span class="t" data-en="EVENT RISKS &amp; BREAKING NEWS" data-ar="مخاطر الأحداث والأخبار العاجلة" data-fr="RISQUES ÉVÉNEMENTIELS &amp; ACTUALITÉS">EVENT RISKS &amp; BREAKING NEWS</span></div>
-    <ul class="alert-list">
-      <li>🔴 <span class="t" data-en="SOL: $1B USDC mint clashes with Drift DeFi shutdown — users face unresolved fund recovery issues" data-ar="SOL: سك USDC بمليار دولار يتصادم مع إغلاق Drift DeFi — المستخدمون يواجهون مشاكل استرداد معلقة" data-fr="SOL: création $1G USDC heurte fermeture Drift DeFi — utilisateurs face à récupération non résolue">SOL: $1B USDC mint clashes with Drift DeFi shutdown — users face unresolved fund recovery issues</span></li>
-      <li>🟡 <span class="t" data-en="US regulators propose bank-style customer ID rules for stablecoin issuers — CT watching closely" data-ar="المنظمون الأمريكيون يقترحون قواعد تعريف عملاء مصرفية لمصدري العملات المستقرة — CT تراقب عن كثب" data-fr="Régulateurs US proposent règles d'identification bancaire pour stablecoins — CT surveille de près">US regulators propose bank-style customer ID rules for stablecoin issuers — CT watching closely</span></li>
-      <li>🟡 <span class="t" data-en="GENIUS Act stablecoin implementation deadline approaching July 18, 2026 — industry on alert" data-ar="موعد تطبيق قانون GENIUS للعملات المستقرة يقترب في 18 يوليو 2026 — الصناعة في حالة تأهب" data-fr="Délai GENIUS Act stablecoins approche le 18 juillet 2026 — industrie en alerte">GENIUS Act stablecoin implementation deadline approaching July 18, 2026 — industry on alert</span></li>
-      <li>🟢 <span class="t" data-en="Crypto-equities divergence today: S&amp;P +1.15% on Iran deal while BTC -1.6% · rate-hike odds now at 60%" data-ar="انفصال الكريبتو عن الأسهم اليوم: S&amp;P +1.15% بفضل اتفاقية إيران بينما BTC -1.6% · احتمالات رفع الفائدة 60%" data-fr="Divergence crypto-actions: S&amp;P +1,15% sur accord Iran tandis que BTC -1,6% · probabilité hausse taux à 60%">Crypto-equities divergence today: S&amp;P +1.15% on Iran deal while BTC -1.6% · rate-hike odds now at 60%</span></li>
-      <li>🔵 <span class="t" data-en="HBAR ETF filing expected tomorrow — Hedera ecosystem buzzing with anticipation" data-ar="تقديم ETF لـ HBAR متوقع غداً — نظام هيديرا البيئي يتوقع بفارغ الصبر" data-fr="Dépôt ETF HBAR attendu demain — écosystème Hedera en effervescence">HBAR ETF filing expected tomorrow — Hedera ecosystem buzzing with anticipation</span></li>
-    </ul>
-  </div>
-</div>
-
 <!-- ══ TABS ══ -->
 <div class="intel-bar">
   <div class="intel-stat">
@@ -242,6 +258,25 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 
 <!-- ══ CRYPTO TAB ══ -->
 <div class="tab-content active" id="tab-content-crypto">
+<div class="alert-wrapper">
+  <div class="alert-section spike-section">
+    <div class="alert-section-header">🚨 <span class="t" data-en="SPIKE ALERTS" data-ar="تنبيهات الارتفاع الحاد" data-fr="ALERTES HAUSSE">SPIKE ALERTS</span></div>
+    <ul class="alert-list">
+      <li>• <span class="t" data-en="BTC: 24h volume surged +36% to $32.5B on a down day · active selling pressure confirms distribution, not a passive dip" data-ar="BTC: حجم 24 ساعة ارتفع 36% إلى 32.5 مليار دولار في يوم هابط · ضغط بيع نشط يؤكد التوزيع لا مجرد انخفاض" data-fr="BTC: volume 24h +36% à $32,5G un jour baissier · pression vendeuse active — distribution, pas simple baisse">BTC: 24h volume surged +36% to $32.5B on a down day · active selling pressure confirms distribution, not a passive dip</span></li>
+      <li>• <span class="t" data-en="XLM: volume spike +80% above 7-day average · Stellar payment network activity surging" data-ar="XLM: ارتفاع حجم +80% فوق المتوسط 7 أيام · نشاط شبكة ستيلار للمدفوعات يتسارع" data-fr="XLM: pic volume +80% au-dessus de la moyenne 7j · activité réseau paiement Stellar en hausse">XLM: volume spike +80% above 7-day average · Stellar payment network activity surging</span></li>
+    </ul>
+  </div>
+  <div class="alert-section news-section">
+    <div class="alert-section-header">⚠️ <span class="t" data-en="EVENT RISKS &amp; BREAKING NEWS" data-ar="مخاطر الأحداث والأخبار العاجلة" data-fr="RISQUES ÉVÉNEMENTIELS &amp; ACTUALITÉS">EVENT RISKS &amp; BREAKING NEWS</span></div>
+    <ul class="alert-list">
+      <li>🔴 <span class="t" data-en="SOL: $1B USDC mint clashes with Drift DeFi shutdown — users face unresolved fund recovery issues" data-ar="SOL: سك USDC بمليار دولار يتصادم مع إغلاق Drift DeFi — المستخدمون يواجهون مشاكل استرداد معلقة" data-fr="SOL: création $1G USDC heurte fermeture Drift DeFi — utilisateurs face à récupération non résolue">SOL: $1B USDC mint clashes with Drift DeFi shutdown — users face unresolved fund recovery issues</span></li>
+      <li>🟡 <span class="t" data-en="US regulators propose bank-style customer ID rules for stablecoin issuers — CT watching closely" data-ar="المنظمون الأمريكيون يقترحون قواعد تعريف عملاء مصرفية لمصدري العملات المستقرة — CT تراقب عن كثب" data-fr="Régulateurs US proposent règles d'identification bancaire pour stablecoins — CT surveille de près">US regulators propose bank-style customer ID rules for stablecoin issuers — CT watching closely</span></li>
+      <li>🟡 <span class="t" data-en="GENIUS Act stablecoin implementation deadline approaching July 18, 2026 — industry on alert" data-ar="موعد تطبيق قانون GENIUS للعملات المستقرة يقترب في 18 يوليو 2026 — الصناعة في حالة تأهب" data-fr="Délai GENIUS Act stablecoins approche le 18 juillet 2026 — industrie en alerte">GENIUS Act stablecoin implementation deadline approaching July 18, 2026 — industry on alert</span></li>
+      <li>🟢 <span class="t" data-en="Crypto-equities divergence today: S&amp;P +1.15% on Iran deal while BTC -1.6% · rate-hike odds now at 60%" data-ar="انفصال الكريبتو عن الأسهم اليوم: S&amp;P +1.15% بفضل اتفاقية إيران بينما BTC -1.6% · احتمالات رفع الفائدة 60%" data-fr="Divergence crypto-actions: S&amp;P +1,15% sur accord Iran tandis que BTC -1,6% · probabilité hausse taux à 60%">Crypto-equities divergence today: S&amp;P +1.15% on Iran deal while BTC -1.6% · rate-hike odds now at 60%</span></li>
+      <li>🔵 <span class="t" data-en="HBAR ETF filing expected tomorrow — Hedera ecosystem buzzing with anticipation" data-ar="تقديم ETF لـ HBAR متوقع غداً — نظام هيديرا البيئي يتوقع بفارغ الصبر" data-fr="Dépôt ETF HBAR attendu demain — écosystème Hedera en effervescence">HBAR ETF filing expected tomorrow — Hedera ecosystem buzzing with anticipation</span></li>
+    </ul>
+  </div>
+</div>
   <div class="market-overview" style="margin-top:14px">
     <div class="market-stat">
       <div class="label"><span class="t" data-en="Market Cap" data-ar="القيمة السوقية" data-fr="Cap. Marché">Market Cap</span></div>
@@ -579,11 +614,74 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 
 <!-- ══ STOCKS TAB ══ -->
 <div class="tab-content" id="tab-content-stocks">
+<div class="alert-wrapper"><div class="alert-section spike-section"><div class="alert-section-header">🚨 <span class="t" data-en="STOCK SPIKE ALERTS" data-ar="تنبيهات الأسهم الحادة" data-fr="ALERTES HAUSSES ACTIONS">STOCK SPIKE ALERTS</span></div><ul class="alert-list"><li>• <span class="t" data-en="AVGO: +7.8% on massive volume surge — AI chip demand narrative accelerating after earnings beat" data-ar="AVGO: +7.8% مع ارتفاع حجم ضخم — قصة الطلب على رقائق الذكاء الاصطناعي تتسارع بعد تجاوز التوقعات" data-fr="AVGO: +7,8% avec fort volume — narrative puces IA s&#39;accélère après battement de rà0sultats">AVGO: +7.8% on massive volume surge — AI chip demand narrative accelerating after earnings beat</span></li><li>• <span class="t" data-en="Defense stocks (RTX, LMT, NOC): unusual call option activity — Iran deal uncertainty driving sector rotation" data-ar="أسهم الدفاع (RTX, LMT, NOC): نشاط خيارات شراء غير عادي — حالة عدم يقين من صفقة إيران تدفع تحويل القطاع" data-fr="Défense (RTX, LMT, NOC): activité options call inhabituelle — accord Iran crée rotation sectorielle">Defense stocks (RTX, LMT, NOC): unusual call option activity — Iran deal uncertainty driving sector rotation</span></li></ul></div><div class="alert-section news-section"><div class="alert-section-header">⚠️ <span class="t" data-en="MARKET RISKS &amp; BREAKING NEWS" data-ar="مخاطر السوق والأخبار العاجلة" data-fr="RISQUES MARCHÉ &amp; ACTUALITÉS">MARKET RISKS &amp; BREAKING NEWS</span></div><ul class="alert-list"><li>🔴 <span class="t" data-en="S&amp;P 500 +1.15% on Iran peace deal optimism — risk-on sentiment broad-based across sectors" data-ar="S&amp;P 500 +1.15% بدافع تفاؤل صفقة السلام الإيرانية — شهية المخاطرة واسعة النطاق" data-fr="S&amp;P 500 +1,15% sur optimisme accord Iran — sentiment risk-on étendu à tous secteurs">S&amp;P 500 +1.15% on Iran peace deal optimism — risk-on sentiment broad-based across sectors</span></li><li>🟡 <span class="t" data-en="FOMC rate decision Jul 29-30: markets pricing 60% probability of +25bps hike — watch CPI Jul 11" data-ar="قرار الفيدرالي 29-30 يوليو: السوق يسعر 60% احتمال رفع +25 نقطة — راقب CPI في 11 يوليو" data-fr="FOMC 29-30 juil: marchés pricent 60% hausse +25pdb — surveiller IPC 11 juil">FOMC rate decision Jul 29-30: markets pricing 60% probability of +25bps hike — watch CPI Jul 11</span></li><li>🟡 <span class="t" data-en="Quad Witching TOMORROW (Jun 19) — expect elevated volume &amp; volatility, especially final trading hour" data-ar="Quad Witching غداً (19 يونيو) — توقع ارتفاع الحجم والتقلبات خاصةً في آخر ساعة تداول" data-fr="Quad Witching DEMAIN (19 juin) — volume &amp; volatilité élevés attendus, surtout dernière heure">Quad Witching TOMORROW (Jun 19) — expect elevated volume &amp; volatility, especially final trading hour</span></li><li>🟢 <span class="t" data-en="10Y Treasury yield +0.04% to 4.65% — VIX ticking up to 18.2, growth stocks under mild pressure" data-ar="عائد السندات 10 سنوات +0.04% إلى 4.65% — VIX يرتفع إلى 18.2، أسهم النمو تحت ضغط خفيف" data-fr="Taux 10 ans +0,04% à 4,65% — VIX monte à 18,2, actions croissance sous pression modérée">10Y Treasury yield +0.04% to 4.65% — VIX ticking up to 18.2, growth stocks under mild pressure</span></li><li>🔵 <span class="t" data-en="Q2 earnings season starts Jul 15 (JPM, BAC, WFC) — consensus EPS growth +8.2% YoY for S&amp;P 500" data-ar="موسم أرباح الربع الثاني يبدأ 15 يوليو (JPM, BAC, WFC) — توقعات نمو EPS +8.2% سنوياً" data-fr="Saison résultats T2 démarre 15 juil (JPM, BAC, WFC) — consensus BPA +8,2% vs N-1">Q2 earnings season starts Jul 15 (JPM, BAC, WFC) — consensus EPS growth +8.2% YoY for S&amp;P 500</span></li></ul></div></div>
   <div class="market-overview" style="margin-top:14px">
     <div class="market-stat"><div class="label">S&amp;P 500</div><div class="value">7,447</div><div class="change up">+1.15%</div></div>
     <div class="market-stat"><div class="label">NASDAQ</div><div class="value">26,021</div><div class="change up">+1.50%</div></div>
     <div class="market-stat"><div class="label">DOW</div><div class="value">52,202</div><div class="change up">+0.80%</div></div>
+    <div class="market-stat">
+      <div class="label"><span class="t" data-en="VIX" data-ar="مؤشر VIX" data-fr="VIX">VIX</span></div>
+      <div class="value up">18.2</div>
+      <div class="change up">+1.8</div>
+    </div>
+    <div class="market-stat">
+      <div class="label"><span class="t" data-en="10Y Yield" data-ar="عائد 10 سنوات" data-fr="Taux 10 ans">10Y Yield</span></div>
+      <div class="value up">4.65%</div>
+      <div class="change up">+0.04</div>
+    </div>
+    <div class="market-stat">
+      <div class="label"><span class="t" data-en="Fed Rate" data-ar="معدل الفيدرالي" data-fr="Taux Fed">Fed Rate</span></div>
+      <div class="value neutral">4.50%</div>
+      <div class="change neutral">On Hold</div>
+    </div>
   </div>
+  <div class="events-section">
+  <div class="events-header">📅 <span class="t" data-en="Market Events &amp; Seasonality" data-ar="أحداث السوق والموسمية" data-fr="Événements &amp; Saisonnalité">Market Events &amp; Seasonality</span></div>
+  <div class="events-grid">
+
+    <div class="event-card critical">
+      <div class="event-badge">🔴 <span class="t" data-en="TOMORROW" data-ar="غداً" data-fr="DEMAIN">TOMORROW</span></div>
+      <div class="event-body">
+        <div class="event-name"><span class="t" data-en="⚡ QUAD WITCHING — Jun 19, 2026" data-ar="⚡ انتهاء الصلاحيات الرباعية — 19 يونيو 2026" data-fr="⚡ QUADRUPLE ÉCHÉANCE — 19 juin 2026">⚡ QUAD WITCHING — Jun 19, 2026</span></div>
+        <div class="event-desc"><span class="t" data-en="Simultaneous expiry of index futures, index options, stock futures &amp; stock options. Expect volume surge &amp; volatility spikes in the final hour. Occurs 4× per year (3rd Friday of Mar, Jun, Sep, Dec)." data-ar="انتهاء صلاحية متزامن لعقود مؤشرات المستقبل والخيارات وعقود الأسهم المستقبلية وخيارات الأسهم. توقع ارتفاع الحجم وتقلبات حادة في الساعة الأخيرة. يحدث 4 مرات سنوياً (الجمعة الثالثة من مارس ويونيو وسبتمبر وديسمبر)." data-fr="Expiration simultanée futures indices, options indices, futures actions &amp; options actions. Volume &amp; volatilité attendus en clôture. Se produit 4× par an (3e vendredi de mars, juin, sept, déc).">Simultaneous expiry of index futures, index options, stock futures &amp; stock options. Expect volume surge &amp; volatility spikes in the final hour. Occurs 4× per year (3rd Friday of Mar, Jun, Sep, Dec).</span></div>
+      </div>
+    </div>
+
+    <div class="event-card warning">
+      <div class="event-badge">🟡 <span class="t" data-en="30 DAYS" data-ar="30 يوماً" data-fr="30 JOURS">30 DAYS</span></div>
+      <div class="event-body">
+        <div class="event-name"><span class="t" data-en="FOMC Meeting — Jul 29–30, 2026" data-ar="اجتماع FOMC — 29-30 يوليو 2026" data-fr="Réunion FOMC — 29–30 juil. 2026">FOMC Meeting — Jul 29–30, 2026</span></div>
+        <div class="event-desc"><span class="t" data-en="Market pricing 60% probability of +25bps rate hike. Current Fed rate: 4.50%. A hike would be the first since the pause cycle. Key input: CPI release Jul 11, 2026." data-ar="السوق يسعّر احتمالية 60% لرفع +25 نقطة أساس. معدل الفيدرالي الحالي: 4.50%. سيكون الرفع الأول منذ دورة التوقف. المؤشر الرئيسي: بيانات CPI في 11 يوليو 2026." data-fr="Le marché price 60% de probabilité de +25pdb. Taux Fed actuel: 4,50%. Une hausse serait la première depuis le cycle de pause. Entrée clé: IPC du 11 juil. 2026.">Market pricing 60% probability of +25bps rate hike. Current Fed rate: 4.50%. A hike would be the first since the pause cycle. Key input: CPI release Jul 11, 2026.</span></div>
+      </div>
+    </div>
+
+    <div class="event-card info">
+      <div class="event-badge">🔵 <span class="t" data-en="JUL 15" data-ar="15 يوليو" data-fr="15 JUIL">JUL 15</span></div>
+      <div class="event-body">
+        <div class="event-name"><span class="t" data-en="Q2 Earnings Season Begins" data-ar="بدء موسم أرباح الربع الثاني" data-fr="Début saison résultats T2">Q2 Earnings Season Begins</span></div>
+        <div class="event-desc"><span class="t" data-en="Banks open: JPM, BAC, WFC (Jul 15). Big Tech week of Jul 21: MSFT, GOOGL, META, AMZN. NVDA: late Aug. Consensus S&amp;P 500 Q2 EPS growth: +8.2% YoY." data-ar="البنوك أولاً: JPM وBAC وWFC (15 يوليو). تكنولوجيا كبرى في 21 يوليو: MSFT وGOOGL وMETA وAMZN. NVDA: أواخر أغسطس. توقعات نمو ربحية S&amp;P 500 في الربع الثاني: +8.2% سنوياً." data-fr="Banques: JPM, BAC, WFC (15 juil). Big Tech semaine 21 juil: MSFT, GOOGL, META, AMZN. NVDA: fin août. Consensus BPA S&amp;P 500 T2: +8,2% sur un an.">Banks open: JPM, BAC, WFC (Jul 15). Big Tech week of Jul 21: MSFT, GOOGL, META, AMZN. NVDA: late Aug. Consensus S&amp;P 500 Q2 EPS growth: +8.2% YoY.</span></div>
+      </div>
+    </div>
+
+    <div class="event-card positive">
+      <div class="event-badge">🟢 <span class="t" data-en="THIS WEEK" data-ar="هذا الأسبوع" data-fr="CETTE SEM.">THIS WEEK</span></div>
+      <div class="event-body">
+        <div class="event-name"><span class="t" data-en="Key Economic Data" data-ar="بيانات اقتصادية رئيسية" data-fr="Données économiques clés">Key Economic Data</span></div>
+        <div class="event-desc"><span class="t" data-en="Thu Jun 19: Jobless Claims · Existing Home Sales · Philly Fed Index. Fri Jun 20: Flash PMI (Mfg &amp; Services). Next NFP: Fri Jul 3, 2026." data-ar="الخميس 19 يونيو: طلبات البطالة · مبيعات المنازل القائمة · مؤشر فيلادلفيا. الجمعة 20 يونيو: PMI التمهيدي. تقرير الوظائف القادم: 3 يوليو 2026." data-fr="Jeu 19 juin: Inscriptions chômage · Ventes maisons · Philly Fed. Ven 20 juin: PMI Flash. Prochain NFP: Ven 3 juil. 2026.">Thu Jun 19: Jobless Claims · Existing Home Sales · Philly Fed Index. Fri Jun 20: Flash PMI (Mfg &amp; Services). Next NFP: Fri Jul 3, 2026.</span></div>
+      </div>
+    </div>
+
+    <div class="event-card season">
+      <div class="event-badge">📊 <span class="t" data-en="SEASONALITY" data-ar="الموسمية" data-fr="SAISONNALITÉ">SEASONALITY</span></div>
+      <div class="event-body">
+        <div class="event-name"><span class="t" data-en="Summer Doldrums — Jun/Jul/Aug Historically Weak" data-ar="فتور الصيف — يونيو/يوليو/أغسطس ضعيفة تاريخياً" data-fr="Syndrome Estival — Juin/Juil/Août historiquement faibles">Summer Doldrums — Jun/Jul/Aug Historically Weak</span></div>
+        <div class="event-desc"><span class="t" data-en="Sell in May pattern extends through Aug. S&amp;P Jun avg: -0.4% · Sep avg: -1.2% (worst month historically). Best seasonal window: Oct–Dec (Santa Rally). Next Quad Witching: Sep 19 · Dec 18, 2026." data-ar="نمط البيع في مايو يمتد حتى أغسطس. متوسط S&amp;P في يونيو: -0.4% · سبتمبر: -1.2% (الأسوأ تاريخياً). أفضل نافذة موسمية: أكتوبر-ديسمبر. مواعيد انتهاء رباعية قادمة: 19 سبتمبر · 18 ديسمبر 2026." data-fr="Sell in May s'étend jusqu'en août. S&amp;P juin moy: -0,4% · sept: -1,2% (pire mois). Meilleure fenêtre: Oct–Déc (Rallye Père Noël). Prochaines échéances: 19 sept · 18 déc. 2026.">Sell in May pattern extends through Aug. S&amp;P Jun avg: -0.4% · Sep avg: -1.2% (worst month historically). Best seasonal window: Oct–Dec (Santa Rally). Next Quad Witching: Sep 19 · Dec 18, 2026.</span></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
   <div class="mood-bar"><strong><span class="t" data-en="Market:" data-ar="السوق:" data-fr="Marché:">Market:</span></strong> <span class="t" data-en="Equities rebound strongly on Iran peace deal and Fed rate-hold. Chip stocks lead recovery after Tuesday's sell-off. Stocks and crypto diverge sharply — unusual for risk-on days." data-ar="الأسهم ترتد بقوة بفضل اتفاقية السلام مع إيران وثبات الفيدرالي على الفائدة. أسهم الرقائق تقود الانتعاش بعد موجة البيع الثلاثاء. الأسهم والكريبتو ينفصلان بحدة — نادراً في أيام الإقبال على المخاطرة." data-fr="Les actions rebondissent fortement sur l'accord de paix iranien et le maintien des taux. Les semi-conducteurs mènent la reprise. Actions et crypto divergent fortement — inhabituel les jours risk-on.">Equities rebound strongly on Iran peace deal and Fed rate-hold. Chip stocks lead recovery after Tuesday's sell-off. Stocks and crypto diverge sharply — unusual for risk-on days.</span></div>
 
   <div class="section-title"><span class="t" data-en="Top Gainers" data-ar="أكبر الرابحين" data-fr="Meilleures Hausses">Top Gainers</span></div>
