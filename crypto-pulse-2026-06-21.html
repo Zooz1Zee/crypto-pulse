@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>⚡ Market Pulse</title>
+<style>
+:root {
+  --bg: #0d1117; --surface: #161b22; --surface2: #21262d;
+  --border: #30363d; --accent: #6c63ff;
+  --green: #00d68f; --red: #ff4d6a; --yellow: #ffd166;
+  --text: #e6edf3; --muted: #8b949e;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: var(--bg); color: var(--text); min-height: 100vh; }
+
+/* ── HEADER ── */
+.header { background: var(--surface); border-bottom: 1px solid var(--border);
+  padding: 16px 24px; display: flex; align-items: center;
+  justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+.header-inner { display: flex; align-items: center; gap: 14px; flex: 1; }
+.profile-pic { width: 60px; height: 60px; border-radius: 50%; object-fit: cover;
+  object-position: center top; border: 2px solid var(--green);
+  box-shadow: 0 0 12px rgba(0,214,143,0.3); filter: grayscale(20%); flex-shrink:0; }
+.header-text h1 { font-size: 20px; font-weight: 700; letter-spacing: -0.3px; }
+.header-text .subtitle { font-size: 11px; color: var(--muted); margin-top: 2px; }
+.social-links { display: flex; gap: 6px; margin-top: 6px; flex-wrap: wrap; }
+.social-badge { display: inline-flex; align-items: center; gap: 4px; padding: 3px 10px;
+  border-radius: 20px; font-size: 11px; font-weight: 600;
+  text-decoration: none; transition: opacity 0.2s; }
+.social-badge:hover { opacity: 0.8; }
+.x-badge { background: rgba(255,255,255,0.08); color: #e6edf3;
+  border: 1px solid rgba(255,255,255,0.15); }
+.tg-badge { background: rgba(0,136,204,0.15); color: #29b6f6;
+  border: 1px solid rgba(0,136,204,0.3); }
+.mood-pill { padding: 5px 12px; border-radius: 20px; font-size: 12px;
+  font-weight: 700; white-space: nowrap; }
+.mood-bullish { background: rgba(0,214,143,0.15); color: var(--green);
+  border: 1px solid rgba(0,214,143,0.3); }
+.mood-bearish { background: rgba(255,77,106,0.15); color: var(--red);
+  border: 1px solid rgba(255,77,106,0.3); }
+.mood-neutral  { background: rgba(255,209,102,0.15); color: var(--yellow);
+  border: 1px solid rgba(255,209,102,0.3); }
+.header-right { display: flex; flex-direction: column; align-items: flex-end; gap: 8px; }
+.lang-bar { display: flex; gap: 6px; }
+.lang-btn { background: var(--surface2); border: 1px solid var(--border);
+  color: var(--muted); padding: 4px 12px; border-radius: 20px;
+  font-size: 11px; font-weight: 600; cursor: pointer; transition: all 0.15s; }
+.lang-btn.active, .lang-btn:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
+
+/* ── ALERT BANNER ── */
+.alert-banner { margin: 0; border-bottom: 1px solid var(--border); }
+.alert-item { display: flex; align-items: flex-start; gap: 10px;
+  padding: 10px 24px; font-size: 13px; line-height: 1.5; }
+.alert-spike { background: rgba(255,77,106,0.08); border-left: 3px solid var(--red); }
+.alert-fud   { background: rgba(255,209,102,0.08); border-left: 3px solid var(--yellow); }
+.alert-news  { background: rgba(108,99,255,0.08);  border-left: 3px solid var(--accent); }
+.alert-bull  { background: rgba(0,214,143,0.08);   border-left: 3px solid var(--green); }
+.alert-label { font-weight: 700; white-space: nowrap; }
+
+/* ── TABS ── */
+.tab-bar { display: flex; background: var(--surface);
+  border-bottom: 1px solid var(--border); padding: 0 24px; }
+.tab { padding: 13px 20px; font-size: 14px; font-weight: 600;
+  color: var(--muted); cursor: pointer;
+  border-bottom: 2px solid transparent; transition: all 0.15s; }
+.tab.active { color: var(--accent); border-bottom-color: var(--accent); }
+.tab-content { display: none; padding: 20px 24px; max-width: 960px; margin: 0 auto; }
+.tab-content.active { display: block; }
+
+/* ── MARKET OVERVIEW STATS ── */
+.market-overview { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 18px; }
+.market-stat { background: var(--surface); border: 1px solid var(--border);
+  border-radius: 10px; padding: 12px 16px; flex: 1; min-width: 120px; }
+.market-stat .label { font-size: 11px; color: var(--muted); margin-bottom: 4px;
+  text-transform: uppercase; letter-spacing: 0.5px; }
+.market-stat .value { font-size: 18px; font-weight: 700; }
+.market-stat .change { font-size: 12px; margin-top: 2px; }
+.up { color: var(--green); } .down { color: var(--red); } .neutral { color: var(--yellow); }
+
+/* ── MOOD BAR ── */
+.mood-bar { background: var(--surface); border: 1px solid var(--border);
+  border-radius: 10px; padding: 12px 16px; margin-bottom: 18px;
+  font-size: 13px; line-height: 1.6; }
+.mood-bar strong { color: var(--accent); }
+
+/* ── ACCORDION ── */
+.section-title { font-size: 11px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 1px; color: var(--muted); margin-bottom: 10px; }
+.accordion { border: 1px solid var(--border); border-radius: 12px;
+  overflow: hidden; margin-bottom: 20px; }
+.acc-row { border-bottom: 1px solid var(--border); }
+.acc-row:last-child { border-bottom: none; }
+.acc-header { display: flex; align-items: center; padding: 11px 14px;
+  cursor: pointer; gap: 10px; background: var(--surface);
+  transition: background 0.12s; user-select: none; }
+.acc-header:hover, .acc-header.open { background: var(--surface2); }
+.acc-rank { font-size: 11px; color: var(--muted); min-width: 18px; text-align: center; }
+.acc-name  { font-size: 13px; font-weight: 600; }
+.acc-ticker { font-size: 10px; color: var(--muted); }
+.acc-info  { flex: 1; }
+.acc-price  { font-size: 13px; font-weight: 600; min-width: 80px; text-align: right; }
+.acc-change { font-size: 12px; font-weight: 600; min-width: 52px; text-align: right; }
+.acc-trend  { font-size: 11px; font-weight: 700; min-width: 36px; text-align: right;
+  color: var(--accent); }
+.acc-sentiment { font-size: 10px; padding: 2px 7px; border-radius: 20px;
+  min-width: 58px; text-align: center; font-weight: 600; }
+.bullish { background: rgba(0,214,143,0.15); color: var(--green); }
+.bearish { background: rgba(255,77,106,0.15); color: var(--red); }
+.neutral-pill { background: rgba(255,209,102,0.15); color: var(--yellow); }
+.acc-chevron { font-size: 9px; color: var(--muted); transition: transform 0.2s; }
+.acc-header.open .acc-chevron { transform: rotate(180deg); }
+.acc-body { display: none; padding: 12px 16px 14px 46px; background: var(--bg);
+  font-size: 12px; color: var(--muted); line-height: 1.7; }
+.acc-body.open { display: block; }
+.detail-row { display: flex; gap: 8px; margin-bottom: 5px; align-items: flex-start; }
+.detail-label { color: var(--muted); min-width: 86px; font-size: 11px; }
+.detail-val { color: var(--text); }
+.headline-box { margin-top: 8px; padding: 7px 11px; background: var(--surface);
+  border-radius: 7px; font-size: 11px; color: var(--text);
+  border-left: 3px solid var(--accent); }
+.social-box { margin-top: 6px; padding: 7px 11px; background: var(--surface2);
+  border-radius: 7px; font-size: 11px; color: var(--muted);
+  border-left: 3px solid var(--green); }
+
+/* ── FOOTER ── */
+.updated { text-align: center; padding: 18px; font-size: 11px; color: var(--muted); }
+
+/* ── RTL ── */
+[dir="rtl"] .acc-price, [dir="rtl"] .acc-change,
+[dir="rtl"] .acc-trend { text-align: left; }
+[dir="rtl"] .acc-body { padding: 12px 46px 14px 16px; }
+[dir="rtl"] .headline-box { border-left: none; border-right: 3px solid var(--accent); }
+[dir="rtl"] .social-box   { border-left: none; border-right: 3px solid var(--green); }
+[dir="rtl"] .alert-item   { border-left: none; border-right: 3px solid; }
+
+/* -- INTEL STATS BAR -- */
+.intel-bar { display:flex; gap:10px; flex-wrap:wrap; padding:12px 24px;
+  background:rgba(0,214,143,0.07); border-top:2px solid var(--green);
+  border-bottom:1px solid var(--border); }
+.intel-stat { display:flex; flex-direction:column; gap:2px; flex:1; min-width:110px; }
+.intel-stat .i-label { font-size:10px; color:var(--muted);
+  text-transform:uppercase; letter-spacing:0.5px; margin-bottom:4px; }
+.intel-stat .i-value { font-size:20px; font-weight:800; color:var(--green);
+  letter-spacing:-0.3px; }
+
+
+/* -- ALERT SECTIONS (split: spike / event risks) -- */
+.alert-wrapper { border-bottom: 1px solid var(--border); }
+.alert-section { padding: 12px 24px; }
+.spike-section { background: rgba(255,77,106,0.08); }
+.news-section  { background: rgba(50,55,20,0.55); border-top: 1px solid var(--border); }
+.alert-section-header { font-size: 11px; font-weight: 800; letter-spacing: 0.8px;
+  text-transform: uppercase; margin-bottom: 8px; }
+.spike-section .alert-section-header { color: var(--red); }
+.news-section  .alert-section-header { color: var(--yellow); }
+.alert-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 4px; }
+.alert-list li { font-size: 12px; color: var(--text); line-height: 1.55; padding-left: 12px; }
+[dir="rtl"] .alert-list li { padding-left: 0; padding-right: 12px; }
+
+/* -- EVENTS & SEASONALITY SECTION -- */
+.events-section { margin-bottom: 18px; }
+.events-header { font-size: 11px; font-weight: 800; letter-spacing: 0.8px;
+  text-transform: uppercase; color: var(--accent); margin-bottom: 10px; }
+.events-grid { display: flex; flex-direction: column; gap: 6px; }
+.event-card { display: flex; align-items: flex-start; gap: 12px;
+  padding: 10px 14px; border-radius: 8px; border: 1px solid var(--border);
+  background: var(--surface); }
+.event-card.critical { border-left: 3px solid var(--red); background: rgba(255,77,106,0.06); }
+.event-card.warning  { border-left: 3px solid var(--yellow); background: rgba(255,209,102,0.06); }
+.event-card.info     { border-left: 3px solid var(--accent); background: rgba(108,99,255,0.06); }
+.event-card.positive { border-left: 3px solid var(--green); background: rgba(0,214,143,0.06); }
+.event-card.season   { border-left: 3px solid #7c83a0; background: rgba(124,131,160,0.06); }
+.event-badge { font-size: 10px; font-weight: 800; letter-spacing: 0.5px;
+  white-space: nowrap; min-width: 90px; margin-top: 1px; }
+.event-card.critical .event-badge { color: var(--red); }
+.event-card.warning  .event-badge { color: var(--yellow); }
+.event-card.info     .event-badge { color: var(--accent); }
+.event-card.positive .event-badge { color: var(--green); }
+.event-card.season   .event-badge { color: #7c83a0; }
+.event-body { flex: 1; }
+.event-name { font-size: 13px; font-weight: 700; color: var(--text); margin-bottom: 2px; }
+.event-desc { font-size: 11px; color: var(--muted); line-height: 1.55; }
+
+/* -- SEASONALITY GAUGE -- */
+.season-bar { margin-bottom: 18px; background: var(--surface);
+  border: 1px solid var(--border); border-radius: 10px; padding: 12px 16px; }
+.season-bar-header { font-size: 10px; color: var(--muted); text-transform: uppercase;
+  letter-spacing: 0.5px; margin-bottom: 8px; }
+.season-months { display: flex; gap: 3px; }
+.s-month { flex: 1; height: 22px; border-radius: 3px; display: flex;
+  align-items: center; justify-content: center; font-size: 9px; font-weight: 700; }
+.s-weak   { background: rgba(255,77,106,0.25); color: var(--red); }
+.s-strong { background: rgba(0,214,143,0.20); color: var(--green); }
+.s-mixed  { background: rgba(255,209,102,0.20); color: var(--yellow); }
+.s-now    { outline: 2px solid var(--accent); outline-offset: 1px; }
+/* -- FEAR & GREED / ALTCOIN SEASON COLORS -- */
+.fng-extreme-fear { color: #ff2d55; }
+.fng-fear         { color: #ff8c42; }
+.fng-neutral      { color: var(--yellow); }
+.fng-greed        { color: #48bb78; }
+.fng-extreme-greed{ color: var(--green); }
+.fng-btc-season   { color: #ff8c42; }
+.fng-alt-season   { color: var(--green); }
+
+
+/* ── SECTOR HEATMAP ── */
+.sector-section { padding: 0 0 4px; }
+.sector-title { padding: 10px 16px 6px; font-size: 10px; font-weight: 700;
+  color: var(--muted); letter-spacing: 1px; text-transform: uppercase; }
+.sector-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px;
+  padding: 0 16px 12px; }
+.sector-cell { background: var(--surface); border: 1px solid var(--border);
+  border-radius: 8px; padding: 8px 6px; text-align: center; transition: transform .15s; }
+.sector-cell:hover { transform: translateY(-1px); }
+.sector-cell.s-up   { border-color: rgba(0,214,143,0.4); background: rgba(0,214,143,0.07); }
+.sector-cell.s-down { border-color: rgba(255,77,106,0.4); background: rgba(255,77,106,0.07); }
+.sector-cell.s-flat { border-color: rgba(255,209,102,0.3); background: rgba(255,209,102,0.05); }
+.sector-name { font-size: 9px; color: var(--muted); font-weight: 700;
+  letter-spacing: 0.3px; margin-bottom: 5px; line-height: 1.2; }
+.sector-pct  { font-size: 14px; font-weight: 800; }
+.sector-cell.s-up   .sector-pct { color: var(--green); }
+.sector-cell.s-down .sector-pct { color: var(--red); }
+.sector-cell.s-flat .sector-pct { color: var(--yellow); }
+.sector-ticker { font-size: 9px; color: var(--muted); margin-top: 2px; }
+</style>
+</head>
+<body>
+
+<!-- ══ HEADER ══ -->
+<div class="header">
+  <div class="header-inner">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" class="profile-pic" alt="zooz1">
+    <div class="header-text">
+      <h1>⚡ <span class="t" data-en="Market Pulse" data-ar="نبض السوق" data-fr="Market Pulse">Market Pulse</span></h1>
+      <div class="subtitle">Sunday, June 21 2026 · 08:00 AM · <span class="t" data-en="Generated via Web Intelligence" data-ar="مُولَّد عبر الذكاء الشبكي" data-fr="Généré via intelligence web">Generated via Web Intelligence</span></div>
+      <div class="social-links">
+        <a href="https://x.com/zooz1" class="social-badge x-badge">𝕏 @zooz1</a>
+        <a href="https://t.me/zooz1_M" class="social-badge tg-badge">✈ @zooz1_M</a>
+      </div>
+    </div>
+    <div id="mood-crypto" class="mood-pill mood-neutral">⚡ Neutral</div>
+    <div id="mood-stocks" class="mood-pill mood-bearish" style="display:none">🐻 Cautious</div>
+  </div>
+  <div class="header-right">
+    <div class="lang-bar">
+      <button class="lang-btn active" onclick="setLang('en',this)">EN</button>
+      <button class="lang-btn" onclick="setLang('ar',this)">AR</button>
+      <button class="lang-btn" onclick="setLang('fr',this)">FR</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ TABS ══ -->
+<div class="intel-bar" id="intel-crypto" style="display:flex">
+  <div class="intel-stat"><div class="i-label">Social Leader</div><div class="i-value">XLM 🚀</div></div>
+  <div class="intel-stat"><div class="i-label">Top Trend Score</div><div class="i-value">9.2</div></div>
+  <div class="intel-stat"><div class="i-label">CT Buzz Spike</div><div class="i-value">XLM +72% 7D</div></div>
+  <div class="intel-stat"><div class="i-label">Market Mood</div><div class="i-value">Cautious ⚡</div></div>
+</div>
+<div class="intel-bar" id="intel-stocks" style="display:none">
+  <div class="intel-stat"><div class="i-label">Top Gainer</div><div class="i-value">BFLY +55.9%</div></div>
+  <div class="intel-stat"><div class="i-label">Top Loser</div><div class="i-value">RGC -19.0%</div></div>
+  <div class="intel-stat"><div class="i-label">VIX</div><div class="i-value">18.2</div></div>
+  <div class="intel-stat"><div class="i-label">Fed Signal</div><div class="i-value">Hike Risk ⚠️</div></div>
+</div>
+
+<div class="tab-bar">
+  <div class="tab active" onclick="setTab('crypto')" id="tab-crypto">🪙 <span class="t" data-en="Crypto" data-ar="كريبتو" data-fr="Crypto">Crypto</span></div>
+  <div class="tab" onclick="setTab('stocks')" id="tab-stocks">📈 <span class="t" data-en="Stocks" data-ar="أسهم" data-fr="Actions">Stocks</span></div>
+</div>
+
+<!-- ══ CRYPTO TAB ══ -->
+<div class="tab-content active" id="tab-content-crypto">
+<div class="alert-wrapper">
+  <div class="alert-section spike-section">
+    <div class="alert-section-header">🚨 SPIKES</div>
+    <ul class="alert-list">
+      <li>XLM +72% in 7 days · DTCC announces tokenized securities integration on Stellar network</li>
+      <li>AVAX +2.5% · Avalanche Payments Collective launched with 28 major FIs (Franklin Templeton, VanEck, Paxos)</li>
+    </ul>
+  </div>
+  <div class="alert-section news-section">
+    <div class="alert-section-header">📰 EVENT RISKS</div>
+    <ul class="alert-list">
+      <li>ETH/BTC ratio hits 3-year low of 0.027 — structural debate intensifies on CT</li>
+      <li>Iran-US Hormuz threat resurfaces · BTC holding near $64K amid geopolitical uncertainty</li>
+      <li>Fed hike probability rises to 62% after hot May jobs report (+172K vs 88K expected)</li>
+    </ul>
+  </div>
+</div>
+  <div class="market-overview" style="margin-top:14px">
+    <div class="market-stat">
+      <div class="label"><span class="t" data-en="Market Cap" data-ar="القيمة السوقية" data-fr="Cap. Marché">Market Cap</span></div>
+      <div class="value">$2.2T</div>
+      <div class="change up">+0.4% 24h</div>
+    </div>
+    <div class="market-stat">
+      <div class="label"><span class="t" data-en="BTC Dominance" data-ar="هيمنة البيتكوين" data-fr="Dominance BTC">BTC Dominance</span></div>
+      <div class="value">55.8%</div>
+    </div>
+    <div class="market-stat">
+      <div class="label"><span class="t" data-en="24h Volume" data-ar="حجم 24 ساعة" data-fr="Vol. 24h">24h Volume</span></div>
+      <div class="value">$50.4B</div>
+    </div>
+    <div class="market-stat">
+      <div class="label">😨 <span class="t" data-en="Fear &amp; Greed" data-ar="مؤشر الخوف والجشع" data-fr="Peur &amp; Avidité">Fear &amp; Greed</span></div>
+      <div class="value fng-fear">42</div>
+      <div class="change fng-fear">Fear</div>
+    </div>
+    <div class="market-stat">
+      <div class="label">🔄 <span class="t" data-en="Altcoin Index" data-ar="مؤشر موسم الألتكوين" data-fr="Indice Altcoin">Altcoin Index</span></div>
+      <div class="value fng-btc-season">28</div>
+      <div class="change fng-btc-season">BTC Season</div>
+    </div>
+  </div>
+  <div class="mood-bar">
+    <strong><span class="t" data-en="Today:" data-ar="اليوم:" data-fr="Aujourd'hui:">Today:</span></strong> <span class="t" data-en="Markets hold cautiously near key levels. BTC clings to $64K amid Iran-US tensions and rate-hike fears. XLM explodes on DTCC-Stellar deal. AVAX gains on Payments Collective launch. ETH weakens structurally vs BTC, hitting 3-year low ratio." data-ar="الأسواق تتماسك بحذر. البيتكوين يتشبث بـ 64 ألف دولار وسط التوترات الجيوسياسية. XLM ينفجر بسبب صفقة DTCC. AVAX يكتسب على إطلاق منظومة المدفوعات." data-fr="Les marchés restent prudents. BTC tient les 64K$ malgré les tensions Iran-USA. XLM explose sur le deal DTCC-Stellar. AVAX progresse sur le lancement du Payments Collective.">Markets hold cautiously near key levels. BTC clings to $64K amid Iran-US tensions and rate-hike fears. XLM explodes on DTCC-Stellar deal. AVAX gains on Payments Collective launch. ETH weakens structurally vs BTC, hitting 3-year low ratio.</span>
+  </div>
+  <div class="section-title"><span class="t" data-en="Top Coins — Price · Trend Score · Sentiment" data-ar="أفضل العملات — السعر · درجة الاتجاه · المزاج" data-fr="Meilleures Cryptos — Prix · Score · Sentiment">Top Coins — Price · Trend Score · Sentiment</span></div>
+  <div class="accordion">
+
+    <!-- BTC -->
+    <div class="acc-row"><div class="acc-header" onclick="toggle(this)">
+      <span class="acc-rank">1</span>
+      <div class="acc-info"><div class="acc-name">Bitcoin</div><div class="acc-ticker">BTC</div></div>
+      <div class="acc-price">$64,100</div>
+      <div class="acc-change up">+0.4%</div>
+      <div class="acc-trend">65</div>
+      <span class="acc-sentiment neutral-pill">Neutral</span>
+      <span class="acc-chevron">▼</span>
+    </div><div class="acc-body">
+      <div class="detail-row"><span class="detail-label">Market Cap</span><span class="detail-val">$1.27T</span></div>
+      <div class="detail-row"><span class="detail-label">24h Volume</span><span class="detail-val">$28.6B</span></div>
+      <div class="headline-box">BTC holds $64K as Iran-Hormuz threat clouds US ceasefire talks; geopolitical risk-off keeps bulls cautious.</div>
+      <div class="social-box">CT split: macro bulls see $64K as strong floor pre-Q3; bears point to rate-hike fears and thin weekend volume. Overall sentiment: wait-and-see.</div>
+    </div></div>
+    <!-- ETH -->
+    <div class="acc-row"><div class="acc-header" onclick="toggle(this)">
+      <span class="acc-rank">2</span>
+      <div class="acc-info"><div class="acc-name">Ethereum</div><div class="acc-ticker">ETH</div></div>
+      <div class="acc-price">$1,720</div>
+      <div class="acc-change down">-0.3%</div>
+      <div class="acc-trend">49</div>
+      <span class="acc-sentiment bearish">Bearish</span>
+      <span class="acc-chevron">▼</span>
+    </div><div class="acc-body">
+      <div class="detail-row"><span class="detail-label">Market Cap</span><span class="detail-val">$207.4B</span></div>
+      <div class="detail-row"><span class="detail-label">24h Volume</span><span class="detail-val">$8.2B</span></div>
+      <div class="headline-box">ETH/BTC ratio falls to 0.027, a level last seen in early 2023 — CT debates: structural weakness or contrarian buy?</div>
+      <div class="social-box">Reddit and CT increasingly bearish on ETH near-term. Ratio underperformance vs BTC fuels 'ultrasound money' narrative doubts. Accumulation thesis holds for long-term holders.</div>
+    </div></div>
+    <!-- BNB -->
+    <div class="acc-row"><div class="acc-header" onclick="toggle(this)">
+      <span class="acc-rank">3</span>
+      <div class="acc-info"><div class="acc-name">BNB</div><div class="acc-ticker">BNB</div></div>
+      <div class="acc-price">$606</div>
+      <div class="acc-change down">-1.2%</div>
+      <div class="acc-trend">38</div>
+      <span class="acc-sentiment neutral-pill">Neutral</span>
+      <span class="acc-chevron">▼</span>
+    </div><div class="acc-body">
+      <div class="detail-row"><span class="detail-label">Market Cap</span><span class="detail-val">$88.1B</span></div>
+      <div class="detail-row"><span class="detail-label">24h Volume</span><span class="detail-val">$1.4B</span></div>
+      <div class="headline-box">BNB slips 1.2% as Binance faces renewed regulatory scrutiny in EU over derivatives compliance.</div>
+      <div class="social-box">Low social buzz. BNB traders mostly sidelined. Community watching regulatory developments closely.</div>
+    </div></div>
+    <!-- SOL -->
+    <div class="acc-row"><div class="acc-header" onclick="toggle(this)">
+      <span class="acc-rank">4</span>
+      <div class="acc-info"><div class="acc-name">Solana</div><div class="acc-ticker">SOL</div></div>
+      <div class="acc-price">$73.00</div>
+      <div class="acc-change up">+2.1%</div>
+      <div class="acc-trend">73</div>
+      <span class="acc-sentiment bullish">Bullish</span>
+      <span class="acc-chevron">▼</span>
+    </div><div class="acc-body">
+      <div class="detail-row"><span class="detail-label">Market Cap</span><span class="detail-val">$35.2B</span></div>
+      <div class="detail-row"><span class="detail-label">24h Volume</span><span class="detail-val">$2.6B</span></div>
+      <div class="headline-box">Solana surpasses Ethereum in weekly transaction volume for 4th consecutive week; memecoin season 2026 drives activity.</div>
+      <div class="social-box">SOL highly active on CT. Developers and traders bullish on ecosystem growth. Memecoin launchpad activity at 2026 highs.</div>
+    </div></div>
+    <!-- XRP -->
+    <div class="acc-row"><div class="acc-header" onclick="toggle(this)">
+      <span class="acc-rank">5</span>
+      <div class="acc-info"><div class="acc-name">XRP</div><div class="acc-ticker">XRP</div></div>
+      <div class="acc-price">$1.14</div>
+      <div class="acc-change down">-0.4%</div>
+      <div class="acc-trend">43</div>
+      <span class="acc-sentiment neutral-pill">Neutral</span>
+      <span class="acc-chevron">▼</span>
+    </div><div class="acc-body">
+      <div class="detail-row"><span class="detail-label">Market Cap</span><span class="detail-val">$65.2B</span></div>
+      <div class="detail-row"><span class="detail-label">24h Volume</span><span class="detail-val">$2.1B</span></div>
+      <div class="headline-box">XRP consolidates near $1.14 as RLUSD stablecoin volume hits $2B monthly milestone on XRP Ledger.</div>
+      <div class="social-box">XRP army quiet this weekend but bullish long-term on RLUSD adoption and SEC settlement clarity holding.</div>
+    </div></div>
+
+    <!-- ADA -->
+    <div class="acc-row"><div class="acc-header" onclick="toggle(this)">
+      <span class="acc-rank">6</span>
+      <div class="acc-info"><div class="acc-name">Cardano</div><div class="acc-ticker">ADA</div></div>
+      <div class="acc-price">$0.173</div>
+      <div class="acc-change down">-1.9%</div>
+      <div class="acc-trend">33</div>
+      <span class="acc-sentiment bearish">Bearish</span>
+      <span class="acc-chevron">▼</span>
+    </div><div class="acc-body">
+      <div class="detail-row"><span class="detail-label">Market Cap</span><span class="detail-val">$6.1B</span></div>
+      <div class="detail-row"><span class="detail-label">24h Volume</span><span class="detail-val">$0.32B</span></div>
+      <div class="headline-box">ADA slides 1.9% amid thin volume; Cardano Chang hard fork upgrade v2 delayed to Q3 2026.</div>
+      <div class="social-box">Cardano community frustrated with development pace. Reddit and CT sentiment muted; HODLers await Chang v2.</div>
+    </div></div>
+    <!-- AVAX -->
+    <div class="acc-row"><div class="acc-header" onclick="toggle(this)">
+      <span class="acc-rank">7</span>
+      <div class="acc-info"><div class="acc-name">Avalanche</div><div class="acc-ticker">AVAX</div></div>
+      <div class="acc-price">$6.96</div>
+      <div class="acc-change up">+2.5%</div>
+      <div class="acc-trend">73</div>
+      <span class="acc-sentiment bullish">Bullish</span>
+      <span class="acc-chevron">▼</span>
+    </div><div class="acc-body">
+      <div class="detail-row"><span class="detail-label">Market Cap</span><span class="detail-val">$2.87B</span></div>
+      <div class="detail-row"><span class="detail-label">24h Volume</span><span class="detail-val">$0.41B</span></div>
+      <div class="headline-box">Avalanche Payments Collective launches with 28 major FIs for stablecoin settlement across 150+ countries.</div>
+      <div class="social-box">AVAX trending on CT and Binance Square. Institutional catalyst drives bullish sentiment. Community celebrating the Franklin Templeton and VanEck involvement.</div>
+    </div></div>
+    <!-- DOGE -->
+    <div class="acc-row"><div class="acc-header" onclick="toggle(this)">
+      <span class="acc-rank">8</span>
+      <div class="acc-info"><div class="acc-name">Dogecoin</div><div class="acc-ticker">DOGE</div></div>
+      <div class="acc-price">$0.0876</div>
+      <div class="acc-change neutral">+0.1%</div>
+      <div class="acc-trend">45</div>
+      <span class="acc-sentiment neutral-pill">Neutral</span>
+      <span class="acc-chevron">▼</span>
+    </div><div class="acc-body">
+      <div class="detail-row"><span class="detail-label">Market Cap</span><span class="detail-val">$12.9B</span></div>
+      <div class="detail-row"><span class="detail-label">24h Volume</span><span class="detail-val">$0.89B</span></div>
+      <div class="headline-box">DOGE flat on weekend; community watching for Musk X-payments integration update expected in Q3.</div>
+      <div class="social-box">DOGE social mentions down from last week's spike. Weekend calm. Bulls waiting for X Payments catalyst.</div>
+    </div></div>
+    <!-- DOT -->
+    <div class="acc-row"><div class="acc-header" onclick="toggle(this)">
+      <span class="acc-rank">9</span>
+      <div class="acc-info"><div class="acc-name">Polkadot</div><div class="acc-ticker">DOT</div></div>
+      <div class="acc-price">$1.03</div>
+      <div class="acc-change up">+2.3%</div>
+      <div class="acc-trend">41</div>
+      <span class="acc-sentiment neutral-pill">Neutral</span>
+      <span class="acc-chevron">▼</span>
+    </div><div class="acc-body">
+      <div class="detail-row"><span class="detail-label">Market Cap</span><span class="detail-val">$1.57B</span></div>
+      <div class="detail-row"><span class="detail-label">24h Volume</span><span class="detail-val">$0.14B</span></div>
+      <div class="headline-box">DOT gains 2.3% on positive Polkadot JAM protocol testnet update; cross-chain bridges activity up.</div>
+      <div class="social-box">DOT community cautiously optimistic on JAM. Low broader CT mentions but core community engaged.</div>
+    </div></div>
+    <!-- MATIC -->
+    <div class="acc-row"><div class="acc-header" onclick="toggle(this)">
+      <span class="acc-rank">10</span>
+      <div class="acc-info"><div class="acc-name">Polygon</div><div class="acc-ticker">MATIC/POL</div></div>
+      <div class="acc-price">$0.082</div>
+      <div class="acc-change down">-0.8%</div>
+      <div class="acc-trend">30</div>
+      <span class="acc-sentiment bearish">Bearish</span>
+      <span class="acc-chevron">▼</span>
+    </div><div class="acc-body">
+      <div class="detail-row"><span class="detail-label">Market Cap</span><span class="detail-val">$0.82B</span></div>
+      <div class="detail-row"><span class="detail-label">24h Volume</span><span class="detail-val">$0.09B</span></div>
+      <div class="headline-box">MATIC/POL continues to struggle as Polygon migration confusion and L2 competition weighs on price.</div>
+      <div class="social-box">Bearish CT sentiment. POL migration still creating community friction. L2 competition from OP, ARB cited heavily.</div>
+    </div></div>
+    <!-- TRX -->
+    <div class="acc-row"><div class="acc-header" onclick="toggle(this)">
+      <span class="acc-rank">11</span>
+      <div class="acc-info"><div class="acc-name">Tron</div><div class="acc-ticker">TRX</div></div>
+      <div class="acc-price">$0.241</div>
+      <div class="acc-change up">+0.5%</div>
+      <div class="acc-trend">35</div>
+      <span class="acc-sentiment neutral-pill">Neutral</span>
+      <span class="acc-chevron">▼</span>
+    </div><div class="acc-body">
+      <div class="detail-row"><span class="detail-label">Market Cap</span><span class="detail-val">$20.8B</span></div>
+      <div class="detail-row"><span class="detail-label">24h Volume</span><span class="detail-val">$0.52B</span></div>
+      <div class="headline-box">Tron USDT stablecoin volume remains dominant in emerging markets; TRX price stable near $0.24.</div>
+      <div class="social-box">TRX buzz low on CT but USDT-Tron continues to be the dominant stablecoin corridor in Asia and LatAm.</div>
+    </div></div>
+    <!-- LINK -->
+    <div class="acc-row"><div class="acc-header" onclick="toggle(this)">
+      <span class="acc-rank">12</span>
+      <div class="acc-info"><div class="acc-name">Chainlink</div><div class="acc-ticker">LINK</div></div>
+      <div class="acc-price">$8.52</div>
+      <div class="acc-change up">+1.2%</div>
+      <div class="acc-trend">48</div>
+      <span class="acc-sentiment neutral-pill">Neutral</span>
+      <span class="acc-chevron">▼</span>
+    </div><div class="acc-body">
+      <div class="detail-row"><span class="detail-label">Market Cap</span><span class="detail-val">$5.28B</span></div>
+      <div class="detail-row"><span class="detail-label">24h Volume</span><span class="detail-val">$0.28B</span></div>
+      <div class="headline-box">Chainlink CCIP adoption grows as major DeFi protocols integrate cross-chain data feeds; LINK up 1.2%.</div>
+      <div class="social-box">LINK marines steady. CCIP adoption narrative building but price lagging. Fundamentals viewed positively long-term.</div>
+    </div></div>
+    <!-- TON -->
+    <div class="acc-row"><div class="acc-header" onclick="toggle(this)">
+      <span class="acc-rank">13</span>
+      <div class="acc-info"><div class="acc-name">Toncoin</div><div class="acc-ticker">TON</div></div>
+      <div class="acc-price">$3.18</div>
+      <div class="acc-change down">-0.6%</div>
+      <div class="acc-trend">42</div>
+      <span class="acc-sentiment neutral-pill">Neutral</span>
+      <span class="acc-chevron">▼</span>
+    </div><div class="acc-body">
+      <div class="detail-row"><span class="detail-label">Market Cap</span><span class="detail-val">$7.74B</span></div>
+      <div class="detail-row"><span class="detail-label">24h Volume</span><span class="detail-val">$0.22B</span></div>
+      <div class="headline-box">TON dips slightly as Telegram Mini Apps ecosystem growth moderates; 1B wallet milestone still on track.</div>
+      <div class="social-box">Telegram community bullish on TON's Telegram-native utility. Slight cooldown in CT mentions post-mini-app hype peak.</div>
+    </div></div>
+    <!-- XLM -->
+    <div class="acc-row"><div class="acc-header" onclick="toggle(this)">
+      <span class="acc-rank">14</span>
+      <div class="acc-info"><div class="acc-name">Stellar</div><div class="acc-ticker">XLM</div></div>
+      <div class="acc-price">$0.451</div>
+      <div class="acc-change up">+48.0%</div>
+      <div class="acc-trend">92</div>
+      <span class="acc-sentiment bullish">Bullish</span>
+      <span class="acc-chevron">▼</span>
+    </div><div class="acc-body">
+      <div class="detail-row"><span class="detail-label">Market Cap</span><span class="detail-val">$13.4B</span></div>
+      <div class="detail-row"><span class="detail-label">24h Volume</span><span class="detail-val">$3.8B</span></div>
+      <div class="headline-box">🚨 SPIKE: DTCC announces Stellar network integration for tokenized securities settlement — XLM +72% in 7 days.</div>
+      <div class="social-box">XLM is the #1 CT trending asset this weekend. DTCC partnership seen as massive institutional validation. Influencers calling it a breakout moment for Stellar.</div>
+    </div></div>
+    <!-- HBAR -->
+    <div class="acc-row"><div class="acc-header" onclick="toggle(this)">
+      <span class="acc-rank">15</span>
+      <div class="acc-info"><div class="acc-name">Hedera</div><div class="acc-ticker">HBAR</div></div>
+      <div class="acc-price">$0.086</div>
+      <div class="acc-change up">+1.1%</div>
+      <div class="acc-trend">45</div>
+      <span class="acc-sentiment neutral-pill">Neutral</span>
+      <span class="acc-chevron">▼</span>
+    </div><div class="acc-body">
+      <div class="detail-row"><span class="detail-label">Market Cap</span><span class="detail-val">$3.54B</span></div>
+      <div class="detail-row"><span class="detail-label">24h Volume</span><span class="detail-val">$0.11B</span></div>
+      <div class="headline-box">HBAR gains on news of expanded Hedera enterprise partnerships in supply chain and tokenization space.</div>
+      <div class="social-box">HBAR community remains engaged. Enterprise use-case narrative steady. Some spillover interest from XLM tokenization buzz.</div>
+    </div></div>
+    <!-- LTC -->
+    <div class="acc-row"><div class="acc-header" onclick="toggle(this)">
+      <span class="acc-rank">16</span>
+      <div class="acc-info"><div class="acc-name">Litecoin</div><div class="acc-ticker">LTC</div></div>
+      <div class="acc-price">$71.80</div>
+      <div class="acc-change up">+0.8%</div>
+      <div class="acc-trend">40</div>
+      <span class="acc-sentiment neutral-pill">Neutral</span>
+      <span class="acc-chevron">▼</span>
+    </div><div class="acc-body">
+      <div class="detail-row"><span class="detail-label">Market Cap</span><span class="detail-val">$5.41B</span></div>
+      <div class="detail-row"><span class="detail-label">24h Volume</span><span class="detail-val">$0.41B</span></div>
+      <div class="headline-box">Litecoin steady near $72 ahead of potential MiMBL/EB upgrade discussion at LTC developer summit.</div>
+      <div class="social-box">LTC social mentions stable but low. Seen as a steady store-of-value play. Low volatility by design.</div>
+    </div></div>
+    <!-- SHIB -->
+    <div class="acc-row"><div class="acc-header" onclick="toggle(this)">
+      <span class="acc-rank">17</span>
+      <div class="acc-info"><div class="acc-name">Shiba Inu</div><div class="acc-ticker">SHIB</div></div>
+      <div class="acc-price">$0.0000085</div>
+      <div class="acc-change down">-1.5%</div>
+      <div class="acc-trend">38</div>
+      <span class="acc-sentiment neutral-pill">Neutral</span>
+      <span class="acc-chevron">▼</span>
+    </div><div class="acc-body">
+      <div class="detail-row"><span class="detail-label">Market Cap</span><span class="detail-val">$5.02B</span></div>
+      <div class="detail-row"><span class="detail-label">24h Volume</span><span class="detail-val">$0.19B</span></div>
+      <div class="headline-box">SHIB slips 1.5% as memecoin rotation continues toward SOL-based tokens; Shibarium daily TXs stable.</div>
+      <div class="social-box">SHIB army quieter this weekend. SOL-based memecoins stealing attention. Long-term holders holding positions.</div>
+    </div></div>
+    <!-- UNI -->
+    <div class="acc-row"><div class="acc-header" onclick="toggle(this)">
+      <span class="acc-rank">18</span>
+      <div class="acc-info"><div class="acc-name">Uniswap</div><div class="acc-ticker">UNI</div></div>
+      <div class="acc-price">$4.78</div>
+      <div class="acc-change up">+1.8%</div>
+      <div class="acc-trend">45</div>
+      <span class="acc-sentiment neutral-pill">Neutral</span>
+      <span class="acc-chevron">▼</span>
+    </div><div class="acc-body">
+      <div class="detail-row"><span class="detail-label">Market Cap</span><span class="detail-val">$2.86B</span></div>
+      <div class="detail-row"><span class="detail-label">24h Volume</span><span class="detail-val">$0.14B</span></div>
+      <div class="headline-box">Uniswap v4 hooks adoption growing; DEX volume share holds at 28% of all on-chain DEX activity.</div>
+      <div class="social-box">DeFi community moderately bullish on UNI v4. Fee switch debate simmers. Governance vote expected next month.</div>
+    </div></div>
+    <!-- SUI -->
+    <div class="acc-row"><div class="acc-header" onclick="toggle(this)">
+      <span class="acc-rank">19</span>
+      <div class="acc-info"><div class="acc-name">Sui</div><div class="acc-ticker">SUI</div></div>
+      <div class="acc-price">$1.93</div>
+      <div class="acc-change up">+3.2%</div>
+      <div class="acc-trend">68</div>
+      <span class="acc-sentiment bullish">Bullish</span>
+      <span class="acc-chevron">▼</span>
+    </div><div class="acc-body">
+      <div class="detail-row"><span class="detail-label">Market Cap</span><span class="detail-val">$5.95B</span></div>
+      <div class="detail-row"><span class="detail-label">24h Volume</span><span class="detail-val">$0.52B</span></div>
+      <div class="headline-box">SUI gains 3.2% on strong ecosystem growth: gaming TVL up 40% MoM, new DeFi protocols launching weekly.</div>
+      <div class="social-box">SUI generating strong CT buzz as fastest-growing L1 by new dApps. Gaming narrative driving fresh interest.</div>
+    </div></div>
+    <!-- OP -->
+    <div class="acc-row"><div class="acc-header" onclick="toggle(this)">
+      <span class="acc-rank">20</span>
+      <div class="acc-info"><div class="acc-name">Optimism</div><div class="acc-ticker">OP</div></div>
+      <div class="acc-price">$0.84</div>
+      <div class="acc-change down">-0.9%</div>
+      <div class="acc-trend">35</div>
+      <span class="acc-sentiment neutral-pill">Neutral</span>
+      <span class="acc-chevron">▼</span>
+    </div><div class="acc-body">
+      <div class="detail-row"><span class="detail-label">Market Cap</span><span class="detail-val">$1.08B</span></div>
+      <div class="detail-row"><span class="detail-label">24h Volume</span><span class="detail-val">$0.09B</span></div>
+      <div class="headline-box">Optimism slips slightly; Superchain ecosystem growth continues but OP token lacks near-term catalyst.</div>
+      <div class="social-box">OP community focused on Superchain roadmap. Low CT buzz but developers active. Waiting for next governance season.</div>
+    </div></div>
+  </div><!-- end accordion -->
+</div><!-- end crypto tab -->
+
+<!-- ══ STOCKS TAB ══ -->
+<div class="tab-content" id="tab-content-stocks">
+<div class="alert-wrapper">
+  <div class="alert-section spike-section">
+    <div class="alert-section-header">🚨 MOVERS</div>
+    <ul class="alert-list">
+      <li>BFLY +55.9% · Butterfly Network receives FDA clearance for next-gen ultrasound device</li>
+      <li>RGC -19.0% · FDA places clinical hold on Regencell's lead neurology trial</li>
+      <li>ACN -18.0% · Accenture slashes FY2026 revenue outlook on AI consulting headwinds</li>
+    </ul>
+  </div>
+  <div class="alert-section news-section">
+    <div class="alert-section-header">📰 MARKET EVENTS</div>
+    <ul class="alert-list">
+      <li>FOMC: 9 of 18 members project rate hike by year-end 2026 — 10Y yield jumps to 4.72%</li>
+      <li>Oil +1.4% on Iran-Hormuz fears · energy sector outperforms · XOM +2.1%</li>
+      <li>AI chip demand stays robust: NVDA +4.2%, MU +3.8% despite broader market softness</li>
+    </ul>
+  </div>
+</div>
+  <div class="market-overview" style="margin-top:14px">
+    <div class="market-stat"><div class="label">S&amp;P 500</div><div class="value">5,398</div><div class="change down">-0.8%</div></div>
+    <div class="market-stat"><div class="label">NASDAQ</div><div class="value">17,182</div><div class="change down">-1.1%</div></div>
+    <div class="market-stat"><div class="label">DOW</div><div class="value">41,420</div><div class="change down">-0.6%</div></div>
+    <div class="market-stat">
+      <div class="label"><span class="t" data-en="VIX" data-ar="مؤشر VIX" data-fr="VIX">VIX</span></div>
+      <div class="value up">18.2</div>
+      <div class="change up">+2.1</div>
+    </div>
+    <div class="market-stat">
+      <div class="label"><span class="t" data-en="10Y Yield" data-ar="عائد 10 سنوات" data-fr="Taux 10 ans">10Y Yield</span></div>
+      <div class="value up">4.72%</div>
+      <div class="change up">+0.04</div>
+    </div>
+    <div class="market-stat">
+      <div class="label"><span class="t" data-en="Fed Rate" data-ar="معدل الفيدرالي" data-fr="Taux Fed">Fed Rate</span></div>
+      <div class="value neutral">4.50–4.75%</div>
+      <div class="change neutral">On Hold</div>
+    </div>
+  </div>
+  <div class="accordion" style="margin-bottom:18px">
+  <div class="sector-section">
+    <div class="sector-title">Sector Performance (Fri Jun 20)</div>
+    <div class="sector-grid">
+      <div class="sector-cell s-up"><div class="sector-name">Technology</div><div class="sector-pct">+1.2%</div></div>
+      <div class="sector-cell s-up"><div class="sector-name">Energy</div><div class="sector-pct">+0.9%</div></div>
+      <div class="sector-cell s-up"><div class="sector-name">Comm. Svcs</div><div class="sector-pct">+0.6%</div></div>
+      <div class="sector-cell s-up"><div class="sector-name">Finance</div><div class="sector-pct">+0.4%</div></div>
+      <div class="sector-cell s-up"><div class="sector-name">Materials</div><div class="sector-pct">+0.2%</div></div>
+      <div class="sector-cell s-flat"><div class="sector-name">Industrials</div><div class="sector-pct">-0.3%</div></div>
+      <div class="sector-cell s-down"><div class="sector-name">Consumer</div><div class="sector-pct">-0.5%</div></div>
+      <div class="sector-cell s-down"><div class="sector-name">Utilities</div><div class="sector-pct">-0.4%</div></div>
+      <div class="sector-cell s-down"><div class="sector-name">Real Estate</div><div class="sector-pct">-0.6%</div></div>
+      <div class="sector-cell s-down"><div class="sector-name">Healthcare</div><div class="sector-pct">-1.8%</div></div>
+    </div>
+  </div>
+</div>
+  <div class="events-section">
+  <div class="events-header">📅 Key Events &amp; Macro Risks</div>
+  <div class="events-grid">
+    <div class="event-card critical">
+      <div class="event-badge">🚨 GEOPOLIT</div>
+      <div class="event-body">
+        <div class="event-name">Iran-US Hormuz Threat Returns</div>
+        <div class="event-desc">Ceasefire talks stall; Iran signals potential Strait of Hormuz action. Risk-off mode hits equities and crypto.</div>
+      </div>
+    </div>
+    <div class="event-card warning">
+      <div class="event-badge">⚠️ FED</div>
+      <div class="event-body">
+        <div class="event-name">Fed Rate Hike Signal — 62% Probability</div>
+        <div class="event-desc">9 of 18 FOMC members project hike by year-end. May jobs: +172K vs 88K expected; inflation at 3-year high.</div>
+      </div>
+    </div>
+    <div class="event-card positive">
+      <div class="event-badge">🟢 CRYPTO</div>
+      <div class="event-body">
+        <div class="event-name">Avalanche Payments Collective Launches</div>
+        <div class="event-desc">28 FIs incl. Franklin Templeton, VanEck, Paxos join AVAX-based stablecoin settlement platform for 150+ countries.</div>
+      </div>
+    </div>
+    <div class="event-card info">
+      <div class="event-badge">📊 STELLAR</div>
+      <div class="event-body">
+        <div class="event-name">DTCC Integrates with Stellar (XLM)</div>
+        <div class="event-desc">DTCC announces tokenized securities integration on Stellar network, triggering XLM's 72% 7-day surge.</div>
+      </div>
+    </div>
+    <div class="event-card season">
+      <div class="event-badge">📅 SEASON</div>
+      <div class="event-body">
+        <div class="event-name">June Crypto Seasonality: Historically Weak</div>
+        <div class="event-desc">June has been bearish for BTC in 6 of last 10 years. Q3 (July+) historically stronger for altcoins.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <div class="mood-bar"><strong><span class="t" data-en="Market:" data-ar="السوق:" data-fr="Marché:">Market:</span></strong> <span class="t" data-en="US equities close the week lower as hot jobs data re-ignites rate-hike fears. Tech holds up via AI names (NVDA, MU) while healthcare drags on biotech failures. VIX creeps higher. Iran-Hormuz tension adds geopolitical risk premium to oil and defense." data-ar="الأسهم الأمريكية تغلق الأسبوع منخفضة مع عودة مخاوف رفع الفائدة. التكنولوجيا تتماسك بفضل أسهم الذكاء الاصطناعي." data-fr="Les actions US terminent la semaine en baisse sur les craintes de hausse des taux. La tech résiste grâce à l'IA.">US equities close the week lower as hot jobs data re-ignites rate-hike fears. Tech holds up via AI names (NVDA, MU) while healthcare drags on biotech failures. VIX creeps higher. Iran-Hormuz tension adds geopolitical risk premium to oil and defense.</span></div>
+
+  <div class="section-title"><span class="t" data-en="Top Gainers" data-ar="أكبر الرابحين" data-fr="Meilleures Hausses">Top Gainers</span></div>
+  <div class="accordion">
+    <div class="acc-row"><div class="acc-header" onclick="toggle(this)"><span class="acc-rank">1</span><div class="acc-info"><div class="acc-name">Butterfly Network</div><div class="acc-ticker">BFLY</div></div><div class="acc-price">$4.82</div><div class="acc-change up">+55.9%</div><div class="acc-trend"></div><span class="acc-sentiment bullish"><span class="t" data-en="Bullish" data-ar="صاعد" data-fr="Haussier">Bullish</span></span><span class="acc-chevron">▼</span></div><div class="acc-body"><div class="detail-row"><span class="detail-label">Sector</span><span class="detail-val">Healthcare Tech</span></div><div class="headline-box">FDA clears Butterfly Network's AI-powered handheld ultrasound for cardiac screening — stock surges on broader-than-expected addressable market.</div></div></div>
+    <div class="acc-row"><div class="acc-header" onclick="toggle(this)"><span class="acc-rank">2</span><div class="acc-info"><div class="acc-name">Wolfspeed</div><div class="acc-ticker">WOLF</div></div><div class="acc-price">$8.14</div><div class="acc-change up">+17.9%</div><div class="acc-trend"></div><span class="acc-sentiment bullish"><span class="t" data-en="Bullish" data-ar="صاعد" data-fr="Haussier">Bullish</span></span><span class="acc-chevron">▼</span></div><div class="acc-body"><div class="detail-row"><span class="detail-label">Sector</span><span class="detail-val">Semiconductors</span></div><div class="headline-box">Wolfspeed signs multi-year SiC wafer supply deal with a major EV manufacturer, reviving confidence in SiC demand cycle.</div></div></div>
+    <div class="acc-row"><div class="acc-header" onclick="toggle(this)"><span class="acc-rank">3</span><div class="acc-info"><div class="acc-name">QuantumScape</div><div class="acc-ticker">QS</div></div><div class="acc-price">$7.23</div><div class="acc-change up">+16.5%</div><div class="acc-trend"></div><span class="acc-sentiment bullish"><span class="t" data-en="Bullish" data-ar="صاعد" data-fr="Haussier">Bullish</span></span><span class="acc-chevron">▼</span></div><div class="acc-body"><div class="detail-row"><span class="detail-label">Sector</span><span class="detail-val">EV / Energy Storage</span></div><div class="headline-box">QuantumScape announces breakthrough in solid-state battery production yield, raising hopes for commercial scale-up.</div></div></div>
+    <div class="acc-row"><div class="acc-header" onclick="toggle(this)"><span class="acc-rank">4</span><div class="acc-info"><div class="acc-name">NVIDIA</div><div class="acc-ticker">NVDA</div></div><div class="acc-price">$132.50</div><div class="acc-change up">+4.2%</div><div class="acc-trend"></div><span class="acc-sentiment bullish"><span class="t" data-en="Bullish" data-ar="صاعد" data-fr="Haussier">Bullish</span></span><span class="acc-chevron">▼</span></div><div class="acc-body"><div class="detail-row"><span class="detail-label">Sector</span><span class="detail-val">Technology</span></div><div class="headline-box">NVDA rebounds as hyperscalers confirm unabated H200/B200 AI chip demand; Blackwell GPU shipments tracking ahead of schedule.</div></div></div>
+    <div class="acc-row"><div class="acc-header" onclick="toggle(this)"><span class="acc-rank">5</span><div class="acc-info"><div class="acc-name">Micron Technology</div><div class="acc-ticker">MU</div></div><div class="acc-price">$118.40</div><div class="acc-change up">+3.8%</div><div class="acc-trend"></div><span class="acc-sentiment bullish"><span class="t" data-en="Bullish" data-ar="صاعد" data-fr="Haussier">Bullish</span></span><span class="acc-chevron">▼</span></div><div class="acc-body"><div class="detail-row"><span class="detail-label">Sector</span><span class="detail-val">Semiconductors</span></div><div class="headline-box">Micron gains on AI-driven HBM3e memory demand; analyst upgrades to Buy citing 2H2026 margin expansion.</div></div></div>
+    <div class="acc-row"><div class="acc-header" onclick="toggle(this)"><span class="acc-rank">6</span><div class="acc-info"><div class="acc-name">Palantir</div><div class="acc-ticker">PLTR</div></div><div class="acc-price">$47.80</div><div class="acc-change up">+3.2%</div><div class="acc-trend"></div><span class="acc-sentiment bullish"><span class="t" data-en="Bullish" data-ar="صاعد" data-fr="Haussier">Bullish</span></span><span class="acc-chevron">▼</span></div><div class="acc-body"><div class="detail-row"><span class="detail-label">Sector</span><span class="detail-val">AI / Defense Tech</span></div><div class="headline-box">Palantir wins new $340M US DoD AIP data analytics contract, reinforcing government revenue momentum.</div></div></div>
+    <div class="acc-row"><div class="acc-header" onclick="toggle(this)"><span class="acc-rank">7</span><div class="acc-info"><div class="acc-name">Meta Platforms</div><div class="acc-ticker">META</div></div><div class="acc-price">$698.20</div><div class="acc-change up">+2.9%</div><div class="acc-trend"></div><span class="acc-sentiment bullish"><span class="t" data-en="Bullish" data-ar="صاعد" data-fr="Haussier">Bullish</span></span><span class="acc-chevron">▼</span></div><div class="acc-body"><div class="detail-row"><span class="detail-label">Sector</span><span class="detail-val">Technology</span></div><div class="headline-box">Meta AI assistant hits 1.5B weekly active users milestone; ad revenue lift from AI-personalized feeds continues.</div></div></div>
+    <div class="acc-row"><div class="acc-header" onclick="toggle(this)"><span class="acc-rank">8</span><div class="acc-info"><div class="acc-name">Tesla</div><div class="acc-ticker">TSLA</div></div><div class="acc-price">$248.60</div><div class="acc-change up">+2.7%</div><div class="acc-trend"></div><span class="acc-sentiment bullish"><span class="t" data-en="Bullish" data-ar="صاعد" data-fr="Haussier">Bullish</span></span><span class="acc-chevron">▼</span></div><div class="acc-body"><div class="detail-row"><span class="detail-label">Sector</span><span class="detail-val">EV / Auto</span></div><div class="headline-box">Tesla receives EU regulatory approval for FSD v13 supervised autonomy; European Robotaxi pilot timeline set for Q4.</div></div></div>
+    <div class="acc-row"><div class="acc-header" onclick="toggle(this)"><span class="acc-rank">9</span><div class="acc-info"><div class="acc-name">JPMorgan Chase</div><div class="acc-ticker">JPM</div></div><div class="acc-price">$245.80</div><div class="acc-change up">+2.3%</div><div class="acc-trend"></div><span class="acc-sentiment bullish"><span class="t" data-en="Bullish" data-ar="صاعد" data-fr="Haussier">Bullish</span></span><span class="acc-chevron">▼</span></div><div class="acc-body"><div class="detail-row"><span class="detail-label">Sector</span><span class="detail-val">Finance</span></div><div class="headline-box">JPM announces expansion of digital assets custody services and tokenized Treasury product for institutional clients.</div></div></div>
+    <div class="acc-row"><div class="acc-header" onclick="toggle(this)"><span class="acc-rank">10</span><div class="acc-info"><div class="acc-name">Exxon Mobil</div><div class="acc-ticker">XOM</div></div><div class="acc-price">$118.90</div><div class="acc-change up">+2.1%</div><div class="acc-trend"></div><span class="acc-sentiment bullish"><span class="t" data-en="Bullish" data-ar="صاعد" data-fr="Haussier">Bullish</span></span><span class="acc-chevron">▼</span></div><div class="acc-body"><div class="detail-row"><span class="detail-label">Sector</span><span class="detail-val">Energy</span></div><div class="headline-box">XOM gains as oil prices rise 1.4% on Hormuz supply-disruption fears; energy sector leads market on Friday.</div></div></div>
+
+  </div>
+
+  <div class="section-title"><span class="t" data-en="Top Losers" data-ar="أكبر الخاسرين" data-fr="Plus Grosses Baisses">Top Losers</span></div>
+  <div class="accordion">
+    <div class="acc-row"><div class="acc-header" onclick="toggle(this)"><span class="acc-rank">1</span><div class="acc-info"><div class="acc-name">Regencell Bioscience</div><div class="acc-ticker">RGC</div></div><div class="acc-price">$3.80</div><div class="acc-change down">-19.0%</div><div class="acc-trend"></div><span class="acc-sentiment bearish"><span class="t" data-en="Bearish" data-ar="هابط" data-fr="Baissier">Bearish</span></span><span class="acc-chevron">▼</span></div><div class="acc-body"><div class="detail-row"><span class="detail-label">Sector</span><span class="detail-val">Biotech</span></div><div class="headline-box">FDA places clinical hold on Regencell's lead ADHD/ASD trial after adverse event reports — stock crashes.</div></div></div>
+    <div class="acc-row"><div class="acc-header" onclick="toggle(this)"><span class="acc-rank">2</span><div class="acc-info"><div class="acc-name">Accenture</div><div class="acc-ticker">ACN</div></div><div class="acc-price">$278.40</div><div class="acc-change down">-18.0%</div><div class="acc-trend"></div><span class="acc-sentiment bearish"><span class="t" data-en="Bearish" data-ar="هابط" data-fr="Baissier">Bearish</span></span><span class="acc-chevron">▼</span></div><div class="acc-body"><div class="detail-row"><span class="detail-label">Sector</span><span class="detail-val">IT Services</span></div><div class="headline-box">Accenture slashes FY2026 revenue guidance citing slower-than-expected enterprise AI consulting spend and project delays.</div></div></div>
+    <div class="acc-row"><div class="acc-header" onclick="toggle(this)"><span class="acc-rank">3</span><div class="acc-info"><div class="acc-name">Legend Biotech</div><div class="acc-ticker">LEGN</div></div><div class="acc-price">$38.20</div><div class="acc-change down">-16.7%</div><div class="acc-trend"></div><span class="acc-sentiment bearish"><span class="t" data-en="Bearish" data-ar="هابط" data-fr="Baissier">Bearish</span></span><span class="acc-chevron">▼</span></div><div class="acc-body"><div class="detail-row"><span class="detail-label">Sector</span><span class="detail-val">Biotech</span></div><div class="headline-box">Legend Biotech's Phase 3 CAR-T trial fails primary endpoint; pipeline concerns weigh on shares.</div></div></div>
+    <div class="acc-row"><div class="acc-header" onclick="toggle(this)"><span class="acc-rank">4</span><div class="acc-info"><div class="acc-name">Boeing</div><div class="acc-ticker">BA</div></div><div class="acc-price">$168.20</div><div class="acc-change down">-4.5%</div><div class="acc-trend"></div><span class="acc-sentiment bearish"><span class="t" data-en="Bearish" data-ar="هابط" data-fr="Baissier">Bearish</span></span><span class="acc-chevron">▼</span></div><div class="acc-body"><div class="detail-row"><span class="detail-label">Sector</span><span class="detail-val">Aerospace</span></div><div class="headline-box">Boeing faces new quality-control probe after FAA flags manufacturing inconsistencies in 737 MAX 10 fuselage welds.</div></div></div>
+    <div class="acc-row"><div class="acc-header" onclick="toggle(this)"><span class="acc-rank">5</span><div class="acc-info"><div class="acc-name">Intel</div><div class="acc-ticker">INTC</div></div><div class="acc-price">$22.80</div><div class="acc-change down">-3.9%</div><div class="acc-trend"></div><span class="acc-sentiment bearish"><span class="t" data-en="Bearish" data-ar="هابط" data-fr="Baissier">Bearish</span></span><span class="acc-chevron">▼</span></div><div class="acc-body"><div class="detail-row"><span class="detail-label">Sector</span><span class="detail-val">Semiconductors</span></div><div class="headline-box">Intel loses additional datacenter AI chip share to AMD EPYC and NVDA; foundry 18A yield concerns persist.</div>    <div class="acc-row"><div class="acc-header" onclick="toggle(this)"><span class="acc-rank">6</span><div class="acc-info"><div class="acc-name">Walt Disney</div><div class="acc-ticker">DIS</div></div><div class="acc-price">$88.40</div><div class="acc-change down">-3.2%</div><div class="acc-trend"></div><span class="acc-sentiment bearish"><span class="t" data-en="Bearish" data-ar="هابط" data-fr="Baissier">Bearish</span></span><span class="acc-chevron">▼</span></div><div class="acc-body"><div class="detail-row"><span class="detail-label">Sector</span><span class="detail-val">Media</span></div><div class="headline-box">Disney streaming subscriber growth misses Q2 estimates; linear TV ad revenue decline accelerates.</div></div></div>
+    <div class="acc-row"><div class="acc-header" onclick="toggle(this)"><span class="acc-rank">7</span><div class="acc-info"><div class="acc-name">Pfizer</div><div class="acc-ticker">PFE</div></div><div class="acc-price">$24.60</div><div class="acc-change down">-2.8%</div><div class="acc-trend"></div><span class="acc-sentiment bearish"><span class="t" data-en="Bearish" data-ar="هابط" data-fr="Baissier">Bearish</span></span><span class="acc-chevron">▼</span></div><div class="acc-body"><div class="detail-row"><span class="detail-label">Sector</span><span class="detail-val">Pharma</span></div><div class="headline-box">Pfizer's obesity drug candidate fails Phase 3 trial on efficacy; pipeline questions resurface.</div></div></div>
+    <div class="acc-row"><div class="acc-header" onclick="toggle(this)"><span class="acc-rank">8</span><div class="acc-info"><div class="acc-name">CVS Health</div><div class="acc-ticker">CVS</div></div><div class="acc-price">$56.80</div><div class="acc-change down">-2.6%</div><div class="acc-trend"></div><span class="acc-sentiment bearish"><span class="t" data-en="Bearish" data-ar="هابط" data-fr="Baissier">Bearish</span></span><span class="acc-chevron">▼</span></div><div class="acc-body"><div class="detail-row"><span class="detail-label">Sector</span><span class="detail-val">Healthcare</span></div><div class="headline-box">CVS insurance segment losses widen as medical cost ratio climbs to 89%; full-year guidance cut.</div></div></div>
+    <div class="acc-row"><div class="acc-header" onclick="toggle(this)"><span class="acc-rank">9</span><div class="acc-info"><div class="acc-name">AT&T</div><div class="acc-ticker">T</div></div><div class="acc-price">$18.60</div><div class="acc-change down">-2.3%</div><div class="acc-trend"></div><span class="acc-sentiment bearish"><span class="t" data-en="Bearish" data-ar="هابط" data-fr="Baissier">Bearish</span></span><span class="acc-chevron">▼</span></div><div class="acc-body"><div class="detail-row"><span class="detail-label">Sector</span><span class="detail-val">Telecom</span></div><div class="headline-box">AT&T debt refinancing at higher rates squeezes margins; analyst cuts target on free cash flow pressure.</div></div></div>
+    <div class="acc-row"><div class="acc-header" onclick="toggle(this)"><span class="acc-rank">10</span><div class="acc-info"><div class="acc-name">Ford Motor</div><div class="acc-ticker">F</div></div><div class="acc-price">$11.20</div><div class="acc-change down">-2.1%</div><div class="acc-trend"></div><span class="acc-sentiment bearish"><span class="t" data-en="Bearish" data-ar="هابط" data-fr="Baissier">Bearish</span></span><span class="acc-chevron">▼</span></div><div class="acc-body"><div class="detail-row"><span class="detail-label">Sector</span><span class="detail-val">Automotive</span></div><div class="headline-box">Ford announces 15% EV production slowdown for H2 2026; pivots resources back to hybrid and ICE lineup.</div></div></div>
+</div></div>
+  </div>
+</div><!-- end stocks tab -->
+
+<div class="updated">
+  <span class="t" data-en="Updated" data-ar="آخر تحديث" data-fr="Mis à jour">Updated</span>: Sunday, June 21 2026 · 08:00 AM
+  &nbsp;·&nbsp; Crypto: X/CT, Reddit, CoinDesk, CoinTelegraph &nbsp;·&nbsp; Stocks: Bloomberg, MarketWatch, Seeking Alpha, Schwab
+  &nbsp;·&nbsp; <a href="https://zooz1zee.github.io/crypto-pulse/" style="color:var(--accent);text-decoration:none">zooz1zee.github.io/crypto-pulse</a>
+</div>
+
+<script>
+function setTab(name) {
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+  document.getElementById('tab-' + name).classList.add('active');
+  document.getElementById('tab-content-' + name).classList.add('active');
+  var ci = document.getElementById('intel-crypto');
+  var si = document.getElementById('intel-stocks');
+  if (ci) ci.style.display = (name === 'crypto') ? 'flex' : 'none';
+  if (si) si.style.display = (name === 'stocks') ? 'flex' : 'none';
+  var mc = document.getElementById('mood-crypto');
+  var ms = document.getElementById('mood-stocks');
+  if (mc) mc.style.display = (name === 'crypto') ? '' : 'none';
+  if (ms) ms.style.display = (name === 'stocks') ? '' : 'none';
+}
+function buildTrendBars() {
+  document.querySelectorAll('.acc-trend').forEach(function(el) {
+    var score = parseInt(el.textContent, 10);
+    if (isNaN(score) || score === 0) return;
+    var color = score >= 65 ? 'var(--green)' : score >= 40 ? 'var(--yellow)' : 'var(--red)';
+    el.innerHTML =
+      '<div style="width:34px;background:var(--surface2);border-radius:3px;overflow:hidden;height:5px;margin:0 auto 2px">' +
+        '<div style="width:' + Math.min(score,100) + '%;height:100%;background:' + color + ';border-radius:3px"></div>' +
+      '</div>' +
+      '<div style="font-size:9px;color:var(--muted);line-height:1">' + score + '</div>';
+  });
+}
+document.addEventListener('DOMContentLoaded', buildTrendBars);
+function toggle(header) {
+  const body = header.nextElementSibling;
+  const isOpen = header.classList.contains('open');
+  header.closest('.accordion').querySelectorAll('.acc-header.open').forEach(h => {
+    h.classList.remove('open'); h.nextElementSibling.classList.remove('open');
+  });
+  if (!isOpen) { header.classList.add('open'); body.classList.add('open'); }
+}
+function setLang(lang, btn) {
+  const dirs = { en: 'ltr', ar: 'rtl', fr: 'ltr' };
+  document.documentElement.lang = lang;
+  document.documentElement.dir = dirs[lang];
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.t[data-' + lang + ']').forEach(el => {
+    el.textContent = el.dataset[lang];
+  });
+}
+</script>
+</body>
+</html>
