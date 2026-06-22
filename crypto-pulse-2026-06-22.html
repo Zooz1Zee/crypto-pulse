@@ -240,6 +240,11 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 .sector-cell.s-down .sector-pct { color: var(--red); }
 .sector-cell.s-flat .sector-pct { color: var(--yellow); }
 .sector-ticker { font-size: 9px; color: var(--muted); margin-top: 2px; }
+
+/* ── 2-COLUMN COIN GRID ── */
+.acc-grid { display: flex; gap: 10px; align-items: flex-start; }
+.acc-col  { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 4px; }
+@media (max-width: 860px) { .acc-grid { flex-direction: column; } }
 </style>
 </head>
 <body>
@@ -669,45 +674,45 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     <div class="market-stat">
       <div class="label"><span class="t" data-en="Fed Rate" data-ar="معدل الفيدرالي" data-fr="Taux Fed">Fed Rate</span></div>
       <div class="value neutral">4.25%</div>
-      <div class="change neutral">On Hold</div>
+      <div class="change neutral"><span class="t" data-en="On Hold" data-ar="في وضع الانتظار" data-fr="En Pause">On Hold</span></div>
     </div>
   </div>
   <div class="accordion" style="margin-bottom:18px">
   <div class="sector-section">
-    <div class="sector-title">Sector Performance</div>
+    <div class="sector-title"><span class="t" data-en="Sector Performance" data-ar="أداء القطاعات" data-fr="Performance Sectorielle">Sector Performance</span></div>
     <div class="sector-grid">
-      <div class="sector-cell s-up"><div class="sector-name">INDUSTRIALS</div><div class="sector-pct">+1.2%</div><div class="sector-ticker">XLI</div></div>
-      <div class="sector-cell s-up"><div class="sector-name">HEALTHCARE</div><div class="sector-pct">+0.9%</div><div class="sector-ticker">XLV</div></div>
-      <div class="sector-cell s-up"><div class="sector-name">TECHNOLOGY</div><div class="sector-pct">+0.8%</div><div class="sector-ticker">XLK</div></div>
-      <div class="sector-cell s-up"><div class="sector-name">REAL ESTATE</div><div class="sector-pct">+0.6%</div><div class="sector-ticker">XLRE</div></div>
-      <div class="sector-cell s-up"><div class="sector-name">UTILITIES</div><div class="sector-pct">+0.4%</div><div class="sector-ticker">XLU</div></div>
-      <div class="sector-cell s-up"><div class="sector-name">FINANCIALS</div><div class="sector-pct">+0.3%</div><div class="sector-ticker">XLF</div></div>
-      <div class="sector-cell s-flat"><div class="sector-name">MATERIALS</div><div class="sector-pct">+0.1%</div><div class="sector-ticker">XLB</div></div>
-      <div class="sector-cell s-down"><div class="sector-name">ENERGY</div><div class="sector-pct">-0.5%</div><div class="sector-ticker">XLE</div></div>
-      <div class="sector-cell s-down"><div class="sector-name">COMM SVC</div><div class="sector-pct">-0.8%</div><div class="sector-ticker">XLC</div></div>
-      <div class="sector-cell s-down"><div class="sector-name">CONS DISC</div><div class="sector-pct">-0.9%</div><div class="sector-ticker">XLY</div></div>
+      <div class="sector-cell s-up"><div class="sector-name"><span class="t" data-en="INDUSTRIALS" data-ar="الصناعات" data-fr="Industrie">INDUSTRIALS</span></div><div class="sector-pct">+1.2%</div><div class="sector-ticker">XLI</div></div>
+      <div class="sector-cell s-up"><div class="sector-name"><span class="t" data-en="HEALTHCARE" data-ar="الرعاية الصحية" data-fr="Santé">HEALTHCARE</span></div><div class="sector-pct">+0.9%</div><div class="sector-ticker">XLV</div></div>
+      <div class="sector-cell s-up"><div class="sector-name"><span class="t" data-en="TECHNOLOGY" data-ar="التكنولوجيا" data-fr="Technologie">TECHNOLOGY</span></div><div class="sector-pct">+0.8%</div><div class="sector-ticker">XLK</div></div>
+      <div class="sector-cell s-up"><div class="sector-name"><span class="t" data-en="REAL ESTATE" data-ar="العقارات" data-fr="Immobilier">REAL ESTATE</span></div><div class="sector-pct">+0.6%</div><div class="sector-ticker">XLRE</div></div>
+      <div class="sector-cell s-up"><div class="sector-name"><span class="t" data-en="UTILITIES" data-ar="المرافق" data-fr="Services Publics">UTILITIES</span></div><div class="sector-pct">+0.4%</div><div class="sector-ticker">XLU</div></div>
+      <div class="sector-cell s-up"><div class="sector-name"><span class="t" data-en="FINANCIALS" data-ar="الماليات" data-fr="Finance">FINANCIALS</span></div><div class="sector-pct">+0.3%</div><div class="sector-ticker">XLF</div></div>
+      <div class="sector-cell s-flat"><div class="sector-name"><span class="t" data-en="MATERIALS" data-ar="المواد الخام" data-fr="Matériaux">MATERIALS</span></div><div class="sector-pct">+0.1%</div><div class="sector-ticker">XLB</div></div>
+      <div class="sector-cell s-down"><div class="sector-name"><span class="t" data-en="ENERGY" data-ar="الطاقة" data-fr="Énergie">ENERGY</span></div><div class="sector-pct">-0.5%</div><div class="sector-ticker">XLE</div></div>
+      <div class="sector-cell s-down"><div class="sector-name"><span class="t" data-en="COMM SVC" data-ar="الاتصالات" data-fr="Comm. Services">COMM SVC</span></div><div class="sector-pct">-0.8%</div><div class="sector-ticker">XLC</div></div>
+      <div class="sector-cell s-down"><div class="sector-name"><span class="t" data-en="CONS DISC" data-ar="الاستهلاكي التقديري" data-fr="Conso. Discr.">CONS DISC</span></div><div class="sector-pct">-0.9%</div><div class="sector-ticker">XLY</div></div>
     </div>
   </div>
 </div>
   <div class="events-section">
-  <div class="events-header">Key Events &amp; Catalysts</div>
+  <div class="events-header"><span class="t" data-en="Key Events &amp; Catalysts" data-ar="أحداث وعوامل السوق" data-fr="Événements Clés &amp; Catalyseurs">Key Events &amp; Catalysts</span></div>
   <div class="events-grid">
     <div class="event-card info">
-      <div class="event-badge">INDEX EVENT</div>
+      <div class="event-badge"><span class="t" data-en="INDEX EVENT" data-ar="حدث مؤشري" data-fr="Événement Indice">INDEX EVENT</span></div>
       <div class="event-body">
         <div class="event-name">Nasdaq-100 &amp; S&amp;P 500 Quarterly Rebalance</div>
         <div class="event-desc">Effective pre-market today. NDX: CoreWeave, Astera Labs, Nebius, Rocket Lab, Teradyne IN; Charter, Cognizant, Insmed, Verisk, Zscaler OUT. S&amp;P 500: Marvell &amp; Flex IN; Pool Corp &amp; Campbell&#39;s OUT.</div>
       </div>
     </div>
     <div class="event-card positive">
-      <div class="event-badge">MACRO</div>
+      <div class="event-badge"><span class="t" data-en="MACRO" data-ar="ماكرو" data-fr="Macro">MACRO</span></div>
       <div class="event-body">
         <div class="event-name">US-Iran Peace Negotiations Advancing</div>
         <div class="event-desc">Qatar &amp; Pakistan broker a "High Level Committee" 60-day roadmap deal. Crude oil -2.8% to $73.73. Risk-on sentiment building despite limited equity follow-through.</div>
       </div>
     </div>
     <div class="event-card warning">
-      <div class="event-badge">CRYPTO FLOW</div>
+      <div class="event-badge"><span class="t" data-en="CRYPTO FLOW" data-ar="تدفق العملات" data-fr="Flux Crypto">CRYPTO FLOW</span></div>
       <div class="event-body">
         <div class="event-name">Bitcoin ETF Outflows vs. XRP ETF Inflows</div>
         <div class="event-desc">BTC spot ETFs shed $1.44B in one week (2026 record). XRP ETFs extend 6-week inflow streak with $1.37B cumulative since March SEC approval. Rotation, not exit.</div>
@@ -811,6 +816,22 @@ function setLang(lang, btn) {
     });
   }
 })();
+
+// Split crypto accordion into 2 columns (10 left, 10 right)
+document.addEventListener('DOMContentLoaded', function() {
+  var acc = document.querySelector('#tab-content-crypto .accordion');
+  if (!acc) return;
+  var rows = Array.from(acc.querySelectorAll(':scope > .acc-row'));
+  if (rows.length < 2) return;
+  var half = Math.ceil(rows.length / 2);
+  var grid = document.createElement('div');
+  grid.className = 'acc-grid';
+  var c1 = document.createElement('div'); c1.className = 'acc-col';
+  var c2 = document.createElement('div'); c2.className = 'acc-col';
+  rows.forEach(function(r, i) { (i < half ? c1 : c2).appendChild(r); });
+  grid.appendChild(c1); grid.appendChild(c2);
+  acc.replaceWith(grid);
+});
 </script>
 </body>
 </html>
