@@ -52,7 +52,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 /* ── ALERT BANNER ── */
 .alert-banner { margin: 0; border-bottom: 1px solid var(--border); }
 .alert-item { display: flex; align-items: flex-start; gap: 10px;
-  padding: 10px 24px; font-size: 13px; line-height: 1.5; }
+  padding: 10px 32px; font-size: 13px; line-height: 1.5; }
 .alert-spike { background: rgba(255,77,106,0.08); border-left: 3px solid var(--red); }
 .alert-fud   { background: rgba(255,209,102,0.08); border-left: 3px solid var(--yellow); }
 .alert-news  { background: rgba(108,99,255,0.08);  border-left: 3px solid var(--accent); }
@@ -66,8 +66,21 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   color: var(--muted); cursor: pointer;
   border-bottom: 2px solid transparent; transition: all 0.15s; }
 .tab.active { color: var(--accent); border-bottom-color: var(--accent); }
-.tab-content { display: none; padding: 20px 24px; max-width: 960px; margin: 0 auto; }
+.tab-content { display: none; padding: 20px 0; }
 .tab-content.active { display: block; }
+.tab-content .market-overview,
+.tab-content .mood-bar,
+.tab-content .section-title,
+.tab-content .accordion,
+.tab-content .events-section,
+.tab-content .season-bar {
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 24px;
+  padding-right: 24px;
+  box-sizing: border-box;
+}
 
 /* ── MARKET OVERVIEW STATS ── */
 .market-overview { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 18px; }
@@ -210,7 +223,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 .sector-title { padding: 10px 16px 6px; font-size: 10px; font-weight: 700;
   color: var(--muted); letter-spacing: 1px; text-transform: uppercase; }
 .sector-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px;
-  padding: 0 16px 12px; }
+  padding: 0 0 12px; }
 .sector-cell { background: var(--surface); border: 1px solid var(--border);
   border-radius: 8px; padding: 8px 6px; text-align: center; transition: transform .15s; }
 .sector-cell:hover { transform: translateY(-1px); }
@@ -240,8 +253,8 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
         <a href="https://t.me/zooz1_M" class="social-badge tg-badge">✈ @zooz1_M</a>
       </div>
     </div>
-    <div id="mood-crypto" class="mood-pill mood-neutral">&#x26A1; Mixed</div>
-    <div id="mood-stocks" class="mood-pill mood-neutral" style="display:none">&#x26A1; Mixed</div>
+    <div id="mood-crypto" class="mood-pill mood-neutral">&#x26A1; <span class="t" data-en="Mixed" data-ar="مختلط" data-fr="Mixte">Mixed</span></div>
+    <div id="mood-stocks" class="mood-pill mood-neutral" style="display:none">&#x26A1; <span class="t" data-en="Mixed" data-ar="مختلط" data-fr="Mixte">Mixed</span></div>
   </div>
   <div class="header-right">
     <div class="lang-bar">
@@ -254,18 +267,18 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 
 <!-- ══ TABS ══ -->
 <div class="intel-bar" id="intel-crypto">
-  <div class="intel-stat"><div class="i-label">Total MCap</div><div class="i-value">$2.3T</div></div>
-  <div class="intel-stat"><div class="i-label">BTC Dom</div><div class="i-value">56.4%</div></div>
-  <div class="intel-stat"><div class="i-label">24H Vol</div><div class="i-value">$73B</div></div>
-  <div class="intel-stat"><div class="i-label">ETH Dom</div><div class="i-value">9.1%</div></div>
-  <div class="intel-stat"><div class="i-label">Top Signal</div><div class="i-value" style="font-size:12px;color:#00d68f">XRP ETF 6W Inflows</div></div>
+  <div class="intel-stat"><div class="i-label"><span class="t" data-en="Total MCap" data-ar="القيمة السوقية" data-fr="Cap. Totale">Total MCap</span></div><div class="i-value">$2.3T</div></div>
+  <div class="intel-stat"><div class="i-label"><span class="t" data-en="BTC Dom" data-ar="هيمنة BTC" data-fr="Dom. BTC">BTC Dom</span></div><div class="i-value">56.4%</div></div>
+  <div class="intel-stat"><div class="i-label"><span class="t" data-en="24H Vol" data-ar="حجم 24 ساعة" data-fr="Vol. 24h">24H Vol</span></div><div class="i-value">$73B</div></div>
+  <div class="intel-stat"><div class="i-label"><span class="t" data-en="ETH Dom" data-ar="هيمنة ETH" data-fr="Dom. ETH">ETH Dom</span></div><div class="i-value">9.1%</div></div>
+  <div class="intel-stat"><div class="i-label"><span class="t" data-en="Top Signal" data-ar="أبرز إشارة" data-fr="Signal Top">Top Signal</span></div><div class="i-value" style="font-size:12px;color:#00d68f">XRP ETF 6W Inflows</div></div>
 </div>
 <div class="intel-bar" id="intel-stocks" style="display:none;background:rgba(108,99,255,0.07);border-top:2px solid #6c63ff">
-  <div class="intel-stat"><div class="i-label">S&amp;P 500</div><div class="i-value" style="color:#ff4d6a">7,474</div></div>
-  <div class="intel-stat"><div class="i-label">VIX</div><div class="i-value" style="color:#ffd166">17.5</div></div>
-  <div class="intel-stat"><div class="i-label">10Y Yield</div><div class="i-value" style="color:#ffd166">4.45%</div></div>
-  <div class="intel-stat"><div class="i-label">Fed Rate</div><div class="i-value" style="color:#8b949e">4.25%</div></div>
-  <div class="intel-stat"><div class="i-label">Top Gainer</div><div class="i-value" style="font-size:12px;color:#00d68f">CRWV +4.85%</div></div>
+  <div class="intel-stat"><div class="i-label"><span class="t" data-en="S&amp;P 500" data-ar="S&amp;P 500" data-fr="S&amp;P 500">S&amp;P 500</span></div><div class="i-value" style="color:#ff4d6a">7,474</div></div>
+  <div class="intel-stat"><div class="i-label"><span class="t" data-en="VIX" data-ar="مؤشر VIX" data-fr="VIX">VIX</span></div><div class="i-value" style="color:#ffd166">17.5</div></div>
+  <div class="intel-stat"><div class="i-label"><span class="t" data-en="10Y Yield" data-ar="عائد 10 سنوات" data-fr="Taux 10 ans">10Y Yield</span></div><div class="i-value" style="color:#ffd166">4.45%</div></div>
+  <div class="intel-stat"><div class="i-label"><span class="t" data-en="Fed Rate" data-ar="معدل الفيدرالي" data-fr="Taux Fed">Fed Rate</span></div><div class="i-value" style="color:#8b949e">4.25%</div></div>
+  <div class="intel-stat"><div class="i-label"><span class="t" data-en="Top Gainer" data-ar="أكبر رابح" data-fr="Top Hausse">Top Gainer</span></div><div class="i-value" style="font-size:12px;color:#00d68f">CRWV +4.85%</div></div>
 </div>
 
 <div class="tab-bar">
@@ -278,8 +291,6 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 <div class="alert-banner">
   <div class="alert-item alert-bull"><span class="alert-label">&#x1F7E2; BULL</span> XRP ETF inflows hit 6th consecutive week &mdash; $1.37B cumulative since SEC March 2026 approval; institutional rotation out of BTC into XRP accelerating</div>
   <div class="alert-item alert-fud"><span class="alert-label">&#x26A0;&#xFE0F; FUD</span> Bitcoin spot ETFs bleed record 2026 weekly outflow of $1.44B &mdash; largest single-week exit since launch; BTC holding $65K support</div>
-  <div class="alert-item alert-news"><span class="alert-label">&#x1F4F0; NEWS</span> Nasdaq-100 &amp; S&amp;P 500 quarterly rebalance effective today &mdash; CoreWeave (CRWV), Astera Labs (ALAB), Rocket Lab (RKLB) join NDX; Marvell (MRVL) &amp; Flex (FLEX) enter S&amp;P 500</div>
-  <div class="alert-item alert-news"><span class="alert-label">&#x1F4F0; NEWS</span> US-Iran peace talks advancing &mdash; Qatar &amp; Pakistan broker 60-day roadmap; crude oil falls 2.8% to $73.73 on optimism</div>
 </div>
   <div class="market-overview" style="margin-top:14px">
     <div class="market-stat">
@@ -319,7 +330,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       <div class="acc-price">$65,034</div>
       <div class="acc-change up">+0.4%</div>
       <div class="acc-trend">70</div>
-      <span class="acc-sentiment neutral-pill">Neutral</span>
+      <span class="acc-sentiment neutral-pill"><span class="t" data-en="Neutral" data-ar="محايد" data-fr="Neutre">Neutral</span></span>
       <span class="acc-chevron">▼</span>
     </div><div class="acc-body">
       <div class="detail-row"><span class="detail-label">Market Cap</span><span class="detail-val">$1.29T</span></div>
@@ -334,7 +345,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       <div class="acc-price">$1,762</div>
       <div class="acc-change up">+1.8%</div>
       <div class="acc-trend">65</div>
-      <span class="acc-sentiment neutral-pill">Neutral</span>
+      <span class="acc-sentiment neutral-pill"><span class="t" data-en="Neutral" data-ar="محايد" data-fr="Neutre">Neutral</span></span>
       <span class="acc-chevron">▼</span>
     </div><div class="acc-body">
       <div class="detail-row"><span class="detail-label">Market Cap</span><span class="detail-val">$213B</span></div>
@@ -349,7 +360,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       <div class="acc-price">$591</div>
       <div class="acc-change down">-0.2%</div>
       <div class="acc-trend">50</div>
-      <span class="acc-sentiment neutral-pill">Neutral</span>
+      <span class="acc-sentiment neutral-pill"><span class="t" data-en="Neutral" data-ar="محايد" data-fr="Neutre">Neutral</span></span>
       <span class="acc-chevron">▼</span>
     </div><div class="acc-body">
       <div class="detail-row"><span class="detail-label">Market Cap</span><span class="detail-val">$86B</span></div>
@@ -364,7 +375,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       <div class="acc-price">$74.32</div>
       <div class="acc-change up">+1.6%</div>
       <div class="acc-trend">73</div>
-      <span class="acc-sentiment bullish">Bullish</span>
+      <span class="acc-sentiment bullish"><span class="t" data-en="Bullish" data-ar="صاعد" data-fr="Haussier">Bullish</span></span>
       <span class="acc-chevron">▼</span>
     </div><div class="acc-body">
       <div class="detail-row"><span class="detail-label">Market Cap</span><span class="detail-val">$35B</span></div>
@@ -379,7 +390,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       <div class="acc-price">$1.13</div>
       <div class="acc-change down">-1.2%</div>
       <div class="acc-trend">84</div>
-      <span class="acc-sentiment bullish">Bullish</span>
+      <span class="acc-sentiment bullish"><span class="t" data-en="Bullish" data-ar="صاعد" data-fr="Haussier">Bullish</span></span>
       <span class="acc-chevron">▼</span>
     </div><div class="acc-body">
       <div class="detail-row"><span class="detail-label">Market Cap</span><span class="detail-val">$65B</span></div>
@@ -395,7 +406,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       <div class="acc-price">$0.1604</div>
       <div class="acc-change down">-2.0%</div>
       <div class="acc-trend">33</div>
-      <span class="acc-sentiment bearish">Bearish</span>
+      <span class="acc-sentiment bearish"><span class="t" data-en="Bearish" data-ar="هابط" data-fr="Baissier">Bearish</span></span>
       <span class="acc-chevron">▼</span>
     </div><div class="acc-body">
       <div class="detail-row"><span class="detail-label">Market Cap</span><span class="detail-val">$5.7B</span></div>
@@ -410,7 +421,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       <div class="acc-price">$6.07</div>
       <div class="acc-change down">-3.2%</div>
       <div class="acc-trend">43</div>
-      <span class="acc-sentiment bearish">Bearish</span>
+      <span class="acc-sentiment bearish"><span class="t" data-en="Bearish" data-ar="هابط" data-fr="Baissier">Bearish</span></span>
       <span class="acc-chevron">▼</span>
     </div><div class="acc-body">
       <div class="detail-row"><span class="detail-label">Market Cap</span><span class="detail-val">$2.5B</span></div>
@@ -425,7 +436,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       <div class="acc-price">$0.0830</div>
       <div class="acc-change down">-0.7%</div>
       <div class="acc-trend">48</div>
-      <span class="acc-sentiment neutral-pill">Neutral</span>
+      <span class="acc-sentiment neutral-pill"><span class="t" data-en="Neutral" data-ar="محايد" data-fr="Neutre">Neutral</span></span>
       <span class="acc-chevron">▼</span>
     </div><div class="acc-body">
       <div class="detail-row"><span class="detail-label">Market Cap</span><span class="detail-val">$14.1B</span></div>
@@ -440,7 +451,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       <div class="acc-price">$0.9438</div>
       <div class="acc-change down">-2.5%</div>
       <div class="acc-trend">30</div>
-      <span class="acc-sentiment bearish">Bearish</span>
+      <span class="acc-sentiment bearish"><span class="t" data-en="Bearish" data-ar="هابط" data-fr="Baissier">Bearish</span></span>
       <span class="acc-chevron">▼</span>
     </div><div class="acc-body">
       <div class="detail-row"><span class="detail-label">Market Cap</span><span class="detail-val">$1.6B</span></div>
@@ -455,7 +466,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       <div class="acc-price">$0.0804</div>
       <div class="acc-change up">+0.1%</div>
       <div class="acc-trend">38</div>
-      <span class="acc-sentiment neutral-pill">Neutral</span>
+      <span class="acc-sentiment neutral-pill"><span class="t" data-en="Neutral" data-ar="محايد" data-fr="Neutre">Neutral</span></span>
       <span class="acc-chevron">▼</span>
     </div><div class="acc-body">
       <div class="detail-row"><span class="detail-label">Market Cap</span><span class="detail-val">$857M</span></div>
@@ -470,7 +481,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       <div class="acc-price">$0.158</div>
       <div class="acc-change up">+0.5%</div>
       <div class="acc-trend">45</div>
-      <span class="acc-sentiment neutral-pill">Neutral</span>
+      <span class="acc-sentiment neutral-pill"><span class="t" data-en="Neutral" data-ar="محايد" data-fr="Neutre">Neutral</span></span>
       <span class="acc-chevron">▼</span>
     </div><div class="acc-body">
       <div class="detail-row"><span class="detail-label">Market Cap</span><span class="detail-val">$14.0B</span></div>
@@ -485,7 +496,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       <div class="acc-price">$12.40</div>
       <div class="acc-change up">+0.8%</div>
       <div class="acc-trend">52</div>
-      <span class="acc-sentiment neutral-pill">Neutral</span>
+      <span class="acc-sentiment neutral-pill"><span class="t" data-en="Neutral" data-ar="محايد" data-fr="Neutre">Neutral</span></span>
       <span class="acc-chevron">▼</span>
     </div><div class="acc-body">
       <div class="detail-row"><span class="detail-label">Market Cap</span><span class="detail-val">$8.2B</span></div>
@@ -500,7 +511,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       <div class="acc-price">$4.85</div>
       <div class="acc-change down">-1.2%</div>
       <div class="acc-trend">40</div>
-      <span class="acc-sentiment neutral-pill">Neutral</span>
+      <span class="acc-sentiment neutral-pill"><span class="t" data-en="Neutral" data-ar="محايد" data-fr="Neutre">Neutral</span></span>
       <span class="acc-chevron">▼</span>
     </div><div class="acc-body">
       <div class="detail-row"><span class="detail-label">Market Cap</span><span class="detail-val">$11.8B</span></div>
@@ -515,7 +526,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       <div class="acc-price">$0.089</div>
       <div class="acc-change up">+0.3%</div>
       <div class="acc-trend">35</div>
-      <span class="acc-sentiment neutral-pill">Neutral</span>
+      <span class="acc-sentiment neutral-pill"><span class="t" data-en="Neutral" data-ar="محايد" data-fr="Neutre">Neutral</span></span>
       <span class="acc-chevron">▼</span>
     </div><div class="acc-body">
       <div class="detail-row"><span class="detail-label">Market Cap</span><span class="detail-val">$2.7B</span></div>
@@ -530,7 +541,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       <div class="acc-price">$0.062</div>
       <div class="acc-change down">-1.8%</div>
       <div class="acc-trend">32</div>
-      <span class="acc-sentiment bearish">Bearish</span>
+      <span class="acc-sentiment bearish"><span class="t" data-en="Bearish" data-ar="هابط" data-fr="Baissier">Bearish</span></span>
       <span class="acc-chevron">▼</span>
     </div><div class="acc-body">
       <div class="detail-row"><span class="detail-label">Market Cap</span><span class="detail-val">$2.4B</span></div>
@@ -545,7 +556,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       <div class="acc-price">$78.50</div>
       <div class="acc-change down">-1.1%</div>
       <div class="acc-trend">40</div>
-      <span class="acc-sentiment neutral-pill">Neutral</span>
+      <span class="acc-sentiment neutral-pill"><span class="t" data-en="Neutral" data-ar="محايد" data-fr="Neutre">Neutral</span></span>
       <span class="acc-chevron">▼</span>
     </div><div class="acc-body">
       <div class="detail-row"><span class="detail-label">Market Cap</span><span class="detail-val">$5.8B</span></div>
@@ -560,7 +571,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       <div class="acc-price">$0.0000082</div>
       <div class="acc-change down">-0.9%</div>
       <div class="acc-trend">38</div>
-      <span class="acc-sentiment neutral-pill">Neutral</span>
+      <span class="acc-sentiment neutral-pill"><span class="t" data-en="Neutral" data-ar="محايد" data-fr="Neutre">Neutral</span></span>
       <span class="acc-chevron">▼</span>
     </div><div class="acc-body">
       <div class="detail-row"><span class="detail-label">Market Cap</span><span class="detail-val">$4.8B</span></div>
@@ -575,7 +586,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       <div class="acc-price">$7.85</div>
       <div class="acc-change up">+1.2%</div>
       <div class="acc-trend">50</div>
-      <span class="acc-sentiment neutral-pill">Neutral</span>
+      <span class="acc-sentiment neutral-pill"><span class="t" data-en="Neutral" data-ar="محايد" data-fr="Neutre">Neutral</span></span>
       <span class="acc-chevron">▼</span>
     </div><div class="acc-body">
       <div class="detail-row"><span class="detail-label">Market Cap</span><span class="detail-val">$4.7B</span></div>
@@ -590,7 +601,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       <div class="acc-price">$2.45</div>
       <div class="acc-change up">+2.1%</div>
       <div class="acc-trend">62</div>
-      <span class="acc-sentiment bullish">Bullish</span>
+      <span class="acc-sentiment bullish"><span class="t" data-en="Bullish" data-ar="صاعد" data-fr="Haussier">Bullish</span></span>
       <span class="acc-chevron">▼</span>
     </div><div class="acc-body">
       <div class="detail-row"><span class="detail-label">Market Cap</span><span class="detail-val">$7.1B</span></div>
@@ -605,7 +616,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       <div class="acc-price">$0.87</div>
       <div class="acc-change down">-0.6%</div>
       <div class="acc-trend">38</div>
-      <span class="acc-sentiment neutral-pill">Neutral</span>
+      <span class="acc-sentiment neutral-pill"><span class="t" data-en="Neutral" data-ar="محايد" data-fr="Neutre">Neutral</span></span>
       <span class="acc-chevron">▼</span>
     </div><div class="acc-body">
       <div class="detail-row"><span class="detail-label">Market Cap</span><span class="detail-val">$1.1B</span></div>
