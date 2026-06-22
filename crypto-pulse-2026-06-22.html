@@ -76,7 +76,8 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 .tab-content .section-title,
 .tab-content .accordion,
 .tab-content .events-section,
-.tab-content .season-bar {
+.tab-content .season-bar,
+.tab-content .season-intel {
   max-width: 1400px;
   margin-left: auto;
   margin-right: auto;
@@ -261,29 +262,29 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   .ct-icon { font-size: 0.66rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: #818cf8; display: block; margin-bottom: 3px; }
   .ct-text { font-size: 0.78rem; opacity: 0.82; font-style: italic; line-height: 1.5; }
   /* === SEASONALITY INTELLIGENCE === */
-  .season-intel { max-width: 1400px; margin: 0 auto 18px; padding: 0 24px; box-sizing: border-box; }
-  .season-intel-inner { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 18px 20px; }
-  .si-title { font-size: 0.66rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.12em; opacity: 0.4; margin-bottom: 14px; }
-  .si-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; }
+  .season-intel { margin-bottom: 18px; }
+  .season-intel-inner { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 14px 16px; }
+  .si-title { font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.8px; color: var(--muted); margin-bottom: 12px; }
+  .si-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; }
   @media (max-width: 680px) { .si-grid { grid-template-columns: 1fr; } }
-  .si-card { background: var(--bg); border: 1px solid var(--border); border-radius: 12px; padding: 14px 15px; }
-  .si-label { font-size: 0.66rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; opacity: 0.45; margin-bottom: 9px; }
-  .si-note { font-size: 0.72rem; opacity: 0.65; margin-top: 8px; padding-top: 8px; border-top: 1px solid var(--border); line-height: 1.5; }
-  .si-sub { display: flex; justify-content: space-between; align-items: center; font-size: 0.67rem; opacity: 0.5; margin-top: 5px; }
+  .si-card { background: var(--surface2); border: 1px solid var(--border); border-radius: 8px; padding: 12px 14px; }
+  .si-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.6px; color: var(--muted); margin-bottom: 8px; }
+  .si-note { font-size: 11px; color: var(--muted); margin-top: 8px; padding-top: 8px; border-top: 1px solid var(--border); line-height: 1.5; }
+  .si-sub { display: flex; justify-content: space-between; align-items: center; font-size: 11px; color: var(--muted); margin-top: 5px; }
   .cycle-track { background: var(--border); border-radius: 99px; height: 7px; margin: 8px 0; overflow: hidden; }
-  .cycle-fill-new { height: 100%; border-radius: 99px; background: linear-gradient(90deg,#22c55e 0%,#f59e0b 55%,#ef4444 85%); }
-  .cycle-phase-new { font-weight: 800; color: #f59e0b; font-size: 0.75rem; }
+  .cycle-fill-new { height: 100%; border-radius: 99px; background: linear-gradient(90deg, var(--green) 0%, var(--yellow) 55%, var(--red) 85%); }
+  .cycle-phase-new { font-weight: 800; color: var(--yellow); font-size: 12px; }
   .alt-track-new { background: var(--border); border-radius: 99px; height: 7px; margin: 8px 0; overflow: hidden; }
-  .alt-fill-new { height: 100%; border-radius: 99px; background: linear-gradient(90deg,#f97316,#f59e0b); }
-  .alt-val-new { font-weight: 900; font-size: 1.1rem; color: var(--accent); }
+  .alt-fill-new { height: 100%; border-radius: 99px; background: linear-gradient(90deg, var(--red), var(--yellow)); }
+  .alt-val-new { font-weight: 900; font-size: 16px; color: var(--accent); }
   .mth-bars { display: flex; gap: 3px; align-items: flex-end; height: 42px; margin: 8px 0 3px; }
   .mth-col { display: flex; flex-direction: column; align-items: center; flex: 1; }
   .mth-b { width: 100%; border-radius: 3px 3px 0 0; min-height: 3px; }
-  .mth-pos { background: rgba(34,197,94,0.65); }
-  .mth-neg { background: rgba(239,68,68,0.65); }
-  .mth-now { background: var(--accent); box-shadow: 0 0 5px var(--accent); }
+  .mth-pos { background: rgba(0,214,143,0.55); }
+  .mth-neg { background: rgba(255,77,106,0.55); }
+  .mth-now { background: var(--accent); box-shadow: 0 0 6px var(--accent); }
   .mth-lbl { font-size: 0.53rem; text-align: center; opacity: 0.4; margin-top: 2px; }
-  .mth-lnow { color: var(--accent); font-weight: 800; opacity: 1 !important; }
+  .mth-lnow { color: var(--accent); font-weight: 800; }
 
 </style>
 </head>
