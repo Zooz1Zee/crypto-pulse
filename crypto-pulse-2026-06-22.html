@@ -337,6 +337,38 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   .hs-value.yellow { color:var(--yellow); }
   .hs-value.green { color:var(--green); }
 
+  /* ── Bar color fix: HTML uses .pos/.neg/.now inside mth-bars ── */
+  .mth-bars .pos { background: rgba(0,214,143,0.9); }
+  .mth-bars .neg { background: rgba(255,77,106,0.9); }
+  .mth-bars .now { background: var(--accent); box-shadow: 0 0 10px var(--accent), 0 0 22px rgba(108,99,255,0.5); min-height: 12px; }
+
+  /* ── Altcoin Season Gauge redesign ── */
+  .alt-gauge-wrap { padding: 4px 0 2px; }
+  .alt-track-new {
+    position: relative; height: 16px; border-radius: 8px; overflow: visible;
+    background: linear-gradient(90deg,
+      rgba(255,140,66,0.9) 0%, rgba(255,209,102,0.8) 40%,
+      rgba(180,180,180,0.4) 55%, rgba(0,214,143,0.8) 80%, rgba(0,214,143,1) 100%);
+    margin: 12px 0 6px;
+  }
+  .alt-marker {
+    position: absolute; left: 37%; top: -6px;
+    transform: translateX(-50%);
+    width: 4px; height: 28px; background: #fff; border-radius: 2px;
+    box-shadow: 0 0 8px rgba(255,255,255,0.7);
+  }
+  .alt-marker::before {
+    content: '37'; position: absolute; bottom: -16px; left: 50%;
+    transform: translateX(-50%); font-size: 9px; font-weight: 800;
+    color: var(--yellow); white-space: nowrap;
+  }
+  .alt-zone-labels { display:flex; justify-content:space-between; font-size:9px; color:var(--muted); margin-top:4px; }
+  .alt-score-row { display:flex; align-items:center; justify-content:space-between; margin-top:10px; padding-top:8px; border-top:1px solid var(--border); }
+  .alt-score-side { font-size:10px; color:var(--muted); }
+  .alt-score-main { text-align:center; }
+  .alt-score-num  { font-size:28px; font-weight:800; color:var(--yellow); line-height:1; }
+  .alt-score-tag  { font-size:9px; color:var(--muted); margin-top:2px; }
+
 </style>
 </head>
 <body>
@@ -505,13 +537,25 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
         </div>
         <div class="si-card">
           <div class="si-label"><span class="t" data-en="Altcoin Season Meter" data-ar="مقياس موسم الألت كوين" data-fr="Baromètre Alt-Season">Altcoin Season Meter</span></div>
-          <div class="alt-track"><div class="alt-fill" style="width:37%"></div></div>
-          <div class="si-sub">
-            <span><span class="t" data-en="₿ BTC Season" data-ar="₿ موسم BTC" data-fr="₿ Saison BTC">₿ BTC Season</span></span>
-            <span class="alt-val">37</span>
-            <span><span class="t" data-en="Alt Season ◈" data-ar="موسم الألت ◈" data-fr="Alt Season ◈">Alt Season ◈</span></span>
+          <div class="alt-gauge-wrap">
+            <div class="alt-track-new">
+              <div class="alt-marker"></div>
+            </div>
+            <div class="alt-zone-labels">
+              <span><span class="t" data-en="BTC Dominance" data-ar="هيمنة BTC" data-fr="Dominance BTC">BTC Dominance</span></span>
+              <span><span class="t" data-en="Neutral" data-ar="محايد" data-fr="Neutre">Neutral</span></span>
+              <span><span class="t" data-en="Alt Season" data-ar="موسم الألت" data-fr="Alt Season">Alt Season</span></span>
+            </div>
+            <div class="alt-score-row">
+              <div class="alt-score-side" style="color:var(--red)"><span class="t" data-en="₿ BTC Season" data-ar="₿ موسم BTC" data-fr="₿ Saison BTC">₿ BTC Season</span></div>
+              <div class="alt-score-main">
+                <div class="alt-score-num">37</div>
+                <div class="alt-score-tag"><span class="t" data-en="Score / 100" data-ar="نقطة / 100" data-fr="Score / 100">Score / 100</span></div>
+              </div>
+              <div class="alt-score-side" style="color:var(--green)"><span class="t" data-en="🌙 Alt Season" data-ar="🌙 موسم الألت" data-fr="🌙 Alt Season">🌙 Alt Season</span></div>
+            </div>
           </div>
-          <div class="si-note"><span class="t" data-en="260+ days without altseason · BTC dom 56.35% · Need &lt;55% for signal · RWA &amp; AI only selective outperformers" data-ar="260+ يوم بدون موسم ألت · هيمنة BTC 56.35٪ · نحتاج &lt;55٪ · RWA وAI فقط يتفوقان" data-fr="260+ jours sans altseason · Dom. BTC 56.35% · Besoin de &lt;55% · Seuls RWA &amp; AI surperforment">260+ days without altseason · BTC dom 56.35% · Need &lt;55% for signal · RWA &amp; AI only selective outperformers</span></div>
+          <div class="si-note"><span class="t" data-en="260+ days without altseason · BTC dom 56.35% · Need score &gt;75 for Alt Season · RWA &amp; AI are only selective outperformers" data-ar="260+ يوم بدون موسم ألت · هيمنة BTC 56.35% · نحتاج نقاط >75 لموسم الألت · RWA والذكاء الاصطناعي فقط المتفوقون الانتقائيون" data-fr="260+ jours sans altseason · dom. BTC 56,35% · Besoin score >75 pour Alt Season · RWA &amp; IA sont les seuls surperformants sélectifs">260+ days without altseason · BTC dom 56.35% · Need score &gt;75 for Alt Season · RWA &amp; AI are only selective outperformers</span></div>
         </div>
       </div>
     </div>
