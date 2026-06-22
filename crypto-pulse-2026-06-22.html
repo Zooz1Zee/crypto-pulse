@@ -277,12 +277,12 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   .alt-track-new { background: var(--border); border-radius: 99px; height: 7px; margin: 8px 0; overflow: hidden; }
   .alt-fill-new { height: 100%; border-radius: 99px; background: linear-gradient(90deg, var(--red), var(--yellow)); }
   .alt-val-new { font-weight: 900; font-size: 16px; color: var(--accent); }
-  .mth-bars { display: flex; gap: 3px; align-items: flex-end; height: 60px; margin: 10px 0 4px; }
-  .mth-col { display: flex; flex-direction: column; align-items: center; flex: 1; }
+  .mth-bars { display: flex; gap: 3px; align-items: flex-end; height: 100px; margin: 10px 0 4px; }
+  .mth-col { display: flex; flex-direction: column; align-items: center; flex: 1; gap: 3px; }
   .mth-b { width: 100%; border-radius: 3px 3px 0 0; min-height: 3px; }
-  .mth-pos { background: rgba(0,214,143,0.7); }
-  .mth-neg { background: rgba(255,77,106,0.7); }
-  .mth-now { background: var(--accent); box-shadow: 0 0 10px var(--accent), 0 0 20px rgba(108,99,255,0.4); min-height: 15% !important; }
+  .mth-pos { background: rgba(0,214,143,0.85); }
+  .mth-neg { background: rgba(255,77,106,0.85); }
+  .mth-now { background: var(--accent); box-shadow: 0 0 10px var(--accent), 0 0 20px rgba(108,99,255,0.4); min-height: 12px !important; }
   .mth-lbl { font-size: 0.53rem; text-align: center; opacity: 0.4; margin-top: 2px; }
   .mth-lnow { color: var(--accent); font-weight: 800; font-size: 0.6rem; }
 
@@ -393,18 +393,18 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
         <div class="si-card">
           <div class="si-label"><span class="t" data-en="Monthly Seasonality — BTC 10yr" data-ar="الموسمية الشهرية — BTC 10 سنوات" data-fr="Saisonnalité mensuelle — BTC 10 ans"></span></div>
           <div class="mth-bars">
+            <div class="mth-col"><div class="mth-b pos" style="height:68%"></div><div class="mth-lbl">J</div></div>
+            <div class="mth-col"><div class="mth-b pos" style="height:42%"></div><div class="mth-lbl">F</div></div>
+            <div class="mth-col"><div class="mth-b pos" style="height:88%"></div><div class="mth-lbl">M</div></div>
+            <div class="mth-col"><div class="mth-b pos" style="height:72%"></div><div class="mth-lbl">A</div></div>
+            <div class="mth-col"><div class="mth-b pos" style="height:52%"></div><div class="mth-lbl">M</div></div>
+            <div class="mth-col"><div class="mth-b now" style="height:18%"></div><div class="mth-lbl mth-now">J</div></div>
             <div class="mth-col"><div class="mth-b pos" style="height:62%"></div><div class="mth-lbl">J</div></div>
-            <div class="mth-col"><div class="mth-b pos" style="height:35%"></div><div class="mth-lbl">F</div></div>
-            <div class="mth-col"><div class="mth-b pos" style="height:80%"></div><div class="mth-lbl">M</div></div>
-            <div class="mth-col"><div class="mth-b pos" style="height:45%"></div><div class="mth-lbl">A</div></div>
-            <div class="mth-col"><div class="mth-b pos" style="height:25%"></div><div class="mth-lbl">M</div></div>
-            <div class="mth-col"><div class="mth-b now" style="height:15%"></div><div class="mth-lbl mth-now">J</div></div>
-            <div class="mth-col"><div class="mth-b pos" style="height:28%"></div><div class="mth-lbl">J</div></div>
-            <div class="mth-col"><div class="mth-b neg" style="height:20%"></div><div class="mth-lbl">A</div></div>
-            <div class="mth-col"><div class="mth-b neg" style="height:25%"></div><div class="mth-lbl">S</div></div>
-            <div class="mth-col"><div class="mth-b pos" style="height:95%"></div><div class="mth-lbl">O</div></div>
-            <div class="mth-col"><div class="mth-b pos" style="height:70%"></div><div class="mth-lbl">N</div></div>
-            <div class="mth-col"><div class="mth-b pos" style="height:55%"></div><div class="mth-lbl">D</div></div>
+            <div class="mth-col"><div class="mth-b neg" style="height:38%"></div><div class="mth-lbl">A</div></div>
+            <div class="mth-col"><div class="mth-b neg" style="height:28%"></div><div class="mth-lbl">S</div></div>
+            <div class="mth-col"><div class="mth-b pos" style="height:96%"></div><div class="mth-lbl">O</div></div>
+            <div class="mth-col"><div class="mth-b pos" style="height:78%"></div><div class="mth-lbl">N</div></div>
+            <div class="mth-col"><div class="mth-b pos" style="height:60%"></div><div class="mth-lbl">D</div></div>
           </div>
           <div class="si-note"><span class="t" data-en="June avg +0.7% (weak) · Jul–Sep summer doldrums · Oct avg +17.9% (strongest)" data-ar="يونيو +0.7٪ (ضعيف) · ركود صيفي يوليو–سبتمبر · أكتوبر +17.9٪ (الأقوى)" data-fr="Juin moy. +0.7% (faible) · Marasme estival · Oct. moy. +17.9% (le plus fort)">June avg +0.7% (weak) · Jul–Sep summer doldrums · Oct avg +17.9% (strongest)</span></div>
         </div>
