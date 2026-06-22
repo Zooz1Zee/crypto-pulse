@@ -298,6 +298,45 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   .alert-line:last-child { border-bottom:none; }
   .alert-line b { color:var(--accent); }
 
+  /* ── Halving Cycle Redesign ── */
+  .halving-wrap { padding: 6px 0 4px; }
+  .halving-track-new {
+    position: relative; height: 18px; border-radius: 9px;
+    overflow: visible; margin: 14px 0 6px; background: var(--surface2);
+  }
+  .hz-bull  { position:absolute; left:0;   width:45%; height:100%; background:linear-gradient(90deg,rgba(0,214,143,0.6),rgba(0,214,143,0.85)); border-radius:9px 0 0 9px; }
+  .hz-peak  { position:absolute; left:45%; width:10%; height:100%; background:rgba(255,209,102,0.85); }
+  .hz-bear  { position:absolute; left:55%; width:10%; height:100%; background:rgba(255,153,0,0.8); }
+  .hz-deep  { position:absolute; left:65%; width:35%; height:100%; background:linear-gradient(90deg,rgba(255,100,50,0.8),rgba(255,77,106,0.7)); border-radius:0 9px 9px 0; }
+  .hz-now {
+    position:absolute; left:65%; top:-7px;
+    transform:translateX(-50%);
+    width:4px; height:32px; background:#fff; border-radius:2px;
+    box-shadow:0 0 8px rgba(255,255,255,0.6), 0 0 20px rgba(108,99,255,0.5);
+  }
+  .hz-now::before {
+    content:'NOW'; position:absolute; top:-18px; left:50%;
+    transform:translateX(-50%); font-size:8px; font-weight:800;
+    color:#fff; letter-spacing:.06em; white-space:nowrap;
+  }
+  .halving-phases {
+    display:flex; justify-content:space-between; margin-top:6px;
+    font-size:9px; color:var(--muted);
+  }
+  .halving-phases span { text-align:center; flex:1; }
+  .halving-phases .hp-now { color:var(--text); font-weight:700; font-size:9.5px; }
+  .halving-stats-grid {
+    display:grid; grid-template-columns:1fr 1fr; gap:6px;
+    margin-top:12px; padding-top:10px;
+    border-top:1px solid var(--border);
+  }
+  .hs-item { display:flex; flex-direction:column; gap:2px; }
+  .hs-label { font-size:9px; color:var(--muted); text-transform:uppercase; letter-spacing:.06em; }
+  .hs-value { font-size:13px; font-weight:700; color:var(--text); }
+  .hs-value.red   { color:var(--red); }
+  .hs-value.yellow { color:var(--yellow); }
+  .hs-value.green { color:var(--green); }
+
 </style>
 </head>
 <body>
@@ -411,13 +450,40 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       <div class="si-grid">
         <div class="si-card">
           <div class="si-label"><span class="t" data-en="Bitcoin Halving Cycle" data-ar="دورة تنصيف البيتكوين" data-fr="Cycle de Halving Bitcoin">Bitcoin Halving Cycle</span></div>
-          <div class="cycle-track"><div class="cycle-fill" style="width:65%"></div></div>
-          <div class="si-sub">
-            <span>Apr 2024 ▶</span>
-            <span class="cycle-phase"><span class="t" data-en="⚠ Post-Peak" data-ar="⚠ بعد القمة" data-fr="⚠ Post-Sommet">⚠ Post-Peak</span></span>
-            <span>▶ ~Oct 2026</span>
+          <div class="halving-wrap">
+            <div class="halving-track-new">
+              <div class="hz-bull"></div>
+              <div class="hz-peak"></div>
+              <div class="hz-bear"></div>
+              <div class="hz-deep"></div>
+              <div class="hz-now"></div>
+            </div>
+            <div class="halving-phases">
+              <span><span class="t" data-en="🟢 Bull Phase" data-ar="🟢 مرحلة صاعدة" data-fr="🟢 Phase Haussière">🟢 Bull Phase</span></span>
+              <span><span class="t" data-en="🟡 Peak" data-ar="🟡 قمة" data-fr="🟡 Sommet">🟡 Peak</span></span>
+              <span class="hp-now"><span class="t" data-en="◄ HERE" data-ar="◄ هنا" data-fr="◄ ICI">◄ HERE</span></span>
+              <span><span class="t" data-en="🔴 Bear Bottom" data-ar="🔴 قاع هابط" data-fr="🔴 Fond Baissier">🔴 Bear Bottom</span></span>
+            </div>
+            <div class="halving-stats-grid">
+              <div class="hs-item">
+                <div class="hs-label"><span class="t" data-en="Cycle Month" data-ar="شهر الدورة" data-fr="Mois du Cycle">Cycle Month</span></div>
+                <div class="hs-value">26 <span style="font-size:10px;color:var(--muted)">/ 40</span></div>
+              </div>
+              <div class="hs-item">
+                <div class="hs-label"><span class="t" data-en="Current Phase" data-ar="المرحلة الحالية" data-fr="Phase Actuelle">Current Phase</span></div>
+                <div class="hs-value red"><span class="t" data-en="Post-Peak Bear" data-ar="هابط ما بعد القمة" data-fr="Baissier Post-Sommet">Post-Peak Bear</span></div>
+              </div>
+              <div class="hs-item">
+                <div class="hs-label"><span class="t" data-en="To Est. Bottom" data-ar="حتى القاع المتوقع" data-fr="Jusqu'au Fond Est.">To Est. Bottom</span></div>
+                <div class="hs-value yellow"><span class="t" data-en="~14 months" data-ar="~14 شهراً" data-fr="~14 mois">~14 months</span></div>
+              </div>
+              <div class="hs-item">
+                <div class="hs-label"><span class="t" data-en="Cycle Pattern" data-ar="نمط الدورة" data-fr="Modèle de Cycle">Cycle Pattern</span></div>
+                <div class="hs-value" style="font-size:11px"><span class="t" data-en="Tracks 2022 bear" data-ar="يتتبع هبوط 2022" data-fr="Suit le bear 2022">Tracks 2022 bear</span></div>
+              </div>
+            </div>
           </div>
-          <div class="si-note"><span class="t" data-en="Month 26/40 · Tracks 2022 bear · Historical bottom ~Oct 2026 · ETF flows may cushion drawdown" data-ar="شهر 26/40 · يتتبع هبوط 2022 · قاع تاريخي ~أكتوبر 2026 · تدفقات ETF قد تخفف الانخفاض" data-fr="Mois 26/40 · Suit le bear 2022 · Plancher ~oct. 2026 · ETF peut amortir la baisse">Month 26/40 · Tracks 2022 bear · Historical bottom ~Oct 2026 · ETF flows may cushion drawdown</span></div>
+          <div class="si-note"><span class="t" data-en="Apr 2024 halving started this 40-month cycle · Bull peak hit ~May 2025 · Now in post-peak drawdown · ETF institutional flows may cushion decline vs prior cycles" data-ar="تنصيف أبريل 2024 بدأ دورة 40 شهراً · بلغ ذروة السوق الصاعد ~مايو 2025 · الآن في مرحلة تراجع ما بعد القمة · تدفقات ETF المؤسسية قد تخفف الانخفاض مقارنة بالدورات السابقة" data-fr="Le halving d'avr. 2024 a démarré ce cycle de 40 mois · Pic haussier atteint ~mai 2025 · Maintenant en drawdown post-sommet · Les flux ETF institutionnels pourraient amortir la baisse vs cycles précédents">Apr 2024 halving started this 40-month cycle · Bull peak hit ~May 2025 · Now in post-peak drawdown · ETF institutional flows may cushion decline vs prior cycles</span></div>
         </div>
         <div class="si-card">
           <div class="si-label"><span class="t" data-en="Monthly Seasonality — BTC 10yr" data-ar="الموسمية الشهرية — BTC 10 سنوات" data-fr="Saisonnalité mensuelle — BTC 10 ans"></span></div>
