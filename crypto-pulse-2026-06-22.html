@@ -271,7 +271,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   <div class="intel-stat"><div class="i-label"><span class="t" data-en="BTC Dom" data-ar="هيمنة BTC" data-fr="Dom. BTC">BTC Dom</span></div><div class="i-value">56.4%</div></div>
   <div class="intel-stat"><div class="i-label"><span class="t" data-en="24H Vol" data-ar="حجم 24 ساعة" data-fr="Vol. 24h">24H Vol</span></div><div class="i-value">$73B</div></div>
   <div class="intel-stat"><div class="i-label"><span class="t" data-en="ETH Dom" data-ar="هيمنة ETH" data-fr="Dom. ETH">ETH Dom</span></div><div class="i-value">9.1%</div></div>
-  <div class="intel-stat"><div class="i-label"><span class="t" data-en="Top Signal" data-ar="أبرز إشارة" data-fr="Signal Top">Top Signal</span></div><div class="i-value" style="font-size:12px;color:#00d68f">XRP ETF 6W Inflows</div></div>
+  <div class="intel-stat"><div class="i-label"><span class="t" data-en="Top Signal" data-ar="أبرز إشارة" data-fr="Signal Top">Top Signal</span></div><div class="i-value" style="font-size:12px;color:#00d68f"><span class="t" data-en="XRP ETF 6W Inflows" data-ar="تدفقات XRP ETF (6 أسابيع)" data-fr="Flux ETF XRP 6 sem.">XRP ETF 6W Inflows</span></div></div>
 </div>
 <div class="intel-bar" id="intel-stocks" style="display:none;background:rgba(108,99,255,0.07);border-top:2px solid #6c63ff">
   <div class="intel-stat"><div class="i-label"><span class="t" data-en="S&amp;P 500" data-ar="S&amp;P 500" data-fr="S&amp;P 500">S&amp;P 500</span></div><div class="i-value" style="color:#ff4d6a">7,474</div></div>
@@ -289,8 +289,14 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 <!-- ══ CRYPTO TAB ══ -->
 <div class="tab-content active" id="tab-content-crypto">
 <div class="alert-banner">
-  <div class="alert-item alert-bull"><span class="alert-label">&#x1F7E2; BULL</span> XRP ETF inflows hit 6th consecutive week &mdash; $1.37B cumulative since SEC March 2026 approval; institutional rotation out of BTC into XRP accelerating</div>
-  <div class="alert-item alert-fud"><span class="alert-label">&#x26A0;&#xFE0F; FUD</span> Bitcoin spot ETFs bleed record 2026 weekly outflow of $1.44B &mdash; largest single-week exit since launch; BTC holding $65K support</div>
+  <div class="alert-item alert-bull">
+    <span class="alert-label"><span class="t" data-en="🟢 BULL" data-ar="🟢 صاعد" data-fr="🟢 BULL">🟢 BULL</span></span>
+    <span class="t" data-en="XRP ETF inflows hit 6th consecutive week — $1.37B cumulative since SEC March 2026 approval; institutional rotation out of BTC into XRP accelerating" data-ar="تدفقات XRP ETF للأسبوع السادس المتتالي — 1.37 مليار دولار منذ موافقة SEC مارس 2026؛ المؤسسات تحوّل رأس المال من BTC إلى XRP" data-fr="Entrées ETF XRP 6e semaine consécutive — 1,37 Md$ cumulés depuis l'approbation SEC mars 2026 ; rotation institutionnelle BTC → XRP">XRP ETF inflows hit 6th consecutive week — $1.37B cumulative since SEC March 2026 approval; institutional rotation out of BTC into XRP accelerating</span>
+  </div>
+  <div class="alert-item alert-fud">
+    <span class="alert-label"><span class="t" data-en="⚠️ FUD" data-ar="⚠️ تحذير" data-fr="⚠️ RISQUE">⚠️ FUD</span></span>
+    <span class="t" data-en="Bitcoin spot ETFs bleed record 2026 weekly outflow of $1.44B — largest single-week exit since launch; BTC holding $65K support" data-ar="صناديق بيتكوين الفورية تسجل أكبر تدفق خارجي أسبوعي في 2026 بـ1.44 مليار دولار — الأكبر منذ الإطلاق؛ BTC يدافع عن دعم 65 ألف دولار" data-fr="Les ETF Bitcoin spot enregistrent la plus grande sortie hebdo 2026 de 1,44 Md$ — BTC tient le support 65K$">Bitcoin spot ETFs bleed record 2026 weekly outflow of $1.44B — largest single-week exit since launch; BTC holding $65K support</span>
+  </div>
 </div>
   <div class="market-overview" style="margin-top:14px">
     <div class="market-stat">
@@ -309,12 +315,12 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     <div class="market-stat">
       <div class="label">😨 <span class="t" data-en="Fear &amp; Greed" data-ar="مؤشر الخوف والجشع" data-fr="Peur &amp; Avidité">Fear &amp; Greed</span></div>
       <div class="value fng-fear">44</div>
-      <div class="change fng-fear">Fear</div>
+      <div class="change fng-fear"><span class="t" data-en="Fear" data-ar="خوف" data-fr="Peur">Fear</span></div>
     </div>
     <div class="market-stat">
       <div class="label">🔄 <span class="t" data-en="Altcoin Index" data-ar="مؤشر موسم الألتكوين" data-fr="Indice Altcoin">Altcoin Index</span></div>
       <div class="value fng-btc-season">32</div>
-      <div class="change fng-btc-season">BTC Season</div>
+      <div class="change fng-btc-season"><span class="t" data-en="BTC Season" data-ar="موسم البيتكوين" data-fr="Saison BTC">BTC Season</span></div>
     </div>
   </div>
   <div class="mood-bar">
@@ -630,9 +636,18 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 <!-- ══ STOCKS TAB ══ -->
 <div class="tab-content" id="tab-content-stocks">
 <div class="alert-banner">
-  <div class="alert-item alert-news"><span class="alert-label">&#x1F4F0; INDEX</span> Nasdaq-100 &amp; S&amp;P 500 quarterly rebalance: CoreWeave, Astera Labs, Nebius, Rocket Lab, Teradyne added to NDX; CHTR, CTSH, INSM, VRSK, ZS removed</div>
-  <div class="alert-item alert-bull"><span class="alert-label">&#x1F7E2; BULL</span> Industrials lead &mdash; CAT +2.49% &bull; Russell 2000 outperforms large caps +2.12% on small-cap rotation</div>
-  <div class="alert-item alert-fud"><span class="alert-label">&#x26A0;&#xFE0F; RISK</span> Consumer discretionary &amp; Big Tech drag &mdash; HD -1.88%, AMZN -1.76%, MCD -1.22% as rebalance sellers weigh</div>
+  <div class="alert-item alert-news">
+    <span class="alert-label"><span class="t" data-en="📰 INDEX" data-ar="📰 مؤشرات" data-fr="📰 INDICE">📰 INDEX</span></span>
+    <span class="t" data-en="Nasdaq-100 &amp; S&amp;P 500 quarterly rebalance: CoreWeave, Astera Labs, Nebius, Rocket Lab, Teradyne added to NDX; CHTR, CTSH, INSM, VRSK, ZS removed" data-ar="إعادة توازن ناسداك-100 و S&P 500 الفصلية: CoreWeave وAstera Labs وNebius وRocket Lab وTeradyne تنضم لـNDX؛ شطب CHTR وCTSH وINSM وVRSK وZS" data-fr="Rééquilibrage trimestriel Nasdaq-100 &amp; S&amp;P 500 : CoreWeave, Astera Labs, Nebius, Rocket Lab, Teradyne rejoignent le NDX ; CHTR, CTSH, INSM, VRSK, ZS supprimés">Nasdaq-100 &amp; S&amp;P 500 quarterly rebalance: CoreWeave, Astera Labs, Nebius, Rocket Lab, Teradyne added to NDX; CHTR, CTSH, INSM, VRSK, ZS removed</span>
+  </div>
+  <div class="alert-item alert-bull">
+    <span class="alert-label"><span class="t" data-en="🟢 BULL" data-ar="🟢 صاعد" data-fr="🟢 BULL">🟢 BULL</span></span>
+    <span class="t" data-en="Industrials lead — CAT +2.49% • Russell 2000 outperforms large caps +2.12% on small-cap rotation" data-ar="الصناعات تتصدر — CAT +2.49% • راسل 2000 يتفوق على كبرى الشركات بـ+2.12% جراء تدوير الشركات الصغيرة" data-fr="L'industrie en tête — CAT +2,49% • Russell 2000 surperforme les grandes caps +2,12% en rotation small-cap">Industrials lead — CAT +2.49% • Russell 2000 outperforms large caps +2.12% on small-cap rotation</span>
+  </div>
+  <div class="alert-item alert-fud">
+    <span class="alert-label"><span class="t" data-en="⚠️ RISK" data-ar="⚠️ خطر" data-fr="⚠️ RISQUE">⚠️ RISK</span></span>
+    <span class="t" data-en="Consumer discretionary &amp; Big Tech drag — HD -1.88%, AMZN -1.76%, MCD -1.22% as rebalance sellers weigh" data-ar="السلع الاستهلاكية التقديرية والتكنولوجيا الكبرى تثقل — HD -1.88% وAMZN -1.76% وMCD -1.22% جراء ضغط بائعي إعادة التوازن" data-fr="Consommation discrétionnaire &amp; Big Tech en retrait — HD -1,88%, AMZN -1,76%, MCD -1,22% sous la pression des vendeurs de rééquilibrage">Consumer discretionary &amp; Big Tech drag — HD -1.88%, AMZN -1.76%, MCD -1.22% as rebalance sellers weigh</span>
+  </div>
 </div>
   <div class="market-overview" style="margin-top:14px">
     <div class="market-stat"><div class="label">S&amp;P 500</div><div class="value">7,474</div><div class="change down">-0.35%</div></div>
