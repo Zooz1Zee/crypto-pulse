@@ -286,6 +286,18 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   .mth-lbl { font-size: 0.53rem; text-align: center; opacity: 0.4; margin-top: 2px; }
   .mth-lnow { color: var(--accent); font-weight: 800; font-size: 0.6rem; }
 
+  /* ── Spike Alerts & Event Risks ── */
+  .alerts-section { max-width:1400px; margin:0 auto 18px; padding:0 20px; display:flex; gap:14px; flex-wrap:wrap; }
+  .alerts-box { flex:1; min-width:280px; border-radius:10px; padding:14px 16px; }
+  .alerts-box.spike  { background:rgba(255,77,106,0.08); border:1px solid rgba(255,77,106,0.35); }
+  .alerts-box.events { background:rgba(255,209,102,0.07); border:1px solid rgba(255,209,102,0.32); }
+  .alerts-box-title  { font-size:11px; font-weight:800; letter-spacing:.08em; text-transform:uppercase; margin-bottom:10px; }
+  .alerts-box.spike  .alerts-box-title { color:var(--red); }
+  .alerts-box.events .alerts-box-title { color:var(--yellow); }
+  .alert-line { font-size:12px; color:var(--text); line-height:1.55; padding:4px 0; border-bottom:1px solid rgba(255,255,255,0.05); }
+  .alert-line:last-child { border-bottom:none; }
+  .alert-line b { color:var(--accent); }
+
 </style>
 </head>
 <body>
@@ -347,6 +359,23 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     <span class="t" data-en="Bitcoin spot ETFs bleed record 2026 weekly outflow of $1.44B — largest single-week exit since launch; BTC holding $65K support" data-ar="صناديق بيتكوين الفورية تسجل أكبر تدفق خارجي أسبوعي في 2026 بـ1.44 مليار دولار — الأكبر منذ الإطلاق؛ BTC يدافع عن دعم 65 ألف دولار" data-fr="Les ETF Bitcoin spot enregistrent la plus grande sortie hebdo 2026 de 1,44 Md$ — BTC tient le support 65K$">Bitcoin spot ETFs bleed record 2026 weekly outflow of $1.44B — largest single-week exit since launch; BTC holding $65K support</span>
   </div>
 </div>
+
+<div class="alerts-section">
+  <div class="alerts-box spike">
+    <div class="alerts-box-title">🚨 <span class="t" data-en="Spike Alerts" data-ar="تنبيهات الارتفاع" data-fr="Alertes Spike">Spike Alerts</span></div>
+    <div class="alert-line">• <b>WLD (Worldcoin)</b>: <span class="t" data-en="+154% in 30 days · 5.7x volume spike · Eightco Holdings disclosure + golden cross breakout" data-ar="+154% في 30 يوم · ارتفاع حجم 5.7x · إفصاح Eightco Holdings + كسر المتوسط الذهبي" data-fr="+154% en 30j · pic de volume 5,7x · divulgation Eightco Holdings + golden cross">+154% in 30 days · 5.7x volume spike · Eightco Holdings disclosure + golden cross breakout</span></div>
+    <div class="alert-line">• <b>BTC ETF Flows</b>: <span class="t" data-en="$3.4B outflows in 1 week — largest since Jan 2024 launch · Analysts: cyclical profit-taking, not structural exit" data-ar="تدفقات خروج 3.4 مليار في أسبوع — الأكبر منذ يناير 2024 · المحللون: جني أرباح دوري وليس خروجاً هيكلياً" data-fr="3,4G$ de sorties en 1 semaine — plus grand depuis jan 2024 · Analystes: prise de bénéfices cyclique">$3.4B outflows in 1 week — largest since Jan 2024 launch · Analysts: cyclical profit-taking, not structural exit</span></div>
+    <div class="alert-line">• <b>Altcoin Index</b>: <span class="t" data-en="CMC Altcoin Season Index 46/100 (rising from 30s) · BTC dominance 58% · Selective rotation, no full altseason yet" data-ar="مؤشر موسم ألتكوين 46/100 (يرتفع من 30) · هيمنة BTC 58% · دوران انتقائي، لا موسم ألتكوين كامل بعد" data-fr="Indice Altcoin Season 46/100 (en hausse des 30s) · dom. BTC 58% · rotation sélective, pas encore d'altseason complète">CMC Altcoin Season Index 46/100 (rising from 30s) · BTC dominance 58% · Selective rotation, no full altseason yet</span></div>
+  </div>
+  <div class="alerts-box events">
+    <div class="alerts-box-title">⚠️ <span class="t" data-en="Event Risks &amp; Breaking News" data-ar="مخاطر الأحداث وأخبار عاجلة" data-fr="Risques Événementiels &amp; Actualités">Event Risks &amp; Breaking News</span></div>
+    <div class="alert-line">🔥 <span class="t" data-en="BTC retrace from $122K ATH — now consolidating $62K–$68K range as institutional positions lock in profit" data-ar="تراجع BTC من ATH 122 ألف — يتماسك الآن في نطاق 62-68 ألف بينما تجني المؤسسات أرباحها" data-fr="BTC recule de l'ATH $122K — consolide maintenant la fourchette $62K–$68K pendant que les institutionnels engrangent">BTC retrace from $122K ATH — now consolidating $62K–$68K range as institutional positions lock in profit</span></div>
+    <div class="alert-line">📋 <span class="t" data-en="Bank of England backs stablecoin: $50B issuance cap set · Signals global regulatory framework building" data-ar="بنك إنجلترا يدعم العملات المستقرة: سقف إصدار 50 مليار · إشارات لبناء إطار تنظيمي عالمي" data-fr="Banque d'Angleterre soutient les stablecoins : plafond d'émission 50G$ · Signale un cadre réglementaire mondial">Bank of England backs stablecoin: $50B issuance cap set · Signals global regulatory framework building</span></div>
+    <div class="alert-line">🌐 <span class="t" data-en="U.S.–Iran 60-day roadmap agreed via Qatar-Pakistan talks · Geopolitical de-escalation supportive for risk assets" data-ar="اتفاق خارطة طريق 60 يوماً بين أمريكا وإيران عبر محادثات قطر-باكستان · التهدئة الجيوسياسية داعمة للأصول" data-fr="Feuille de route 60j USA-Iran via pourparlers Qatar-Pakistan · Désescalade géopolitique favorable aux actifs risqués">U.S.–Iran 60-day roadmap agreed via Qatar-Pakistan talks · Geopolitical de-escalation supportive for risk assets</span></div>
+    <div class="alert-line">🔑 <span class="t" data-en="Kraken adds 2,500 Solana tokens · Bitwise brings crypto model portfolios to retail · Charles Schwab + Cboe prediction markets" data-ar="كراكن يضيف 2500 رمز سولانا · بيتوايز يطرح محافظ كريبتو للتجزئة · تشارلز شواب + Cboe لأسواق التوقعات" data-fr="Kraken ajoute 2500 tokens Solana · Bitwise apporte portefeuilles crypto au retail · Schwab + Cboe marchés prédictifs">Kraken adds 2,500 Solana tokens · Bitwise brings crypto model portfolios to retail · Charles Schwab + Cboe prediction markets</span></div>
+  </div>
+</div>
+
   <div class="market-overview" style="margin-top:14px">
     <div class="market-stat">
       <div class="label"><span class="t" data-en="Market Cap" data-ar="القيمة السوقية" data-fr="Cap. Marché">Market Cap</span></div>
@@ -765,6 +794,23 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     <span class="t" data-en="Consumer discretionary &amp; Big Tech drag — HD -1.88%, AMZN -1.76%, MCD -1.22% as rebalance sellers weigh" data-ar="السلع الاستهلاكية التقديرية والتكنولوجيا الكبرى تثقل — HD -1.88% وAMZN -1.76% وMCD -1.22% جراء ضغط بائعي إعادة التوازن" data-fr="Consommation discrétionnaire &amp; Big Tech en retrait — HD -1,88%, AMZN -1,76%, MCD -1,22% sous la pression des vendeurs de rééquilibrage">Consumer discretionary &amp; Big Tech drag — HD -1.88%, AMZN -1.76%, MCD -1.22% as rebalance sellers weigh</span>
   </div>
 </div>
+
+<div class="alerts-section">
+  <div class="alerts-box spike">
+    <div class="alerts-box-title">🚨 <span class="t" data-en="Spike Alerts" data-ar="تنبيهات الارتفاع" data-fr="Alertes Spike">Spike Alerts</span></div>
+    <div class="alert-line">• <b>GOOGL</b>: <span class="t" data-en="-5% today · AI talent departure concerns · Largest single-day drop in 8 months" data-ar="-5% اليوم · مخاوف مغادرة مواهب AI · أكبر تراجع يومي في 8 أشهر" data-fr="-5% aujourd'hui · inquiétudes sur les départs de talents IA · plus forte baisse en 8 mois">-5% today · AI talent departure concerns · Largest single-day drop in 8 months</span></div>
+    <div class="alert-line">• <b>AMZN / META</b>: <span class="t" data-en="Amazon -4.8% · Meta -2.3% · Microsoft -3% · Tech sector rotation accelerating" data-ar="أمازون -4.8% · ميتا -2.3% · مايكروسوفت -3% · دوران قطاع التكنولوجيا يتسارع" data-fr="Amazon -4,8% · Meta -2,3% · Microsoft -3% · rotation du secteur tech s'accélère">Amazon -4.8% · Meta -2.3% · Microsoft -3% · Tech sector rotation accelerating</span></div>
+    <div class="alert-line">• <b>Indices</b>: <span class="t" data-en="S&amp;P 500 -0.37% → 7,472 · Nasdaq -1.32% → 26,166 · Dow Jones +0.29% (defensive rotation)" data-ar="S&amp;P 500 -0.37% → 7,472 · ناسداك -1.32% → 26,166 · داو جونز +0.29% (دوران دفاعي)" data-fr="S&amp;P 500 -0,37% → 7 472 · Nasdaq -1,32% → 26 166 · Dow +0,29% (rotation défensive)">S&amp;P 500 -0.37% → 7,472 · Nasdaq -1.32% → 26,166 · Dow Jones +0.29% (defensive rotation)</span></div>
+  </div>
+  <div class="alerts-box events">
+    <div class="alerts-box-title">⚠️ <span class="t" data-en="Event Risks &amp; Breaking News" data-ar="مخاطر الأحداث وأخبار عاجلة" data-fr="Risques Événementiels &amp; Actualités">Event Risks &amp; Breaking News</span></div>
+    <div class="alert-line">🔥 <span class="t" data-en="Fed hawkish pivot: Rate hike expectations pulled forward to Oct 2026 · Investors laser-focused on upcoming inflation print" data-ar="تحول متشدد للفيد: توقعات رفع الفائدة تقدمت إلى أكتوبر 2026 · المستثمرون يتابعون بدقة بيانات التضخم القادمة" data-fr="Virage hawkish Fed : anticipations de hausse de taux avancées à oct. 2026 · Investisseurs focalisés sur le prochain IPC">Fed hawkish pivot: Rate hike expectations pulled forward to Oct 2026 · Investors laser-focused on upcoming inflation print</span></div>
+    <div class="alert-line">📅 <span class="t" data-en="Earnings tomorrow: Carnival (CCL) + FedEx (FDX) — consumer spending &amp; logistics health check" data-ar="أرباح الغد: كارنيفال + فيديكس — فحص صحة الإنفاق الاستهلاكي والخدمات اللوجستية" data-fr="Résultats demain : Carnival + FedEx — bilan santé consommation &amp; logistique">Earnings tomorrow: Carnival (CCL) + FedEx (FDX) — consumer spending &amp; logistics health check</span></div>
+    <div class="alert-line">🏦 <span class="t" data-en="Fed bank stress test results due June 24 · May New Home Sales data June 24 · Housing sector in focus" data-ar="نتائج اختبار ضغط البنوك الفيدرالي في 24 يونيو · بيانات مبيعات المنازل الجديدة في 24 يونيو · قطاع الإسكان في بؤرة الاهتمام" data-fr="Résultats stress tests Fed le 24 juin · Ventes maisons neuves mai le 24 juin · Secteur immobilier en focus">Fed bank stress test results due June 24 · May New Home Sales data June 24 · Housing sector in focus</span></div>
+    <div class="alert-line">📉 <span class="t" data-en="Near- &amp; long-term volatility expected to increase — reduced Fed forward guidance widens outcome distribution across assets" data-ar="التقلبات قصيرة وطويلة الأجل متوقعة أن ترتفع — تراجع إرشادات الفيد يوسع نطاق النتائج المحتملة عبر الأصول" data-fr="Volatilité CT &amp; LT attendue en hausse — guidance Fed réduite élargit la distribution des résultats">Near- &amp; long-term volatility expected to increase — reduced Fed forward guidance widens outcome distribution across assets</span></div>
+  </div>
+</div>
+
   <div class="market-overview" style="margin-top:14px">
     <div class="market-stat"><div class="label">S&amp;P 500</div><div class="value">7,474</div><div class="change down">-0.35%</div></div>
     <div class="market-stat"><div class="label">NASDAQ</div><div class="value">26,423</div><div class="change down">-0.27%</div></div>
