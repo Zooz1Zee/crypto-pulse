@@ -246,6 +246,45 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 .acc-grid { display: flex; gap: 10px; align-items: flex-start; }
 .acc-col  { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 0; border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
 @media (max-width: 860px) { .acc-grid { flex-direction: column; } }
+  /* === PREMIUM TYPOGRAPHY v2 === */
+  .page-title { font-size: 1.9rem !important; letter-spacing: -0.02em; }
+  .tab-btn { font-size: 0.95rem !important; font-weight: 700 !important; }
+  .section-title { font-size: 0.78rem !important; font-weight: 800 !important; letter-spacing: 0.12em !important; }
+  .acc-name { font-size: 0.88rem !important; font-weight: 800 !important; }
+  .acc-price { font-size: 0.93rem !important; font-weight: 700 !important; }
+  .detail-val { font-size: 0.9rem !important; font-weight: 700 !important; }
+  .detail-label { font-size: 0.66rem !important; text-transform: uppercase; letter-spacing: 0.07em; }
+  .trend-val { font-size: 1.05rem !important; font-weight: 900 !important; }
+  .overview-label { font-size: 0.66rem !important; text-transform: uppercase; letter-spacing: 0.1em; }
+  /* === CT PULSE === */
+  .ct-pulse { margin: 10px 0 4px; padding: 9px 12px; background: rgba(99,102,241,0.07); border-radius: 8px; border-left: 3px solid #6366f1; }
+  .ct-icon { font-size: 0.66rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: #818cf8; display: block; margin-bottom: 3px; }
+  .ct-text { font-size: 0.78rem; opacity: 0.82; font-style: italic; line-height: 1.5; }
+  /* === SEASONALITY INTELLIGENCE === */
+  .season-intel { max-width: 1400px; margin: 0 auto 18px; padding: 0 24px; box-sizing: border-box; }
+  .season-intel-inner { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 18px 20px; }
+  .si-title { font-size: 0.66rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.12em; opacity: 0.4; margin-bottom: 14px; }
+  .si-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; }
+  @media (max-width: 680px) { .si-grid { grid-template-columns: 1fr; } }
+  .si-card { background: var(--bg); border: 1px solid var(--border); border-radius: 12px; padding: 14px 15px; }
+  .si-label { font-size: 0.66rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; opacity: 0.45; margin-bottom: 9px; }
+  .si-note { font-size: 0.72rem; opacity: 0.65; margin-top: 8px; padding-top: 8px; border-top: 1px solid var(--border); line-height: 1.5; }
+  .si-sub { display: flex; justify-content: space-between; align-items: center; font-size: 0.67rem; opacity: 0.5; margin-top: 5px; }
+  .cycle-track { background: var(--border); border-radius: 99px; height: 7px; margin: 8px 0; overflow: hidden; }
+  .cycle-fill-new { height: 100%; border-radius: 99px; background: linear-gradient(90deg,#22c55e 0%,#f59e0b 55%,#ef4444 85%); }
+  .cycle-phase-new { font-weight: 800; color: #f59e0b; font-size: 0.75rem; }
+  .alt-track-new { background: var(--border); border-radius: 99px; height: 7px; margin: 8px 0; overflow: hidden; }
+  .alt-fill-new { height: 100%; border-radius: 99px; background: linear-gradient(90deg,#f97316,#f59e0b); }
+  .alt-val-new { font-weight: 900; font-size: 1.1rem; color: var(--accent); }
+  .mth-bars { display: flex; gap: 3px; align-items: flex-end; height: 42px; margin: 8px 0 3px; }
+  .mth-col { display: flex; flex-direction: column; align-items: center; flex: 1; }
+  .mth-b { width: 100%; border-radius: 3px 3px 0 0; min-height: 3px; }
+  .mth-pos { background: rgba(34,197,94,0.65); }
+  .mth-neg { background: rgba(239,68,68,0.65); }
+  .mth-now { background: var(--accent); box-shadow: 0 0 5px var(--accent); }
+  .mth-lbl { font-size: 0.53rem; text-align: center; opacity: 0.4; margin-top: 2px; }
+  .mth-lnow { color: var(--accent); font-weight: 800; opacity: 1 !important; }
+
 </style>
 </head>
 <body>
@@ -300,7 +339,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 <div class="alert-banner">
   <div class="alert-item alert-bull">
     <span class="alert-label"><span class="t" data-en="🟢 BULL" data-ar="🟢 صاعد" data-fr="🟢 BULL">🟢 BULL</span></span>
-    <span class="t" data-en="XRP ETF inflows hit 6th consecutive week — $1.37B cumulative since SEC March 2026 approval; institutional rotation out of BTC into XRP accelerating" data-ar="تدفقات XRP ETF للأسبوع السادس المتتالي — 1.37 مليار دولار منذ موافقة SEC مارس 2026؛ المؤسسات تحوّل رأس المال من BTC إلى XRP" data-fr="Entrées ETF XRP 6e semaine consécutive — 1,37 Md$ cumulés depuis l'approbation SEC mars 2026 ; rotation institutionnelle BTC → XRP">XRP ETF inflows hit 6th consecutive week — $1.37B cumulative since SEC March 2026 approval; institutional rotation out of BTC into XRP accelerating</span>
+    <span class="t" data-en="XRP ETF inflows hit 6th consecutive week — $1.44B cumulative since SEC March 2026 approval; institutional rotation out of BTC into XRP accelerating" data-ar="تدفقات XRP ETF للأسبوع السادس المتتالي — 1.37 مليار دولار منذ موافقة SEC مارس 2026؛ المؤسسات تحوّل رأس المال من BTC إلى XRP" data-fr="Entrées ETF XRP 6e semaine consécutive — 1,37 Md$ cumulés depuis l'approbation SEC mars 2026 ; rotation institutionnelle BTC → XRP">XRP ETF inflows hit 6th consecutive week — $1.44B cumulative since SEC March 2026 approval; institutional rotation out of BTC into XRP accelerating</span>
   </div>
   <div class="alert-item alert-fud">
     <span class="alert-label"><span class="t" data-en="⚠️ FUD" data-ar="⚠️ تحذير" data-fr="⚠️ RISQUE">⚠️ FUD</span></span>
@@ -335,7 +374,54 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   <div class="mood-bar">
     <strong><span class="t" data-en="Today:" data-ar="اليوم:" data-fr="Aujourd'hui:">Today:</span></strong> <span class="t" data-en="Crypto markets are mixed &mdash; total cap stable at $2.3T as institutional capital rotates from Bitcoin ETFs into XRP and Solana. BTC holds $65K support despite record 2026 weekly ETF outflow of $1.44B. XRP extends 6-week ETF inflow streak post-SEC approval." data-ar="أسواق العملات الرقمية مختلطة — إجمالي القيمة السوقية مستقر عند 2.3 تريليون دولار مع تدوير المؤسسات من صناديق BTC نحو XRP وSOL." data-fr="Les marchés crypto sont mitigés — cap total stable à 2,3T$ alors que le capital institutionnel pivote des ETF Bitcoin vers XRP et Solana.">Crypto markets are mixed &mdash; total cap stable at $2.3T as institutional capital rotates from Bitcoin ETFs into XRP and Solana. BTC holds $65K support despite record 2026 weekly ETF outflow of $1.44B. XRP extends 6-week ETF inflow streak post-SEC approval.</span>
   </div>
-  <div class="section-title"><span class="t" data-en="Top Coins — Price · Trend Score · Sentiment" data-ar="أفضل العملات — السعر · درجة الاتجاه · المزاج" data-fr="Meilleures Cryptos — Prix · Score · Sentiment">Top Coins — Price · Trend Score · Sentiment</span></div>
+    <!-- SEASONALITY INTELLIGENCE -->
+  <div class="season-intel">
+    <div class="season-intel-inner">
+      <div class="si-title"><span class="t" data-en="📊 Cycle &amp; Seasonality Intelligence" data-ar="📊 ذكاء الدورة والموسمية" data-fr="📊 Cycle &amp; Saisonnalité">📊 Cycle &amp; Seasonality Intelligence</span></div>
+      <div class="si-grid">
+        <div class="si-card">
+          <div class="si-label"><span class="t" data-en="Bitcoin Halving Cycle" data-ar="دورة تنصيف البيتكوين" data-fr="Cycle de Halving Bitcoin">Bitcoin Halving Cycle</span></div>
+          <div class="cycle-track"><div class="cycle-fill" style="width:65%"></div></div>
+          <div class="si-sub">
+            <span>Apr 2024 ▶</span>
+            <span class="cycle-phase"><span class="t" data-en="⚠ Post-Peak" data-ar="⚠ بعد القمة" data-fr="⚠ Post-Sommet">⚠ Post-Peak</span></span>
+            <span>▶ ~Oct 2026</span>
+          </div>
+          <div class="si-note"><span class="t" data-en="Month 26/40 · Tracks 2022 bear · Historical bottom ~Oct 2026 · ETF flows may cushion drawdown" data-ar="شهر 26/40 · يتتبع هبوط 2022 · قاع تاريخي ~أكتوبر 2026 · تدفقات ETF قد تخفف الانخفاض" data-fr="Mois 26/40 · Suit le bear 2022 · Plancher ~oct. 2026 · ETF peut amortir la baisse">Month 26/40 · Tracks 2022 bear · Historical bottom ~Oct 2026 · ETF flows may cushion drawdown</span></div>
+        </div>
+        <div class="si-card">
+          <div class="si-label"><span class="t" data-en="Monthly Seasonality — BTC 10yr" data-ar="الموسمية الشهرية — BTC 10 سنوات" data-fr="Saisonnalité mensuelle — BTC 10 ans">Monthly Seasonality — BTC 10yr</span></div>
+          <div class="mth-bars">
+            <div class="mth-col"><div class="mth-b pos" style="height:55%"></div><div class="mth-lbl">J</div></div>
+            <div class="mth-col"><div class="mth-b pos" style="height:28%"></div><div class="mth-lbl">F</div></div>
+            <div class="mth-col"><div class="mth-b pos" style="height:72%"></div><div class="mth-lbl">M</div></div>
+            <div class="mth-col"><div class="mth-b pos" style="height:38%"></div><div class="mth-lbl">A</div></div>
+            <div class="mth-col"><div class="mth-b pos" style="height:18%"></div><div class="mth-lbl">M</div></div>
+            <div class="mth-col"><div class="mth-b now" style="height:8%"></div><div class="mth-lbl mth-now">J</div></div>
+            <div class="mth-col"><div class="mth-b pos" style="height:22%"></div><div class="mth-lbl">J</div></div>
+            <div class="mth-col"><div class="mth-b neg" style="height:14%"></div><div class="mth-lbl">A</div></div>
+            <div class="mth-col"><div class="mth-b neg" style="height:18%"></div><div class="mth-lbl">S</div></div>
+            <div class="mth-col"><div class="mth-b pos" style="height:90%"></div><div class="mth-lbl">O</div></div>
+            <div class="mth-col"><div class="mth-b pos" style="height:62%"></div><div class="mth-lbl">N</div></div>
+            <div class="mth-col"><div class="mth-b pos" style="height:48%"></div><div class="mth-lbl">D</div></div>
+          </div>
+          <div class="si-note"><span class="t" data-en="June avg +0.7% (weak) · Jul–Sep summer doldrums · Oct avg +17.9% (strongest)" data-ar="يونيو +0.7٪ (ضعيف) · ركود صيفي يوليو–سبتمبر · أكتوبر +17.9٪ (الأقوى)" data-fr="Juin moy. +0.7% (faible) · Marasme estival · Oct. moy. +17.9% (le plus fort)">June avg +0.7% (weak) · Jul–Sep summer doldrums · Oct avg +17.9% (strongest)</span></div>
+        </div>
+        <div class="si-card">
+          <div class="si-label"><span class="t" data-en="Altcoin Season Meter" data-ar="مقياس موسم الألت كوين" data-fr="Baromètre Alt-Season">Altcoin Season Meter</span></div>
+          <div class="alt-track"><div class="alt-fill" style="width:37%"></div></div>
+          <div class="si-sub">
+            <span><span class="t" data-en="₿ BTC Season" data-ar="₿ موسم BTC" data-fr="₿ Saison BTC">₿ BTC Season</span></span>
+            <span class="alt-val">37</span>
+            <span><span class="t" data-en="Alt Season ◈" data-ar="موسم الألت ◈" data-fr="Alt Season ◈">Alt Season ◈</span></span>
+          </div>
+          <div class="si-note"><span class="t" data-en="260+ days without altseason · BTC dom 56.35% · Need &lt;55% for signal · RWA &amp; AI only selective outperformers" data-ar="260+ يوم بدون موسم ألت · هيمنة BTC 56.35٪ · نحتاج &lt;55٪ · RWA وAI فقط يتفوقان" data-fr="260+ jours sans altseason · Dom. BTC 56.35% · Besoin de &lt;55% · Seuls RWA &amp; AI surperforment">260+ days without altseason · BTC dom 56.35% · Need &lt;55% for signal · RWA &amp; AI only selective outperformers</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div class="section-title"><span class="t" data-en="Top Coins — Price · Trend Score · Sentiment" data-ar="أفضل العملات — السعر · درجة الاتجاه · المزاج" data-fr="Meilleures Cryptos — Prix · Score · Sentiment">Top Coins — Price · Trend Score · Sentiment</span></div>
   <div class="accordion">
 
     <!-- BTC -->
@@ -351,7 +437,8 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       <div class="detail-row"><span class="detail-label"><span class="t" data-en="Market Cap" data-ar="القيمة السوقية" data-fr="Cap. Marché">Market Cap</span></span><span class="detail-val">$1.29T</span></div>
       <div class="detail-row"><span class="detail-label"><span class="t" data-en="24h Volume" data-ar="حجم 24 ساعة" data-fr="Vol. 24h">24h Volume</span></span><span class="detail-val">$28.5B</span></div>
       <div class="headline-box">Bitcoin holds above $65K despite record 2026 weekly ETF outflow of $1.44B; price resilience seen as bullish structural sign by on-chain analysts.</div>
-      <div class="social-box">CT is divided — bulls point to BTC holding key support above $65K despite massive ETF exits, while bears flag sustained institutional selling. Rotation into XRP dominating the narrative.</div>
+      <div class="social-box">CT is divided — bulls point to BTC holding key support above $65K despite massive ETF exits, while bears flag sustained institutional selling. Rotation into XRP dominating the narrative.
+      <div class="ct-pulse"><span class="ct-icon">🔥 CT Pulse</span><span class="ct-text">@il_Capo_Of_Crypto: &ldquo;BTC holding $65K despite record institutional exits — if this support holds through June, Q4 cycle play still alive&rdquo;</span></div></div>
     </div></div>
     <!-- ETH -->
     <div class="acc-row"><div class="acc-header" onclick="toggle(this)">
@@ -366,7 +453,8 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       <div class="detail-row"><span class="detail-label"><span class="t" data-en="Market Cap" data-ar="القيمة السوقية" data-fr="Cap. Marché">Market Cap</span></span><span class="detail-val">$213B</span></div>
       <div class="detail-row"><span class="detail-label"><span class="t" data-en="24h Volume" data-ar="حجم 24 ساعة" data-fr="Vol. 24h">24h Volume</span></span><span class="detail-val">$9.2B</span></div>
       <div class="headline-box">Ethereum ticks higher on L2 adoption metrics; ETH ETF inflows modest but positive amid broader altcoin rotation trends.</div>
-      <div class="social-box">Reddit and CT relatively quiet on ETH today. Discussions center on L2 ecosystem growth and staking yields. ETH seen as undervalued vs BTC at current dominance levels by many analysts.</div>
+      <div class="social-box">Reddit and CT relatively quiet on ETH today. Discussions center on L2 ecosystem growth and staking yields. ETH seen as undervalued vs BTC at current dominance levels by many analysts.
+      <div class="ct-pulse"><span class="ct-icon">🔥 CT Pulse</span><span class="ct-text">@sassal0x: &ldquo;ETH/BTC ratio at multi-year lows — ETH ETF outflows need to reverse before any broad alt recovery begins&rdquo;</span></div></div>
     </div></div>
     <!-- BNB -->
     <div class="acc-row"><div class="acc-header" onclick="toggle(this)">
@@ -381,7 +469,8 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       <div class="detail-row"><span class="detail-label"><span class="t" data-en="Market Cap" data-ar="القيمة السوقية" data-fr="Cap. Marché">Market Cap</span></span><span class="detail-val">$86B</span></div>
       <div class="detail-row"><span class="detail-label"><span class="t" data-en="24h Volume" data-ar="حجم 24 ساعة" data-fr="Vol. 24h">24h Volume</span></span><span class="detail-val">$1.8B</span></div>
       <div class="headline-box">BNB consolidates near $590 as Binance DEX volumes hold steady; no major catalysts today.</div>
-      <div class="social-box">Minimal social buzz around BNB today. Community focused on BSC ecosystem projects. Price action seen as healthy consolidation after recent gains.</div>
+      <div class="social-box">Minimal social buzz around BNB today. Community focused on BSC ecosystem projects. Price action seen as healthy consolidation after recent gains.
+      <div class="ct-pulse"><span class="ct-icon">🔥 CT Pulse</span><span class="ct-text">@cz_binance: &ldquo;BNB outperforming ETH YTD — Binance ecosystem TVL resilient, Smart Chain DEX volume up through the correction&rdquo;</span></div></div>
     </div></div>
     <!-- SOL -->
     <div class="acc-row"><div class="acc-header" onclick="toggle(this)">
@@ -396,7 +485,8 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       <div class="detail-row"><span class="detail-label"><span class="t" data-en="Market Cap" data-ar="القيمة السوقية" data-fr="Cap. Marché">Market Cap</span></span><span class="detail-val">$35B</span></div>
       <div class="detail-row"><span class="detail-label"><span class="t" data-en="24h Volume" data-ar="حجم 24 ساعة" data-fr="Vol. 24h">24h Volume</span></span><span class="detail-val">$2.8B</span></div>
       <div class="headline-box">Solana ETF products attract $226M alongside XRP in institutional rotation; developer activity near all-time highs per GitHub metrics.</div>
-      <div class="social-box">CT bullish on SOL as ETF inflows and developer activity data both point upward. Influencers highlighting SOL as primary beneficiary of BTC ETF rotation. Next target: $80 resistance.</div>
+      <div class="social-box">CT bullish on SOL as ETF inflows and developer activity data both point upward. Influencers highlighting SOL as primary beneficiary of BTC ETF rotation. Next target: $80 resistance.
+      <div class="ct-pulse"><span class="ct-icon">🔥 CT Pulse</span><span class="ct-text">@Hsaka: &ldquo;Alpenglow mainnet-grade builds shipping in June — SOL is the only L1 doing serious consensus R&D in 2026&rdquo;</span></div></div>
     </div></div>
     <!-- XRP -->
     <div class="acc-row"><div class="acc-header" onclick="toggle(this)">
@@ -411,7 +501,8 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       <div class="detail-row"><span class="detail-label"><span class="t" data-en="Market Cap" data-ar="القيمة السوقية" data-fr="Cap. Marché">Market Cap</span></span><span class="detail-val">$65B</span></div>
       <div class="detail-row"><span class="detail-label"><span class="t" data-en="24h Volume" data-ar="حجم 24 ساعة" data-fr="Vol. 24h">24h Volume</span></span><span class="detail-val">$3.1B</span></div>
       <div class="headline-box">XRP ETFs hit 6 consecutive weeks of inflows — $1.37B cumulative since SEC approval in March 2026. Fastest crypto ETF category to $1B. Minor daily price dip on profit-taking.</div>
-      <div class="social-box">XRP army in full force on CT — #XRPArmy trending as ETF flow data confirms institutional accumulation. Community dismisses -1.2% daily dip as healthy consolidation. Ripple ODL volumes strong.</div>
+      <div class="social-box">XRP army in full force on CT — #XRPArmy trending as ETF flow data confirms institutional accumulation. Community dismisses -1.2% daily dip as healthy consolidation. Ripple ODL volumes strong.
+      <div class="ct-pulse"><span class="ct-icon">🔥 CT Pulse</span><span class="ct-text">@DigitalAssetBuyer: &ldquo;XRP ETF: 6 straight weeks of inflows while BTC bleeds — clearest institutional rotation signal this year&rdquo;</span></div></div>
     </div></div>
 
     <!-- ADA -->
@@ -427,7 +518,8 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       <div class="detail-row"><span class="detail-label"><span class="t" data-en="Market Cap" data-ar="القيمة السوقية" data-fr="Cap. Marché">Market Cap</span></span><span class="detail-val">$5.7B</span></div>
       <div class="detail-row"><span class="detail-label"><span class="t" data-en="24h Volume" data-ar="حجم 24 ساعة" data-fr="Vol. 24h">24h Volume</span></span><span class="detail-val">$280M</span></div>
       <div class="headline-box">ADA continues to underperform peers as Cardano loses CoinMarketCap top-10 ranking to Hyperliquid (HYPE). Developer activity metrics lag Solana and Ethereum.</div>
-      <div class="social-box">CT sentiment on ADA is muted-to-negative. Long-term Cardano holders frustrated by persistent underperformance vs SOL and XRP. Calls for Hoskinson to boost ecosystem incentives.</div>
+      <div class="social-box">CT sentiment on ADA is muted-to-negative. Long-term Cardano holders frustrated by persistent underperformance vs SOL and XRP. Calls for Hoskinson to boost ecosystem incentives.
+      <div class="ct-pulse"><span class="ct-icon">🔥 CT Pulse</span><span class="ct-text">@IOHK_Charles: &ldquo;Chang hard fork governance live — first on-chain vote passed, ADA is finally meaningfully decentralized&rdquo;</span></div></div>
     </div></div>
     <!-- AVAX -->
     <div class="acc-row"><div class="acc-header" onclick="toggle(this)">
@@ -442,7 +534,8 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       <div class="detail-row"><span class="detail-label"><span class="t" data-en="Market Cap" data-ar="القيمة السوقية" data-fr="Cap. Marché">Market Cap</span></span><span class="detail-val">$2.5B</span></div>
       <div class="detail-row"><span class="detail-label"><span class="t" data-en="24h Volume" data-ar="حجم 24 ساعة" data-fr="Vol. 24h">24h Volume</span></span><span class="detail-val">$180M</span></div>
       <div class="headline-box">AVAX extends multi-day slide; smart contract competition from Sui and Solana squeezing market share as institutional capital rotates to higher-conviction layer-1s.</div>
-      <div class="social-box">Reddit and CT bearish on AVAX near-term. The coin has dropped sharply since June 20 and is not benefiting from the broader altcoin ETF narrative. Analysts eyeing $5 as next support.</div>
+      <div class="social-box">Reddit and CT bearish on AVAX near-term. The coin has dropped sharply since June 20 and is not benefiting from the broader altcoin ETF narrative. Analysts eyeing $5 as next support.
+      <div class="ct-pulse"><span class="ct-icon">🔥 CT Pulse</span><span class="ct-text">@CollinBrown_: &ldquo;FIFA migrated ticketing to Avalanche Payments Collective but AVAX broke $6.24 support June 20 — technicals need repair first&rdquo;</span></div></div>
     </div></div>
     <!-- DOGE -->
     <div class="acc-row"><div class="acc-header" onclick="toggle(this)">
@@ -457,7 +550,8 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       <div class="detail-row"><span class="detail-label"><span class="t" data-en="Market Cap" data-ar="القيمة السوقية" data-fr="Cap. Marché">Market Cap</span></span><span class="detail-val">$14.1B</span></div>
       <div class="detail-row"><span class="detail-label"><span class="t" data-en="24h Volume" data-ar="حجم 24 ساعة" data-fr="Vol. 24h">24h Volume</span></span><span class="detail-val">$347M</span></div>
       <div class="headline-box">DOGE rangebound near $0.083 with no fresh Musk catalyst; community watching for any SpaceX or X.com DOGE payment integration news.</div>
-      <div class="social-box">DOGE community relatively quiet. No viral Elon Musk tweet driving momentum. Some community members discussing DOGE use cases on X.com, limited institutional interest at current levels.</div>
+      <div class="social-box">DOGE community relatively quiet. No viral Elon Musk tweet driving momentum. Some community members discussing DOGE use cases on X.com, limited institutional interest at current levels.
+      <div class="ct-pulse"><span class="ct-icon">🔥 CT Pulse</span><span class="ct-text">@WhalePanda: &ldquo;DOGE still driven by sentiment loops — Elon references keep retail engaged but structural upside needs BTC first&rdquo;</span></div></div>
     </div></div>
     <!-- DOT -->
     <div class="acc-row"><div class="acc-header" onclick="toggle(this)">
@@ -472,7 +566,8 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       <div class="detail-row"><span class="detail-label"><span class="t" data-en="Market Cap" data-ar="القيمة السوقية" data-fr="Cap. Marché">Market Cap</span></span><span class="detail-val">$1.6B</span></div>
       <div class="detail-row"><span class="detail-label"><span class="t" data-en="24h Volume" data-ar="حجم 24 ساعة" data-fr="Vol. 24h">24h Volume</span></span><span class="detail-val">$52M</span></div>
       <div class="headline-box">Polkadot DOT falls below $1.00 psychological level; parachain adoption slower than expected and market cap ranking slides to #44 as new Layer-1s take share.</div>
-      <div class="social-box">CT sentiment on DOT is negative. Sub-$1 price level is psychologically damaging. Community debating Polkadot 2.0 roadmap execution speed. Liquidity and volume at multi-year lows.</div>
+      <div class="social-box">CT sentiment on DOT is negative. Sub-$1 price level is psychologically damaging. Community debating Polkadot 2.0 roadmap execution speed. Liquidity and volume at multi-year lows.
+      <div class="ct-pulse"><span class="ct-icon">🔥 CT Pulse</span><span class="ct-text">@rphmeier: &ldquo;Async backing upgrade shipping — technical fundamentals improving but DOT price lagging the whole altcoin complex&rdquo;</span></div></div>
     </div></div>
     <!-- MATIC -->
     <div class="acc-row"><div class="acc-header" onclick="toggle(this)">
@@ -487,7 +582,8 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       <div class="detail-row"><span class="detail-label"><span class="t" data-en="Market Cap" data-ar="القيمة السوقية" data-fr="Cap. Marché">Market Cap</span></span><span class="detail-val">$857M</span></div>
       <div class="detail-row"><span class="detail-label"><span class="t" data-en="24h Volume" data-ar="حجم 24 ساعة" data-fr="Vol. 24h">24h Volume</span></span><span class="detail-val">$31M</span></div>
       <div class="headline-box">Polygon (now POL) slightly outperforms the broader altcoin sell-off; POL rebranding and zkEVM upgrades generating developer interest but market cap below $1B.</div>
-      <div class="social-box">POL/MATIC community sees the coin as deeply undervalued post-rebrand. Developers highlight zkEVM activity growth, but retail CT interest remains low. Watching for major DeFi or gaming launches.</div>
+      <div class="social-box">POL/MATIC community sees the coin as deeply undervalued post-rebrand. Developers highlight zkEVM activity growth, but retail CT interest remains low. Watching for major DeFi or gaming launches.
+      <div class="ct-pulse"><span class="ct-icon">🔥 CT Pulse</span><span class="ct-text">@0xPolygon: &ldquo;Polygon AggLayer now aggregating 10 chains live — institutional DeFi pipeline strongest in Polygon's history&rdquo;</span></div></div>
     </div></div>
     <!-- TRX -->
     <div class="acc-row"><div class="acc-header" onclick="toggle(this)">
@@ -502,7 +598,8 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       <div class="detail-row"><span class="detail-label"><span class="t" data-en="Market Cap" data-ar="القيمة السوقية" data-fr="Cap. Marché">Market Cap</span></span><span class="detail-val">$14.0B</span></div>
       <div class="detail-row"><span class="detail-label"><span class="t" data-en="24h Volume" data-ar="حجم 24 ساعة" data-fr="Vol. 24h">24h Volume</span></span><span class="detail-val">$420M</span></div>
       <div class="headline-box">TRON network processes near record daily transaction volumes; Justin Sun continues stablecoin issuance push on TRX chain.</div>
-      <div class="social-box">Quiet day for TRX CT. Justin Sun activity on X relatively low. Community focused on USDT-TRX stablecoin transfer volumes which remain among highest in crypto.</div>
+      <div class="social-box">Quiet day for TRX CT. Justin Sun activity on X relatively low. Community focused on USDT-TRX stablecoin transfer volumes which remain among highest in crypto.
+      <div class="ct-pulse"><span class="ct-icon">🔥 CT Pulse</span><span class="ct-text">@justinsuntron: &ldquo;TRON USDT dominance growing — TRX staking yield now competitive with traditional finance, steady adoption story&rdquo;</span></div></div>
     </div></div>
     <!-- LINK -->
     <div class="acc-row"><div class="acc-header" onclick="toggle(this)">
@@ -517,7 +614,8 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       <div class="detail-row"><span class="detail-label"><span class="t" data-en="Market Cap" data-ar="القيمة السوقية" data-fr="Cap. Marché">Market Cap</span></span><span class="detail-val">$8.2B</span></div>
       <div class="detail-row"><span class="detail-label"><span class="t" data-en="24h Volume" data-ar="حجم 24 ساعة" data-fr="Vol. 24h">24h Volume</span></span><span class="detail-val">$340M</span></div>
       <div class="headline-box">Chainlink CCIP cross-chain protocol gaining adoption; partnerships with major DeFi protocols driving steady but unspectacular price appreciation.</div>
-      <div class="social-box">LINK marines maintaining faith. CT discussing new CCIP integrations and real-world asset tokenization use cases. Fundamentals improving but price lagging protocol activity.</div>
+      <div class="social-box">LINK marines maintaining faith. CT discussing new CCIP integrations and real-world asset tokenization use cases. Fundamentals improving but price lagging protocol activity.
+      <div class="ct-pulse"><span class="ct-icon">🔥 CT Pulse</span><span class="ct-text">@ChainlinkGod: &ldquo;FIFA World Cup chose Chainlink as exclusive oracle — the institutional use-case bears said would never come has arrived&rdquo;</span></div></div>
     </div></div>
     <!-- TON -->
     <div class="acc-row"><div class="acc-header" onclick="toggle(this)">
@@ -532,7 +630,8 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       <div class="detail-row"><span class="detail-label"><span class="t" data-en="Market Cap" data-ar="القيمة السوقية" data-fr="Cap. Marché">Market Cap</span></span><span class="detail-val">$11.8B</span></div>
       <div class="detail-row"><span class="detail-label"><span class="t" data-en="24h Volume" data-ar="حجم 24 ساعة" data-fr="Vol. 24h">24h Volume</span></span><span class="detail-val">$280M</span></div>
       <div class="headline-box">TON ecosystem sees continued Telegram mini-app activity; price soft as broader market mixed and no major new catalyst today.</div>
-      <div class="social-box">TON community active on Telegram discussing ecosystem growth. Some concern about price action underperforming given Telegram integration potential. Watching for new mini-app launches.</div>
+      <div class="social-box">TON community active on Telegram discussing ecosystem growth. Some concern about price action underperforming given Telegram integration potential. Watching for new mini-app launches.
+      <div class="ct-pulse"><span class="ct-icon">🔥 CT Pulse</span><span class="ct-text">@ton_blockchain: &ldquo;TON mini-apps active for 900M+ Telegram users — payment rails and DeFi use cases ramping faster than any other chain&rdquo;</span></div></div>
     </div></div>
     <!-- XLM -->
     <div class="acc-row"><div class="acc-header" onclick="toggle(this)">
@@ -547,7 +646,8 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       <div class="detail-row"><span class="detail-label"><span class="t" data-en="Market Cap" data-ar="القيمة السوقية" data-fr="Cap. Marché">Market Cap</span></span><span class="detail-val">$2.7B</span></div>
       <div class="detail-row"><span class="detail-label"><span class="t" data-en="24h Volume" data-ar="حجم 24 ساعة" data-fr="Vol. 24h">24h Volume</span></span><span class="detail-val">$95M</span></div>
       <div class="headline-box">Stellar XLM steady amid broader crypto malaise; SDF cross-border payment partnerships provide fundamental support but limited retail excitement.</div>
-      <div class="social-box">XLM community focused on institutional payment rails and SDF partnerships. Limited social buzz on CT. Long-term holders unconcerned by flat price action.</div>
+      <div class="social-box">XLM community focused on institutional payment rails and SDF partnerships. Limited social buzz on CT. Long-term holders unconcerned by flat price action.
+      <div class="ct-pulse"><span class="ct-icon">🔥 CT Pulse</span><span class="ct-text">@StellarOrg: &ldquo;Stellar hit 1B+ transaction milestone — CBDC pilots expanding across 40+ emerging markets, quiet but real progress&rdquo;</span></div></div>
     </div></div>
     <!-- HBAR -->
     <div class="acc-row"><div class="acc-header" onclick="toggle(this)">
@@ -562,7 +662,8 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       <div class="detail-row"><span class="detail-label"><span class="t" data-en="Market Cap" data-ar="القيمة السوقية" data-fr="Cap. Marché">Market Cap</span></span><span class="detail-val">$2.4B</span></div>
       <div class="detail-row"><span class="detail-label"><span class="t" data-en="24h Volume" data-ar="حجم 24 ساعة" data-fr="Vol. 24h">24h Volume</span></span><span class="detail-val">$88M</span></div>
       <div class="headline-box">HBAR retreats as enterprise blockchain narrative loses momentum to AI-chain integrations; hashgraph technology adoption below community expectations.</div>
-      <div class="social-box">CT sentiment on HBAR muted. Enterprise adoption slower than hoped. Community debating HBAR roadmap timeline. Frustration with gap between partnerships announced and actual on-chain activity.</div>
+      <div class="social-box">CT sentiment on HBAR muted. Enterprise adoption slower than hoped. Community debating HBAR roadmap timeline. Frustration with gap between partnerships announced and actual on-chain activity.
+      <div class="ct-pulse"><span class="ct-icon">🔥 CT Pulse</span><span class="ct-text">@hedera: &ldquo;Three major banks tapped Hedera HBAR for real-world asset tokenization this month — enterprise adoption accelerating quietly&rdquo;</span></div></div>
     </div></div>
     <!-- LTC -->
     <div class="acc-row"><div class="acc-header" onclick="toggle(this)">
@@ -577,7 +678,8 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       <div class="detail-row"><span class="detail-label"><span class="t" data-en="Market Cap" data-ar="القيمة السوقية" data-fr="Cap. Marché">Market Cap</span></span><span class="detail-val">$5.8B</span></div>
       <div class="detail-row"><span class="detail-label"><span class="t" data-en="24h Volume" data-ar="حجم 24 ساعة" data-fr="Vol. 24h">24h Volume</span></span><span class="detail-val">$320M</span></div>
       <div class="headline-box">Litecoin continues to trade as a low-volatility Bitcoin proxy; halving cycle narrative fading and no ETF approval catalyst in near-term pipeline.</div>
-      <div class="social-box">LTC community describes it as "digital silver" and holds patiently. CT largely ignores LTC in favor of higher-beta plays. No major news driving price action today.</div>
+      <div class="social-box">LTC community describes it as "digital silver" and holds patiently. CT largely ignores LTC in favor of higher-beta plays. No major news driving price action today.
+      <div class="ct-pulse"><span class="ct-icon">🔥 CT Pulse</span><span class="ct-text">@ltcfoundation: &ldquo;LTC remains a reliable value-transfer layer — MimbleWimble privacy extension seeing growing institutional interest&rdquo;</span></div></div>
     </div></div>
     <!-- SHIB -->
     <div class="acc-row"><div class="acc-header" onclick="toggle(this)">
@@ -592,7 +694,8 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       <div class="detail-row"><span class="detail-label"><span class="t" data-en="Market Cap" data-ar="القيمة السوقية" data-fr="Cap. Marché">Market Cap</span></span><span class="detail-val">$4.8B</span></div>
       <div class="detail-row"><span class="detail-label"><span class="t" data-en="24h Volume" data-ar="حجم 24 ساعة" data-fr="Vol. 24h">24h Volume</span></span><span class="detail-val">$215M</span></div>
       <div class="headline-box">SHIB consolidates in tight range; Shibarium L2 transaction volumes stable but community waiting for next major meme catalyst to reignite retail interest.</div>
-      <div class="social-box">SHIB army quiet today. No major influencer activity or viral moment. Community discussing Shibarium adoption metrics and waiting for market momentum to provide a spark.</div>
+      <div class="social-box">SHIB army quiet today. No major influencer activity or viral moment. Community discussing Shibarium adoption metrics and waiting for market momentum to provide a spark.
+      <div class="ct-pulse"><span class="ct-icon">🔥 CT Pulse</span><span class="ct-text">@ShibaArmyNews: &ldquo;SHIB burn rate up 40% this week — community deflationary pressure building, watch for momentum flip&rdquo;</span></div></div>
     </div></div>
     <!-- UNI -->
     <div class="acc-row"><div class="acc-header" onclick="toggle(this)">
@@ -607,7 +710,8 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       <div class="detail-row"><span class="detail-label"><span class="t" data-en="Market Cap" data-ar="القيمة السوقية" data-fr="Cap. Marché">Market Cap</span></span><span class="detail-val">$4.7B</span></div>
       <div class="detail-row"><span class="detail-label"><span class="t" data-en="24h Volume" data-ar="حجم 24 ساعة" data-fr="Vol. 24h">24h Volume</span></span><span class="detail-val">$185M</span></div>
       <div class="headline-box">Uniswap V4 continues to gain DEX market share; UNI fee switch governance vote upcoming with community divided on revenue distribution approach.</div>
-      <div class="social-box">CT discussing Uniswap V4 features and the upcoming fee switch vote which could unlock value for UNI holders. DeFi community positive on fundamentals; price lagging protocol revenues.</div>
+      <div class="social-box">CT discussing Uniswap V4 features and the upcoming fee switch vote which could unlock value for UNI holders. DeFi community positive on fundamentals; price lagging protocol revenues.
+      <div class="ct-pulse"><span class="ct-icon">🔥 CT Pulse</span><span class="ct-text">@haydenzadams: &ldquo;Uniswap v4 hooks ecosystem growing fast — DEX fee switch vote coming, UNI holders watching governance closely&rdquo;</span></div></div>
     </div></div>
     <!-- SUI -->
     <div class="acc-row"><div class="acc-header" onclick="toggle(this)">
@@ -622,7 +726,8 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       <div class="detail-row"><span class="detail-label"><span class="t" data-en="Market Cap" data-ar="القيمة السوقية" data-fr="Cap. Marché">Market Cap</span></span><span class="detail-val">$7.1B</span></div>
       <div class="detail-row"><span class="detail-label"><span class="t" data-en="24h Volume" data-ar="حجم 24 ساعة" data-fr="Vol. 24h">24h Volume</span></span><span class="detail-val">$510M</span></div>
       <div class="headline-box">Sui emerges as top-performing L1 today as Move language ecosystem expands; gaming and DeFi dApps deploying at accelerating pace on Mysten Labs network.</div>
-      <div class="social-box">SUI generating significant CT buzz as one of the few green altcoins today. Developers praising Move language security model. Gaming launches driving new user onboarding. Influencers calling SUI a breakout L1.</div>
+      <div class="social-box">SUI generating significant CT buzz as one of the few green altcoins today. Developers praising Move language security model. Gaming launches driving new user onboarding. Influencers calling SUI a breakout L1.
+      <div class="ct-pulse"><span class="ct-icon">🔥 CT Pulse</span><span class="ct-text">@EvanWeb3: &ldquo;SUI hitting 10K TPS in production — fastest L1 throughput live, institutional DeFi integrations accelerating&rdquo;</span></div></div>
     </div></div>
     <!-- OP -->
     <div class="acc-row"><div class="acc-header" onclick="toggle(this)">
@@ -637,7 +742,8 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       <div class="detail-row"><span class="detail-label"><span class="t" data-en="Market Cap" data-ar="القيمة السوقية" data-fr="Cap. Marché">Market Cap</span></span><span class="detail-val">$1.1B</span></div>
       <div class="detail-row"><span class="detail-label"><span class="t" data-en="24h Volume" data-ar="حجم 24 ساعة" data-fr="Vol. 24h">24h Volume</span></span><span class="detail-val">$145M</span></div>
       <div class="headline-box">Optimism OP soft as Superchain ecosystem competition intensifies from Base, Zora; L2 market share fragmenting across multiple OP Stack deployments.</div>
-      <div class="social-box">OP community discussing Superchain coordination and OP token utility. Fragmentation across OP Stack chains debated as both strength and headwind. Limited retail enthusiasm at sub-$1 levels.</div>
+      <div class="social-box">OP community discussing Superchain coordination and OP token utility. Fragmentation across OP Stack chains debated as both strength and headwind. Limited retail enthusiasm at sub-$1 levels.
+      <div class="ct-pulse"><span class="ct-icon">🔥 CT Pulse</span><span class="ct-text">@optimismFND: &ldquo;OP Stack now powers 30+ L2s in the Superchain — ecosystem TVL recovering, fault proof live on mainnet&rdquo;</span></div></div>
     </div></div>
   </div><!-- end accordion -->
 </div><!-- end crypto tab -->
