@@ -430,13 +430,40 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 </div>
 
 <!-- ══ TABS ══ -->
-<div class="intel-bar" id="intel-crypto">
-  <div class="intel-stat"><div class="i-label"><span class="t" data-en="Total MCap" data-ar="القيمة السوقية الكلية" data-fr="Cap. Totale">Total MCap</span></div><div class="i-value">$2.23T</div></div>
-  <div class="intel-stat"><div class="i-label"><span class="t" data-en="BTC Dom" data-ar="هيمنة BTC" data-fr="Dom. BTC">BTC Dom</span></div><div class="i-value">56.2%</div></div>
-  <div class="intel-stat"><div class="i-label"><span class="t" data-en="24H Vol" data-ar="حجم 24 ساعة" data-fr="Vol. 24h">24H Vol</span></div><div class="i-value">$75.8B</div></div>
-  <div class="intel-stat"><div class="i-label"><span class="t" data-en="Fear &amp; Greed" data-ar="الخوف والجشع" data-fr="Peur &amp; Avidité">Fear &amp; Greed</span></div><div class="i-value" style="color:var(--red)">23</div></div>
-  <div class="intel-stat"><div class="i-label"><span class="t" data-en="Liquidations" data-ar="التصفيات" data-fr="Liquidations">Liquidations</span></div><div class="i-value" style="color:var(--red)">$717M</div></div>
-  <div class="intel-stat"><div class="i-label"><span class="t" data-en="ETF Flows" data-ar="تدفقات ETF" data-fr="Flux ETF">ETF Flows</span></div><div class="i-value" style="color:var(--red)">-$2.5B</div></div>
+<div class="market-overview" style="margin-bottom:16px">
+  <div class="market-stat">
+    <div class="label"><span class="t" data-en="Market Cap" data-ar="القيمة السوقية" data-fr="Cap. Marché">Market Cap</span></div>
+    <div class="value">$2.23T</div>
+    <div class="change down">-3.1% 24h</div>
+  </div>
+  <div class="market-stat">
+    <div class="label"><span class="t" data-en="BTC Dominance" data-ar="هيمنة بيتكوين" data-fr="Dominance BTC">BTC Dom</span></div>
+    <div class="value">56.2%</div>
+  </div>
+  <div class="market-stat">
+    <div class="label"><span class="t" data-en="24H Volume" data-ar="حجم 24 ساعة" data-fr="Volume 24H">24H Volume</span></div>
+    <div class="value">$75.8B</div>
+  </div>
+  <div class="market-stat">
+    <div class="label"><span class="t" data-en="Fear &amp; Greed" data-ar="الخوف والجشع" data-fr="Peur &amp; Avidité">Fear &amp; Greed</span></div>
+    <div class="value fng-extreme-fear">23</div>
+    <div class="change fng-extreme-fear">Extreme Fear</div>
+  </div>
+  <div class="market-stat">
+    <div class="label"><span class="t" data-en="Altcoin Index" data-ar="مؤشر ألتكوين" data-fr="Indice Altcoin">Altcoin Index</span></div>
+    <div class="value fng-btc-season">25</div>
+    <div class="change fng-btc-season">BTC Season</div>
+  </div>
+  <div class="market-stat">
+    <div class="label"><span class="t" data-en="Liquidations" data-ar="التصفيات" data-fr="Liquidations">Liquidations</span></div>
+    <div class="value" style="color:var(--red)">$717M</div>
+    <div class="change" style="color:var(--muted)">24h</div>
+  </div>
+  <div class="market-stat">
+    <div class="label"><span class="t" data-en="ETF Flows" data-ar="تدفق صناديق ETF" data-fr="Flux ETF">ETF Flows</span></div>
+    <div class="value" style="color:var(--red)">-$2.5B</div>
+    <div class="change" style="color:var(--muted)">24h net</div>
+  </div>
 </div>
 <div class="intel-bar" id="intel-stocks" style="display:none;background:rgba(108,99,255,0.07);border-top:2px solid #6c63ff">
   <div class="intel-stat"><div class="i-label"><span class="t" data-en="S&amp;P 500" data-ar="S&amp;P 500" data-fr="S&amp;P 500">S&amp;P 500</span></div><div class="i-value" style="color:var(--red)">5,446</div></div>
@@ -476,29 +503,26 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   </div>
 </div>
 
-  <div class="market-overview" style="margin-top:14px">
   <div class="market-stat">
-    <div class="label"><span class="t" data-en="Market Cap" data-ar="القيمة السوقية" data-fr="Cap. Marché">Market Cap</span></div>
-    <div class="value">$2.23T</div><div class="change down">-3.1% 24h</div>
-  </div>
-  <div class="market-stat">
-    <div class="label"><span class="t" data-en="BTC Dominance" data-ar="هيمنة البيتكوين" data-fr="Dominance BTC">BTC Dominance</span></div>
-    <div class="value">56.2%</div>
-  </div>
-  <div class="market-stat">
-    <div class="label"><span class="t" data-en="24h Volume" data-ar="حجم 24 ساعة" data-fr="Vol. 24h">24h Volume</span></div>
-    <div class="value">$75.8B</div>
-  </div>
-  <div class="market-stat">
-    <div class="label">&#128561; <span class="t" data-en="Fear &amp; Greed" data-ar="مؤشر الخوف والجشع" data-fr="Peur &amp; Avidité">Fear &amp; Greed</span></div>
-    <div class="value fng-extreme-fear">23</div><div class="change fng-extreme-fear">Extreme Fear</div>
-  </div>
-  <div class="market-stat">
-    <div class="label">&#128260; <span class="t" data-en="Altcoin Index" data-ar="مؤشر موسم الألتكوين" data-fr="Indice Altcoin">Altcoin Index</span></div>
-    <div class="value fng-btc-season">25</div><div class="change fng-btc-season">BTC Season</div>
-  </div>
-</div>
-<div class="mood-bar">
+      <div class="label"><span class="t" data-en="BTC Dominance" data-ar="هيمنة البيتكوين" data-fr="Dominance BTC">BTC Dominance</span></div>
+      <div class="value">56.39%</div>
+    </div>
+    <div class="market-stat">
+      <div class="label"><span class="t" data-en="24h Volume" data-ar="حجم 24 ساعة" data-fr="Vol. 24h">24h Volume</span></div>
+      <div class="value">$75.8B</div>
+    </div>
+    <div class="market-stat">
+      <div class="label">😨 <span class="t" data-en="Fear &amp; Greed" data-ar="مؤشر الخوف والجشع" data-fr="Peur &amp; Avidité">Fear &amp; Greed</span></div>
+      <div class="value fng-fear">44</div>
+      <div class="change fng-fear"><span class="t" data-en="Fear" data-ar="خوف" data-fr="Peur">Fear</span></div>
+    </div>
+    <div class="market-stat">
+      <div class="label">🔄 <span class="t" data-en="Altcoin Index" data-ar="مؤشر موسم الألتكوين" data-fr="Indice Altcoin">Altcoin Index</span></div>
+      <div class="value fng-btc-season">32</div>
+      <div class="change fng-btc-season"><span class="t" data-en="BTC Season" data-ar="موسم البيتكوين" data-fr="Saison BTC">BTC Season</span></div>
+    </div>
+  
+  <div class="mood-bar">
   <strong><span class="t" data-en="Today:" data-ar="اليوم:" data-fr="Aujourd'hui:">Today:</span></strong>
   <span class="t"
     data-en="Bearish. BTC falls to $62K as Fed Sept hike odds surge to 68%. $717M liquidations. ETF outflows $2.5B. Fear &amp; Greed at 23 (Extreme Fear). BTC dominance rising to 56.2% as capital flees altcoins."
@@ -950,7 +974,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 <div class="sector-cell s-flat"><div class="sector-name">HEALTH</div><div class="sector-pct">+0.2%</div><div class="sector-ticker">XLV</div></div>
 </div></div>
   </div>
-
+</div>
   <div class="events-section">
 <div class="events-header"><span class="t" data-en="&#128197; Key Events &amp; Macro Calendar" data-ar="📅 أحداث رئيسية وتقويم الماكرو" data-fr="📅 Événements Clés &amp; Calendrier Macro">&#128197; Key Events &amp; Macro Calendar</span></div>
 <div class="events-grid">
