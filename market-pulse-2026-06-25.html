@@ -205,6 +205,42 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 .fng-alt-season   { color: var(--green); }
 
 
+/* ── GAINERS / LOSERS SIDE-BY-SIDE (Crypto) ── */
+.gl-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 20px; }
+.gl-col {}
+.gl-col-header { font-size: 11px; font-weight: 800; letter-spacing: 0.8px;
+  text-transform: uppercase; margin-bottom: 8px; padding: 0 4px; }
+.gl-col-header.gain { color: var(--green); }
+.gl-col-header.loss { color: var(--red); }
+.gl-row { display: flex; align-items: center; gap: 8px; padding: 7px 10px;
+  border-radius: 7px; background: var(--surface); border: 1px solid var(--border);
+  margin-bottom: 5px; transition: background .12s; }
+.gl-row:hover { background: var(--surface2); }
+.gl-row.up   { border-left: 2px solid var(--green); }
+.gl-row.down { border-left: 2px solid var(--red); }
+.gl-name   { font-size: 12px; font-weight: 600; flex: 1; }
+.gl-ticker { font-size: 10px; color: var(--muted); }
+.gl-change { font-size: 12px; font-weight: 700; }
+.gl-score  { font-size: 10px; color: var(--muted); min-width: 28px; text-align: right; }
+
+/* ── CYCLE & SEASONALITY ── */
+.cycle-section { margin-bottom: 18px; }
+.cycle-header { font-size: 11px; font-weight: 800; letter-spacing: 0.8px;
+  text-transform: uppercase; color: var(--accent); margin-bottom: 10px; }
+.cycle-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 8px; margin-bottom: 10px; }
+.cycle-card { background: var(--surface); border: 1px solid var(--border);
+  border-radius: 8px; padding: 10px 12px; }
+.cycle-card .c-label { font-size: 10px; color: var(--muted); text-transform: uppercase;
+  letter-spacing: 0.5px; margin-bottom: 4px; }
+.cycle-card .c-value { font-size: 15px; font-weight: 700; }
+.cycle-card .c-desc  { font-size: 11px; color: var(--muted); margin-top: 3px; line-height: 1.4; }
+
+/* ── STOCK INTEL BAR (above tabs, stocks view) ── */
+.stock-intel-wrap { background: var(--surface); border-bottom: 1px solid var(--border); }
+.stock-index-bar  { display: flex; gap: 10px; flex-wrap: wrap;
+  padding: 12px 24px; border-bottom: 1px solid var(--border); }
+.stock-index-bar .market-stat { min-width: 100px; }
+
 /* ── SECTOR HEATMAP ── */
 .sector-section { padding: 0 0 4px; }
 .sector-title { padding: 10px 16px 6px; font-size: 10px; font-weight: 700;
@@ -253,7 +289,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 </div>
 
 <!-- ══ TABS ══ -->
-<div class="market-overview" style="margin-bottom:16px">
+<div class="market-overview" id="intel-crypto" style="margin-bottom:16px">
   <div class="market-stat">
     <div class="label"><span class="t" data-en="Market Cap" data-ar="القيمة السوقية" data-fr="Cap. Marché">Market Cap</span></div>
     <div class="value">$2.09T</div>
@@ -288,13 +324,34 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     <div class="change" style="color:var(--muted)">24h net</div>
   </div>
 </div>
-<div class="intel-bar" id="intel-stocks" style="display:none">
-  <div class="intel-stat"><div class="i-label">S&amp;P 500</div><div class="i-value" style="color:var(--green)">+0.77%</div></div>
-  <div class="intel-stat"><div class="i-label">NASDAQ</div><div class="i-value" style="color:var(--green)">+0.77%</div></div>
-  <div class="intel-stat"><div class="i-label">DOW</div><div class="i-value" style="color:var(--green)">+1.08%</div></div>
-  <div class="intel-stat"><div class="i-label">VIX</div><div class="i-value" style="color:var(--yellow)">18.63</div></div>
-  <div class="intel-stat"><div class="i-label">10Y Yield</div><div class="i-value" style="color:var(--yellow)">4.50%</div></div>
-  <div class="intel-stat"><div class="i-label">Top Gainer</div><div class="i-value" style="color:var(--green)">AYI +21.4%</div></div>
+<div class="stock-intel-wrap" id="intel-stocks" style="display:none">
+  <div class="stock-index-bar">
+    <div class="market-stat"><div class="label">S&amp;P 500</div><div class="value up">7,421</div><div class="change up">+0.77%</div></div>
+    <div class="market-stat"><div class="label">NASDAQ</div><div class="value up">25,783</div><div class="change up">+0.77%</div></div>
+    <div class="market-stat"><div class="label">DOW</div><div class="value up">52,226</div><div class="change up">+1.08%</div></div>
+    <div class="market-stat"><div class="label">VIX</div><div class="value neutral">18.63</div><div class="change neutral">-0.8</div></div>
+    <div class="market-stat"><div class="label">10Y Yield</div><div class="value up">4.50%</div><div class="change up">+2bp</div></div>
+    <div class="market-stat"><div class="label">Fed Rate</div><div class="value neutral">4.75%</div><div class="change neutral">On Hold</div></div>
+    <div class="market-stat"><div class="label">Top Gainer</div><div class="value up">AYI +21.4%</div></div>
+    <div class="market-stat"><div class="label">Top Loser</div><div class="value down">NEM -5.3%</div></div>
+  </div>
+  <div style="padding:0 16px 12px">
+    <div class="sector-section" style="background:var(--surface);border:1px solid var(--border);border-radius:10px;overflow:hidden">
+      <div class="sector-title">Sector Performance &mdash; June 25, 2026</div>
+      <div class="sector-grid">
+        <div class="sector-cell s-up"><div class="sector-name">Financials</div><div class="sector-pct">+2.1%</div><div class="sector-ticker">XLF</div></div>
+        <div class="sector-cell s-up"><div class="sector-name">Tech</div><div class="sector-pct">+1.4%</div><div class="sector-ticker">XLK</div></div>
+        <div class="sector-cell s-up"><div class="sector-name">Industrials</div><div class="sector-pct">+1.2%</div><div class="sector-ticker">XLI</div></div>
+        <div class="sector-cell s-up"><div class="sector-name">Consumer Disc</div><div class="sector-pct">+0.9%</div><div class="sector-ticker">XLY</div></div>
+        <div class="sector-cell s-flat"><div class="sector-name">Healthcare</div><div class="sector-pct">+0.3%</div><div class="sector-ticker">XLV</div></div>
+        <div class="sector-cell s-down"><div class="sector-name">Energy</div><div class="sector-pct">-2.8%</div><div class="sector-ticker">XLE</div></div>
+        <div class="sector-cell s-down"><div class="sector-name">Materials</div><div class="sector-pct">-1.5%</div><div class="sector-ticker">XLB</div></div>
+        <div class="sector-cell s-down"><div class="sector-name">Utilities</div><div class="sector-pct">-0.5%</div><div class="sector-ticker">XLU</div></div>
+        <div class="sector-cell s-up"><div class="sector-name">Comm Svcs</div><div class="sector-pct">+0.8%</div><div class="sector-ticker">XLC</div></div>
+        <div class="sector-cell s-flat"><div class="sector-name">Real Estate</div><div class="sector-pct">+0.1%</div><div class="sector-ticker">XLRE</div></div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <div class="tab-bar">
@@ -324,6 +381,64 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   <div class="mood-bar">
     <strong><span class="t" data-en="Today:" data-ar="اليوم:" data-fr="Aujourd'hui:">Today:</span></strong> <span class="t" data-en="Extreme fear dominates as BTC slides to lowest levels since 2024, below $60k. Record 13-day ETF outflow streak drains $4.4B while PCE inflation hits 4.1%, pushing rate hike fears and liquidations above $1.4B in 24h." data-ar="Ø®ÙˆÙ Ø´Ø¯ÙŠØ¯ ÙŠØ³ÙŠØ·Ø± Ù…Ø¹ Ø§Ù†Ø®ÙØ§Ø¶ BTC Ø¥Ù„Ù‰ Ø£Ø¯Ù†Ù‰ Ù…Ø³ØªÙˆÙŠØ§ØªÙ‡ Ù…Ù†Ø° 2024." data-fr="La peur extrÃªme domine alors que BTC glisse sous les 60k pour la premiÃ¨re fois depuis 2024.">Extreme fear dominates as BTC slides to lowest levels since 2024, below $60k. Record 13-day ETF outflow streak drains $4.4B while PCE inflation hits 4.1%, pushing rate hike fears and liquidations above $1.4B in 24h.</span>
   </div>
+<div class="events-section">
+  <div class="events-header">&#128197; Key Events &amp; Macro Calendar</div>
+  <div class="events-grid">
+    <div class="event-card warning"><div class="event-badge">&#9888;&#65039; CRITICAL</div><div class="event-body"><div class="event-name">CLARITY Act &mdash; 9 Days to July 4 Recess</div><div class="event-desc">Senate passage odds collapse to ~48% (was 74% last month). Kirsten Gillibrand blocking on ethics language. Failure = major regulatory headwind for all US crypto.</div></div></div>
+    <div class="event-card info"><div class="event-badge">&#128204; REGULATORY</div><div class="event-body"><div class="event-name">Binance EU License Expires June 30</div><div class="event-desc">BNB-specific but market-wide risk. EU license replacement not yet confirmed. Millions of European users face service disruption in 5 days.</div></div></div>
+    <div class="event-card positive"><div class="event-badge">&#128994; BULLISH</div><div class="event-body"><div class="event-name">RLUSD Live in Japan &mdash; Regulatory Green Light</div><div class="event-desc">Ripple stablecoin launches in Japan post-approval. SBI acquires Bitbank. Japan emerging as first major regulatory clarity market &mdash; bullish signal for XRP/XLM payments thesis.</div></div></div>
+    <div class="event-card warning"><div class="event-badge">&#9888;&#65039; MACRO</div><div class="event-body"><div class="event-name">Sept Rate Hike 68% Odds &mdash; PCE at 4.1%</div><div class="event-desc">Inflation re-acceleration is the macro headwind driving crypto lower. Next decisive data: June CPI on July 15. Hike confirmation = more BTC outflows from ETFs.</div></div></div>
+    <div class="event-card info"><div class="event-badge">&#128203; SEASONAL</div><div class="event-body"><div class="event-name">June &mdash; Historically Weakest Month for BTC</div><div class="event-desc">BTC averages -5% in June historically (2013&ndash;2025). Current -2.8% in line with seasonal weakness. July historically flat (+1%), August turns positive (+6%).</div></div></div>
+    <div class="event-card info"><div class="event-badge">&#128204; WATCH</div><div class="event-body"><div class="event-name">NDX &amp; S&amp;P 500 Quarterly Rebalance</div><div class="event-desc">CoreWeave, Astera Labs, Nebius, Rocket Lab enter NDX. Positive for AI/tech sentiment which could spill into crypto. Rebalance flows complete by EOD Friday.</div></div></div>
+  </div>
+</div>
+<div>
+  <div class="section-title">&#128200; 24h Leaders &mdash; Best vs. Worst Performers</div>
+  <div class="gl-grid">
+    <div class="gl-col">
+      <div class="gl-col-header gain">&#128994; Top Relative Strength</div>
+      <div class="gl-row up"><div class="gl-info"><div class="gl-name">Tron <span class="gl-ticker">TRX</span></div></div><div class="gl-change up">-1.4%</div><div class="gl-score">40</div><span class="acc-sentiment neutral-pill" style="font-size:10px">Neutral</span></div>
+      <div class="gl-row up"><div class="gl-info"><div class="gl-name">Polkadot <span class="gl-ticker">DOT</span></div></div><div class="gl-change up">-1.5%</div><div class="gl-score">36</div><span class="acc-sentiment neutral-pill" style="font-size:10px">Neutral</span></div>
+      <div class="gl-row up"><div class="gl-info"><div class="gl-name">Stellar <span class="gl-ticker">XLM</span></div></div><div class="gl-change up">-2.0%</div><div class="gl-score">35</div><span class="acc-sentiment neutral-pill" style="font-size:10px">Neutral</span></div>
+      <div class="gl-row up"><div class="gl-info"><div class="gl-name">Dogecoin <span class="gl-ticker">DOGE</span></div></div><div class="gl-change up">-2.1%</div><div class="gl-score">32</div><span class="acc-sentiment neutral-pill" style="font-size:10px">Neutral</span></div>
+      <div class="gl-row up"><div class="gl-info"><div class="gl-name">Toncoin <span class="gl-ticker">TON</span></div></div><div class="gl-change up">-2.2%</div><div class="gl-score">37</div><span class="acc-sentiment neutral-pill" style="font-size:10px">Neutral</span></div>
+    </div>
+    <div class="gl-col">
+      <div class="gl-col-header loss">&#128308; Weakest Performers</div>
+      <div class="gl-row down"><div class="gl-info"><div class="gl-name">Ethereum <span class="gl-ticker">ETH</span></div></div><div class="gl-change down">-3.4%</div><div class="gl-score">38</div><span class="acc-sentiment bearish" style="font-size:10px">Bearish</span></div>
+      <div class="gl-row down"><div class="gl-info"><div class="gl-name">Avalanche <span class="gl-ticker">AVAX</span></div></div><div class="gl-change down">-3.2%</div><div class="gl-score">28</div><span class="acc-sentiment bearish" style="font-size:10px">Bearish</span></div>
+      <div class="gl-row down"><div class="gl-info"><div class="gl-name">Polygon <span class="gl-ticker">MATIC</span></div></div><div class="gl-change down">-3.2%</div><div class="gl-score">25</div><span class="acc-sentiment bearish" style="font-size:10px">Bearish</span></div>
+      <div class="gl-row down"><div class="gl-info"><div class="gl-name">Uniswap <span class="gl-ticker">UNI</span></div></div><div class="gl-change down">-3.1%</div><div class="gl-score">30</div><span class="acc-sentiment bearish" style="font-size:10px">Bearish</span></div>
+      <div class="gl-row down"><div class="gl-info"><div class="gl-name">Optimism <span class="gl-ticker">OP</span></div></div><div class="gl-change down">-3.0%</div><div class="gl-score">27</div><span class="acc-sentiment bearish" style="font-size:10px">Bearish</span></div>
+    </div>
+  </div>
+</div>
+<div class="cycle-section">
+  <div class="cycle-header">&#9203; Cycle &amp; Seasonality Intelligence</div>
+  <div class="cycle-grid">
+    <div class="cycle-card"><div class="c-label">Halving Cycle</div><div class="c-value" style="color:var(--yellow)">Month 14</div><div class="c-desc">Post-halving (Apr 2024). Historically months 12&ndash;18 see peak volatility before the major bull run.</div></div>
+    <div class="cycle-card"><div class="c-label">Historical Pattern</div><div class="c-value" style="color:var(--accent)">Accumulation</div><div class="c-desc">2016 &amp; 2020 cycles: deep correction in months 13&ndash;16 before explosive Q4 rally. On track.</div></div>
+    <div class="cycle-card"><div class="c-label">June Seasonality</div><div class="c-value" style="color:var(--red)">Avg -5%</div><div class="c-desc">Weakest month historically (2013&ndash;2025). Current -2.8% in line. July avg +1%, Aug avg +6%.</div></div>
+    <div class="cycle-card"><div class="c-label">Next Catalyst</div><div class="c-value" style="color:var(--green)">July 15 CPI</div><div class="c-desc">June CPI print is the next macro binary. Soft print could reverse ETF outflow streak and restart cycle.</div></div>
+  </div>
+  <div class="season-bar">
+    <div class="season-bar-header">BTC Historical Seasonality &mdash; Monthly Avg Returns (2013&ndash;2025)</div>
+    <div class="season-months">
+      <div class="s-month s-strong">J<br>+2%</div>
+      <div class="s-month s-strong">F<br>+15%</div>
+      <div class="s-month s-strong">M<br>+8%</div>
+      <div class="s-month s-strong">A<br>+12%</div>
+      <div class="s-month s-mixed">M<br>-3%</div>
+      <div class="s-month s-weak s-now">J<br>-5%</div>
+      <div class="s-month s-mixed">J<br>+1%</div>
+      <div class="s-month s-strong">A<br>+6%</div>
+      <div class="s-month s-mixed">S<br>-2%</div>
+      <div class="s-month s-strong">O<br>+9%</div>
+      <div class="s-month s-strong">N<br>+18%</div>
+      <div class="s-month s-strong">D<br>+5%</div>
+    </div>
+  </div>
+</div>
   <div class="section-title"><span class="t" data-en="Top Coins — Price · Trend Score · Sentiment" data-ar="أفضل العملات — السعر · درجة الاتجاه · المزاج" data-fr="Meilleures Cryptos — Prix · Score · Sentiment">Top Coins — Price · Trend Score · Sentiment</span></div>
   <div class="accordion">
 
@@ -637,43 +752,6 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   <div class="alert-item alert-bull"><span class="alert-label">ðŸŸ¢ BULL</span> Financials surge: JPM, BAC, GS all +2%+ after all major banks pass Fed stress tests â€” dividend hike & buyback season opens</div>
   <div class="alert-item alert-news"><span class="alert-label">ðŸ“° NEWS</span> Micron (MU) reports earnings after close â€” binary chip sector catalyst; beat expected to lift entire semis space tomorrow</div>
   <div class="alert-item alert-news"><span class="alert-label">ðŸ“° NEWS</span> Crude oil -4.53% ($69.89) â€” energy sector drags as demand concerns mount; gold -2.92% ($4,028) hits materials/miners</div>
-</div>
-  <div class="market-overview" style="margin-top:14px">
-    <div class="market-stat"><div class="label">S&amp;P 500</div><div class="value">7,421</div><div class="change up">+0.77%</div></div>
-    <div class="market-stat"><div class="label">NASDAQ</div><div class="value">25,783</div><div class="change up">+0.77%</div></div>
-    <div class="market-stat"><div class="label">DOW</div><div class="value">52,226</div><div class="change up">+1.08%</div></div>
-    <div class="market-stat">
-      <div class="label"><span class="t" data-en="VIX" data-ar="مؤشر VIX" data-fr="VIX">VIX</span></div>
-      <div class="value neutral">18.63</div>
-      <div class="change neutral">-0.8</div>
-    </div>
-    <div class="market-stat">
-      <div class="label"><span class="t" data-en="10Y Yield" data-ar="عائد 10 سنوات" data-fr="Taux 10 ans">10Y Yield</span></div>
-      <div class="value up">4.50%</div>
-      <div class="change up">+2bp</div>
-    </div>
-    <div class="market-stat">
-      <div class="label"><span class="t" data-en="Fed Rate" data-ar="معدل الفيدرالي" data-fr="Taux Fed">Fed Rate</span></div>
-      <div class="value neutral">4.75%</div>
-      <div class="change neutral">On Hold</div>
-    </div>
-  </div>
-  <div class="accordion" style="margin-bottom:18px">
-  <div class="sector-section">
-    <div class="sector-title">Sector Performance â€” June 25, 2026</div>
-    <div class="sector-grid">
-      <div class="sector-cell s-up"><div class="sector-name">Financials</div><div class="sector-pct">+2.1%</div><div class="sector-ticker">XLF</div></div>
-      <div class="sector-cell s-up"><div class="sector-name">Tech</div><div class="sector-pct">+1.4%</div><div class="sector-ticker">XLK</div></div>
-      <div class="sector-cell s-up"><div class="sector-name">Industrials</div><div class="sector-pct">+1.2%</div><div class="sector-ticker">XLI</div></div>
-      <div class="sector-cell s-up"><div class="sector-name">Consumer Disc</div><div class="sector-pct">+0.9%</div><div class="sector-ticker">XLY</div></div>
-      <div class="sector-cell s-flat"><div class="sector-name">Healthcare</div><div class="sector-pct">+0.3%</div><div class="sector-ticker">XLV</div></div>
-      <div class="sector-cell s-down"><div class="sector-name">Energy</div><div class="sector-pct">-2.8%</div><div class="sector-ticker">XLE</div></div>
-      <div class="sector-cell s-down"><div class="sector-name">Materials</div><div class="sector-pct">-1.5%</div><div class="sector-ticker">XLB</div></div>
-      <div class="sector-cell s-down"><div class="sector-name">Utilities</div><div class="sector-pct">-0.5%</div><div class="sector-ticker">XLU</div></div>
-      <div class="sector-cell s-up"><div class="sector-name">Comm Svcs</div><div class="sector-pct">+0.8%</div><div class="sector-ticker">XLC</div></div>
-      <div class="sector-cell s-flat"><div class="sector-name">Real Estate</div><div class="sector-pct">+0.1%</div><div class="sector-ticker">XLRE</div></div>
-    </div>
-  </div>
 </div>
   <div class="events-section">
   <div class="events-header">ðŸ“… Events &amp; Catalysts</div>
