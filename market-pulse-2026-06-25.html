@@ -266,6 +266,30 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 .sector-cell.s-down .sector-pct { color: var(--red); }
 .sector-cell.s-flat .sector-pct { color: var(--yellow); }
 .sector-ticker { font-size: 9px; color: var(--muted); margin-top: 2px; }
+
+/* ── 3-Panel Cycle Section ──────────────────────────────── */
+.cycle-panels { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; margin-top: 4px; }
+.cycle-panel { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 16px 18px; }
+.cycle-panel-title { font-size: 10px; font-weight: 700; letter-spacing: .1em; color: var(--text-dim); text-transform: uppercase; margin-bottom: 14px; }
+.halving-bar-wrap { position: relative; margin: 26px 0 8px; }
+.halving-bar { height: 10px; border-radius: 6px; background: linear-gradient(to right,#22c55e,#eab308,#f97316,#ef4444); }
+.halving-now-label { position: absolute; top: -22px; font-size: 10px; color: #fff; font-weight: 700; transform: translateX(-50%); white-space: nowrap; }
+.halving-now-arrow { position: absolute; top: -10px; font-size: 13px; color: #fff; transform: translateX(-50%); }
+.halving-leg-labels { display: flex; justify-content: space-between; font-size: 10px; color: var(--text-dim); margin-bottom: 14px; }
+.halving-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 12px; }
+.h-stat-lbl { font-size: 10px; color: var(--text-dim); text-transform: uppercase; letter-spacing: .05em; margin-bottom: 3px; }
+.h-stat-val { font-size: 13px; font-weight: 700; }
+.h-stat-val.phase-bear { color: #f97316; }
+.h-stat-val.phase-gold { color: #eab308; }
+.alt-meter-wrap { position: relative; height: 10px; border-radius: 6px; margin-bottom: 16px;
+  background: linear-gradient(to right,#f97316,#eab308,#64748b,#22c55e); }
+.alt-meter-needle { position: absolute; top: -4px; width: 4px; height: 18px; background: #fff; border-radius: 2px; transform: translateX(-50%); }
+.alt-meter-labels { display: flex; justify-content: space-between; font-size: 10px; color: var(--text-dim); margin-bottom: 12px; }
+.alt-score-big { font-size: 40px; font-weight: 800; color: #eab308; text-align: center; line-height: 1; }
+.alt-score-sub { font-size: 11px; color: var(--text-dim); text-align: center; margin-bottom: 14px; }
+.cycle-desc-text { font-size: 11px; color: var(--text-dim); line-height: 1.55; }
+.season-center-panel { display: flex; flex-direction: column; justify-content: center; align-items: center; }
+
 </style>
 </head>
 <body>
@@ -420,28 +444,78 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 </div>
 <div class="cycle-section">
   <div class="cycle-header">&#9203; <span class="t" data-en="Cycle &amp; Seasonality Intelligence" data-ar="ذكاء الدورة والموسمية" data-fr="Intelligence Cycle &amp; Saisonnalité">Cycle &amp; Seasonality Intelligence</span></div>
-  <div class="cycle-grid">
-    <div class="cycle-card"><div class="c-label"><span class="t" data-en="Halving Cycle" data-ar="دورة النصف" data-fr="Cycle de Halving">Halving Cycle</span></div><div class="c-value" style="color:var(--yellow)">Month 14</div><div class="c-desc"><span class="t" data-en="Post-halving (Apr 2024). Historically months 12&ndash;18 see peak volatility before the major bull run." data-ar="ما بعد النصف (أبريل 2024). تاريخياً تشهد الأشهر 12-18 تقلبات ذروة قبل موجة الصعود الكبرى." data-fr="Post-halving (avr. 2024). Historiquement, les mois 12-18 voient une volatilité maximale avant le grand bull run.">Post-halving (Apr 2024). Historically months 12&ndash;18 see peak volatility before the major bull run.</span></div></div>
-    <div class="cycle-card"><div class="c-label"><span class="t" data-en="Historical Pattern" data-ar="النمط التاريخي" data-fr="Schéma Historique">Historical Pattern</span></div><div class="c-value" style="color:var(--accent)">Accumulation</div><div class="c-desc"><span class="t" data-en="2016 &amp; 2020 cycles: deep correction in months 13&ndash;16 before explosive Q4 rally. On track." data-ar="دورتا 2016 و2020: تصحيح عميق في الأشهر 13-16 قبل الارتفاع الانفجاري في الربع الرابع. على المسار." data-fr="Cycles 2016 &amp; 2020 : correction profonde aux mois 13-16 avant le rally explosif du T4. Dans les clous.">2016 &amp; 2020 cycles: deep correction in months 13&ndash;16 before explosive Q4 rally. On track.</span></div></div>
-    <div class="cycle-card"><div class="c-label"><span class="t" data-en="June Seasonality" data-ar="موسمية يونيو" data-fr="Saisonnalité de Juin">June Seasonality</span></div><div class="c-value" style="color:var(--red)">Avg -5%</div><div class="c-desc"><span class="t" data-en="Weakest month historically (2013&ndash;2025). Current -2.8% in line. July avg +1%, Aug avg +6%." data-ar="أضعف شهر تاريخياً (2013-2025). الحالي -2.8% متوافق. متوسط يوليو +1%، أغسطس +6%." data-fr="Mois historiquement le plus faible (2013-2025). Actuel -2,8% conforme. Moy. juillet +1%, août +6%.">Weakest month historically (2013&ndash;2025). Current -2.8% in line. July avg +1%, Aug avg +6%.</span></div></div>
-    <div class="cycle-card"><div class="c-label"><span class="t" data-en="Next Catalyst" data-ar="المحفز التالي" data-fr="Prochain Catalyseur">Next Catalyst</span></div><div class="c-value" style="color:var(--green)">July 15 CPI</div><div class="c-desc"><span class="t" data-en="June CPI print is the next macro binary. Soft print could reverse ETF outflow streak and restart cycle." data-ar="مؤشر CPI يونيو هو الثنائي الكلي التالي. الطباعة الهادئة قد تعكس تدفق خروج ETF وتعيد انطلاق الدورة." data-fr="L'impression CPI de juin est le prochain binaire macro. Une impression douce pourrait inverser les sorties ETF et relancer le cycle.">June CPI print is the next macro binary. Soft print could reverse ETF outflow streak and restart cycle.</span></div></div>
-  </div>
-  <div class="season-bar">
-    <div class="season-bar-header"><span class="t" data-en="BTC Historical Seasonality &mdash; Monthly Avg Returns (2013&ndash;2025)" data-ar="الموسمية التاريخية لـ BTC &mdash; متوسط العوائد الشهرية (2013&ndash;2025)" data-fr="Saisonnalité Historique BTC &mdash; Rendements Mensuels Moy. (2013&ndash;2025)">BTC Historical Seasonality &mdash; Monthly Avg Returns (2013&ndash;2025)</span></div>
-    <div class="season-months">
-      <div class="s-month s-strong">J<br>+2%</div>
-      <div class="s-month s-strong">F<br>+15%</div>
-      <div class="s-month s-strong">M<br>+8%</div>
-      <div class="s-month s-strong">A<br>+12%</div>
-      <div class="s-month s-mixed">M<br>-3%</div>
-      <div class="s-month s-weak s-now">J<br>-5%</div>
-      <div class="s-month s-mixed">J<br>+1%</div>
-      <div class="s-month s-strong">A<br>+6%</div>
-      <div class="s-month s-mixed">S<br>-2%</div>
-      <div class="s-month s-strong">O<br>+9%</div>
-      <div class="s-month s-strong">N<br>+18%</div>
-      <div class="s-month s-strong">D<br>+5%</div>
+  <div class="cycle-panels">
+
+    <!-- Panel 1: Bitcoin Halving Cycle -->
+    <div class="cycle-panel">
+      <div class="cycle-panel-title"><span class="t" data-en="Bitcoin Halving Cycle" data-ar="دورة النصف لبيتكوين" data-fr="Cycle de Halving Bitcoin">Bitcoin Halving Cycle</span></div>
+      <div class="halving-bar-wrap">
+        <div class="halving-now-label" style="left:65%">NOW</div>
+        <div class="halving-now-arrow" style="left:65%">&#9660;</div>
+        <div class="halving-bar"></div>
+      </div>
+      <div class="halving-leg-labels">
+        <span>&#128994; <span class="t" data-en="Bull Phase" data-ar="مرحلة الصعود" data-fr="Phase Haussière">Bull Phase</span></span>
+        <span><span class="t" data-en="Peak" data-ar="الذروة" data-fr="Sommet">Peak</span></span>
+        <span>&#8594; <span class="t" data-en="HERE" data-ar="هنا" data-fr="ICI">HERE</span></span>
+        <span>&#128308; <span class="t" data-en="Bear Bottom" data-ar="قاع الهبوط" data-fr="Fond Baissier">Bear Bottom</span></span>
+      </div>
+      <div class="halving-stats">
+        <div>
+          <div class="h-stat-lbl"><span class="t" data-en="Cycle Month" data-ar="شهر الدورة" data-fr="Mois du Cycle">Cycle Month</span></div>
+          <div class="h-stat-val">26 <span style="color:var(--text-dim);font-weight:400">/ 40</span></div>
+        </div>
+        <div>
+          <div class="h-stat-lbl"><span class="t" data-en="Current Phase" data-ar="المرحلة الحالية" data-fr="Phase Actuelle">Current Phase</span></div>
+          <div class="h-stat-val phase-bear"><span class="t" data-en="Post-Peak Bear" data-ar="هبوط ما بعد الذروة" data-fr="Baisse Post-Sommet">Post-Peak Bear</span></div>
+        </div>
+        <div>
+          <div class="h-stat-lbl"><span class="t" data-en="To Est. Bottom" data-ar="حتى القاع المتوقع" data-fr="Jusqu'au Creux Est.">To Est. Bottom</span></div>
+          <div class="h-stat-val phase-gold">~14 <span class="t" data-en="months" data-ar="أشهر" data-fr="mois">months</span></div>
+        </div>
+        <div>
+          <div class="h-stat-lbl"><span class="t" data-en="Cycle Pattern" data-ar="نمط الدورة" data-fr="Schéma du Cycle">Cycle Pattern</span></div>
+          <div class="h-stat-val" style="font-size:11px"><span class="t" data-en="Tracks 2022 bear" data-ar="يتتبع هبوط 2022" data-fr="Suit le bear 2022">Tracks 2022 bear</span></div>
+        </div>
+      </div>
+      <div class="cycle-desc-text"><span class="t" data-en="Apr 2024 halving started this 40-month cycle &middot; Bull peak hit ~May 2025 &middot; Now in post-peak drawdown &middot; ETF institutional flows may cushion decline vs prior cycles" data-ar="بدأ النصف في أبريل 2024 هذه الدورة المكونة من 40 شهراً &middot; بلغت الذروة الصاعدة ~مايو 2025 &middot; الآن في تراجع ما بعد الذروة &middot; تدفقات ETF المؤسسية قد تخفف الانخفاض مقارنة بالدورات السابقة" data-fr="Le halving d'avr. 2024 a démarré ce cycle de 40 mois &middot; Pic haussier ~mai 2025 &middot; En drawdown post-sommet &middot; Les flux ETF institutionnels peuvent atténuer le déclin vs cycles précédents">Apr 2024 halving started this 40-month cycle &middot; Bull peak hit ~May 2025 &middot; Now in post-peak drawdown &middot; ETF institutional flows may cushion decline vs prior cycles</span></div>
     </div>
+
+    <!-- Panel 2: Seasonality Chart -->
+    <div class="cycle-panel season-center-panel">
+      <div class="season-months" style="margin-bottom:16px">
+        <div class="s-month s-strong">J<br>+2%</div>
+        <div class="s-month s-strong">F<br>+15%</div>
+        <div class="s-month s-strong">M<br>+8%</div>
+        <div class="s-month s-strong">A<br>+12%</div>
+        <div class="s-month s-mixed">M<br>-3%</div>
+        <div class="s-month s-weak s-now">J<br>-5%</div>
+        <div class="s-month s-mixed">J<br>+1%</div>
+        <div class="s-month s-strong">A<br>+6%</div>
+        <div class="s-month s-mixed">S<br>-2%</div>
+        <div class="s-month s-strong">O<br>+9%</div>
+        <div class="s-month s-strong">N<br>+18%</div>
+        <div class="s-month s-strong">D<br>+5%</div>
+      </div>
+      <div class="cycle-desc-text" style="text-align:center"><span class="t" data-en="June avg -5% (weakest) &middot; Jul&ndash;Sep summer doldrums &middot; Oct avg +9% (strongest)" data-ar="متوسط يونيو -5% (الأضعف) &middot; يوليو-سبتمبر ركود صيفي &middot; متوسط أكتوبر +9% (الأقوى)" data-fr="Moy. juin -5% (le plus faible) &middot; Juil&ndash;Sep marasme estival &middot; Moy. oct. +9% (le plus fort)">June avg -5% (weakest) &middot; Jul&ndash;Sep summer doldrums &middot; Oct avg +9% (strongest)</span></div>
+    </div>
+
+    <!-- Panel 3: Altcoin Season Meter -->
+    <div class="cycle-panel">
+      <div class="cycle-panel-title"><span class="t" data-en="Altcoin Season Meter" data-ar="مقياس موسم الألت كوين" data-fr="Compteur Saison Altcoins">Altcoin Season Meter</span></div>
+      <div class="alt-meter-labels">
+        <span style="color:#f97316;font-weight:700">&#9711; <span class="t" data-en="BTC Season" data-ar="موسم BTC" data-fr="Saison BTC">BTC Season</span></span>
+        <span>30 &nbsp;<span class="t" data-en="BTC Season" data-ar="موسم BTC" data-fr="Saison BTC">BTC Season</span></span>
+        <span style="color:#22c55e"><span class="t" data-en="Alt Season" data-ar="موسم الألت" data-fr="Saison Alt">Alt Season</span> &#127801;</span>
+      </div>
+      <div class="alt-meter-wrap">
+        <div class="alt-meter-needle" style="left:30%"></div>
+      </div>
+      <div class="alt-score-big">30</div>
+      <div class="alt-score-sub"><span class="t" data-en="Score / 100" data-ar="النتيجة / 100" data-fr="Score / 100">Score / 100</span></div>
+      <div class="cycle-desc-text"><span class="t" data-en="261+ days without altseason &middot; BTC dom 55.8% &middot; Need score &gt;75 for Alt Season &middot; RWA &amp; AI are only selective outperformers" data-ar="+261 يوماً بدون موسم ألت &middot; هيمنة BTC 55.8% &middot; نحتاج نتيجة &gt;75 لموسم الألت &middot; RWA والذكاء الاصطناعي فقط المتفوقون انتقائياً" data-fr="261+ jours sans altseason &middot; Dom. BTC 55.8% &middot; Score &gt;75 requis pour Alt Season &middot; RWA &amp; IA seuls surperformants sélectifs">261+ days without altseason &middot; BTC dom 55.8% &middot; Need score &gt;75 for Alt Season &middot; RWA &amp; AI are only selective outperformers</span></div>
+    </div>
+
   </div>
 </div>
   <div class="section-title"><span class="t" data-en="Top Coins — Price · Trend Score · Sentiment" data-ar="أفضل العملات — السعر · درجة الاتجاه · المزاج" data-fr="Meilleures Cryptos — Prix · Score · Sentiment">Top Coins — Price · Trend Score · Sentiment</span></div>
