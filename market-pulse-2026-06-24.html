@@ -446,35 +446,40 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 <div class="tab-content active" id="tab-content-crypto">
 
 <div class="market-overview" style="margin-bottom:16px">
+  <div class="market-stat">
+    <div class="label"><span class="t" data-en="Market Cap" data-ar="القيمة السوقية" data-fr="Cap. Marché">Market Cap</span></div>
+    <div class="value">$2.15T</div>
+    <div class="change" style="color:#ef4444">-3.3% 24h</div>
+  </div>
+  <div class="market-stat">
+    <div class="label"><span class="t" data-en="BTC DOM" data-ar="هيمنة BTC" data-fr="DOM BTC">BTC DOM</span></div>
+    <div class="value">58.0%</div>
+    <div class="change" style="color:#f97316"><span class="t" data-en="BTC Season" data-ar="موسم BTC" data-fr="Saison BTC">BTC Season</span></div>
+  </div>
+  <div class="market-stat">
+    <div class="label"><span class="t" data-en="24H Volume" data-ar="حجم 24 ساعة" data-fr="Volume 24H">24H Volume</span></div>
+    <div class="value">$76.8B</div>
+    <div class="change" style="color:#9ca3af"><span class="t" data-en="Elevated" data-ar="مرتفع" data-fr="Élevé">Elevated</span></div>
+  </div>
   <div class="market-stat fng-extreme-fear">
     <div class="label"><span class="t" data-en="Fear &amp; Greed" data-ar="الخوف والجشع" data-fr="Peur &amp; Avidité">Fear &amp; Greed</span></div>
-    <div class="value">17</div>
+    <div class="value">24</div>
     <div class="change"><span class="t" data-en="Extreme Fear" data-ar="خوف شديد" data-fr="Peur Extrême">Extreme Fear</span></div>
   </div>
   <div class="market-stat fng-btc-season">
-    <div class="label"><span class="t" data-en="Season" data-ar="الموسم" data-fr="Saison">Season</span></div>
-    <div class="value">BTC</div>
-    <div class="change"><span class="t" data-en="Dominance 56.2%" data-ar="هيمنة 56.2%" data-fr="Dominance 56.2%">Dominance 56.2%</span></div>
+    <div class="label"><span class="t" data-en="Altcoin Index" data-ar="مؤشر ألتكوين" data-fr="Indice Altcoin">Altcoin Index</span></div>
+    <div class="value">46</div>
+    <div class="change"><span class="t" data-en="BTC Season" data-ar="موسم BTC" data-fr="Saison BTC">BTC Season</span></div>
   </div>
   <div class="market-stat">
-    <div class="label"><span class="t" data-en="Total MCap" data-ar="القيمة السوقية" data-fr="Cap. Totale">Total MCap</span></div>
-    <div class="value">$2.23T</div>
-    <div class="change" style="color:#ef4444">-4.1%</div>
+    <div class="label"><span class="t" data-en="Liquidations" data-ar="تصفيات" data-fr="Liquidations">Liquidations</span></div>
+    <div class="value" style="color:#ef4444">$423M</div>
+    <div class="change" style="color:#9ca3af">24h</div>
   </div>
   <div class="market-stat">
-    <div class="label"><span class="t" data-en="BTC" data-ar="بيتكوين" data-fr="BTC">BTC</span></div>
-    <div class="value">$62,650</div>
-    <div class="change" style="color:#ef4444">-2.0%</div>
-  </div>
-  <div class="market-stat">
-    <div class="label"><span class="t" data-en="ETH" data-ar="إيثيريوم" data-fr="ETH">ETH</span></div>
-    <div class="value">$1,610</div>
-    <div class="change" style="color:#ef4444">-3.1%</div>
-  </div>
-  <div class="market-stat">
-    <div class="label"><span class="t" data-en="24h Volume" data-ar="حجم 24 ساعة" data-fr="Volume 24h">24h Volume</span></div>
-    <div class="value">$38B</div>
-    <div class="change" style="color:#9ca3af"><span class="t" data-en="Elevated" data-ar="مرتفع" data-fr="Élevé">Elevated</span></div>
+    <div class="label"><span class="t" data-en="ETF Flows" data-ar="تدفقات ETF" data-fr="Flux ETF">ETF Flows</span></div>
+    <div class="value" style="color:#ef4444">-$480M</div>
+    <div class="change" style="color:#9ca3af">today</div>
   </div>
 </div>
 
@@ -482,19 +487,18 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 <div class="alerts-section">
   <div class="alerts-box spike">
 
-<div class="alerts-title"><span class="t" data-en="⚡ Spike Alerts" data-ar="⚡ تنبيهات الارتفاع" data-fr="⚡ Alertes Hausses">⚡ Spike Alerts</span></div>
-<div class="alert-line">🔴 $861M liquidated in 24h — 91% longs wiped ($784M, 168K traders)</div>
-<div class="alert-line">🔴 BlackRock IBIT ETF outflow -$182M — worst single-day since April</div>
-<div class="alert-line">🔴 ETH spot ETFs net -$82.4M — ETHA alone -$86.1M</div>
-<div class="alert-line">🟡 BTC testing $62,750 ascending support — break risks drop to $58K</div>
+<div class="alerts-title"><span class="t" data-en="&#9889; Spike Alerts" data-ar="&#9889; تنبيهات الارتفاع" data-fr="&#9889; Alertes Hausses">&#9889; Spike Alerts</span></div>
+<div class="alert-line">🔴 <strong>BTC 2-Week Lows:</strong> BTC opens at lowest levels in 2 weeks — $62.5K; $423M liquidations past 24h; ETF daily outflow streak continues</div>
+<div class="alert-line">🔴 <strong>Record ETF Outflows:</strong> Spot BTC ETF cumulative outflows hit $3.75B since mid-May — longest daily redemption streak on record; institutional de-risking deepens</div>
+<div class="alert-line">🟡 <strong>Stocks Bouncing:</strong> S&amp;P +0.35%, NASDAQ +0.62% after yesterday's chip rout — Micron earnings tonight key catalyst; SK Hynix plans $30B US listing</div>
 </div>
   <div class="alerts-box events">
 
-<div class="alerts-title"><span class="t" data-en="🗞 Event Risks &amp; News" data-ar="🗞 مخاطر الأحداث والأخبار" data-fr="🗞 Risques &amp; Actualités">🗞 Event Risks &amp; News</span></div>
-<div class="alert-line">📌 Fed drops easing language — hawkish pivot, rate hike risk now dominant</div>
-<div class="alert-line">📌 BlackRock confirms AI equity boom diverting institutional capital from BTC</div>
-<div class="alert-line">📌 BTC down 29% from 2026 YTD highs — deleveraging spiral ongoing</div>
-<div class="alert-line">📌 CLARITY Act: Senate vote pending — 7 Democrats blocking progress</div>
+<div class="alerts-title"><span class="t" data-en="&#128222; Event Risks &amp; Breaking News" data-ar="&#128222; مخاطر الأحداث والأخبار" data-fr="&#128222; Risques &amp; Actualités">&#128222; Event Risks &amp; Breaking News</span></div>
+<div class="alert-line">🔴 Micron (MU) earnings after close tonight — key read-across for crypto/AI sentiment; SK Hynix $30B US listing plans emerge</div>
+<div class="alert-line">🟡 Fed bank stress test results + May New Home Sales both due today — clean stress tests expected; housing data shows affordability pressure</div>
+<div class="alert-line">🟢 Ripple wins preliminary MiCA approval from Luxembourg — XRP eyes EU stablecoin &amp; payment expansion; most resilient large-cap today</div>
+<div class="alert-line">&#128273; Franklin Templeton creates dedicated crypto unit post-250 Digital acquisition — Binance EU regulatory uncertainty continues</div>
 </div>
 </div>
 
@@ -503,33 +507,47 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 <div class="events-grid">
 
 <div class="event-card danger">
-  <div class="event-badge"><span class="t" data-en="Today · AH" data-ar="اليوم · بعد السوق" data-fr="Auj · AH">Today · AH</span></div>
+  <div class="event-badge"><span class="t" data-en="CRITICAL" data-ar="حرج" data-fr="CRITIQUE">CRITICAL</span></div>
   <div class="event-body">
-    <div class="event-name"><span class="t" data-en="Micron (MU) Q3 Earnings — AI Chip Demand Read" data-ar="أرباح مايكرون Q3 — قراءة الطلب على رقائق الذكاء" data-fr="Résultats Micron Q3 — Baromètre puces IA">Micron (MU) Q3 Earnings — AI Chip Demand Read</span></div>
-    <div class="event-desc"><span class="t" data-en="Options pricing 14% swing — direct read-through to crypto AI sentiment" data-ar="الخيارات تسعّر تأرجحاً 14% — تأثير مباشر على معنويات كريبتو AI" data-fr="Options pricent un swing 14% — impact direct sur le sentiment crypto IA">Options pricing 14% swing — direct read-through to crypto AI sentiment</span></div>
+    <div class="event-name"><span class="t" data-en="Micron Earnings Tonight — Chip Sector Read" data-ar="أرباح مايكرون الليلة — قراءة قطاع الرقائق" data-fr="Résultats Micron ce soir — Baromètre puces">Micron Earnings Tonight — Chip Sector Read</span></div>
+    <div class="event-desc"><span class="t" data-en="MU earnings after close. Stock down 3% pre-earnings on anxiety. SK Hynix $30B US listing emerging as parallel catalyst. Clean result could pivot chip sentiment." data-ar="أرباح MU بعد الإغلاق. السهم يهبط 3% قبل الأرباح. SK Hynix $30B قد يكون محفزاً موازياً." data-fr="Résultats MU après clôture. Titre -3% avant résultats. SK Hynix $30B en parallèle.">MU earnings after close. Stock down 3% pre-earnings on anxiety. SK Hynix $30B US listing emerging as parallel catalyst. Clean result could pivot chip sentiment.</span></div>
   </div>
 </div>
 <div class="event-card warning">
-  <div class="event-badge"><span class="t" data-en="Today · 11:30 UTC" data-ar="اليوم · 11:30 UTC" data-fr="Auj · 11:30 UTC">Today · 11:30 UTC</span></div>
+  <div class="event-badge"><span class="t" data-en="WARNING" data-ar="تحذير" data-fr="AVERTISSEMENT">WARNING</span></div>
   <div class="event-body">
-    <div class="event-name"><span class="t" data-en="Toncoin Supply Unlock — 0.72% Released" data-ar="فتح إمداد تون كوين — 0.72% مُطلق" data-fr="Déblocage offre Toncoin — 0.72% libéré">Toncoin Supply Unlock — 0.72% Released</span></div>
-    <div class="event-desc"><span class="t" data-en="Watch for sell pressure in weak market conditions" data-ar="مراقبة ضغط البيع في ظروف السوق الضعيفة" data-fr="Surveiller la pression vendeuse dans un marché faible">Watch for sell pressure in weak market conditions</span></div>
+    <div class="event-name"><span class="t" data-en="Fed Bank Stress Tests — Results Today" data-ar="اختبارات إجهاد البنوك الفيدرالية — نتائج اليوم" data-fr="Tests de résistance bancaires — Résultats aujourd'hui">Fed Bank Stress Tests — Results Today</span></div>
+    <div class="event-desc"><span class="t" data-en="Annual Fed stress test results due today. Major banks expected to pass. Positive outcome could lift financial sector and reduce systemic risk premium." data-ar="نتائج اختبارات الإجهاد السنوية للفيد اليوم. البنوك الكبرى متوقع نجاحها." data-fr="Résultats annuels des stress tests Fed aujourd'hui. Grandes banques attendues en réussite.">Annual Fed stress test results due today. Major banks expected to pass. Positive outcome could lift financial sector and reduce systemic risk premium.</span></div>
   </div>
 </div>
 <div class="event-card info">
-  <div class="event-badge"><span class="t" data-en="Today · Mainnet" data-ar="اليوم · الشبكة الرئيسية" data-fr="Auj · Mainnet">Today · Mainnet</span></div>
+  <div class="event-badge"><span class="t" data-en="REGULATORY" data-ar="تنظيمي" data-fr="RÉGLEMENTAIRE">REGULATORY</span></div>
   <div class="event-body">
-    <div class="event-name"><span class="t" data-en="Berachain Fusaka Upgrade — Mainnet Activated" data-ar="ترقية Berachain Fusaka — تفعيل الشبكة الرئيسية" data-fr="Mise à jour Berachain Fusaka — Mainnet activé">Berachain Fusaka Upgrade — Mainnet Activated</span></div>
-    <div class="event-desc"><span class="t" data-en="Fulu + Osaka EL/CL changes — ends Bera-Geth compatibility" data-ar="تغييرات Fulu + Osaka — تنهي توافق Bera-Geth" data-fr="Changements Fulu + Osaka — fin compatibilité Bera-Geth">Fulu + Osaka EL/CL changes — ends Bera-Geth compatibility</span></div>
+    <div class="event-name"><span class="t" data-en="US Senate CBDC Ban Passed" data-ar="مجلس الشيوخ يمرر حظر CBDC" data-fr="Sénat US approuve l'interdiction CBDC">US Senate CBDC Ban Passed</span></div>
+    <div class="event-desc"><span class="t" data-en="Bipartisan housing bill includes clause banning Fed from issuing CBDC until 2030. Long-term positive for decentralized crypto." data-ar="مشروع الإسكان يتضمن حظر إصدار الفيد CBDC حتى 2030. إيجابي على المدى البعيد للكريبتو اللامركزي." data-fr="Projet immobilier inclut interdiction Fed d'émettre CBDC jusqu'en 2030. Positif long terme pour crypto décentralisé.">Bipartisan housing bill includes clause banning Fed from issuing CBDC until 2030. Long-term positive for decentralized crypto.</span></div>
+  </div>
+</div>
+<div class="event-card" style="border-left-color:#22c55e">
+  <div class="event-badge" style="color:#22c55e"><span class="t" data-en="BULLISH" data-ar="صاعد" data-fr="HAUSSIER">BULLISH</span></div>
+  <div class="event-body">
+    <div class="event-name"><span class="t" data-en="Ripple MiCA Approval — Luxembourg" data-ar="موافقة MiCA لريبل — لوكسمبورغ" data-fr="Approbation MiCA Ripple — Luxembourg">Ripple MiCA Approval — Luxembourg</span></div>
+    <div class="event-desc"><span class="t" data-en="Preliminary approval enables XRP-based stablecoin payments across EU. Regulatory clarity win for XRP ecosystem." data-ar="الموافقة المبدئية تتيح مدفوعات XRP عبر الاتحاد الأوروبي. انتصار للوضوح التنظيمي." data-fr="Approbation préliminaire permettant les paiements stablecoin XRP en EU. Victoire réglementaire.">Preliminary approval enables XRP-based stablecoin payments across EU. Regulatory clarity win for XRP ecosystem.</span></div>
+  </div>
+</div>
+<div class="event-card">
+  <div class="event-badge"><span class="t" data-en="SEASONAL" data-ar="موسمي" data-fr="SAISONNIER">SEASONAL</span></div>
+  <div class="event-body">
+    <div class="event-name"><span class="t" data-en="June Seasonality — Historically Weak" data-ar="موسمية يونيو — ضعيفة تاريخياً" data-fr="Saisonnalité Juin — Historiquement Faible">June Seasonality — Historically Weak</span></div>
+    <div class="event-desc"><span class="t" data-en="BTC averages -3.2% in June historically. Summer doldrums pattern typically persists through August before Q4 recovery." data-ar="BTC يسجل -3.2% في يونيو تاريخياً. ركود الصيف يستمر عادة حتى أغسطس قبل تعافي الربع الرابع." data-fr="BTC affiche en moyenne -3,2% en juin historiquement. Creux estival persiste jusqu'en août avant reprise Q4.">BTC averages -3.2% in June historically. Summer doldrums pattern typically persists through August before Q4 recovery.</span></div>
   </div>
 </div>
 </div></div>
 <div class="mood-bar">
   <span class="mood-label"><span class="t" data-en="Market:" data-ar="السوق:" data-fr="Marché:">Market:</span></span>
   <div class="mood-track">
-    <div class="mood-fill" style="width:17%;background:linear-gradient(90deg,#7f1d1d,#ef4444)"></div>
+    <div class="mood-fill" style="width:24%;background:linear-gradient(90deg,#7f1d1d,#ef4444)"></div>
   </div>
-  <span class="mood-value" style="color:#ef4444"><span class="t" data-en="Extreme Fear" data-ar="خوف شديد" data-fr="Peur Extrême">Extreme Fear</span> 17</span>
+  <span class="mood-value" style="color:#ef4444"><span class="t" data-en="Extreme Fear" data-ar="خوف شديد" data-fr="Peur Extrême">Extreme Fear</span> 24</span>
 </div>
 
 
@@ -634,14 +652,14 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       <div class="acc-info"><div class="acc-name">Bitcoin</div><div class="acc-ticker">BTC</div></div>
       <div class="acc-price">$62,650</div>
       <div class="acc-change down">-2.0%</div>
-      <div class="acc-trend">📉</div>
+      <div class="acc-trend">&#128201;</div>
       <span class="acc-sentiment bear">Bearish</span>
-      <span class="acc-chevron">▼</span>
+      <span class="acc-chevron">&#9660;</span>
     </div><div class="acc-body">
       <div class="detail-row"><span class="detail-label">Market Cap</span><span class="detail-val">$1.33T</span></div>
       <div class="detail-row"><span class="detail-label">24h Volume</span><span class="detail-val">$26.4B</span></div>
-      <div class="headline-box">📰 BlackRock IBIT ETF outflow -$182M; BTC testing $62,750 ascending support</div>
-      <div class="social-box">🐦 Sentiment extremely fearful; "down 29% from 2026 highs" trending</div>
+      <div class="headline-box">&#128240; BlackRock IBIT ETF outflow -$182M; BTC testing $62,750 ascending support — break risks drop to $58K</div>
+      <div class="social-box">&#128038; Sentiment extremely fearful; "down 29% from 2026 highs" trending; institutional de-risking deepening</div>
     </div></div>
     <!-- ETH -->
     <div class="acc-row"><div class="acc-header" onclick="toggle(this)">
@@ -649,59 +667,284 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       <div class="acc-info"><div class="acc-name">Ethereum</div><div class="acc-ticker">ETH</div></div>
       <div class="acc-price">$1,610</div>
       <div class="acc-change down">-3.1%</div>
-      <div class="acc-trend">📉</div>
+      <div class="acc-trend">&#128201;</div>
       <span class="acc-sentiment bear">Bearish</span>
-      <span class="acc-chevron">▼</span>
+      <span class="acc-chevron">&#9660;</span>
     </div><div class="acc-body">
       <div class="detail-row"><span class="detail-label">Market Cap</span><span class="detail-val">$193B</span></div>
       <div class="detail-row"><span class="detail-label">24h Volume</span><span class="detail-val">$14.2B</span></div>
-      <div class="headline-box">📰 ETH spot ETF net -$82.4M; $1,500 psychological support being watched</div>
-      <div class="social-box">🐦 Bears in control; community watching $1,500 floor</div>
-    </div></div>
-    <!-- SOL -->
-    <div class="acc-row"><div class="acc-header" onclick="toggle(this)">
-      <span class="acc-rank">3</span>
-      <div class="acc-info"><div class="acc-name">Solana</div><div class="acc-ticker">SOL</div></div>
-      <div class="acc-price">$67.50</div>
-      <div class="acc-change down">-3.4%</div>
-      <div class="acc-trend">📉</div>
-      <span class="acc-sentiment bear">Bearish</span>
-      <span class="acc-chevron">▼</span>
-    </div><div class="acc-body">
-      <div class="detail-row"><span class="detail-label">Market Cap</span><span class="detail-val">$31.2B</span></div>
-      <div class="detail-row"><span class="detail-label">24h Volume</span><span class="detail-val">$3.8B</span></div>
-      <div class="headline-box">📰 SOL testing $64-65 support zone as crypto-wide deleveraging accelerates</div>
-      <div class="social-box">🐦 Liquidations hit SOL hard; ecosystem TVL holding but sentiment negative</div>
+      <div class="headline-box">&#128240; ETH spot ETF net -$82.4M; ETHA alone -$86.1M; $1,500 psychological support in focus</div>
+      <div class="social-box">&#128038; Bears in control; community watching $1,500 floor; AI rotation narrative hurting ETH</div>
     </div></div>
     <!-- BNB -->
     <div class="acc-row"><div class="acc-header" onclick="toggle(this)">
-      <span class="acc-rank">4</span>
+      <span class="acc-rank">3</span>
       <div class="acc-info"><div class="acc-name">BNB</div><div class="acc-ticker">BNB</div></div>
       <div class="acc-price">$556.00</div>
       <div class="acc-change down">-3.0%</div>
-      <div class="acc-trend">📉</div>
+      <div class="acc-trend">&#128201;</div>
       <span class="acc-sentiment bear">Bearish</span>
-      <span class="acc-chevron">▼</span>
+      <span class="acc-chevron">&#9660;</span>
     </div><div class="acc-body">
       <div class="detail-row"><span class="detail-label">Market Cap</span><span class="detail-val">$77.6B</span></div>
       <div class="detail-row"><span class="detail-label">24h Volume</span><span class="detail-val">$2.1B</span></div>
-      <div class="headline-box">📰 BNB MCap ranked #4; holding better than peers in broad selloff</div>
-      <div class="social-box">🐦 BNB Chain activity stable; community cautiously watching BTC floor</div>
+      <div class="headline-box">&#128240; BNB holding better than peers in broad selloff; BNB Chain activity stable</div>
+      <div class="social-box">&#128038; Community cautiously watching BTC floor; relative strength noted vs altcoins</div>
+    </div></div>
+    <!-- SOL -->
+    <div class="acc-row"><div class="acc-header" onclick="toggle(this)">
+      <span class="acc-rank">4</span>
+      <div class="acc-info"><div class="acc-name">Solana</div><div class="acc-ticker">SOL</div></div>
+      <div class="acc-price">$67.50</div>
+      <div class="acc-change down">-3.4%</div>
+      <div class="acc-trend">&#128201;</div>
+      <span class="acc-sentiment bear">Bearish</span>
+      <span class="acc-chevron">&#9660;</span>
+    </div><div class="acc-body">
+      <div class="detail-row"><span class="detail-label">Market Cap</span><span class="detail-val">$31.2B</span></div>
+      <div class="detail-row"><span class="detail-label">24h Volume</span><span class="detail-val">$3.8B</span></div>
+      <div class="headline-box">&#128240; SOL testing $64-65 support zone as crypto-wide deleveraging accelerates</div>
+      <div class="social-box">&#128038; Liquidations hit SOL hard; ecosystem TVL holding but sentiment negative</div>
     </div></div>
     <!-- XRP -->
     <div class="acc-row"><div class="acc-header" onclick="toggle(this)">
       <span class="acc-rank">5</span>
       <div class="acc-info"><div class="acc-name">XRP</div><div class="acc-ticker">XRP</div></div>
       <div class="acc-price">$1.07</div>
-      <div class="acc-change down">-3.0%</div>
-      <div class="acc-trend">📉</div>
-      <span class="acc-sentiment bear">Bearish</span>
-      <span class="acc-chevron">▼</span>
+      <div class="acc-change down">-1.8%</div>
+      <div class="acc-trend">&#128201;</div>
+      <span class="acc-sentiment neutral">Neutral</span>
+      <span class="acc-chevron">&#9660;</span>
     </div><div class="acc-body">
       <div class="detail-row"><span class="detail-label">Market Cap</span><span class="detail-val">$61.4B</span></div>
       <div class="detail-row"><span class="detail-label">24h Volume</span><span class="detail-val">$4.7B</span></div>
-      <div class="headline-box">📰 XRP defending $1.00 psychological level; CLARITY Act Senate vote pending</div>
-      <div class="social-box">🐦 XRP army hoping CLARITY Act passes; macro weighing on price</div>
+      <div class="headline-box">&#128240; XRP outperforming peers — Ripple wins preliminary MiCA approval from Luxembourg; EU expansion path clear</div>
+      <div class="social-box">&#128038; XRP army bullish on MiCA news; most resilient top-10 coin today; CLARITY Act vote still pending</div>
+    </div></div>
+    <!-- DOGE -->
+    <div class="acc-row"><div class="acc-header" onclick="toggle(this)">
+      <span class="acc-rank">6</span>
+      <div class="acc-info"><div class="acc-name">Dogecoin</div><div class="acc-ticker">DOGE</div></div>
+      <div class="acc-price">$0.1520</div>
+      <div class="acc-change down">-3.8%</div>
+      <div class="acc-trend">&#128201;</div>
+      <span class="acc-sentiment bear">Bearish</span>
+      <span class="acc-chevron">&#9660;</span>
+    </div><div class="acc-body">
+      <div class="detail-row"><span class="detail-label">Market Cap</span><span class="detail-val">$22.1B</span></div>
+      <div class="detail-row"><span class="detail-label">24h Volume</span><span class="detail-val">$1.8B</span></div>
+      <div class="headline-box">&#128240; DOGE tracking broad market weakness; no major catalysts; meme coins hit harder in risk-off</div>
+      <div class="social-box">&#128038; Community mood cautious; waiting for market floor before re-entry</div>
+    </div></div>
+    <!-- ADA -->
+    <div class="acc-row"><div class="acc-header" onclick="toggle(this)">
+      <span class="acc-rank">7</span>
+      <div class="acc-info"><div class="acc-name">Cardano</div><div class="acc-ticker">ADA</div></div>
+      <div class="acc-price">$0.3180</div>
+      <div class="acc-change down">-4.2%</div>
+      <div class="acc-trend">&#128201;</div>
+      <span class="acc-sentiment bear">Bearish</span>
+      <span class="acc-chevron">&#9660;</span>
+    </div><div class="acc-body">
+      <div class="detail-row"><span class="detail-label">Market Cap</span><span class="detail-val">$11.2B</span></div>
+      <div class="detail-row"><span class="detail-label">24h Volume</span><span class="detail-val">$0.62B</span></div>
+      <div class="headline-box">&#128240; ADA testing $0.30 support; Hydra scaling upgrade timeline unchanged</div>
+      <div class="social-box">&#128038; Holders unfazed long-term; short-term pain as alts bleed vs BTC</div>
+    </div></div>
+    <!-- TON -->
+    <div class="acc-row"><div class="acc-header" onclick="toggle(this)">
+      <span class="acc-rank">8</span>
+      <div class="acc-info"><div class="acc-name">Toncoin</div><div class="acc-ticker">TON</div></div>
+      <div class="acc-price">$2.85</div>
+      <div class="acc-change down">-5.1%</div>
+      <div class="acc-trend">&#128201;</div>
+      <span class="acc-sentiment bear">Bearish</span>
+      <span class="acc-chevron">&#9660;</span>
+    </div><div class="acc-body">
+      <div class="detail-row"><span class="detail-label">Market Cap</span><span class="detail-val">$7.2B</span></div>
+      <div class="detail-row"><span class="detail-label">24h Volume</span><span class="detail-val">$0.44B</span></div>
+      <div class="headline-box">&#128240; TON supply unlock today (0.72% released) adding sell pressure in weak market; Telegram ecosystem still growing</div>
+      <div class="social-box">&#128038; Community watching unlock impact; long-term Telegram integration thesis intact</div>
+    </div></div>
+    <!-- AVAX -->
+    <div class="acc-row"><div class="acc-header" onclick="toggle(this)">
+      <span class="acc-rank">9</span>
+      <div class="acc-info"><div class="acc-name">Avalanche</div><div class="acc-ticker">AVAX</div></div>
+      <div class="acc-price">$18.40</div>
+      <div class="acc-change down">-4.5%</div>
+      <div class="acc-trend">&#128201;</div>
+      <span class="acc-sentiment bear">Bearish</span>
+      <span class="acc-chevron">&#9660;</span>
+    </div><div class="acc-body">
+      <div class="detail-row"><span class="detail-label">Market Cap</span><span class="detail-val">$7.5B</span></div>
+      <div class="detail-row"><span class="detail-label">24h Volume</span><span class="detail-val">$0.58B</span></div>
+      <div class="headline-box">&#128240; AVAX subnet activity stable; price following broad crypto weakness</div>
+      <div class="social-box">&#128038; Developers maintain activity; token price lagging ecosystem growth</div>
+    </div></div>
+    <!-- LINK -->
+    <div class="acc-row"><div class="acc-header" onclick="toggle(this)">
+      <span class="acc-rank">10</span>
+      <div class="acc-info"><div class="acc-name">Chainlink</div><div class="acc-ticker">LINK</div></div>
+      <div class="acc-price">$12.20</div>
+      <div class="acc-change down">-3.2%</div>
+      <div class="acc-trend">&#128201;</div>
+      <span class="acc-sentiment bear">Bearish</span>
+      <span class="acc-chevron">&#9660;</span>
+    </div><div class="acc-body">
+      <div class="detail-row"><span class="detail-label">Market Cap</span><span class="detail-val">$7.8B</span></div>
+      <div class="detail-row"><span class="detail-label">24h Volume</span><span class="detail-val">$0.52B</span></div>
+      <div class="headline-box">&#128240; LINK correlating with broad market; CCIP cross-chain integrations continue to grow</div>
+      <div class="social-box">&#128038; Oracle narrative remains strong; price weak short-term amid macro fears</div>
+    </div></div>
+    <!-- SUI -->
+    <div class="acc-row"><div class="acc-header" onclick="toggle(this)">
+      <span class="acc-rank">11</span>
+      <div class="acc-info"><div class="acc-name">Sui</div><div class="acc-ticker">SUI</div></div>
+      <div class="acc-price">$2.48</div>
+      <div class="acc-change down">-5.2%</div>
+      <div class="acc-trend">&#128201;</div>
+      <span class="acc-sentiment bear">Bearish</span>
+      <span class="acc-chevron">&#9660;</span>
+    </div><div class="acc-body">
+      <div class="detail-row"><span class="detail-label">Market Cap</span><span class="detail-val">$7.1B</span></div>
+      <div class="detail-row"><span class="detail-label">24h Volume</span><span class="detail-val">$0.71B</span></div>
+      <div class="headline-box">&#128240; SUI among hardest-hit top-20 today; high beta to market risk appetite</div>
+      <div class="social-box">&#128038; High volatility expected; ecosystem TVL near ATH but token price pressured</div>
+    </div></div>
+    <!-- DOT -->
+    <div class="acc-row"><div class="acc-header" onclick="toggle(this)">
+      <span class="acc-rank">12</span>
+      <div class="acc-info"><div class="acc-name">Polkadot</div><div class="acc-ticker">DOT</div></div>
+      <div class="acc-price">$4.15</div>
+      <div class="acc-change down">-4.0%</div>
+      <div class="acc-trend">&#128201;</div>
+      <span class="acc-sentiment bear">Bearish</span>
+      <span class="acc-chevron">&#9660;</span>
+    </div><div class="acc-body">
+      <div class="detail-row"><span class="detail-label">Market Cap</span><span class="detail-val">$6.4B</span></div>
+      <div class="detail-row"><span class="detail-label">24h Volume</span><span class="detail-val">$0.38B</span></div>
+      <div class="headline-box">&#128240; DOT parachain auctions continue; price struggling amid risk-off environment</div>
+      <div class="social-box">&#128038; Community focused on long-term interoperability roadmap</div>
+    </div></div>
+    <!-- LTC -->
+    <div class="acc-row"><div class="acc-header" onclick="toggle(this)">
+      <span class="acc-rank">13</span>
+      <div class="acc-info"><div class="acc-name">Litecoin</div><div class="acc-ticker">LTC</div></div>
+      <div class="acc-price">$72.30</div>
+      <div class="acc-change down">-2.8%</div>
+      <div class="acc-trend">&#128201;</div>
+      <span class="acc-sentiment bear">Bearish</span>
+      <span class="acc-chevron">&#9660;</span>
+    </div><div class="acc-body">
+      <div class="detail-row"><span class="detail-label">Market Cap</span><span class="detail-val">$5.4B</span></div>
+      <div class="detail-row"><span class="detail-label">24h Volume</span><span class="detail-val">$0.48B</span></div>
+      <div class="headline-box">&#128240; LTC showing relative resilience vs peers; halving cycle positioning ongoing</div>
+      <div class="social-box">&#128038; Payment use case narrative; next halving in ~6 months supports sentiment</div>
+    </div></div>
+    <!-- APT -->
+    <div class="acc-row"><div class="acc-header" onclick="toggle(this)">
+      <span class="acc-rank">14</span>
+      <div class="acc-info"><div class="acc-name">Aptos</div><div class="acc-ticker">APT</div></div>
+      <div class="acc-price">$5.30</div>
+      <div class="acc-change down">-4.4%</div>
+      <div class="acc-trend">&#128201;</div>
+      <span class="acc-sentiment bear">Bearish</span>
+      <span class="acc-chevron">&#9660;</span>
+    </div><div class="acc-body">
+      <div class="detail-row"><span class="detail-label">Market Cap</span><span class="detail-val">$3.9B</span></div>
+      <div class="detail-row"><span class="detail-label">24h Volume</span><span class="detail-val">$0.28B</span></div>
+      <div class="headline-box">&#128240; APT tracking altcoin weakness; Move language ecosystem expanding but price weak</div>
+      <div class="social-box">&#128038; Developer activity high; price decoupled from fundamentals short-term</div>
+    </div></div>
+    <!-- UNI -->
+    <div class="acc-row"><div class="acc-header" onclick="toggle(this)">
+      <span class="acc-rank">15</span>
+      <div class="acc-info"><div class="acc-name">Uniswap</div><div class="acc-ticker">UNI</div></div>
+      <div class="acc-price">$6.45</div>
+      <div class="acc-change down">-4.3%</div>
+      <div class="acc-trend">&#128201;</div>
+      <span class="acc-sentiment bear">Bearish</span>
+      <span class="acc-chevron">&#9660;</span>
+    </div><div class="acc-body">
+      <div class="detail-row"><span class="detail-label">Market Cap</span><span class="detail-val">$3.9B</span></div>
+      <div class="detail-row"><span class="detail-label">24h Volume</span><span class="detail-val">$0.22B</span></div>
+      <div class="headline-box">&#128240; UNI fee switch governance vote postponed; DEX volumes down with market</div>
+      <div class="social-box">&#128038; Protocol revenue strong but token price under macro pressure</div>
+    </div></div>
+    <!-- ICP -->
+    <div class="acc-row"><div class="acc-header" onclick="toggle(this)">
+      <span class="acc-rank">16</span>
+      <div class="acc-info"><div class="acc-name">Internet Computer</div><div class="acc-ticker">ICP</div></div>
+      <div class="acc-price">$7.45</div>
+      <div class="acc-change down">-3.6%</div>
+      <div class="acc-trend">&#128201;</div>
+      <span class="acc-sentiment bear">Bearish</span>
+      <span class="acc-chevron">&#9660;</span>
+    </div><div class="acc-body">
+      <div class="detail-row"><span class="detail-label">Market Cap</span><span class="detail-val">$3.5B</span></div>
+      <div class="detail-row"><span class="detail-label">24h Volume</span><span class="detail-val">$0.19B</span></div>
+      <div class="headline-box">&#128240; ICP ecosystem dapps growing; token price following broad market weakness</div>
+      <div class="social-box">&#128038; Community focused on AI + Web3 narrative; long-term holders accumulating</div>
+    </div></div>
+    <!-- PEPE -->
+    <div class="acc-row"><div class="acc-header" onclick="toggle(this)">
+      <span class="acc-rank">17</span>
+      <div class="acc-info"><div class="acc-name">Pepe</div><div class="acc-ticker">PEPE</div></div>
+      <div class="acc-price">$0.00000820</div>
+      <div class="acc-change down">-6.1%</div>
+      <div class="acc-trend">&#128201;</div>
+      <span class="acc-sentiment bear">Bearish</span>
+      <span class="acc-chevron">&#9660;</span>
+    </div><div class="acc-body">
+      <div class="detail-row"><span class="detail-label">Market Cap</span><span class="detail-val">$3.4B</span></div>
+      <div class="detail-row"><span class="detail-label">24h Volume</span><span class="detail-val">$1.1B</span></div>
+      <div class="headline-box">&#128240; PEPE leading meme coin declines; high beta amplifies market sell-off</div>
+      <div class="social-box">&#128038; Meme coin season unlikely in current fear environment; community awaiting reversal</div>
+    </div></div>
+    <!-- NEAR -->
+    <div class="acc-row"><div class="acc-header" onclick="toggle(this)">
+      <span class="acc-rank">18</span>
+      <div class="acc-info"><div class="acc-name">NEAR Protocol</div><div class="acc-ticker">NEAR</div></div>
+      <div class="acc-price">$3.18</div>
+      <div class="acc-change down">-4.1%</div>
+      <div class="acc-trend">&#128201;</div>
+      <span class="acc-sentiment bear">Bearish</span>
+      <span class="acc-chevron">&#9660;</span>
+    </div><div class="acc-body">
+      <div class="detail-row"><span class="detail-label">Market Cap</span><span class="detail-val">$3.4B</span></div>
+      <div class="detail-row"><span class="detail-label">24h Volume</span><span class="detail-val">$0.24B</span></div>
+      <div class="headline-box">&#128240; NEAR AI integration roadmap on track; token price tracking altcoin weakness</div>
+      <div class="social-box">&#128038; AI + blockchain narrative supports long-term; short-term pain with market</div>
+    </div></div>
+    <!-- ATOM -->
+    <div class="acc-row"><div class="acc-header" onclick="toggle(this)">
+      <span class="acc-rank">19</span>
+      <div class="acc-info"><div class="acc-name">Cosmos</div><div class="acc-ticker">ATOM</div></div>
+      <div class="acc-price">$4.22</div>
+      <div class="acc-change down">-3.7%</div>
+      <div class="acc-trend">&#128201;</div>
+      <span class="acc-sentiment bear">Bearish</span>
+      <span class="acc-chevron">&#9660;</span>
+    </div><div class="acc-body">
+      <div class="detail-row"><span class="detail-label">Market Cap</span><span class="detail-val">$1.6B</span></div>
+      <div class="detail-row"><span class="detail-label">24h Volume</span><span class="detail-val">$0.14B</span></div>
+      <div class="headline-box">&#128240; ATOM IBC volume steady; interchain ecosystem activity unchanged despite price drop</div>
+      <div class="social-box">&#128038; Community sentiment tired; staking rewards provide cushion for holders</div>
+    </div></div>
+    <!-- POL -->
+    <div class="acc-row"><div class="acc-header" onclick="toggle(this)">
+      <span class="acc-rank">20</span>
+      <div class="acc-info"><div class="acc-name">Polygon</div><div class="acc-ticker">POL</div></div>
+      <div class="acc-price">$0.2780</div>
+      <div class="acc-change down">-4.5%</div>
+      <div class="acc-trend">&#128201;</div>
+      <span class="acc-sentiment bear">Bearish</span>
+      <span class="acc-chevron">&#9660;</span>
+    </div><div class="acc-body">
+      <div class="detail-row"><span class="detail-label">Market Cap</span><span class="detail-val">$2.8B</span></div>
+      <div class="detail-row"><span class="detail-label">24h Volume</span><span class="detail-val">$0.31B</span></div>
+      <div class="headline-box">&#128240; POL (ex-MATIC) migration complete; zkEVM activity growing but token weak</div>
+      <div class="social-box">&#128038; L2 narrative under pressure; ETH weakness drags all Ethereum L2 tokens</div>
     </div></div>
 
 </div><!-- end accordion -->
@@ -745,7 +988,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   <div class="market-stat">
     <div class="label"><span class="t" data-en="Sept Hike" data-ar="رفع سبتمبر" data-fr="Hausse Sept">Sept Hike</span></div>
     <div class="value" style="color:#ef4444">72%</div>
-    <div class="change" style="color:#9ca3af"><span class="t" data-en="Probability" data-ar="احتمالية" data-fr="Probabilite">Probability</span></div>
+    <div class="change" style="color:#9ca3af"><span class="t" data-en="Probability" data-ar="احتمالية" data-fr="Probabilité">Probability</span></div>
   </div>
 </div>
 
@@ -755,38 +998,31 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 <div class="events-grid">
 
 <div class="event-card danger">
-  <div class="event-badge"><span class="t" data-en="⚡ SPIKE" data-ar="⚡ ارتفاع" data-fr="⚡ HAUSSE">⚡ SPIKE</span></div>
+  <div class="event-badge"><span class="t" data-en="CRITICAL" data-ar="حرج" data-fr="CRITIQUE">CRITICAL</span></div>
   <div class="event-body">
-    <div class="event-name"><span class="t" data-en="MU crashed -13% Tuesday — rebounding +4.1% premarket" data-ar="مايكرون انهار 13% الثلاثاء — يرتد +4.1% قبل السوق" data-fr="MU a chuté -13% mardi — rebond +4,1% prémarché">MU crashed -13% Tuesday — rebounding +4.1% premarket</span></div>
-    <div class="event-desc"><span class="t" data-en="Q3 earnings AH tonight — options pricing 14% swing; AI demand the key question" data-ar="أرباح Q3 بعد السوق الليلة — الخيارات تسعّر تأرجحاً 14%" data-fr="Résultats Q3 ce soir — options pricent swing 14%">Q3 earnings AH tonight — options pricing 14% swing; AI demand the key question</span></div>
-  </div>
-</div>
-<div class="event-card danger">
-  <div class="event-badge"><span class="t" data-en="🗞 BREAKING" data-ar="🗞 عاجل" data-fr="🗞 FLASH">🗞 BREAKING</span></div>
-  <div class="event-body">
-    <div class="event-name"><span class="t" data-en="Fed drops easing language — hawkish pivot confirmed" data-ar="الفيدرالي يحذف لغة التيسير — تحول متشدد مؤكد" data-fr="La Fed supprime le langage accommodant — pivot hawkish confirmé">Fed drops easing language — hawkish pivot confirmed</span></div>
-    <div class="event-desc"><span class="t" data-en="BofA &amp; Deutsche Bank forecast Sept hike — rate-sensitive sectors under pressure" data-ar="بنك أوف أمريكا ودويتشه بنك يتوقعان رفع سبتمبر" data-fr="BofA &amp; Deutsche Bank anticipent une hausse en septembre">BofA &amp; Deutsche Bank forecast Sept hike — rate-sensitive sectors under pressure</span></div>
-  </div>
-</div>
-<div class="event-card danger">
-  <div class="event-badge"><span class="t" data-en="🗞 BREAKING" data-ar="🗞 عاجل" data-fr="🗞 FLASH">🗞 BREAKING</span></div>
-  <div class="event-body">
-    <div class="event-name"><span class="t" data-en="Gold falls below $4,000 — first time since November" data-ar="الذهب يهبط تحت 4,000$ للمرة الأولى منذ نوفمبر" data-fr="L'or passe sous 4 000$ — première fois depuis novembre">Gold falls below $4,000 — first time since November</span></div>
-    <div class="event-desc"><span class="t" data-en="Strong dollar + rate hike fears ending 3-year bull run in gold" data-ar="الدولار القوي ومخاوف رفع الفائدة تنهي الصعود الذهبي" data-fr="Dollar fort + craintes de hausse stoppent le bull run de l'or">Strong dollar + rate hike fears ending 3-year bull run in gold</span></div>
+    <div class="event-name"><span class="t" data-en="Micron (MU) Q3 Earnings — Est. EPS $20.38 / Rev $35.5B" data-ar="أرباح مايكرون Q3 — ت. ربحية 20.38$" data-fr="Résultats MU Q3 — BPA est. $20,38">Micron (MU) Q3 Earnings — Est. EPS $20.38 / Rev $35.5B</span></div>
+    <div class="event-desc"><span class="t" data-en="+280% YoY growth expected; HBM AI demand is the key driver. Options pricing 14% swing — read-across for NVDA, AMD, SNDK." data-ar="نمو 280% سنوياً متوقع؛ الطلب على HBM للذكاء الاصطناعي هو المحرك. الخيارات تسعّر تأرجحاً 14%." data-fr="+280% de croissance annuelle attendue; demande HBM IA comme moteur clé. Options pricent swing 14%.">+280% YoY growth expected; HBM AI demand is the key driver. Options pricing 14% swing — read-across for NVDA, AMD, SNDK.</span></div>
   </div>
 </div>
 <div class="event-card warning">
-  <div class="event-badge"><span class="t" data-en="Today · AH" data-ar="اليوم · بعد السوق" data-fr="Auj · AH">Today · AH</span></div>
+  <div class="event-badge"><span class="t" data-en="WARNING" data-ar="تحذير" data-fr="AVERTISSEMENT">WARNING</span></div>
   <div class="event-body">
-    <div class="event-name"><span class="t" data-en="Micron (MU) Q3 Earnings — Est. EPS $20.38 / Rev $35.5B" data-ar="أرباح مايكرون Q3 — ت. ربحية 20.38$ / إيرادات 35.5B$" data-fr="Résultats MU Q3 — BPA est. $20,38 / CA $35,5B">Micron (MU) Q3 Earnings — Est. EPS $20.38 / Rev $35.5B</span></div>
-    <div class="event-desc"><span class="t" data-en="+280% YoY growth expected; HBM AI demand is the key driver" data-ar="نمو 280% سنوياً متوقع؛ الطلب على HBM للذكاء الاصطناعي هو المحرك" data-fr="+280% de croissance annuelle attendue; demande HBM IA comme moteur clé">+280% YoY growth expected; HBM AI demand is the key driver</span></div>
+    <div class="event-name"><span class="t" data-en="Fed Hawkish Pivot — Sept Hike Now 72% Probability" data-ar="تحول الفيد المتشدد — احتمال رفع سبتمبر 72%" data-fr="Pivot hawkish Fed — Hausse sept. à 72%">Fed Hawkish Pivot — Sept Hike Now 72% Probability</span></div>
+    <div class="event-desc"><span class="t" data-en="BofA &amp; Deutsche Bank forecast Sept hike. Rate-sensitive sectors (Tech, Real Estate, Utilities) under pressure. Financials benefiting from steeper yield curve." data-ar="بنك أوف أمريكا ودويتشه يتوقعان رفع سبتمبر. قطاعات حساسة للفائدة تحت الضغط." data-fr="BofA &amp; Deutsche Bank anticipent hausse sept. Secteurs sensibles aux taux sous pression.">BofA &amp; Deutsche Bank forecast Sept hike. Rate-sensitive sectors (Tech, Real Estate, Utilities) under pressure. Financials benefiting from steeper yield curve.</span></div>
   </div>
 </div>
 <div class="event-card info">
-  <div class="event-badge"><span class="t" data-en="Today" data-ar="اليوم" data-fr="Auj">Today</span></div>
+  <div class="event-badge"><span class="t" data-en="TODAY" data-ar="اليوم" data-fr="AUJOURD'HUI">TODAY</span></div>
   <div class="event-body">
     <div class="event-name"><span class="t" data-en="May New Home Sales + Fed Bank Stress Tests" data-ar="مبيعات المنازل الجديدة مايو + اختبارات إجهاد البنوك" data-fr="Ventes maisons mai + Tests de résistance bancaires">May New Home Sales + Fed Bank Stress Tests</span></div>
-    <div class="event-desc"><span class="t" data-en="Housing data + bank capital requirements — watch financials reaction" data-ar="بيانات الإسكان ومتطلبات رأس المال البنكي — مراقبة ردود فعل الماليات" data-fr="Données immobilières + exigences capital bancaire — surveiller les financières">Housing data + bank capital requirements — watch financials reaction</span></div>
+    <div class="event-desc"><span class="t" data-en="Housing data + bank capital requirements due today. Clean stress tests expected — watch JPM, BAC, GS reaction post-release." data-ar="بيانات الإسكان ومتطلبات رأس المال البنكي اليوم. اختبارات نظيفة متوقعة." data-fr="Données immobilières + exigences capital bancaire. Tests propres attendus.">Housing data + bank capital requirements due today. Clean stress tests expected — watch JPM, BAC, GS reaction post-release.</span></div>
+  </div>
+</div>
+<div class="event-card danger">
+  <div class="event-badge"><span class="t" data-en="BREAKING" data-ar="عاجل" data-fr="FLASH">BREAKING</span></div>
+  <div class="event-body">
+    <div class="event-name"><span class="t" data-en="Gold falls below $4,000 — first time since November" data-ar="الذهب يهبط تحت 4,000$ للمرة الأولى منذ نوفمبر" data-fr="L'or passe sous 4 000$ — première fois depuis novembre">Gold falls below $4,000 — first time since November</span></div>
+    <div class="event-desc"><span class="t" data-en="Strong dollar + rate hike fears ending 3-year gold bull run. TLT also down. Classic risk-off with dollar strength dominant." data-ar="الدولار القوي ومخاوف رفع الفائدة تنهي صعود الذهب 3 سنوات." data-fr="Dollar fort + craintes de hausse mettent fin au bull run or de 3 ans.">Strong dollar + rate hike fears ending 3-year gold bull run. TLT also down. Classic risk-off with dollar strength dominant.</span></div>
   </div>
 </div>
 </div></div>
