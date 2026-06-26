@@ -888,14 +888,113 @@ function toggle(header) {
   });
   if (!isOpen) { header.classList.add('open'); body.classList.add('open'); }
 }
+var T_STATIC = {
+  ar: {
+  "Market Spikes & Liquidations": "\u062a\u0642\u0644\u0628\u0627\u062a \u0627\u0644\u0633\u0648\u0642 \u0648\u0627\u0644\u062a\u0635\u0641\u064a\u0627\u062a",
+  "Events & Risk Signals": "\u0627\u0644\u0623\u062d\u062f\u0627\u062b \u0648\u0625\u0634\u0627\u0631\u0627\u062a \u0627\u0644\u0645\u062e\u0627\u0637\u0631",
+  "Stock Spikes": "\u062a\u0642\u0644\u0628\u0627\u062a \u0627\u0644\u0623\u0633\u0647\u0645",
+  "Market Events": "\u0623\u062d\u062f\u0627\u062b \u0627\u0644\u0633\u0648\u0642",
+  "Events & Catalysts": "\u0627\u0644\u0623\u062d\u062f\u0627\u062b \u0648\u0627\u0644\u0645\u062d\u0641\u0632\u0627\u062a",
+  "MACRO CRITICAL": "\u062d\u0631\u062c \u0627\u0642\u062a\u0635\u0627\u062f\u064a",
+  "REGULATORY": "\u062a\u0646\u0638\u064a\u0645\u064a",
+  "DERIVATIVES": "\u0645\u0634\u062a\u0642\u0627\u062a",
+  "SEASONALITY": "\u0645\u0648\u0633\u0645\u064a\u0629",
+  "EARNINGS WIN": "\u0646\u062a\u0627\u0626\u062c \u0625\u064a\u062c\u0627\u0628\u064a\u0629",
+  "GEOPOLITICS": "\u062c\u064a\u0648\u0633\u064a\u0627\u0633\u064a",
+  "POSITIVE": "\u0625\u064a\u062c\u0627\u0628\u064a",
+  "Cycle & Seasonality Intelligence": "\u0630\u0643\u0627\u0621 \u0627\u0644\u062f\u0648\u0631\u0627\u062a \u0648\u0627\u0644\u0645\u0648\u0633\u0645\u064a\u0629",
+  "BTC Halving Cycle": "\u062f\u0648\u0631\u0629 \u062a\u0646\u0635\u064a\u0641 \u0628\u064a\u062a\u0643\u0648\u064a\u0646",
+  "Altcoin Season Index": "\u0645\u0624\u0634\u0631 \u0645\u0648\u0633\u0645 \u0623\u0644\u062a\u0643\u0648\u064a\u0646",
+  "June Seasonality": "\u0645\u0648\u0633\u0645\u064a\u0629 \u064a\u0648\u0646\u064a\u0648",
+  "BTC Season": "BTC \u0645\u0648\u0633\u0645",
+  "Alt Season": "\u0645\u0648\u0633\u0645 \u0623\u0644\u062a",
+  "Neutral": "\u0645\u062d\u0627\u064a\u062f",
+  "Historical Monthly Performance (BTC avg)": "\u0627\u0644\u0623\u062f\u0627\u0621 \u0627\u0644\u0634\u0647\u0631\u064a \u0627\u0644\u062a\u0627\u0631\u064a\u062e\u064a (\u0645\u062a\u0648\u0633\u0637 BTC)",
+  "Days Since Halving": "\u0623\u064a\u0627\u0645 \u0645\u0646\u0630 \u0627\u0644\u062a\u0646\u0635\u064a\u0641",
+  "Cycle Phase": "\u0645\u0631\u062d\u0644\u0629 \u0627\u0644\u062f\u0648\u0631\u0629",
+  "ATH Distance": "\u0627\u0644\u0645\u0633\u0627\u0641\u0629 \u0645\u0646 \u0627\u0644\u0630\u0631\u0648\u0629",
+  "Next Halving Est.": "\u0627\u0644\u062a\u0646\u0635\u064a\u0641 \u0627\u0644\u062a\u0627\u0644\u064a",
+  "Correction": "\u062a\u0635\u062d\u064a\u062d",
+  "Top Gainer": "\u0623\u0643\u0628\u0631 \u0631\u0627\u0628\u062d",
+  "Top Loser": "\u0623\u0643\u0628\u0631 \u062e\u0627\u0633\u0631",
+  "10Y Yield": "\u0639\u0627\u0626\u062f 10 \u0633\u0646\u0648\u0627\u062a",
+  "PCE Inflation": "\u062a\u0636\u062e\u0645 PCE",
+  "Sector Performance": "\u0623\u062f\u0627\u0621 \u0627\u0644\u0642\u0637\u0627\u0639\u0627\u062a",
+  "\u25b2 Top Gainers (24h)": "\u25b2 \u0623\u0643\u0628\u0631 \u0627\u0644\u0631\u0627\u0628\u062d\u064a\u0646 (24 \u0633\u0627\u0639\u0629)",
+  "\u25bc Top Losers (24h)": "\u25bc \u0623\u0643\u0628\u0631 \u0627\u0644\u062e\u0627\u0633\u0631\u064a\u0646 (24 \u0633\u0627\u0639\u0629)"
+},
+  fr: {
+  "Market Spikes & Liquidations": "Pics du march\u00e9 & Liquidations",
+  "Events & Risk Signals": "\u00c9v\u00e9nements & Signaux de risque",
+  "Stock Spikes": "Pics des actions",
+  "Market Events": "\u00c9v\u00e9nements du march\u00e9",
+  "Events & Catalysts": "\u00c9v\u00e9nements & Catalyseurs",
+  "MACRO CRITICAL": "MACRO CRITIQUE",
+  "REGULATORY": "R\u00c9GLEMENTAIRE",
+  "DERIVATIVES": "D\u00c9RIV\u00c9S",
+  "SEASONALITY": "SAISONNALIT\u00c9",
+  "EARNINGS WIN": "BONS R\u00c9SULTATS",
+  "GEOPOLITICS": "G\u00c9OPOLITIQUE",
+  "POSITIVE": "POSITIF",
+  "Cycle & Seasonality Intelligence": "Intelligence Cycle & Saisonnalit\u00e9",
+  "BTC Halving Cycle": "Cycle de halving Bitcoin",
+  "Altcoin Season Index": "Indice saison Altcoin",
+  "June Seasonality": "Saisonnalit\u00e9 Juin",
+  "BTC Season": "Saison BTC",
+  "Alt Season": "Saison Alt",
+  "Neutral": "Neutre",
+  "Historical Monthly Performance (BTC avg)": "Performance mensuelle historique (moy. BTC)",
+  "Days Since Halving": "Jours depuis le halving",
+  "Cycle Phase": "Phase du cycle",
+  "ATH Distance": "Distance depuis l'ATH",
+  "Next Halving Est.": "Prochain halving est.",
+  "Correction": "Correction",
+  "Top Gainer": "Meilleur performeur",
+  "Top Loser": "Plus grande baisse",
+  "10Y Yield": "Rendement 10 ans",
+  "PCE Inflation": "Inflation PCE",
+  "Sector Performance": "Performance secteurs",
+  "\u25b2 Top Gainers (24h)": "\u25b2 Meilleures hausses (24h)",
+  "\u25bc Top Losers (24h)": "\u25bc Plus grosses baisses (24h)"
+}
+};
+
 function setLang(lang, btn) {
-  const dirs = { en: 'ltr', ar: 'rtl', fr: 'ltr' };
+  var dirs = { en: 'ltr', ar: 'rtl', fr: 'ltr' };
   document.documentElement.lang = lang;
   document.documentElement.dir = dirs[lang];
-  document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.lang-btn').forEach(function(b) { b.classList.remove('active'); });
   btn.classList.add('active');
-  document.querySelectorAll('.t[data-' + lang + ']').forEach(el => {
+  // Translate .t elements
+  document.querySelectorAll('.t[data-' + lang + ']').forEach(function(el) {
     el.textContent = el.dataset[lang];
+  });
+  // Translate static labels in dynamic blocks
+  var SELECTORS = '.alert-section-header, .event-badge, .gl-col-header, .cycle-header, .cycle-panel-title, .h-stat-lbl, .season-bar-header, .sector-title, .events-header';
+  var map = (lang === 'en') ? null : (T_STATIC[lang] || {});
+  document.querySelectorAll(SELECTORS).forEach(function(el) {
+    if (!el.dataset.enStatic) el.dataset.enStatic = el.textContent.trim();
+    var key = el.dataset.enStatic;
+    if (lang === 'en') {
+      el.textContent = key;
+      return;
+    }
+    // Handle date-suffixed strings like "Sector Performance — June 26, 2026"
+    var emdash = '\u2014';
+    var parts = key.split(' ' + emdash + ' ');
+    var lookupKey = parts[0].trim();
+    var translated = map[key] || map[lookupKey];
+    if (translated) {
+      el.textContent = parts.length > 1 ? translated + ' ' + emdash + ' ' + parts.slice(1).join(' ' + emdash + ' ') : translated;
+    }
+  });
+  // Also translate market-stat labels
+  document.querySelectorAll('.market-stat .label').forEach(function(el) {
+    if (!el.dataset.enStatic) el.dataset.enStatic = el.textContent.trim();
+    var key = el.dataset.enStatic;
+    if (lang === 'en') { el.textContent = key; return; }
+    var translated = (T_STATIC[lang] || {})[key];
+    if (translated) el.textContent = translated;
   });
 }
 </script>
