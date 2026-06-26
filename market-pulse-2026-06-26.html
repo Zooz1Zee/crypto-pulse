@@ -991,6 +991,7 @@ function setLang(lang, btn) {
   });
   // Also translate market-stat labels
   document.querySelectorAll('.market-stat .label').forEach(function(el) {
+    if (el.querySelector('.t[data-en]')) return;
     if (!el.dataset.enStatic) el.dataset.enStatic = el.textContent.trim();
     var key = el.dataset.enStatic;
     if (lang === 'en') { el.textContent = key; return; }
@@ -1007,14 +1008,11 @@ function setLang(lang, btn) {
       if (tr) el.textContent = tr;
     });
     var ab = T_DAILY._alert_bullets;
-    if (ab && ab[lang]) {
-      var bArr = ab[lang];
-      document.querySelectorAll('.alert-list li').forEach(function(el, i) {
-        if (!el.dataset.enDaily) el.dataset.enDaily = el.textContent.trim();
-        if (lang === 'en') { el.textContent = el.dataset.enDaily; return; }
-        if (bArr[i]) el.textContent = bArr[i];
-      });
-    }
+    document.querySelectorAll('.alert-list li').forEach(function(el, i) {
+      if (!el.dataset.enDaily) el.dataset.enDaily = el.textContent.trim();
+      if (lang === 'en') { el.textContent = el.dataset.enDaily; return; }
+      if (ab && ab[lang] && ab[lang][i]) el.textContent = ab[lang][i];
+    });
   }
 }
 </script>
