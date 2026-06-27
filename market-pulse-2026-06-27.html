@@ -1,0 +1,1021 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>⚡ Market Pulse</title>
+<style>
+:root {
+  --bg: #0d1117; --surface: #161b22; --surface2: #21262d;
+  --border: #30363d; --accent: #6c63ff;
+  --green: #00d68f; --red: #ff4d6a; --yellow: #ffd166;
+  --text: #e6edf3; --muted: #8b949e;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: var(--bg); color: var(--text); min-height: 100vh; }
+
+/* ── HEADER ── */
+.header { background: var(--surface); border-bottom: 1px solid var(--border);
+  padding: 16px 24px; display: flex; align-items: center;
+  justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+.header-inner { display: flex; align-items: center; gap: 14px; flex: 1; }
+.profile-pic { width: 60px; height: 60px; border-radius: 50%; object-fit: cover;
+  object-position: center top; border: 2px solid var(--green);
+  box-shadow: 0 0 12px rgba(0,214,143,0.3); filter: grayscale(20%); flex-shrink:0; }
+.header-text h1 { font-size: 20px; font-weight: 700; letter-spacing: -0.3px; }
+.header-text .subtitle { font-size: 11px; color: var(--muted); margin-top: 2px; }
+.social-links { display: flex; gap: 6px; margin-top: 6px; flex-wrap: wrap; }
+.social-badge { display: inline-flex; align-items: center; gap: 4px; padding: 3px 10px;
+  border-radius: 20px; font-size: 11px; font-weight: 600;
+  text-decoration: none; transition: opacity 0.2s; }
+.social-badge:hover { opacity: 0.8; }
+.x-badge { background: rgba(255,255,255,0.08); color: #e6edf3;
+  border: 1px solid rgba(255,255,255,0.15); }
+.tg-badge { background: rgba(0,136,204,0.15); color: #29b6f6;
+  border: 1px solid rgba(0,136,204,0.3); }
+.mood-pill { padding: 5px 12px; border-radius: 20px; font-size: 12px;
+  font-weight: 700; white-space: nowrap; }
+.mood-bullish { background: rgba(0,214,143,0.15); color: var(--green);
+  border: 1px solid rgba(0,214,143,0.3); }
+.mood-bearish { background: rgba(255,77,106,0.15); color: var(--red);
+  border: 1px solid rgba(255,77,106,0.3); }
+.mood-neutral  { background: rgba(255,209,102,0.15); color: var(--yellow);
+  border: 1px solid rgba(255,209,102,0.3); }
+.header-right { display: flex; flex-direction: column; align-items: flex-end; gap: 8px; }
+.lang-bar { display: flex; gap: 6px; }
+.lang-btn { background: var(--surface2); border: 1px solid var(--border);
+  color: var(--muted); padding: 4px 12px; border-radius: 20px;
+  font-size: 11px; font-weight: 600; cursor: pointer; transition: all 0.15s; }
+.lang-btn.active, .lang-btn:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
+
+/* ── ALERT BANNER ── */
+.alert-banner { margin: 0; border-bottom: 1px solid var(--border); }
+.alert-item { display: flex; align-items: flex-start; gap: 10px;
+  padding: 10px 24px; font-size: 13px; line-height: 1.5; }
+.alert-spike { background: rgba(255,77,106,0.08); border-left: 3px solid var(--red); }
+.alert-fud   { background: rgba(255,209,102,0.08); border-left: 3px solid var(--yellow); }
+.alert-news  { background: rgba(108,99,255,0.08);  border-left: 3px solid var(--accent); }
+.alert-bull  { background: rgba(0,214,143,0.08);   border-left: 3px solid var(--green); }
+.alert-label { font-weight: 700; white-space: nowrap; }
+
+/* ── TABS ── */
+.tab-bar { display: flex; background: var(--surface);
+  border-bottom: 1px solid var(--border); padding: 0 24px; }
+.tab { padding: 13px 20px; font-size: 14px; font-weight: 600;
+  color: var(--muted); cursor: pointer;
+  border-bottom: 2px solid transparent; transition: all 0.15s; }
+.tab.active { color: var(--accent); border-bottom-color: var(--accent); }
+.tab-content { display: none; padding: 20px 24px; max-width: 960px; margin: 0 auto; }
+.tab-content.active { display: block; }
+/* Tab bar compact — inside header-right, below language buttons */
+.header-right .tab-bar { background: transparent; border: none; padding: 0; gap: 6px; }
+.header-right .tab { padding: 4px 14px; font-size: 12px; border: 1px solid var(--border);
+  border-radius: 20px; border-bottom: 1px solid var(--border); background: var(--surface2); }
+.header-right .tab.active { border: 1px solid var(--accent);
+  background: rgba(108,99,255,0.12); color: var(--accent); }
+
+/* ── MARKET OVERVIEW STATS ── */
+.market-overview { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 18px; }
+.market-stat { background: var(--surface); border: 1px solid var(--border);
+  border-radius: 10px; padding: 12px 16px; flex: 1; min-width: 120px; }
+.market-stat .label { font-size: 11px; color: var(--muted); margin-bottom: 4px;
+  text-transform: uppercase; letter-spacing: 0.5px; }
+.market-stat .value { font-size: 18px; font-weight: 700; }
+.market-stat .change { font-size: 12px; margin-top: 2px; }
+.up { color: var(--green); } .down { color: var(--red); } .neutral { color: var(--yellow); }
+
+/* ── MOOD BAR ── */
+.mood-bar { background: var(--surface); border: 1px solid var(--border);
+  border-radius: 10px; padding: 12px 16px; margin-bottom: 18px;
+  font-size: 13px; line-height: 1.6; }
+.mood-bar strong { color: var(--accent); }
+
+/* ── ACCORDION ── */
+.section-title { font-size: 11px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 1px; color: var(--muted); margin-bottom: 10px; }
+.accordion { border: 1px solid var(--border); border-radius: 12px;
+  overflow: hidden; margin-bottom: 20px; }
+.acc-row { border-bottom: 1px solid var(--border); }
+.acc-row:last-child { border-bottom: none; }
+.acc-header { display: flex; align-items: center; padding: 11px 14px;
+  cursor: pointer; gap: 10px; background: var(--surface);
+  transition: background 0.12s; user-select: none; }
+.acc-header:hover, .acc-header.open { background: var(--surface2); }
+.acc-rank { font-size: 11px; color: var(--muted); min-width: 18px; text-align: center; }
+.acc-name  { font-size: 13px; font-weight: 600; }
+.acc-ticker { font-size: 10px; color: var(--muted); }
+.acc-info  { flex: 1; }
+.acc-price  { font-size: 13px; font-weight: 600; min-width: 80px; text-align: right; }
+.acc-change { font-size: 12px; font-weight: 600; min-width: 52px; text-align: right; }
+.acc-trend  { font-size: 11px; font-weight: 700; min-width: 36px; text-align: right;
+  color: var(--accent); }
+.acc-sentiment { font-size: 10px; padding: 2px 7px; border-radius: 20px;
+  min-width: 58px; text-align: center; font-weight: 600; }
+.bullish { background: rgba(0,214,143,0.15); color: var(--green); }
+.bearish { background: rgba(255,77,106,0.15); color: var(--red); }
+.neutral-pill { background: rgba(255,209,102,0.15); color: var(--yellow); }
+.acc-chevron { font-size: 9px; color: var(--muted); transition: transform 0.2s; }
+.acc-header.open .acc-chevron { transform: rotate(180deg); }
+.acc-body { display: none; padding: 12px 16px 14px 46px; background: var(--bg);
+  font-size: 12px; color: var(--muted); line-height: 1.7; }
+.acc-body.open { display: block; }
+.detail-row { display: flex; gap: 8px; margin-bottom: 5px; align-items: flex-start; }
+.detail-label { color: var(--muted); min-width: 86px; font-size: 11px; }
+.detail-val { color: var(--text); }
+.headline-box { margin-top: 8px; padding: 7px 11px; background: var(--surface);
+  border-radius: 7px; font-size: 11px; color: var(--text);
+  border-left: 3px solid var(--accent); }
+.social-box { margin-top: 6px; padding: 7px 11px; background: var(--surface2);
+  border-radius: 7px; font-size: 11px; color: var(--muted);
+  border-left: 3px solid var(--green); }
+
+/* ── FOOTER ── */
+.updated { text-align: center; padding: 18px; font-size: 11px; color: var(--muted); }
+
+/* ── RTL ── */
+[dir="rtl"] .acc-price, [dir="rtl"] .acc-change,
+[dir="rtl"] .acc-trend { text-align: left; }
+[dir="rtl"] .acc-body { padding: 12px 46px 14px 16px; }
+[dir="rtl"] .headline-box { border-left: none; border-right: 3px solid var(--accent); }
+[dir="rtl"] .social-box   { border-left: none; border-right: 3px solid var(--green); }
+[dir="rtl"] .alert-item   { border-left: none; border-right: 3px solid; }
+
+/* -- INTEL STATS BAR -- */
+.intel-bar { display:flex; gap:10px; flex-wrap:wrap; padding:12px 24px;
+  background:rgba(0,214,143,0.07); border-top:2px solid var(--green);
+  border-bottom:1px solid var(--border); }
+.intel-stat { display:flex; flex-direction:column; gap:2px; flex:1; min-width:110px; }
+.intel-stat .i-label { font-size:10px; color:var(--muted);
+  text-transform:uppercase; letter-spacing:0.5px; margin-bottom:4px; }
+.intel-stat .i-value { font-size:20px; font-weight:800; color:var(--green);
+  letter-spacing:-0.3px; }
+
+
+/* -- ALERT SECTIONS (split: spike / event risks) -- */
+.alert-wrapper { border-bottom: 1px solid var(--border); }
+.alert-section { padding: 12px 24px; }
+.spike-section { background: rgba(255,77,106,0.08); }
+.news-section  { background: rgba(50,55,20,0.55); border-top: 1px solid var(--border); }
+.alert-section-header { font-size: 11px; font-weight: 800; letter-spacing: 0.8px;
+  text-transform: uppercase; margin-bottom: 8px; }
+.spike-section .alert-section-header { color: var(--red); }
+.news-section  .alert-section-header { color: var(--yellow); }
+.alert-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 4px; }
+.alert-list li { font-size: 12px; color: var(--text); line-height: 1.55; padding-left: 12px; }
+[dir="rtl"] .alert-list li { padding-left: 0; padding-right: 12px; }
+
+/* -- EVENTS & SEASONALITY SECTION -- */
+.events-section { margin-bottom: 18px; }
+.events-header { font-size: 11px; font-weight: 800; letter-spacing: 0.8px;
+  text-transform: uppercase; color: var(--accent); margin-bottom: 10px; }
+.events-grid { display: flex; flex-direction: column; gap: 6px; }
+.event-card { display: flex; align-items: flex-start; gap: 12px;
+  padding: 10px 14px; border-radius: 8px; border: 1px solid var(--border);
+  background: var(--surface); }
+.event-card.critical { border-left: 3px solid var(--red); background: rgba(255,77,106,0.06); }
+.event-card.warning  { border-left: 3px solid var(--yellow); background: rgba(255,209,102,0.06); }
+.event-card.info     { border-left: 3px solid var(--accent); background: rgba(108,99,255,0.06); }
+.event-card.positive { border-left: 3px solid var(--green); background: rgba(0,214,143,0.06); }
+.event-card.season   { border-left: 3px solid #7c83a0; background: rgba(124,131,160,0.06); }
+.event-badge { font-size: 10px; font-weight: 800; letter-spacing: 0.5px;
+  white-space: nowrap; min-width: 90px; margin-top: 1px; }
+.event-card.critical .event-badge { color: var(--red); }
+.event-card.warning  .event-badge { color: var(--yellow); }
+.event-card.info     .event-badge { color: var(--accent); }
+.event-card.positive .event-badge { color: var(--green); }
+.event-card.season   .event-badge { color: #7c83a0; }
+.event-body { flex: 1; }
+.event-name { font-size: 13px; font-weight: 700; color: var(--text); margin-bottom: 2px; }
+.event-desc { font-size: 11px; color: var(--muted); line-height: 1.55; }
+
+/* -- SEASONALITY GAUGE -- */
+.season-bar { margin-bottom: 18px; background: var(--surface);
+  border: 1px solid var(--border); border-radius: 10px; padding: 12px 16px; }
+.season-bar-header { font-size: 10px; color: var(--muted); text-transform: uppercase;
+  letter-spacing: 0.5px; margin-bottom: 8px; }
+.season-months { display: flex; gap: 3px; }
+.s-month { flex: 1; height: 22px; border-radius: 3px; display: flex;
+  align-items: center; justify-content: center; font-size: 9px; font-weight: 700; }
+.s-weak   { background: rgba(255,77,106,0.25); color: var(--red); }
+.s-strong { background: rgba(0,214,143,0.20); color: var(--green); }
+.s-mixed  { background: rgba(255,209,102,0.20); color: var(--yellow); }
+.s-now    { outline: 2px solid var(--accent); outline-offset: 1px; }
+/* -- FEAR & GREED / ALTCOIN SEASON COLORS -- */
+.fng-extreme-fear { color: #ff2d55; }
+.fng-fear         { color: #ff8c42; }
+.fng-neutral      { color: var(--yellow); }
+.fng-greed        { color: #48bb78; }
+.fng-extreme-greed{ color: var(--green); }
+.fng-btc-season   { color: #ff8c42; }
+.fng-alt-season   { color: var(--green); }
+
+
+/* ── GAINERS / LOSERS SIDE-BY-SIDE (Crypto) ── */
+.gl-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 20px; }
+.gl-col {}
+.gl-col-header { font-size: 11px; font-weight: 800; letter-spacing: 0.8px;
+  text-transform: uppercase; margin-bottom: 8px; padding: 0 4px; }
+.gl-col-header.gain { color: var(--green); }
+.gl-col-header.loss { color: var(--red); }
+.gl-row { display: flex; align-items: center; gap: 8px; padding: 7px 10px;
+  border-radius: 7px; background: var(--surface); border: 1px solid var(--border);
+  margin-bottom: 5px; transition: background .12s; }
+.gl-row:hover { background: var(--surface2); }
+.gl-row.up   { border-left: 2px solid var(--green); }
+.gl-row.down { border-left: 2px solid var(--red); }
+.gl-name   { font-size: 12px; font-weight: 600; flex: 1; }
+.gl-ticker { font-size: 10px; color: var(--muted); }
+.gl-change { font-size: 12px; font-weight: 700; }
+.gl-score  { font-size: 10px; color: var(--muted); min-width: 28px; text-align: right; }
+
+/* ── CYCLE & SEASONALITY ── */
+.cycle-section { margin-bottom: 18px; }
+.cycle-header { font-size: 11px; font-weight: 800; letter-spacing: 0.8px;
+  text-transform: uppercase; color: var(--accent); margin-bottom: 10px; }
+.cycle-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 8px; margin-bottom: 10px; }
+.cycle-card { background: var(--surface); border: 1px solid var(--border);
+  border-radius: 8px; padding: 10px 12px; }
+.cycle-card .c-label { font-size: 10px; color: var(--muted); text-transform: uppercase;
+  letter-spacing: 0.5px; margin-bottom: 4px; }
+.cycle-card .c-value { font-size: 15px; font-weight: 700; }
+.cycle-card .c-desc  { font-size: 11px; color: var(--muted); margin-top: 3px; line-height: 1.4; }
+
+/* ── STOCK INTEL BAR (above tabs, stocks view) ── */
+.stock-intel-wrap { background: var(--surface); border-bottom: 1px solid var(--border); }
+.stock-index-bar  { display: flex; gap: 10px; flex-wrap: wrap;
+  padding: 12px 24px; border-bottom: 1px solid var(--border); }
+.stock-index-bar .market-stat { min-width: 100px; }
+
+/* ── SECTOR HEATMAP ── */
+.sector-section { padding: 0 0 4px; }
+.sector-title { padding: 10px 16px 6px; font-size: 10px; font-weight: 700;
+  color: var(--muted); letter-spacing: 1px; text-transform: uppercase; }
+.sector-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px;
+  padding: 0 16px 12px; }
+.sector-cell { background: var(--surface); border: 1px solid var(--border);
+  border-radius: 8px; padding: 8px 6px; text-align: center; transition: transform .15s; }
+.sector-cell:hover { transform: translateY(-1px); }
+.sector-cell.s-up   { border-color: rgba(0,214,143,0.4); background: rgba(0,214,143,0.07); }
+.sector-cell.s-down { border-color: rgba(255,77,106,0.4); background: rgba(255,77,106,0.07); }
+.sector-cell.s-flat { border-color: rgba(255,209,102,0.3); background: rgba(255,209,102,0.05); }
+.sector-name { font-size: 9px; color: var(--muted); font-weight: 700;
+  letter-spacing: 0.3px; margin-bottom: 5px; line-height: 1.2; }
+.sector-pct  { font-size: 14px; font-weight: 800; }
+.sector-cell.s-up   .sector-pct { color: var(--green); }
+.sector-cell.s-down .sector-pct { color: var(--red); }
+.sector-cell.s-flat .sector-pct { color: var(--yellow); }
+.sector-ticker { font-size: 9px; color: var(--muted); margin-top: 2px; }
+
+/* ── 3-Panel Cycle Section ──────────────────────────────── */
+.cycle-panels { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; margin-top: 4px; }
+.cycle-panel { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 16px 18px; }
+.cycle-panel-title { font-size: 10px; font-weight: 700; letter-spacing: .1em; color: var(--text-dim); text-transform: uppercase; margin-bottom: 14px; }
+.halving-bar-wrap { position: relative; margin: 26px 0 8px; }
+.halving-bar { height: 10px; border-radius: 6px; background: linear-gradient(to right,#22c55e,#eab308,#f97316,#ef4444); }
+.halving-now-label { position: absolute; top: -22px; font-size: 10px; color: #fff; font-weight: 700; transform: translateX(-50%); white-space: nowrap; }
+.halving-now-arrow { position: absolute; top: -10px; font-size: 13px; color: #fff; transform: translateX(-50%); }
+.halving-leg-labels { display: flex; justify-content: space-between; font-size: 10px; color: var(--text-dim); margin-bottom: 14px; }
+.halving-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 12px; }
+.h-stat-lbl { font-size: 10px; color: var(--text-dim); text-transform: uppercase; letter-spacing: .05em; margin-bottom: 3px; }
+.h-stat-val { font-size: 13px; font-weight: 700; }
+.h-stat-val.phase-bear { color: #f97316; }
+.h-stat-val.phase-gold { color: #eab308; }
+.alt-meter-wrap { position: relative; height: 10px; border-radius: 6px; margin-bottom: 16px;
+  background: linear-gradient(to right,#f97316,#eab308,#64748b,#22c55e); }
+.alt-meter-needle { position: absolute; top: -4px; width: 4px; height: 18px; background: #fff; border-radius: 2px; transform: translateX(-50%); }
+.alt-meter-labels { display: flex; justify-content: space-between; font-size: 10px; color: var(--text-dim); margin-bottom: 12px; }
+.alt-score-big { font-size: 40px; font-weight: 800; color: #eab308; text-align: center; line-height: 1; }
+.alt-score-sub { font-size: 11px; color: var(--text-dim); text-align: center; margin-bottom: 14px; }
+.cycle-desc-text { font-size: 11px; color: var(--text-dim); line-height: 1.55; }
+.season-center-panel { display: flex; flex-direction: column; justify-content: center; align-items: center; }
+
+</style>
+</head>
+<body>
+
+<!-- ══ HEADER ══ -->
+<div class="header">
+  <div class="header-inner">
+    <img src="data:image/jpeg;base64,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xT6SgCPFIakNN4oAYaYalNMNAERphFSmmGmBCRUZqY4qI0gIjURqY1G1AEBqFqnaoWoAhaoWqc4qFqAITTR1p5pooAlxS4oooA//1Pas0UlArQkeKXimg07NIAopKMUAOopBS0AFLSCloAUUopBS0ALThTaXpQA6lptLQAtFJSigBadTaWgB1LTaUUAOpaSloAWkozSUALRSUuaAFpaSigB2aKSloAWlptLQAtFGaM5oAWiiigBRS5ptLQAuaKSigBwopKWgBRS0gpaAFopBS0ABooooAilkWKMuxwAK+T/id4jbVtUFtBkIp2gE5+pxX0t4lv003R57lyPlU4ycV8VXU/2/WTMx3EEt+ZpoUjqbZVtLARDg459K56efkt2xmtbUHT7P5anrjNcPf3RUsM84wBTiS+xmX90ZpSAeAelVI3ORzUROTk1JDguM0J6l2SR6Vo7KYkQen512lsQq5715zo0rN8wPQ/nXd2Ts59qUiYnQpHld685q1DGMZbjNR27Dbt7GrO05yv41JZfhVeo6VswgHHNYcDYO3tW5b9etAF2NQCMd6s9+DzUCEFqk4piLUDdc1q2/HHX61kRSAVoxyA9KBmkGBABqWNtp9qzklAJJJA7VOHDEY/WmI01OemKNjZwRTIdpULmrmVAxmkBUAOcMcEUdPlxnNTsit8wNN2/xDigCucflUZbnIqZhnkcE1BL2IoArTJ5gJ6EdDWdFKttK3mD5TzjH51pPypUgke1RvEJFDryy/wBaANBJI5FEq4OB+FSFcuHXg1SslK7mc7lP549D9K0gqt8g6HkGgDRQ7lyKfVW2fKYPUcVZzQAUUtIaACko5ooAKKKTNABSUZoNABTaXNFACUUlFABScUUlAAcUhpc0hoASkpaDQAlNIpxpDQA2kpTTaAEpOKWkoAQ02nUlADaQ06m0ANIpKU0lADSKbTqaTQAlNNOpppgNNNNPphpAMIqM1ITUZpgRmojUpqM0ARtUTVK1RNSAiNQmpjULUAQmomqZqhamBCaQdaVqQdaAJaKWilcD/9X2ilFIKXNWSOFLTacKAAUvFFFAC96KKWgBKWiigBaWgUtABS0UUALS8UlL0oAKUYpKWgBaWkFLQAtOGKSloAWloooAKSlooASloooAWlpKXvQAUtJRQAvFLxSUooAWloooAWkoooAWkopaADNAxRSigBaK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" class="profile-pic" alt="zooz1">
+    <div class="header-text">
+      <h1>⚡ <span class="t" data-en="Market Pulse" data-ar="نبض السوق" data-fr="Market Pulse">Market Pulse</span></h1>
+      <div class="subtitle">Saturday, June 27 2026 &middot; 7:00 AM · <span class="t" data-en="Generated via Web Intelligence" data-ar="مُولَّد عبر الذكاء الشبكي" data-fr="Généré via intelligence web">Generated via Web Intelligence</span></div>
+      <div class="social-links">
+        <a href="https://x.com/zooz1" class="social-badge x-badge">𝕏 @zooz1</a>
+        <a href="https://t.me/zooz1_M" class="social-badge tg-badge">✈ @zooz1_M</a>
+      </div>
+    </div>
+    <div id="mood-crypto" class="mood-pill mood-neutral">🔄 Cautious Recovery</div>
+    <div id="mood-stocks" class="mood-pill mood-neutral" style="display:none">⚡ Mixed</div>
+  </div>
+  <div class="header-right">
+    <div class="lang-bar">
+      <button class="lang-btn active" onclick="setLang('en',this)">EN</button>
+      <button class="lang-btn" onclick="setLang('ar',this)">AR</button>
+      <button class="lang-btn" onclick="setLang('fr',this)">FR</button>
+    </div>
+    <div class="tab-bar">
+      <div class="tab active" onclick="setTab('crypto')" id="tab-crypto">🪙 <span class="t" data-en="Crypto" data-ar="كريبتو" data-fr="Crypto">Crypto</span></div>
+      <div class="tab" onclick="setTab('stocks')" id="tab-stocks">📈 <span class="t" data-en="Stocks" data-ar="أسهم" data-fr="Actions">Stocks</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ INTEL BARS ══ -->
+<div class="market-overview" id="intel-crypto" style="margin-bottom:16px">
+  <div class="market-stat">
+    <div class="label"><span class="t" data-en="Market Cap" data-ar="القيمة السوقية" data-fr="Cap. Marché">Market Cap</span></div>
+    <div class="value">$2.14T</div>
+    <div class="change up">+2.1% (24h)</div>
+  </div>
+  <div class="market-stat">
+    <div class="label"><span class="t" data-en="BTC Dominance" data-ar="هيمنة بيتكوين" data-fr="Dominance BTC">BTC Dom</span></div>
+    <div class="value">55.4%</div>
+  </div>
+  <div class="market-stat">
+    <div class="label"><span class="t" data-en="24H Volume" data-ar="حجم 24 ساعة" data-fr="Volume 24H">24H Volume</span></div>
+    <div class="value">$96B</div>
+  </div>
+  <div class="market-stat">
+    <div class="label"><span class="t" data-en="Fear &amp; Greed" data-ar="الخوف والجشع" data-fr="Peur &amp; Avidité">Fear &amp; Greed</span></div>
+    <div class="value fng-fear">25</div>
+    <div class="change fng-fear">Fear</div>
+  </div>
+  <div class="market-stat">
+    <div class="label"><span class="t" data-en="Altcoin Index" data-ar="مؤشر ألتكوين" data-fr="Indice Altcoin">Altcoin Index</span></div>
+    <div class="value fng-btc-season">22</div>
+    <div class="change fng-btc-season">BTC Season</div>
+  </div>
+  <div class="market-stat">
+    <div class="label"><span class="t" data-en="Liquidations" data-ar="التصفيات" data-fr="Liquidations">Liquidations</span></div>
+    <div class="value" style="color:var(--red)">$1.0B</div>
+    <div class="change" style="color:var(--muted)">24h</div>
+  </div>
+  <div class="market-stat">
+    <div class="label"><span class="t" data-en="ETF Flows" data-ar="تدفق صناديق ETF" data-fr="Flux ETF">ETF Flows</span></div>
+    <div class="value down">-$696M</div>
+    <div class="change" style="color:var(--muted)">24h net</div>
+  </div>
+</div>
+<div class="stock-intel-wrap" id="intel-stocks" style="display:none">
+  <div class="stock-index-bar">
+    <div class="market-stat"><div class="label">S&amp;P 500</div><div class="value down">7,354</div><div class="change down">-0.05%</div></div>
+    <div class="market-stat"><div class="label">NASDAQ</div><div class="value down">25,297</div><div class="change down">-0.24%</div></div>
+    <div class="market-stat"><div class="label">DOW</div><div class="value down">51,876</div><div class="change down">-0.09%</div></div>
+    <div class="market-stat"><div class="label">VIX</div><div class="value up">23.1</div><div class="change up">+2.4</div></div>
+    <div class="market-stat"><div class="label">10Y Yield</div><div class="value up">4.58%</div><div class="change up">+4bp</div></div>
+    <div class="market-stat"><div class="label">PCE Inflation</div><div class="value down">4.1%</div><div class="change down">Beat Est.</div></div>
+    <div class="market-stat"><div class="label">Top Gainer</div><div class="value up">SNDK +22%</div></div>
+    <div class="market-stat"><div class="label">Top Loser</div><div class="value down">AAPL -6.1%</div></div>
+  </div>
+  <div style="padding:0 16px 12px">
+    <div class="sector-section" style="background:var(--surface);border:1px solid var(--border);border-radius:10px;overflow:hidden">
+      <div class="sector-title">Sector Performance &mdash; June 26, 2026</div>
+      <div class="sector-grid">
+        <div class="sector-cell s-up"><div class="sector-name">Semi-conductors</div><div class="sector-pct">+6.2%</div><div class="sector-ticker">SMH</div></div>
+        <div class="sector-cell s-down"><div class="sector-name">Mega-Cap Tech</div><div class="sector-pct">-3.1%</div><div class="sector-ticker">XLK</div></div>
+        <div class="sector-cell s-up"><div class="sector-name">Energy</div><div class="sector-pct">+1.4%</div><div class="sector-ticker">XLE</div></div>
+        <div class="sector-cell s-up"><div class="sector-name">Financials</div><div class="sector-pct">+0.8%</div><div class="sector-ticker">XLF</div></div>
+        <div class="sector-cell s-down"><div class="sector-name">Consumer Disc</div><div class="sector-pct">-1.2%</div><div class="sector-ticker">XLY</div></div>
+        <div class="sector-cell s-down"><div class="sector-name">Healthcare</div><div class="sector-pct">-0.6%</div><div class="sector-ticker">XLV</div></div>
+        <div class="sector-cell s-up"><div class="sector-name">Materials</div><div class="sector-pct">+0.5%</div><div class="sector-ticker">XLB</div></div>
+        <div class="sector-cell s-flat"><div class="sector-name">Industrials</div><div class="sector-pct">+0.1%</div><div class="sector-ticker">XLI</div></div>
+        <div class="sector-cell s-down"><div class="sector-name">Utilities</div><div class="sector-pct">-0.4%</div><div class="sector-ticker">XLU</div></div>
+        <div class="sector-cell s-flat"><div class="sector-name">Real Estate</div><div class="sector-pct">-0.2%</div><div class="sector-ticker">XLRE</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ CRYPTO TAB ══ -->
+<div class="tab-content active" id="tab-content-crypto">
+<div class="alert-wrapper">
+  <div class="alert-section spike-section">
+    <div class="alert-section-header">Market Spikes &amp; Liquidations</div>
+    <ul class="alert-list">
+      <li>&#x1F6A8; <strong>$1B+ liquidated</strong> in 24h &middot; 138,000+ traders forcibly exited &middot; BTC briefly touched $58K before recovering</li>
+      <li>&#x1F6A8; <strong>BTC ETF outflows: -$5.96B over 30 days</strong> &middot; Largest monthly ETF exodus of 2026 so far</li>
+      <li>&#x1F680; <strong>SOL surges +5.24%</strong> leading altcoin recovery &middot; Reddit mentions spike on Glamsterdam upgrade narrative</li>
+    </ul>
+  </div>
+  <div class="alert-section news-section">
+    <div class="alert-section-header">Events &amp; Risk Signals</div>
+    <ul class="alert-list">
+      <li>&#x1F4F0; <strong>Binance halts EU services July 1</strong> &mdash; MiCA license rejected in Greece; 4 days until EU blackout for millions of users</li>
+      <li>&#x1F4F0; <strong>CLARITY Act stalling</strong> &mdash; Catholic bishops oppose Section 604; US crypto regulatory framework delayed</li>
+      <li>&#x1F4F0; <strong>BTC mining difficulty adjusts today</strong> &mdash; Scheduled network recalibration; miner economics repriced</li>
+    </ul>
+  </div>
+</div>
+  <div class="mood-bar">
+    <strong><span class="t" data-en="Today:" data-ar="اليوم:" data-fr="Aujourd'hui:">Today:</span></strong> <span class="t" data-en="Markets attempting to stabilize after yesterday's macro shock. BTC bouncing from $58K lows toward $60K. SOL leads the pack +5.24% on Glamsterdam upgrade narrative. Binance EU exit July 1 is the dominant macro-regulatory headline — affecting millions of EU users in 4 days. FNG ticks up to 25 (Fear). Q2 ends today; July seasonality historically bullish (+11% avg)." data-ar="السوق يحاول التعافي. BTC يرتد من أدنى 58ألف نحو 60ألف. SOL يقود ب+5.24%. خروج بينانس من أوروبا في 1 يوليو هو الخبر الرئيسي." data-fr="Les marchés tentent de se stabiliser après le choc macro d'hier. BTC rebondit depuis les planchers de 58K vers 60K. SOL mène le mouvement +5,24% sur la narrativde de la mise à niveau Glamsterdam. La sortie de Binance de l'UE le 1er juillet est la grande manchette réglementaire.">Markets attempting to stabilize after yesterday's macro shock. BTC bouncing from $58K lows toward $60K. SOL leads the pack +5.24% on Glamsterdam upgrade narrative. Binance EU exit July 1 is the dominant macro-regulatory headline — affecting millions of EU users in 4 days. FNG ticks up to 25 (Fear). Q2 ends today; July seasonality historically bullish (+11% avg).</span>
+  </div>
+<div class="events-section">
+  <div class="events-header">Events &amp; Catalysts &mdash; June 27, 2026</div>
+  <div class="events-grid">
+    <div class="event-card warning"><div class="event-badge">REGULATORY</div><div class="event-body"><div class="event-name">Binance Halts EU Services July 1 &mdash; MiCA License Failed</div><div class="event-desc">Binance confirmed it will restrict EU services from July 1 after failing to secure a MiCA license in Greece. The exchange is now pursuing authorization in France for a future EU re-entry.</div></div></div>
+    <div class="event-card info"><div class="event-badge">NETWORK</div><div class="event-body"><div class="event-name">Bitcoin Mining Difficulty Adjustment Today</div><div class="event-desc">Bitcoin undergoes a scheduled mining difficulty adjustment today. The network's hash rate and miner economics will be recalibrated, affecting block reward profitability.</div></div></div>
+    <div class="event-card critical"><div class="event-badge">MACRO CRITICAL</div><div class="event-body"><div class="event-name">$1B+ Liquidations &mdash; BTC Finds Support Near $59K</div><div class="event-desc">Over $1 billion in leveraged positions were liquidated in 24 hours as Bitcoin briefly touched $58K. BTC recovering toward $60K with support holding at the 59K level.</div></div></div>
+    <div class="event-card season"><div class="event-badge">SEASONALITY</div><div class="event-body"><div class="event-name">June Ends &mdash; July Recovery Window Opens</div><div class="event-desc">Q2 ends today, historically the weakest quarter for crypto. July averages +11% for BTC historically, opening a potential seasonal recovery window heading into summer.</div></div></div>
+  </div>
+</div>
+<div class="gl-grid">
+  <div class="gl-col">
+    <div class="gl-col-header gain">&#9650; Top Gainers (24h)</div>
+    <div class="gl-row up"><span class="gl-name">Solana <span class="gl-ticker">SOL</span></span><span class="gl-change up">+5.2%</span></div>
+    <div class="gl-row up"><span class="gl-name">XRP <span class="gl-ticker">XRP</span></span><span class="gl-change up">+2.5%</span></div>
+    <div class="gl-row up"><span class="gl-name">Ethereum <span class="gl-ticker">ETH</span></span><span class="gl-change up">+1.6%</span></div>
+  </div>
+  <div class="gl-col">
+    <div class="gl-col-header loss">&#9660; Top Losers (24h)</div>
+    <div class="gl-row down"><span class="gl-name">Avalanche <span class="gl-ticker">AVAX</span></span><span class="gl-change down">-3.5%</span></div>
+    <div class="gl-row down"><span class="gl-name">Cardano <span class="gl-ticker">ADA</span></span><span class="gl-change down">-3.2%</span></div>
+    <div class="gl-row down"><span class="gl-name">Polygon <span class="gl-ticker">MATIC</span></span><span class="gl-change down">-2.0%</span></div>
+  </div>
+</div>
+<div class="cycle-section">
+  <div class="cycle-header">Cycle &amp; Seasonality Intelligence</div>
+  <div class="cycle-panels">
+    <div class="cycle-panel">
+      <div class="cycle-panel-title">BTC Halving Cycle</div>
+      <div class="halving-bar-wrap">
+        <div class="halving-bar"></div>
+        <div class="halving-now-label" style="left:55%">NOW</div>
+        <div class="halving-now-arrow" style="left:55%">&#9660;</div>
+      </div>
+      <div class="halving-leg-labels"><span>Halving Apr 2024</span><span>Peak ~Jan 2026</span><span>Correction</span></div>
+      <div class="halving-stats">
+        <div><div class="h-stat-lbl">Days Since Halving</div><div class="h-stat-val">+796</div></div>
+        <div><div class="h-stat-lbl">Cycle Phase</div><div class="h-stat-val phase-bear">Correction</div></div>
+        <div><div class="h-stat-lbl">ATH Distance</div><div class="h-stat-val">~-40% from Jan peak</div></div>
+        <div><div class="h-stat-lbl">Next Halving Est.</div><div class="h-stat-val">April 2028</div></div>
+      </div>
+      <div class="cycle-desc-text">BTC is ~796 days post-halving. Historical cycles peak 12-18 months post-halving. Correction phase aligns with late-cycle behavior; macro headwinds (PCE, ETF outflows) compounding seasonal weakness.</div>
+    </div>
+    <div class="cycle-panel season-center-panel">
+      <div class="cycle-panel-title">Altcoin Season Index</div>
+      <div class="alt-meter-wrap"><div class="alt-meter-needle" style="left:18%"></div></div>
+      <div class="alt-meter-labels"><span>BTC Season</span><span>Neutral</span><span>Alt Season</span></div>
+      <div class="alt-score-big fng-btc-season">22</div>
+      <div class="alt-score-sub">BTC Season &middot; Alts underperforming</div>
+      <div class="cycle-desc-text">Only 22/100 top coins outperforming BTC over 90 days. Firmly in BTC Season. Altcoins absorbing larger percentage drawdowns in today's selloff vs BTC.</div>
+    </div>
+    <div class="cycle-panel">
+      <div class="cycle-panel-title">June Seasonality</div>
+      <div class="season-bar">
+        <div class="season-bar-header">Historical Monthly Performance (BTC avg)</div>
+        <div class="season-months">
+          <div class="s-month s-strong">Jan</div><div class="s-month s-weak">Feb</div>
+          <div class="s-month s-strong">Mar</div><div class="s-month s-mixed">Apr</div>
+          <div class="s-month s-mixed">May</div><div class="s-month s-weak s-now">Jun</div>
+          <div class="s-month s-strong">Jul</div><div class="s-month s-strong">Aug</div>
+          <div class="s-month s-mixed">Sep</div><div class="s-month s-weak">Oct</div>
+          <div class="s-month s-strong">Nov</div><div class="s-month s-strong">Dec</div>
+        </div>
+      </div>
+      <div class="cycle-desc-text">June avg BTC return: -8%. End-of-Q2 rebalancing + quarterly options expiry = seasonal headwinds confirmed. July historically recovers (+11% avg).</div>
+    </div>
+  </div>
+</div>
+  <div class="section-title"><span class="t" data-en="Top Coins — Price · Trend Score · Sentiment" data-ar="أفضل العملات — السعر · درجة الاتجاه · المزاج" data-fr="Meilleures Cryptos — Prix · Score · Sentiment">Top Coins — Price · Trend Score · Sentiment</span></div>
+  <div class="accordion">
+
+    <!-- BTC -->
+    <div class="acc-row"><div class="acc-header" onclick="toggle(this)">
+      <span class="acc-rank">1</span>
+      <div class="acc-info"><div class="acc-name">Bitcoin</div><div class="acc-ticker">BTC</div></div>
+      <div class="acc-price">$60,190</div>
+      <div class="acc-change up">+0.5%</div>
+      <div class="acc-trend">61</div>
+      <span class="acc-sentiment neutral-pill">Neutral</span>
+      <span class="acc-chevron">▼</span>
+    </div><div class="acc-body">
+      <div class="detail-row"><span class="t detail-label" data-en="Market Cap" data-ar="القيمة السوقية" data-fr="Cap. Marché">Market Cap</span><span class="detail-val">$1.19T</span></div>
+      <div class="detail-row"><span class="t detail-label" data-en="24h Volume" data-ar="حجم 24 ساعة" data-fr="Volume 24h">24h Volume</span><span class="detail-val">$40.4B</span></div>
+      <div class="headline-box">Bitcoin recovering +0.54% toward $60K after briefly touching $58K lows yesterday. $1B+ liquidation event clears overleveraged positions. Q2 end today opens potential July seasonal recovery window (+11% historical avg).</div>
+      <div class="social-box">CT cautiously optimistic — bears acknowledge $58-59K held as support; bulls eyeing Q3 seasonal thesis. Binance EU exit adding short-term uncertainty. Mining difficulty adjustment today noted by on-chain watchers.</div>
+    </div></div>
+    <!-- ETH -->
+    <div class="acc-row"><div class="acc-header" onclick="toggle(this)">
+      <span class="acc-rank">2</span>
+      <div class="acc-info"><div class="acc-name">Ethereum</div><div class="acc-ticker">ETH</div></div>
+      <div class="acc-price">$1,578</div>
+      <div class="acc-change up">+1.6%</div>
+      <div class="acc-trend">52</div>
+      <span class="acc-sentiment neutral-pill">Neutral</span>
+      <span class="acc-chevron">▼</span>
+    </div><div class="acc-body">
+      <div class="detail-row"><span class="t detail-label" data-en="Market Cap" data-ar="القيمة السوقية" data-fr="Cap. Marché">Market Cap</span><span class="detail-val">$190B</span></div>
+      <div class="detail-row"><span class="t detail-label" data-en="24h Volume" data-ar="حجم 24 ساعة" data-fr="Volume 24h">24h Volume</span><span class="detail-val">$15.9B</span></div>
+      <div class="headline-box">ETH attempting recovery +1.63% from multi-year lows. Slight bounce vs yesterday's -4.9% selloff. ETF outflows and macro headwinds still dominant; watching $1,550 as key support.</div>
+      <div class="social-box">ETH sentiment cautiously stabilizing. Discussions around $1,550 support level holding. Some accumulation signals at lows. L2 metrics remain strong despite price weakness.</div>
+    </div></div>
+    <!-- BNB -->
+    <div class="acc-row"><div class="acc-header" onclick="toggle(this)">
+      <span class="acc-rank">3</span>
+      <div class="acc-info"><div class="acc-name">BNB</div><div class="acc-ticker">BNB</div></div>
+      <div class="acc-price">$567</div>
+      <div class="acc-change up">+1.3%</div>
+      <div class="acc-trend">44</div>
+      <span class="acc-sentiment neutral-pill">Neutral</span>
+      <span class="acc-chevron">▼</span>
+    </div><div class="acc-body">
+      <div class="detail-row"><span class="t detail-label" data-en="Market Cap" data-ar="القيمة السوقية" data-fr="Cap. Marché">Market Cap</span><span class="detail-val">$82B</span></div>
+      <div class="detail-row"><span class="t detail-label" data-en="24h Volume" data-ar="حجم 24 ساعة" data-fr="Volume 24h">24h Volume</span><span class="detail-val">$1.7B</span></div>
+      <div class="headline-box">BNB recovering +1.30% alongside broader market. Binance EU exit narrative adds uncertainty; BNB chain ecosystem fundamentals remain stable.</div>
+      <div class="social-box">BNB community monitoring Binance EU situation closely. On-chain BNB usage metrics stable. $560 viewed as near-term support level.</div>
+    </div></div>
+    <!-- SOL -->
+    <div class="acc-row"><div class="acc-header" onclick="toggle(this)">
+      <span class="acc-rank">4</span>
+      <div class="acc-info"><div class="acc-name">Solana</div><div class="acc-ticker">SOL</div></div>
+      <div class="acc-price">$71.84</div>
+      <div class="acc-change up">+5.2%</div>
+      <div class="acc-trend">72</div>
+      <span class="acc-sentiment bullish">Bullish</span>
+      <span class="acc-chevron">▼</span>
+    </div><div class="acc-body">
+      <div class="detail-row"><span class="t detail-label" data-en="Market Cap" data-ar="القيمة السوقية" data-fr="Cap. Marché">Market Cap</span><span class="detail-val">$37B</span></div>
+      <div class="detail-row"><span class="t detail-label" data-en="24h Volume" data-ar="حجم 24 ساعة" data-fr="Volume 24h">24h Volume</span><span class="detail-val">$3.8B</span></div>
+      <div class="headline-box">SOL leads the pack +5.24% — standout outperformer today. Glamsterdam upgrade narrative driving community excitement. Social mentions spiking as price action confirms bullish divergence from yesterday's selloff.</div>
+      <div class="social-box">🔥 SOL is the talk of CT today — +5.24% leading all major alts. Glamsterdam upgrade excitement driving organic accumulation. Bulls targeting $75-80 resistance; broad macro risk still a headwind but SOL showing relative strength.</div>
+    </div></div>
+    <!-- XRP -->
+    <div class="acc-row"><div class="acc-header" onclick="toggle(this)">
+      <span class="acc-rank">5</span>
+      <div class="acc-info"><div class="acc-name">XRP</div><div class="acc-ticker">XRP</div></div>
+      <div class="acc-price">$1.06</div>
+      <div class="acc-change up">+2.5%</div>
+      <div class="acc-trend">60</div>
+      <span class="acc-sentiment neutral-pill">Neutral</span>
+      <span class="acc-chevron">▼</span>
+    </div><div class="acc-body">
+      <div class="detail-row"><span class="t detail-label" data-en="Market Cap" data-ar="القيمة السوقية" data-fr="Cap. Marché">Market Cap</span><span class="detail-val">$61B</span></div>
+      <div class="detail-row"><span class="t detail-label" data-en="24h Volume" data-ar="حجم 24 ساعة" data-fr="Volume 24h">24h Volume</span><span class="detail-val">$2.7B</span></div>
+      <div class="headline-box">XRP recovering +2.49%, holding above $1.00 key psychological support. XRPL ecosystem tokens noted as relative weekly outperformers. Institutional tokenization narrative intact.</div>
+      <div class="social-box">XRP community relieved $1.00 held as support. XRPL tokenization discussions active. CT watching for potential break above $1.10 resistance as macro stabilizes.</div>
+    </div></div>
+
+    <!-- ADA -->
+    <div class="acc-row"><div class="acc-header" onclick="toggle(this)">
+      <span class="acc-rank">6</span>
+      <div class="acc-info"><div class="acc-name">Cardano</div><div class="acc-ticker">ADA</div></div>
+      <div class="acc-price">$0.1429</div>
+      <div class="acc-change down">-3.2%</div>
+      <div class="acc-trend">38</div>
+      <span class="acc-sentiment bearish">Bearish</span>
+      <span class="acc-chevron">▼</span>
+    </div><div class="acc-body">
+      <div class="detail-row"><span class="t detail-label" data-en="Market Cap" data-ar="القيمة السوقية" data-fr="Cap. Marché">Market Cap</span><span class="detail-val">$5.0B</span></div>
+      <div class="detail-row"><span class="t detail-label" data-en="24h Volume" data-ar="حجم 24 ساعة" data-fr="Volume 24h">24h Volume</span><span class="detail-val">$200M</span></div>
+      <div class="headline-box">Cardano -3.17% continuing to underperform market recovery. No catalyst; community focused on development roadmap while price tests $0.14 support zone.</div>
+      <div class="social-box">ADA sentiment bearish. Community discussing long-term development narratives. Price weakness relative to BTC/SOL recovery is a concern for holders.</div>
+    </div></div>
+    <!-- AVAX -->
+    <div class="acc-row"><div class="acc-header" onclick="toggle(this)">
+      <span class="acc-rank">7</span>
+      <div class="acc-info"><div class="acc-name">Avalanche</div><div class="acc-ticker">AVAX</div></div>
+      <div class="acc-price">$6.18</div>
+      <div class="acc-change down">-3.5%</div>
+      <div class="acc-trend">35</div>
+      <span class="acc-sentiment bearish">Bearish</span>
+      <span class="acc-chevron">▼</span>
+    </div><div class="acc-body">
+      <div class="detail-row"><span class="t detail-label" data-en="Market Cap" data-ar="القيمة السوقية" data-fr="Cap. Marché">Market Cap</span><span class="detail-val">$2.5B</span></div>
+      <div class="detail-row"><span class="t detail-label" data-en="24h Volume" data-ar="حجم 24 ساعة" data-fr="Volume 24h">24h Volume</span><span class="detail-val">$175M</span></div>
+      <div class="headline-box">Avalanche -3.47% among worst performers today, testing multi-year lows. Thin liquidity exacerbating moves; institutional subnet adoption narrative positive long-term but near-term bearish.</div>
+      <div class="social-box">AVAX community sentiment subdued at multi-year lows. Subnet adoption stories positive but not enough to offset macro pressure. Watching $6 as key support.</div>
+    </div></div>
+    <!-- DOGE -->
+    <div class="acc-row"><div class="acc-header" onclick="toggle(this)">
+      <span class="acc-rank">8</span>
+      <div class="acc-info"><div class="acc-name">Dogecoin</div><div class="acc-ticker">DOGE</div></div>
+      <div class="acc-price">$0.0800</div>
+      <div class="acc-change up">+0.8%</div>
+      <div class="acc-trend">42</div>
+      <span class="acc-sentiment neutral-pill">Neutral</span>
+      <span class="acc-chevron">▼</span>
+    </div><div class="acc-body">
+      <div class="detail-row"><span class="t detail-label" data-en="Market Cap" data-ar="القيمة السوقية" data-fr="Cap. Marché">Market Cap</span><span class="detail-val">$11.7B</span></div>
+      <div class="detail-row"><span class="t detail-label" data-en="24h Volume" data-ar="حجم 24 ساعة" data-fr="Volume 24h">24h Volume</span><span class="detail-val">$620M</span></div>
+      <div class="headline-box">DOGE +0.82% mildly recovering, holding above critical $0.08 support. No Musk/X catalyst today; meme season conditions absent but $0.08 floor holding.</div>
+      <div class="social-box">DOGE community monitoring $0.08 support. No viral catalyst today. Musk social activity quiet. Watching for potential short squeeze if broader market recovers.</div>
+    </div></div>
+    <!-- DOT -->
+    <div class="acc-row"><div class="acc-header" onclick="toggle(this)">
+      <span class="acc-rank">9</span>
+      <div class="acc-info"><div class="acc-name">Polkadot</div><div class="acc-ticker">DOT</div></div>
+      <div class="acc-price">$0.065</div>
+      <div class="acc-change down">-2.0%</div>
+      <div class="acc-trend">35</div>
+      <span class="acc-sentiment bearish">Bearish</span>
+      <span class="acc-chevron">▼</span>
+    </div><div class="acc-body">
+      <div class="detail-row"><span class="t detail-label" data-en="Market Cap" data-ar="القيمة السوقية" data-fr="Cap. Marché">Market Cap</span><span class="detail-val">$530M</span></div>
+      <div class="detail-row"><span class="t detail-label" data-en="24h Volume" data-ar="حجم 24 ساعة" data-fr="Volume 24h">24h Volume</span><span class="detail-val">$65M</span></div>
+      <div class="headline-box">Algorand -2.0% tracking broader altcoin weakness. ALGO ecosystem development ongoing; community focused on institutional DeFi use cases while price lags.</div>
+      <div class="social-box">ALGO community discussions centered on institutional adoption thesis. Price action subdued; watching $0.06 as key support level.</div>
+    </div></div>
+    <!-- MATIC -->
+    <div class="acc-row"><div class="acc-header" onclick="toggle(this)">
+      <span class="acc-rank">10</span>
+      <div class="acc-info"><div class="acc-name">Polygon</div><div class="acc-ticker">MATIC/POL</div></div>
+      <div class="acc-price">$0.210</div>
+      <div class="acc-change down">-2.0%</div>
+      <div class="acc-trend">33</div>
+      <span class="acc-sentiment bearish">Bearish</span>
+      <span class="acc-chevron">▼</span>
+    </div><div class="acc-body">
+      <div class="detail-row"><span class="t detail-label" data-en="Market Cap" data-ar="القيمة السوقية" data-fr="Cap. Marché">Market Cap</span><span class="detail-val">$2.0B</span></div>
+      <div class="detail-row"><span class="t detail-label" data-en="24h Volume" data-ar="حجم 24 ساعة" data-fr="Volume 24h">24h Volume</span><span class="detail-val">$180M</span></div>
+      <div class="headline-box">Polygon/MATIC -2.0% as L2 space faces risk-off selling. POL migration ongoing; community watching migration milestones while price lags broader recovery.</div>
+      <div class="social-box">MATIC/POL community discussing POL migration status. L2 adoption metrics strong on-chain despite price weakness. Watching $0.20 as critical support.</div>
+    </div></div>
+    <!-- TRX -->
+    <div class="acc-row"><div class="acc-header" onclick="toggle(this)">
+      <span class="acc-rank">11</span>
+      <div class="acc-info"><div class="acc-name">Tron</div><div class="acc-ticker">TRX</div></div>
+      <div class="acc-price">$0.308</div>
+      <div class="acc-change down">-1.0%</div>
+      <div class="acc-trend">32</div>
+      <span class="acc-sentiment neutral-pill">Neutral</span>
+      <span class="acc-chevron">▼</span>
+    </div><div class="acc-body">
+      <div class="detail-row"><span class="t detail-label" data-en="Market Cap" data-ar="القيمة السوقية" data-fr="Cap. Marché">Market Cap</span><span class="detail-val">$26.5B</span></div>
+      <div class="detail-row"><span class="t detail-label" data-en="24h Volume" data-ar="حجم 24 ساعة" data-fr="Volume 24h">24h Volume</span><span class="detail-val">$820M</span></div>
+      <div class="headline-box">TRX relatively resilient -1.0% vs peers; TRON stablecoin volume providing baseline demand and price support in risk-off environment.</div>
+      <div class="social-box">TRX social minimal. Stablecoin utility narrative keeping demand; Justin Sun social activity minimal today.</div>
+    </div></div>
+    <!-- LINK -->
+    <div class="acc-row"><div class="acc-header" onclick="toggle(this)">
+      <span class="acc-rank">12</span>
+      <div class="acc-info"><div class="acc-name">Chainlink</div><div class="acc-ticker">LINK</div></div>
+      <div class="acc-price">$7.30</div>
+      <div class="acc-change down">-1.6%</div>
+      <div class="acc-trend">58</div>
+      <span class="acc-sentiment neutral-pill">Watch</span>
+      <span class="acc-chevron">▼</span>
+    </div><div class="acc-body">
+      <div class="detail-row"><span class="t detail-label" data-en="Market Cap" data-ar="القيمة السوقية" data-fr="Cap. Marché">Market Cap</span><span class="detail-val">$4.3B</span></div>
+      <div class="detail-row"><span class="t detail-label" data-en="24h Volume" data-ar="حجم 24 ساعة" data-fr="Volume 24h">24h Volume</span><span class="detail-val">$350M</span></div>
+      <div class="headline-box">LINK social buzz persists from yesterday's 750% Reddit mention spike. Price stabilizing. CT watching for potential announcement catalyst that drove the unusual social velocity.</div>
+      <div class="social-box">LINK community still discussing yesterday's 750% Reddit mention surge — no confirmed catalyst. Speculation around potential partnership or integration announcement continues. Price lag vs social signal remains noteworthy.</div>
+    </div></div>
+    <!-- TON -->
+    <div class="acc-row"><div class="acc-header" onclick="toggle(this)">
+      <span class="acc-rank">13</span>
+      <div class="acc-info"><div class="acc-name">Toncoin</div><div class="acc-ticker">TON</div></div>
+      <div class="acc-price">$2.28</div>
+      <div class="acc-change down">-1.7%</div>
+      <div class="acc-trend">36</div>
+      <span class="acc-sentiment bearish">Bearish</span>
+      <span class="acc-chevron">▼</span>
+    </div><div class="acc-body">
+      <div class="detail-row"><span class="t detail-label" data-en="Market Cap" data-ar="القيمة السوقية" data-fr="Cap. Marché">Market Cap</span><span class="detail-val">$5.8B</span></div>
+      <div class="detail-row"><span class="t detail-label" data-en="24h Volume" data-ar="حجم 24 ساعة" data-fr="Volume 24h">24h Volume</span><span class="detail-val">$200M</span></div>
+      <div class="headline-box">Toncoin -1.7% mild softening. TON-Telegram Mini App ecosystem narrative intact long-term; macro environment remains the dominant short-term driver.</div>
+      <div class="social-box">TON discussions on Telegram Mini App adoption milestones. Community bullish on ecosystem growth; price action secondary to fundamental narrative.</div>
+    </div></div>
+    <!-- XLM -->
+    <div class="acc-row"><div class="acc-header" onclick="toggle(this)">
+      <span class="acc-rank">14</span>
+      <div class="acc-info"><div class="acc-name">Stellar</div><div class="acc-ticker">XLM</div></div>
+      <div class="acc-price">$0.181</div>
+      <div class="acc-change down">-1.1%</div>
+      <div class="acc-trend">37</div>
+      <span class="acc-sentiment bearish">Bearish</span>
+      <span class="acc-chevron">▼</span>
+    </div><div class="acc-body">
+      <div class="detail-row"><span class="t detail-label" data-en="Market Cap" data-ar="القيمة السوقية" data-fr="Cap. Marché">Market Cap</span><span class="detail-val">$5.3B</span></div>
+      <div class="detail-row"><span class="t detail-label" data-en="24h Volume" data-ar="حجم 24 ساعة" data-fr="Volume 24h">24h Volume</span><span class="detail-val">$145M</span></div>
+      <div class="headline-box">Stellar -1.1% mild softening vs peers; XLM holding relatively well amid broad pressure. Tokenization (DTCC context) underpins long-term narrative.</div>
+      <div class="social-box">XLM mentions normal. Tokenization narrative key driver. Community watching $0.17 support level.</div>
+    </div></div>
+    <!-- HBAR -->
+    <div class="acc-row"><div class="acc-header" onclick="toggle(this)">
+      <span class="acc-rank">15</span>
+      <div class="acc-info"><div class="acc-name">Hedera</div><div class="acc-ticker">HBAR</div></div>
+      <div class="acc-price">$0.0492</div>
+      <div class="acc-change down">-1.2%</div>
+      <div class="acc-trend">28</div>
+      <span class="acc-sentiment bearish">Bearish</span>
+      <span class="acc-chevron">▼</span>
+    </div><div class="acc-body">
+      <div class="detail-row"><span class="t detail-label" data-en="Market Cap" data-ar="القيمة السوقية" data-fr="Cap. Marché">Market Cap</span><span class="detail-val">$1.9B</span></div>
+      <div class="detail-row"><span class="t detail-label" data-en="24h Volume" data-ar="حجم 24 ساعة" data-fr="Volume 24h">24h Volume</span><span class="detail-val">$82M</span></div>
+      <div class="headline-box">Hedera -1.2% mild decline. HBAR enterprise adoption narrative continues; price weak amid macro headwinds but holding $0.045 support.</div>
+      <div class="social-box">HBAR community quiet. Enterprise adoption discussions ongoing. Watching $0.045 support level.</div>
+    </div></div>
+    <!-- LTC -->
+    <div class="acc-row"><div class="acc-header" onclick="toggle(this)">
+      <span class="acc-rank">16</span>
+      <div class="acc-info"><div class="acc-name">Litecoin</div><div class="acc-ticker">LTC</div></div>
+      <div class="acc-price">$40.20</div>
+      <div class="acc-change down">-1.5%</div>
+      <div class="acc-trend">28</div>
+      <span class="acc-sentiment bearish">Bearish</span>
+      <span class="acc-chevron">▼</span>
+    </div><div class="acc-body">
+      <div class="detail-row"><span class="t detail-label" data-en="Market Cap" data-ar="القيمة السوقية" data-fr="Cap. Marché">Market Cap</span><span class="detail-val">$3.0B</span></div>
+      <div class="detail-row"><span class="t detail-label" data-en="24h Volume" data-ar="حجم 24 ساعة" data-fr="Volume 24h">24h Volume</span><span class="detail-val">$300M</span></div>
+      <div class="headline-box">Litecoin -1.5%; no specific catalyst. LTC 'digital silver' narrative persists but lacking catalysts vs newer L1s in current cycle.</div>
+      <div class="social-box">LTC social minimal. Legacy coin narrative keeping baseline interest. Halving cycle context noted by some community members.</div>
+    </div></div>
+    <!-- SHIB -->
+    <div class="acc-row"><div class="acc-header" onclick="toggle(this)">
+      <span class="acc-rank">17</span>
+      <div class="acc-info"><div class="acc-name">Shiba Inu</div><div class="acc-ticker">SHIB</div></div>
+      <div class="acc-price">$0.00000443</div>
+      <div class="acc-change down">-1.3%</div>
+      <div class="acc-trend">32</div>
+      <span class="acc-sentiment bearish">Bearish</span>
+      <span class="acc-chevron">▼</span>
+    </div><div class="acc-body">
+      <div class="detail-row"><span class="t detail-label" data-en="Market Cap" data-ar="القيمة السوقية" data-fr="Cap. Marché">Market Cap</span><span class="detail-val">$2.6B</span></div>
+      <div class="detail-row"><span class="t detail-label" data-en="24h Volume" data-ar="حجم 24 ساعة" data-fr="Volume 24h">24h Volume</span><span class="detail-val">$185M</span></div>
+      <div class="headline-box">SHIB -1.3% mild softening; meme coin sentiment still subdued. Shibarium L2 activity continues but speculative appetite absent in current risk-off environment.</div>
+      <div class="social-box">SHIB community relatively quiet. Meme season conditions absent. Watching $0.000004 support level.</div>
+    </div></div>
+    <!-- UNI -->
+    <div class="acc-row"><div class="acc-header" onclick="toggle(this)">
+      <span class="acc-rank">18</span>
+      <div class="acc-info"><div class="acc-name">Uniswap</div><div class="acc-ticker">UNI</div></div>
+      <div class="acc-price">$2.34</div>
+      <div class="acc-change down">-1.3%</div>
+      <div class="acc-trend">33</div>
+      <span class="acc-sentiment bearish">Bearish</span>
+      <span class="acc-chevron">▼</span>
+    </div><div class="acc-body">
+      <div class="detail-row"><span class="t detail-label" data-en="Market Cap" data-ar="القيمة السوقية" data-fr="Cap. Marché">Market Cap</span><span class="detail-val">$1.4B</span></div>
+      <div class="detail-row"><span class="t detail-label" data-en="24h Volume" data-ar="حجم 24 ساعة" data-fr="Volume 24h">24h Volume</span><span class="detail-val">$125M</span></div>
+      <div class="headline-box">Uniswap -1.3%; DeFi sector recovering slowly. V4 adoption continues; fee switch governance proposal gaining community attention on forums.</div>
+      <div class="social-box">UNI governance discussions active — fee switch proposal gaining traction. Protocol development positive; price secondary in community discourse.</div>
+    </div></div>
+    <!-- SUI -->
+    <div class="acc-row"><div class="acc-header" onclick="toggle(this)">
+      <span class="acc-rank">19</span>
+      <div class="acc-info"><div class="acc-name">Sui</div><div class="acc-ticker">SUI</div></div>
+      <div class="acc-price">$0.69</div>
+      <div class="acc-change down">-1.4%</div>
+      <div class="acc-trend">45</div>
+      <span class="acc-sentiment bearish">Bearish</span>
+      <span class="acc-chevron">▼</span>
+    </div><div class="acc-body">
+      <div class="detail-row"><span class="t detail-label" data-en="Market Cap" data-ar="القيمة السوقية" data-fr="Cap. Marché">Market Cap</span><span class="detail-val">$2.1B</span></div>
+      <div class="detail-row"><span class="t detail-label" data-en="24h Volume" data-ar="حجم 24 ساعة" data-fr="Volume 24h">24h Volume</span><span class="detail-val">$235M</span></div>
+      <div class="headline-box">Sui -1.4% mild softening vs broader recovery. SUI ecosystem TVL growth continues to impress developers; high-growth L1 narrative intact long-term.</div>
+      <div class="social-box">SUI ecosystem building momentum — developer activity and TVL growth discussed positively on CT. Price correction seen as accumulation opportunity by bulls.</div>
+    </div></div>
+    <!-- OP -->
+    <div class="acc-row"><div class="acc-header" onclick="toggle(this)">
+      <span class="acc-rank">20</span>
+      <div class="acc-info"><div class="acc-name">Optimism</div><div class="acc-ticker">OP</div></div>
+      <div class="acc-price">$0.62</div>
+      <div class="acc-change down">-1.6%</div>
+      <div class="acc-trend">35</div>
+      <span class="acc-sentiment bearish">Bearish</span>
+      <span class="acc-chevron">▼</span>
+    </div><div class="acc-body">
+      <div class="detail-row"><span class="t detail-label" data-en="Market Cap" data-ar="القيمة السوقية" data-fr="Cap. Marché">Market Cap</span><span class="detail-val">$648M</span></div>
+      <div class="detail-row"><span class="t detail-label" data-en="24h Volume" data-ar="حجم 24 ساعة" data-fr="Volume 24h">24h Volume</span><span class="detail-val">$168M</span></div>
+      <div class="headline-box">Optimism -1.6%; OP Stack/Superchain expansion continuing. New chains deploying but macro overshadowing fundamentals. Watching $0.60 support.</div>
+      <div class="social-box">OP/Optimism ecosystem discussions positive around Superchain growth. Community watching $0.60 support; price weakness attributed to macro.</div>
+    </div></div>
+  </div><!-- end accordion -->
+</div><!-- end crypto tab -->
+
+<!-- ══ STOCKS TAB ══ -->
+<div class="tab-content" id="tab-content-stocks">
+<div class="alert-wrapper">
+  <div class="alert-section spike-section">
+    <div class="alert-section-header">Stock Spikes</div>
+    <ul class="alert-list">
+      <li>&#x1F6A8; <strong>Sandisk (SNDK) +22%</strong> &middot; Memory chip demand beat drives massive earnings surprise</li>
+      <li>&#x1F6A8; <strong>Micron (MU) +15.7%</strong> &middot; Beats Q3 estimates; raises August quarter guidance above consensus</li>
+      <li>&#x1F6A8; <strong>Apple (AAPL) -6.1%</strong> &middot; Worst single-day drop in months; megacap AI-adjacent tech selloff on PCE shock</li>
+    </ul>
+  </div>
+  <div class="alert-section news-section">
+    <div class="alert-section-header">Market Events</div>
+    <ul class="alert-list">
+      <li>&#x1F4F0; <strong>PCE 4.1%</strong> &mdash; inflation resurgence crushes rate-cut odds; tech &amp; consumer discretionary under heavy selling</li>
+      <li>&#x1F4F0; <strong>Iran strikes vessel in Strait of Hormuz</strong> &mdash; oil +2.4%; energy sector outperforms on supply disruption fears</li>
+      <li>&#x1F4F0; <strong>OpenAI IPO delay reported</strong> &mdash; SpaceX's poor debut dampens AI IPO sentiment; chip stocks soften</li>
+    </ul>
+  </div>
+</div>
+  <div class="events-section">
+  <div class="events-header">Market Events &mdash; June 27, 2026</div>
+  <div class="events-grid">
+    <div class="event-card critical"><div class="event-badge">MACRO CRITICAL</div><div class="event-body"><div class="event-name">S&amp;P 500 Weekly -2% &mdash; Semis Surge, Megacap Tech Slumps</div><div class="event-desc">US equities ended the week lower, led by megacap tech selloff on PCE inflation shock. Semiconductors bucked the trend, with the semi sector up 6.2% on Micron blowout earnings.</div></div></div>
+    <div class="event-card positive"><div class="event-badge">EARNINGS WIN</div><div class="event-body"><div class="event-name">Memory Chip Earnings Surge &mdash; MU +15.7%, SNDK +22%</div><div class="event-desc">Micron beat Q3 estimates and raised August guidance; Sandisk surged 22% on AI infrastructure memory demand. The memory chip cycle recovery is accelerating faster than expected.</div></div></div>
+    <div class="event-card warning"><div class="event-badge">GEOPOLITICS</div><div class="event-body"><div class="event-name">Strait of Hormuz Tensions &mdash; Oil +2.4%, Energy Leads</div><div class="event-desc">Iran struck a vessel in the Strait of Hormuz, lifting crude oil 2.4%. Energy stocks outperformed the broader market, with Chevron and ExxonMobil among the top gainers.</div></div></div>
+  </div>
+</div>
+
+  <div class="mood-bar"><strong><span class="t" data-en="Market:" data-ar="السوق:" data-fr="Marché:">Market:</span></strong> <span class="t" data-en="US equities closed the week mixed. Semis surged on Micron/Sandisk blowout earnings. Megacap tech sold off on PCE inflation shock (4.1%). S&P 500 -0.05%, NASDAQ -0.24%, DOW -0.09%. Energy outperforms on Strait of Hormuz tensions. PCE crushed rate-cut hopes, keeping pressure on high-multiple growth stocks." data-ar="الأسهم الأمريكية أغلقت الأسبوع بشكل مختلط. الرقائق تتألق والتقنية الكبرى تتراجع بسبب PCE." data-fr="Actions américaines clôturent la semaine de façon mitigée. Semi-conducteurs en hausse sur MU/SNDK; mega-tech en baisse sur le choc PCE à 4,1%. S&P 500 -0,05%, NASDAQ -0,24%, DOW -0,09%. L'énergie surperforme sur les tensions d'Ormuz.">US equities closed the week mixed. Semis surged on Micron/Sandisk blowout earnings. Megacap tech sold off on PCE inflation shock (4.1%). S&P 500 -0.05%, NASDAQ -0.24%, DOW -0.09%. Energy outperforms on Strait of Hormuz tensions. PCE crushed rate-cut hopes, keeping pressure on high-multiple growth stocks.</span></div>
+
+  <div class="section-title"><span class="t" data-en="Top Gainers" data-ar="أكبر الرابحين" data-fr="Meilleures Hausses">Top Gainers</span></div>
+  <div class="accordion">
+    <div class="acc-row"><div class="acc-header" onclick="toggle(this)"><span class="acc-rank">1</span><div class="acc-info"><div class="acc-name">Sandisk</div><div class="acc-ticker">SNDK</div></div><div class="acc-price">$68.42</div><div class="acc-change up">+22.0%</div><div class="acc-trend"></div><span class="acc-sentiment bullish"><span class="t" data-en="Bullish" data-ar="صاعد" data-fr="Haussier">Bullish</span></span><span class="acc-chevron">▼</span></div><div class="acc-body"><div class="detail-row"><span class="t detail-label" data-en="Sector" data-ar="القطاع" data-fr="Secteur">Sector</span><span class="detail-val">Technology — Storage/Memory</span></div><div class="headline-box">Sandisk surges 22% on massive earnings beat — memory chip demand from AI infrastructure driving storage cycle recovery beyond all analyst estimates.</div></div></div>
+    <div class="acc-row"><div class="acc-header" onclick="toggle(this)"><span class="acc-rank">2</span><div class="acc-info"><div class="acc-name">Micron Technology</div><div class="acc-ticker">MU</div></div><div class="acc-price">$114.30</div><div class="acc-change up">+15.7%</div><div class="acc-trend"></div><span class="acc-sentiment bullish"><span class="t" data-en="Bullish" data-ar="صاعد" data-fr="Haussier">Bullish</span></span><span class="acc-chevron">▼</span></div><div class="acc-body"><div class="detail-row"><span class="t detail-label" data-en="Sector" data-ar="القطاع" data-fr="Secteur">Sector</span><span class="detail-val">Technology — Semiconductors/Memory</span></div><div class="headline-box">Micron +15.7% after reporting strong Q3 earnings and issuing robust revenue outlook for the August quarter, signaling sustained AI memory demand.</div></div></div>
+    <div class="acc-row"><div class="acc-header" onclick="toggle(this)"><span class="acc-rank">3</span><div class="acc-info"><div class="acc-name">Applied Materials</div><div class="acc-ticker">AMAT</div></div><div class="acc-price">$189.60</div><div class="acc-change up">+13.4%</div><div class="acc-trend"></div><span class="acc-sentiment bullish"><span class="t" data-en="Bullish" data-ar="صاعد" data-fr="Haussier">Bullish</span></span><span class="acc-chevron">▼</span></div><div class="acc-body"><div class="detail-row"><span class="t detail-label" data-en="Sector" data-ar="القطاع" data-fr="Secteur">Sector</span><span class="detail-val">Technology — Semiconductor Equipment</span></div><div class="headline-box">Applied Materials +13.4% on semiconductor equipment cycle upswing, benefiting from memory chip capex recovery triggered by Micron's guidance raise.</div></div></div>
+    <div class="acc-row"><div class="acc-header" onclick="toggle(this)"><span class="acc-rank">4</span><div class="acc-info"><div class="acc-name">Lam Research</div><div class="acc-ticker">LRCX</div></div><div class="acc-price">$74.25</div><div class="acc-change up">+5.8%</div><div class="acc-trend"></div><span class="acc-sentiment bullish"><span class="t" data-en="Bullish" data-ar="صاعد" data-fr="Haussier">Bullish</span></span><span class="acc-chevron">▼</span></div><div class="acc-body"><div class="detail-row"><span class="t detail-label" data-en="Sector" data-ar="القطاع" data-fr="Secteur">Sector</span><span class="detail-val">Technology — Semiconductor Equipment</span></div><div class="headline-box">Lam Research +5.8% — wafer fab equipment demand rising alongside Micron earnings beat lifting entire semiconductor equipment sector.</div></div></div>
+    <div class="acc-row"><div class="acc-header" onclick="toggle(this)"><span class="acc-rank">5</span><div class="acc-info"><div class="acc-name">Western Digital</div><div class="acc-ticker">WDC</div></div><div class="acc-price">$52.10</div><div class="acc-change up">+4.9%</div><div class="acc-trend"></div><span class="acc-sentiment bullish"><span class="t" data-en="Bullish" data-ar="صاعد" data-fr="Haussier">Bullish</span></span><span class="acc-chevron">▼</span></div><div class="acc-body"><div class="detail-row"><span class="t detail-label" data-en="Sector" data-ar="القطاع" data-fr="Secteur">Sector</span><span class="detail-val">Technology — Storage/Memory</span></div><div class="headline-box">Western Digital +4.9% as memory cycle recovery thesis gains traction following Micron and Sandisk earnings — HDD and NAND demand outlook positive.</div></div></div>
+    <div class="acc-row"><div class="acc-header" onclick="toggle(this)"><span class="acc-rank">6</span><div class="acc-info"><div class="acc-name">KLA Corporation</div><div class="acc-ticker">KLAC</div></div><div class="acc-price">$645.20</div><div class="acc-change up">+4.3%</div><div class="acc-trend"></div><span class="acc-sentiment bullish"><span class="t" data-en="Bullish" data-ar="صاعد" data-fr="Haussier">Bullish</span></span><span class="acc-chevron">▼</span></div><div class="acc-body"><div class="detail-row"><span class="t detail-label" data-en="Sector" data-ar="القطاع" data-fr="Secteur">Sector</span><span class="detail-val">Technology — Semiconductor Equipment</span></div><div class="headline-box">KLA Corp +4.3% joining semiconductor equipment rally; process control equipment demand rising alongside memory capex recovery cycle.</div></div></div>
+    <div class="acc-row"><div class="acc-header" onclick="toggle(this)"><span class="acc-rank">7</span><div class="acc-info"><div class="acc-name">Qualcomm</div><div class="acc-ticker">QCOM</div></div><div class="acc-price">$185.40</div><div class="acc-change up">+4.0%</div><div class="acc-trend"></div><span class="acc-sentiment bullish"><span class="t" data-en="Bullish" data-ar="صاعد" data-fr="Haussier">Bullish</span></span><span class="acc-chevron">▼</span></div><div class="acc-body"><div class="detail-row"><span class="t detail-label" data-en="Sector" data-ar="القطاع" data-fr="Secteur">Sector</span><span class="detail-val">Technology — Semiconductors/Mobile</span></div><div class="headline-box">Qualcomm +4% after doubling its projection for non-handset revenue over 3 years — IoT, automotive, and PC chip diversification accelerating.</div></div></div>
+    <div class="acc-row"><div class="acc-header" onclick="toggle(this)"><span class="acc-rank">8</span><div class="acc-info"><div class="acc-name">Chevron</div><div class="acc-ticker">CVX</div></div><div class="acc-price">$158.80</div><div class="acc-change up">+2.1%</div><div class="acc-trend"></div><span class="acc-sentiment bullish"><span class="t" data-en="Bullish" data-ar="صاعد" data-fr="Haussier">Bullish</span></span><span class="acc-chevron">▼</span></div><div class="acc-body"><div class="detail-row"><span class="t detail-label" data-en="Sector" data-ar="القطاع" data-fr="Secteur">Sector</span><span class="detail-val">Energy — Integrated Oil & Gas</span></div><div class="headline-box">Chevron +2.1% on Strait of Hormuz geopolitical tension — oil up 2.4% on supply disruption concerns driving energy sector outperformance.</div></div></div>
+    <div class="acc-row"><div class="acc-header" onclick="toggle(this)"><span class="acc-rank">9</span><div class="acc-info"><div class="acc-name">ExxonMobil</div><div class="acc-ticker">XOM</div></div><div class="acc-price">$112.30</div><div class="acc-change up">+1.9%</div><div class="acc-trend"></div><span class="acc-sentiment bullish"><span class="t" data-en="Bullish" data-ar="صاعد" data-fr="Haussier">Bullish</span></span><span class="acc-chevron">▼</span></div><div class="acc-body"><div class="detail-row"><span class="t detail-label" data-en="Sector" data-ar="القطاع" data-fr="Secteur">Sector</span><span class="detail-val">Energy — Integrated Oil & Gas</span></div><div class="headline-box">ExxonMobil +1.9% as energy sector benefits from Iran-Strait of Hormuz supply concerns; crude prices lifted 2.4%.</div></div></div>
+    <div class="acc-row"><div class="acc-header" onclick="toggle(this)"><span class="acc-rank">10</span><div class="acc-info"><div class="acc-name">Nucor Corp</div><div class="acc-ticker">NUE</div></div><div class="acc-price">$148.60</div><div class="acc-change up">+2.8%</div><div class="acc-trend"></div><span class="acc-sentiment bullish"><span class="t" data-en="Bullish" data-ar="صاعد" data-fr="Haussier">Bullish</span></span><span class="acc-chevron">▼</span></div><div class="acc-body"><div class="detail-row"><span class="t detail-label" data-en="Sector" data-ar="القطاع" data-fr="Secteur">Sector</span><span class="detail-val">Materials — Steel</span></div><div class="headline-box">Nucor +2.8% on infrastructure spending momentum and sector rotation from tech to cyclicals amid macro uncertainty.</div></div></div>
+
+  </div>
+
+  <div class="section-title"><span class="t" data-en="Top Losers" data-ar="أكبر الخاسرين" data-fr="Plus Grosses Baisses">Top Losers</span></div>
+  <div class="accordion">
+    <div class="acc-row"><div class="acc-header" onclick="toggle(this)"><span class="acc-rank">1</span><div class="acc-info"><div class="acc-name">Apple Inc.</div><div class="acc-ticker">AAPL</div></div><div class="acc-price">$196.30</div><div class="acc-change down">-6.1%</div><div class="acc-trend"></div><span class="acc-sentiment bearish"><span class="t" data-en="Bearish" data-ar="هابط" data-fr="Baissier">Bearish</span></span><span class="acc-chevron">▼</span></div><div class="acc-body"><div class="detail-row"><span class="t detail-label" data-en="Sector" data-ar="القطاع" data-fr="Secteur">Sector</span><span class="detail-val">Technology — Consumer Electronics</span></div><div class="headline-box">Apple -6.1% worst day in months — megacap AI-adjacent tech hit hard by PCE inflation shock; rate-cut delay fears crush high-multiple stocks.</div></div></div>
+    <div class="acc-row"><div class="acc-header" onclick="toggle(this)"><span class="acc-rank">2</span><div class="acc-info"><div class="acc-name">Microsoft</div><div class="acc-ticker">MSFT</div></div><div class="acc-price">$398.70</div><div class="acc-change down">-3.5%</div><div class="acc-trend"></div><span class="acc-sentiment bearish"><span class="t" data-en="Bearish" data-ar="هابط" data-fr="Baissier">Bearish</span></span><span class="acc-chevron">▼</span></div><div class="acc-body"><div class="detail-row"><span class="t detail-label" data-en="Sector" data-ar="القطاع" data-fr="Secteur">Sector</span><span class="detail-val">Technology — Cloud/Software</span></div><div class="headline-box">Microsoft -3.5% on macro selling; Azure cloud spending growth concerns resurfacing as enterprise IT budgets face higher-for-longer rate pressure.</div></div></div>
+    <div class="acc-row"><div class="acc-header" onclick="toggle(this)"><span class="acc-rank">3</span><div class="acc-info"><div class="acc-name">Adobe Inc.</div><div class="acc-ticker">ADBE</div></div><div class="acc-price">$392.10</div><div class="acc-change down">-3.8%</div><div class="acc-trend"></div><span class="acc-sentiment bearish"><span class="t" data-en="Bearish" data-ar="هابط" data-fr="Baissier">Bearish</span></span><span class="acc-chevron">▼</span></div><div class="acc-body"><div class="detail-row"><span class="t detail-label" data-en="Sector" data-ar="القطاع" data-fr="Secteur">Sector</span><span class="detail-val">Technology — Software/AI</span></div><div class="headline-box">Adobe -3.8% as AI-adjacent software stocks face selling pressure from PCE print and broader megacap technology rotation.</div></div></div>
+    <div class="acc-row"><div class="acc-header" onclick="toggle(this)"><span class="acc-rank">4</span><div class="acc-info"><div class="acc-name">Amazon</div><div class="acc-ticker">AMZN</div></div><div class="acc-price">$184.20</div><div class="acc-change down">-3.1%</div><div class="acc-trend"></div><span class="acc-sentiment bearish"><span class="t" data-en="Bearish" data-ar="هابط" data-fr="Baissier">Bearish</span></span><span class="acc-chevron">▼</span></div><div class="acc-body"><div class="detail-row"><span class="t detail-label" data-en="Sector" data-ar="القطاع" data-fr="Secteur">Sector</span><span class="detail-val">Consumer Disc — E-commerce/Cloud</span></div><div class="headline-box">Amazon -3.1% despite Prime Day 2026 underway — macro inflation fears overshadow e-commerce and AWS cloud spending sentiment.</div></div></div>
+    <div class="acc-row"><div class="acc-header" onclick="toggle(this)"><span class="acc-rank">5</span><div class="acc-info"><div class="acc-name">Meta Platforms</div><div class="acc-ticker">META</div></div><div class="acc-price">$512.80</div><div class="acc-change down">-2.7%</div><div class="acc-trend"></div><span class="acc-sentiment bearish"><span class="t" data-en="Bearish" data-ar="هابط" data-fr="Baissier">Bearish</span></span><span class="acc-chevron">▼</span></div><div class="acc-body"><div class="detail-row"><span class="t detail-label" data-en="Sector" data-ar="القطاع" data-fr="Secteur">Sector</span><span class="detail-val">Communication — Social Media</span></div><div class="headline-box">Meta -2.7% as megacap social/AI stocks sell off; ad revenue outlook pressured by higher rate environment and consumer spending uncertainty.</div>    <div class="acc-row"><div class="acc-header" onclick="toggle(this)"><span class="acc-rank">6</span><div class="acc-info"><div class="acc-name">Alphabet</div><div class="acc-ticker">GOOGL</div></div><div class="acc-price">$162.40</div><div class="acc-change down">-2.3%</div><div class="acc-trend"></div><span class="acc-sentiment bearish"><span class="t" data-en="Bearish" data-ar="هابط" data-fr="Baissier">Bearish</span></span><span class="acc-chevron">▼</span></div><div class="acc-body"><div class="detail-row"><span class="t detail-label" data-en="Sector" data-ar="القطاع" data-fr="Secteur">Sector</span><span class="detail-val">Communication — Advertising/AI</span></div><div class="headline-box">Alphabet -2.3% under pressure from AI competition concerns and PCE shock dampening digital ad spend outlook.</div></div></div>
+    <div class="acc-row"><div class="acc-header" onclick="toggle(this)"><span class="acc-rank">7</span><div class="acc-info"><div class="acc-name">Tesla</div><div class="acc-ticker">TSLA</div></div><div class="acc-price">$218.50</div><div class="acc-change down">-2.0%</div><div class="acc-trend"></div><span class="acc-sentiment bearish"><span class="t" data-en="Bearish" data-ar="هابط" data-fr="Baissier">Bearish</span></span><span class="acc-chevron">▼</span></div><div class="acc-body"><div class="detail-row"><span class="t detail-label" data-en="Sector" data-ar="القطاع" data-fr="Secteur">Sector</span><span class="detail-val">Consumer Disc — Electric Vehicles</span></div><div class="headline-box">Tesla -2.0% in broad growth stock selloff; EV demand concerns in higher rate environment weighing on valuation multiples.</div></div></div>
+    <div class="acc-row"><div class="acc-header" onclick="toggle(this)"><span class="acc-rank">8</span><div class="acc-info"><div class="acc-name">Salesforce</div><div class="acc-ticker">CRM</div></div><div class="acc-price">$248.60</div><div class="acc-change down">-2.1%</div><div class="acc-trend"></div><span class="acc-sentiment bearish"><span class="t" data-en="Bearish" data-ar="هابط" data-fr="Baissier">Bearish</span></span><span class="acc-chevron">▼</span></div><div class="acc-body"><div class="detail-row"><span class="t detail-label" data-en="Sector" data-ar="القطاع" data-fr="Secteur">Sector</span><span class="detail-val">Technology — CRM/Enterprise Software</span></div><div class="headline-box">Salesforce -2.1% as enterprise software faces higher-for-longer rate pressure; AI CRM investment scrutiny amid macro tightening fears.</div></div></div>
+    <div class="acc-row"><div class="acc-header" onclick="toggle(this)"><span class="acc-rank">9</span><div class="acc-info"><div class="acc-name">Netflix</div><div class="acc-ticker">NFLX</div></div><div class="acc-price">$695.30</div><div class="acc-change down">-1.4%</div><div class="acc-trend"></div><span class="acc-sentiment bearish"><span class="t" data-en="Bearish" data-ar="هابط" data-fr="Baissier">Bearish</span></span><span class="acc-chevron">▼</span></div><div class="acc-body"><div class="detail-row"><span class="t detail-label" data-en="Sector" data-ar="القطاع" data-fr="Secteur">Sector</span><span class="detail-val">Communication — Streaming</span></div><div class="headline-box">Netflix -1.4% mild selling pressure; streaming less impacted than cloud/software but macro uncertainty weighs on consumer discretionary.</div></div></div>
+    <div class="acc-row"><div class="acc-header" onclick="toggle(this)"><span class="acc-rank">10</span><div class="acc-info"><div class="acc-name">Nvidia</div><div class="acc-ticker">NVDA</div></div><div class="acc-price">$118.40</div><div class="acc-change down">-1.6%</div><div class="acc-trend"></div><span class="acc-sentiment bearish"><span class="t" data-en="Bearish" data-ar="هابط" data-fr="Baissier">Bearish</span></span><span class="acc-chevron">▼</span></div><div class="acc-body"><div class="detail-row"><span class="t detail-label" data-en="Sector" data-ar="القطاع" data-fr="Secteur">Sector</span><span class="detail-val">Technology — GPUs/AI Chips</span></div><div class="headline-box">Nvidia -1.6% in relative outperformance vs megacap tech peers; AI chip demand narrative intact but macro headwinds cap upside.</div></div></div>
+</div></div>
+  </div>
+</div><!-- end stocks tab -->
+
+<div class="updated">
+  <span class="t" data-en="Updated" data-ar="آخر تحديث" data-fr="Mis à jour">Updated</span>: Saturday, June 27 2026 &middot; 7:00 AM
+  &nbsp;·&nbsp; Crypto: X/CT, Reddit, CoinDesk, CoinTelegraph &nbsp;·&nbsp; Stocks: Bloomberg, MarketWatch, Seeking Alpha, Schwab
+  &nbsp;·&nbsp; <a href="https://zooz1zee.github.io/crypto-pulse/" style="color:var(--accent);text-decoration:none">zooz1zee.github.io/crypto-pulse</a>
+</div>
+
+<script>
+function setTab(name) {
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+  document.getElementById('tab-' + name).classList.add('active');
+  document.getElementById('tab-content-' + name).classList.add('active');
+  var ci = document.getElementById('intel-crypto');
+  var si = document.getElementById('intel-stocks');
+  if (ci) ci.style.display = (name === 'crypto') ? 'flex' : 'none';
+  if (si) si.style.display = (name === 'stocks') ? 'flex' : 'none';
+  var mc = document.getElementById('mood-crypto');
+  var ms = document.getElementById('mood-stocks');
+  if (mc) mc.style.display = (name === 'crypto') ? '' : 'none';
+  if (ms) ms.style.display = (name === 'stocks') ? '' : 'none';
+}
+function buildTrendBars() {
+  document.querySelectorAll('.acc-trend').forEach(function(el) {
+    var score = parseInt(el.textContent, 10);
+    if (isNaN(score) || score === 0) return;
+    var color = score >= 65 ? 'var(--green)' : score >= 40 ? 'var(--yellow)' : 'var(--red)';
+    el.innerHTML =
+      '<div style="width:34px;background:var(--surface2);border-radius:3px;overflow:hidden;height:5px;margin:0 auto 2px">' +
+        '<div style="width:' + Math.min(score,100) + '%;height:100%;background:' + color + ';border-radius:3px"></div>' +
+      '</div>' +
+      '<div style="font-size:9px;color:var(--muted);line-height:1">' + score + '</div>';
+  });
+}
+document.addEventListener('DOMContentLoaded', buildTrendBars);
+function toggle(header) {
+  const body = header.nextElementSibling;
+  const isOpen = header.classList.contains('open');
+  header.closest('.accordion').querySelectorAll('.acc-header.open').forEach(h => {
+    h.classList.remove('open'); h.nextElementSibling.classList.remove('open');
+  });
+  if (!isOpen) { header.classList.add('open'); body.classList.add('open'); }
+}
+var T_DAILY = {"ar": {"Binance Halts EU Services July 1 \u2014 MiCA License Failed": "\u0628\u064a\u0646\u0627\u0646\u0633 \u062a\u0648\u0642\u0641 \u062e\u062f\u0645\u0627\u062a \u0623\u0648\u0631\u0648\u0628\u0627 \u0641\u064a \u064a\u0648\u0644\u064a\u0648 \u2014 \u0641\u0634\u0644 \u062a\u0631\u062e\u064a\u0635 \u0645\u064a\u0643\u0627", "Bitcoin Mining Difficulty Adjustment Today": "\u062a\u0639\u062f\u064a\u0644 \u0635\u0639\u0648\u0628\u0629 \u062a\u0639\u062f\u064a\u0646 \u0628\u064a\u062a\u0643\u0648\u064a\u0646 \u0627\u0644\u064a\u0648\u0645", "$1B+ Liquidations \u2014 BTC Finds Support Near $59K": "\u062a\u0635\u0641\u064a\u0627\u062a \u062a\u062a\u062c\u0627\u0648\u0632 \u0645\u0644\u064a\u0627\u0631 \u062f\u0648\u0644\u0627\u0631 \u2014 \u0628\u064a\u062a\u0643\u0648\u064a\u0646 \u064a\u062c\u062f \u062f\u0639\u0645\u0627\u064b \u0639\u0646\u062f 59\u0623\u0644\u0641", "June Ends \u2014 July Recovery Window Opens": "\u0646\u0647\u0627\u064a\u0629 \u064a\u0648\u0646\u064a\u0648 \u2014 \u0646\u0627\u0641\u0630\u0629 \u062a\u0639\u0627\u0641\u064a \u064a\u0648\u0644\u064a\u0648 \u062a\u0641\u062a\u062d", "Binance confirmed it will restrict EU services from July 1 after failing to secure a MiCA license in Greece. The exchange is now pursuing authorization in France for a future EU re-entry.": "\u0628\u064a\u0646\u0627\u0646\u0633 \u062a\u0648\u0642\u0641 \u062e\u062f\u0645\u0627\u062a\u0647\u0627 \u0644\u0645\u0633\u062a\u062e\u062f\u0645\u064a \u0627\u0644\u0627\u062a\u062d\u0627\u062f \u0627\u0644\u0623\u0648\u0631\u0648\u0628\u064a \u0645\u0646 1 \u064a\u0648\u0644\u064a\u0648 \u0628\u0639\u062f \u0641\u0634\u0644 \u062a\u0631\u062e\u064a\u0635 MiCA. \u062a\u0633\u0639\u0649 \u0644\u0644\u062d\u0635\u0648\u0644 \u0639\u0644\u0649 \u062a\u0631\u062e\u064a\u0635 \u0641\u064a \u0641\u0631\u0646\u0633\u0627.", "Bitcoin undergoes a scheduled mining difficulty adjustment today. The network's hash rate and miner economics will be recalibrated, affecting block reward profitability.": "\u064a\u064f\u062c\u0631\u064a \u0628\u064a\u062a\u0643\u0648\u064a\u0646 \u062a\u0639\u062f\u064a\u0644\u0627\u064b \u062f\u0648\u0631\u064a\u0627\u064b \u0644\u0635\u0639\u0648\u0628\u0629 \u0627\u0644\u062a\u0639\u062f\u064a\u0646. \u064a\u0624\u062b\u0631 \u0639\u0644\u0649 \u0639\u0627\u0626\u062f \u0627\u0644\u0645\u0639\u062f\u0651\u0646\u064a\u0646 \u0648\u0627\u0633\u062a\u0642\u0631\u0627\u0631 \u0627\u0644\u0634\u0628\u0643\u0629.", "Over $1 billion in leveraged positions were liquidated in 24 hours as Bitcoin briefly touched $58K. BTC recovering toward $60K with support holding at the 59K level.": "\u062a\u062c\u0627\u0648\u0632\u062a \u0627\u0644\u062a\u0635\u0641\u064a\u0627\u062a \u0645\u0644\u064a\u0627\u0631 \u062f\u0648\u0644\u0627\u0631 \u062e\u0644\u0627\u0644 24 \u0633\u0627\u0639\u0629. \u064a\u062a\u0639\u0627\u0641\u0649 \u0628\u064a\u062a\u0643\u0648\u064a\u0646 \u0646\u062d\u0648 60\u0623\u0644\u0641 \u0645\u0639 \u062a\u0645\u0627\u0633\u0643 \u0645\u0646\u0637\u0642\u0629 \u0627\u0644\u062f\u0639\u0645.", "Q2 ends today, historically the weakest quarter for crypto. July averages +11% for BTC historically, opening a potential seasonal recovery window heading into summer.": "\u064a\u0646\u062a\u0647\u064a \u0627\u0644\u0631\u0628\u0639 \u0627\u0644\u062b\u0627\u0646\u064a \u0627\u0644\u064a\u0648\u0645. \u064a\u0631\u062a\u0641\u0639 \u0628\u064a\u062a\u0643\u0648\u064a\u0646 \u062a\u0627\u0631\u064a\u062e\u064a\u0627\u064b \u0628\u0645\u062a\u0648\u0633\u0637 11% \u0641\u064a \u064a\u0648\u0644\u064a\u0648.", "S&P 500 Weekly -2% \u2014 Semis Surge, Megacap Tech Slumps": "\u062e\u0633\u0627\u0631\u0629 \u0623\u0633\u0628\u0648\u0639\u064a\u0629 2% \u2014 \u0623\u0634\u0628\u0627\u0647 \u0627\u0644\u0645\u0648\u0635\u0644\u0627\u062a \u062a\u062a\u0623\u0644\u0642 \u0648\u0627\u0644\u062a\u0642\u0646\u064a\u0629 \u0627\u0644\u0643\u0628\u0631\u0649 \u062a\u062a\u0631\u0627\u062c\u0639", "Memory Chip Earnings Surge \u2014 MU +15.7%, SNDK +22%": "\u0627\u0631\u062a\u0641\u0627\u0639 \u0623\u0631\u0628\u0627\u062d \u0631\u0642\u0627\u0626\u0642 \u0627\u0644\u0630\u0627\u0643\u0631\u0629 \u2014 MU +15.7% \u0648 SNDK +22%", "Strait of Hormuz Tensions \u2014 Oil +2.4%, Energy Leads": "\u062a\u0648\u062a\u0631\u0627\u062a \u0645\u0636\u064a\u0642 \u0647\u0631\u0645\u0632 \u2014 \u0627\u0644\u0646\u0641\u0637 +2.4%\u060c \u0642\u0637\u0627\u0639 \u0627\u0644\u0637\u0627\u0642\u0629 \u064a\u062a\u0641\u0648\u0642", "US equities ended the week lower, led by megacap tech selloff on PCE inflation shock. Semiconductors bucked the trend, with the semi sector up 6.2% on Micron blowout earnings.": "\u0627\u0646\u062e\u0641\u0636\u062a \u0627\u0644\u0623\u0633\u0647\u0645 \u0627\u0644\u0623\u0645\u0631\u064a\u0643\u064a\u0629 \u0623\u0633\u0628\u0648\u0639\u064a\u0627\u064b \u0628\u0633\u0628\u0628 \u0635\u062f\u0645\u0629 \u062a\u0636\u062e\u0645 PCE. \u0627\u0631\u062a\u0641\u0639\u062a \u0623\u0634\u0628\u0627\u0647 \u0627\u0644\u0645\u0648\u0635\u0644\u0627\u062a 6.2% \u0628\u0641\u0636\u0644 \u0623\u0631\u0628\u0627\u062d \u0645\u0627\u064a\u0643\u0631\u0648\u0646.", "Micron beat Q3 estimates and raised August guidance; Sandisk surged 22% on AI infrastructure memory demand. The memory chip cycle recovery is accelerating faster than expected.": "\u062a\u062c\u0627\u0648\u0632\u062a \u0623\u0631\u0628\u0627\u062d \u0645\u0627\u064a\u0643\u0631\u0648\u0646 \u0648\u0633\u0627\u0646\u062f\u0633\u0643 \u0627\u0644\u062a\u0648\u0642\u0639\u0627\u062a. \u0627\u0644\u0637\u0644\u0628 \u0639\u0644\u0649 \u0630\u0627\u0643\u0631\u0629 \u0627\u0644\u0630\u0643\u0627\u0621 \u0627\u0644\u0627\u0635\u0637\u0646\u0627\u0639\u064a \u064a\u062f\u0641\u0639 \u062f\u0648\u0631\u0629 \u0627\u0644\u0630\u0627\u0643\u0631\u0629 \u0644\u0644\u062a\u0639\u0627\u0641\u064a.", "Iran struck a vessel in the Strait of Hormuz, lifting crude oil 2.4%. Energy stocks outperformed the broader market, with Chevron and ExxonMobil among the top gainers.": "\u0636\u0631\u0628\u062a \u0625\u064a\u0631\u0627\u0646 \u0633\u0641\u064a\u0646\u0629 \u0641\u064a \u0645\u0636\u064a\u0642 \u0647\u0631\u0645\u0632 \u0645\u0645\u0627 \u0631\u0641\u0639 \u0623\u0633\u0639\u0627\u0631 \u0627\u0644\u0646\u0641\u0637 2.4%. \u062a\u062a\u0641\u0648\u0642 \u0634\u0631\u0643\u0627\u062a \u0627\u0644\u0637\u0627\u0642\u0629 \u0639\u0644\u0649 \u0628\u0642\u064a\u0629 \u0627\u0644\u0633\u0648\u0642.", "BTC is ~796 days post-halving. Historical cycles peak 12-18 months post-halving. Correction phase aligns with late-cycle behavior; macro headwinds (PCE, ETF outflows) compounding seasonal weakness.": "\u0628\u064a\u062a\u0643\u0648\u064a\u0646 \u0641\u064a \u0627\u0644\u064a\u0648\u0645 796 \u0628\u0639\u062f \u0627\u0644\u0646\u0635\u0641. \u062a\u0630\u0631\u0648\u0629 \u0627\u0644\u062f\u0648\u0631\u0629 \u062a\u062d\u062f\u062b \u062a\u0627\u0631\u064a\u062e\u064a\u0627\u064b \u0628\u0639\u062f 12-18 \u0634\u0647\u0631\u0627\u064b. \u0636\u063a\u0648\u0637 \u0627\u0644\u0643\u0644\u064a \u062a\u0641\u0627\u0642\u0645 \u0645\u0631\u062d\u0644\u0629 \u0627\u0644\u062a\u0635\u062d\u064a\u062d.", "Only 22/100 top coins outperforming BTC over 90 days. Firmly in BTC Season. Altcoins absorbing larger percentage drawdowns in today's selloff vs BTC.": "\u0641\u0642\u0637 22 \u0645\u0646 100 \u0639\u0645\u0644\u0629 \u062a\u062a\u0641\u0648\u0642 \u0639\u0644\u0649 \u0628\u064a\u062a\u0643\u0648\u064a\u0646 \u062e\u0644\u0627\u0644 90 \u064a\u0648\u0645\u0627\u064b. \u0645\u0648\u0633\u0645 \u0628\u064a\u062a\u0643\u0648\u064a\u0646 \u0628\u0627\u0645\u062a\u064a\u0627\u0632. \u0627\u0644\u0628\u062f\u0627\u0626\u0644 \u062a\u0647\u0628\u0637 \u0628\u0646\u0633\u0628 \u0623\u0643\u0628\u0631.", "June avg BTC return: -8%. End-of-Q2 rebalancing + quarterly options expiry = seasonal headwinds confirmed. July historically recovers (+11% avg).": "\u0645\u062a\u0648\u0633\u0637 \u0639\u0627\u0626\u062f \u064a\u0648\u0646\u064a\u0648: -8%. \u0625\u0639\u0627\u062f\u0629 \u0627\u0644\u062a\u0648\u0627\u0632\u0646 \u0641\u064a \u0646\u0647\u0627\u064a\u0629 \u0627\u0644\u0631\u0628\u0639 \u0627\u0644\u062b\u0627\u0646\u064a \u062a\u0632\u064a\u062f \u0627\u0644\u0636\u063a\u0637. \u064a\u0648\u0644\u064a\u0648 \u064a\u062a\u0639\u0627\u0641\u0649 \u062a\u0627\u0631\u064a\u062e\u064a\u0627\u064b \u0628\u0645\u062a\u0648\u0633\u0637 +11%."}, "fr": {"Binance Halts EU Services July 1 \u2014 MiCA License Failed": "Binance Suspend ses Services UE le 1er Juillet \u2014 Licence MiCA \u00c9chou\u00e9e", "Bitcoin Mining Difficulty Adjustment Today": "Ajustement de la Difficult\u00e9 de Minage Bitcoin Aujourd'hui", "$1B+ Liquidations \u2014 BTC Finds Support Near $59K": "Liquidations >1Md$ \u2014 BTC Trouve un Support pr\u00e8s de 59K", "June Ends \u2014 July Recovery Window Opens": "Fin Juin \u2014 La Fen\u00eatre de Reprise de Juillet s'Ouvre", "Binance confirmed it will restrict EU services from July 1 after failing to secure a MiCA license in Greece. The exchange is now pursuing authorization in France for a future EU re-entry.": "Binance a confirm\u00e9 la restriction de ses services UE d\u00e8s le 1er juillet, apr\u00e8s \u00e9chec de la licence MiCA en Gr\u00e8ce. L'\u00e9change cherche maintenant une autorisation en France.", "Bitcoin undergoes a scheduled mining difficulty adjustment today. The network's hash rate and miner economics will be recalibrated, affecting block reward profitability.": "Bitcoin effectue son ajustement de difficult\u00e9 de minage programm\u00e9 aujourd'hui. Les \u00e9conomies des mineurs et les param\u00e8tres r\u00e9seau seront recalibr\u00e9s.", "Over $1 billion in leveraged positions were liquidated in 24 hours as Bitcoin briefly touched $58K. BTC recovering toward $60K with support holding at the 59K level.": "Plus d'1 milliard de dollars de positions liquid\u00e9es en 24h alors que BTC touchait bri\u00e8vement 58K. BTC se redresse vers 60K avec un support solide \u00e0 59K.", "Q2 ends today, historically the weakest quarter for crypto. July averages +11% for BTC historically, opening a potential seasonal recovery window heading into summer.": "Le T2 se termine aujourd'hui, ouvrant la fen\u00eatre de reprise historique de juillet. BTC moyenne +11% en juillet historiquement.", "S&P 500 Weekly -2% \u2014 Semis Surge, Megacap Tech Slumps": "S&P 500 -2% Hebdo sur Choc PCE \u2014 Semi-conducteurs en T\u00eate", "Memory Chip Earnings Surge \u2014 MU +15.7%, SNDK +22%": "Saison des R\u00e9sultats M\u00e9moire \u2014 MU +15,7%, SNDK +22%", "Strait of Hormuz Tensions \u2014 Oil +2.4%, Energy Leads": "Tensions D\u00e9troit d'Ormuz \u2014 P\u00e9trole +2,4%, \u00c9nergie Surperforme", "US equities ended the week lower, led by megacap tech selloff on PCE inflation shock. Semiconductors bucked the trend, with the semi sector up 6.2% on Micron blowout earnings.": "Les actions am\u00e9ricaines ont cl\u00f4tur\u00e9 la semaine en baisse, men\u00e9es par le recul de la mega-tech sur le choc PCE. Les semi-conducteurs ont surperform\u00e9 avec +6,2% sur les excellents r\u00e9sultats de Micron.", "Micron beat Q3 estimates and raised August guidance; Sandisk surged 22% on AI infrastructure memory demand. The memory chip cycle recovery is accelerating faster than expected.": "Micron a d\u00e9pass\u00e9 les estimations du T3 et relev\u00e9 les pr\u00e9visions d'ao\u00fbt. Sandisk a bondi de 22% sur la demande en m\u00e9moire d'IA. La reprise du cycle m\u00e9moire s'acc\u00e9l\u00e8re.", "Iran struck a vessel in the Strait of Hormuz, lifting crude oil 2.4%. Energy stocks outperformed the broader market, with Chevron and ExxonMobil among the top gainers.": "L'Iran a frapp\u00e9 un navire dans le d\u00e9troit d'Ormuz, soulevant le p\u00e9trole de 2,4%. Les actions d'\u00e9nergie ont surperform\u00e9, avec Chevron et ExxonMobil parmi les meilleurs.", "BTC is ~796 days post-halving. Historical cycles peak 12-18 months post-halving. Correction phase aligns with late-cycle behavior; macro headwinds (PCE, ETF outflows) compounding seasonal weakness.": "BTC est \u00e0 ~796 jours post-halving. Les cycles historiques culminent 12-18 mois apr\u00e8s. Les vents contraires macro aggravent la faiblesse saisonni\u00e8re.", "Only 22/100 top coins outperforming BTC over 90 days. Firmly in BTC Season. Altcoins absorbing larger percentage drawdowns in today's selloff vs BTC.": "Seulement 22/100 coins surperformant BTC sur 90 jours. Fermement en saison BTC. Les altcoins absorbent des drawdowns plus importants que BTC.", "June avg BTC return: -8%. End-of-Q2 rebalancing + quarterly options expiry = seasonal headwinds confirmed. July historically recovers (+11% avg).": "Rendement moyen BTC en juin: -8%. R\u00e9\u00e9quilibrage fin T2 + expiration trimestrielle = vents contraires confirm\u00e9s. Juillet r\u00e9cup\u00e8re historiquement (+11% en moyenne)."}, "_alert_bullets": {"ar": ["\u062a\u0635\u0641\u064a\u0629 1 \u0645\u0644\u064a\u0627\u0631 \u062f\u0648\u0644\u0627\u0631 \u0641\u064a 24 \u0633\u0627\u0639\u0629 \u00b7 138\u0623\u0644\u0641+ \u0645\u062a\u0627\u062c\u0631 \u062e\u0631\u062c\u0648\u0627 \u0642\u0633\u0631\u0627\u064b", "\u062e\u0631\u0648\u062c \u0645\u0646 \u0635\u0646\u0627\u062f\u064a\u0642 BTC: -5.96 \u0645\u0644\u064a\u0627\u0631 \u062e\u0644\u0627\u0644 30 \u064a\u0648\u0645\u0627\u064b", "\u0637\u0641\u0631\u0629 \u0645\u0630\u0643\u0648\u0631\u0627\u062a SOL \u0639\u0644\u0649 \u0631\u064a\u062f\u064a\u062a \u00b7 \u062a\u0639\u0627\u0641\u064a +5% \u064a\u0642\u0648\u062f \u0627\u0644\u0628\u062f\u0627\u0626\u0644", "\u0628\u064a\u0646\u0627\u0646\u0633 \u062a\u0648\u0642\u0641 \u062e\u062f\u0645\u0627\u062a \u0623\u0648\u0631\u0648\u0628\u0627 \u0641\u064a 1 \u064a\u0648\u0644\u064a\u0648 \u2014 \u0631\u0641\u0636 \u062a\u0631\u062e\u064a\u0635 MiCA", "\u0645\u0634\u0631\u0648\u0639 \u0642\u0627\u0646\u0648\u0646 CLARITY \u064a\u0648\u0627\u062c\u0647 \u0645\u0639\u0627\u0631\u0636\u0629 \u2014 \u0639\u062f\u0645 \u064a\u0642\u064a\u0646 \u062a\u0646\u0638\u064a\u0645\u064a", "\u062a\u0639\u062f\u064a\u0644 \u0635\u0639\u0648\u0628\u0629 \u062a\u0639\u062f\u064a\u0646 \u0628\u064a\u062a\u0643\u0648\u064a\u0646 \u2014 \u0625\u0639\u0627\u062f\u0629 \u0645\u0639\u0627\u064a\u0631\u0629 \u0627\u0642\u062a\u0635\u0627\u062f\u064a\u0627\u062a \u0627\u0644\u0645\u0639\u062f\u0651\u0646\u064a\u0646", "Sandisk (SNDK) +22% \u00b7 \u0645\u0641\u0627\u062c\u0623\u0629 \u0623\u0631\u0628\u0627\u062d \u0643\u0628\u0631\u0649 \u0641\u064a \u0631\u0642\u0627\u0626\u0642 \u0627\u0644\u0630\u0627\u0643\u0631\u0629", "Micron (MU) +15.7% \u00b7 \u064a\u062a\u062c\u0627\u0648\u0632 \u062a\u0642\u062f\u064a\u0631\u0627\u062a \u0627\u0644\u0631\u0628\u0639 \u0627\u0644\u062b\u0627\u0644\u062b \u0648\u064a\u0631\u0641\u0639 \u062a\u0648\u062c\u064a\u0647\u0627\u062a \u0623\u063a\u0633\u0637\u0633", "Apple (AAPL) -6.1% \u00b7 \u0623\u0633\u0648\u0623 \u064a\u0648\u0645 \u0645\u0646\u0630 \u0623\u0634\u0647\u0631 \u0628\u0633\u0628\u0628 \u0635\u062f\u0645\u0629 PCE", "PCE 4.1% \u2014 \u062a\u0636\u062e\u0645 \u064a\u0633\u062d\u0642 \u062a\u0648\u0642\u0639\u0627\u062a \u062e\u0641\u0636 \u0627\u0644\u0641\u0627\u0626\u062f\u0629 \u00b7 \u0636\u063a\u0637 \u0639\u0644\u0649 \u0627\u0644\u062a\u0642\u0646\u064a\u0629 \u0648\u0627\u0644\u0627\u0633\u062a\u0647\u0644\u0627\u0643", "\u0625\u064a\u0631\u0627\u0646 \u062a\u0636\u0631\u0628 \u0633\u0641\u064a\u0646\u0629 \u0641\u064a \u0645\u0636\u064a\u0642 \u0647\u0631\u0645\u0632 \u2014 \u0627\u0644\u0646\u0641\u0637 +2.4% \u00b7 \u0627\u0644\u0637\u0627\u0642\u0629 \u062a\u062a\u0641\u0648\u0642", "\u0623\u062d\u0643\u0627\u0645 \u0647\u062c\u0631\u0629 \u0627\u0644\u0645\u062d\u0643\u0645\u0629 \u0627\u0644\u0639\u0644\u064a\u0627 \u2014 \u062a\u0631\u062f\u062f \u0639\u0627\u0645 \u0641\u064a \u0627\u0644\u0633\u0648\u0642"], "fr": ["1 Md$ liquid\u00e9 en 24h \u00b7 138 000+ traders sortis de force", "Sorties ETF BTC: -5,96Md$ sur 30 jours", "Mentions SOL Reddit en hausse \u00b7 reprise +5% m\u00e8ne les altcoins", "Binance suspend services UE le 1er juillet \u2014 licence MiCA rejet\u00e9e", "CLARITY Act face \u00e0 l'opposition \u2014 incertitude r\u00e9glementaire", "Ajustement difficult\u00e9 minage BTC \u2014 \u00e9conomies mineurs recalibr\u00e9es", "Sandisk (SNDK) +22% \u00b7 surprise b\u00e9n\u00e9fices m\u00e9moire massive", "Micron (MU) +15,7% \u00b7 d\u00e9passe T3, rel\u00e8ve pr\u00e9visions ao\u00fbt", "Apple (AAPL) -6,1% \u00b7 pire s\u00e9ance depuis des mois sur choc PCE", "PCE 4,1% \u2014 r\u00e9surgence inflation \u00e9crase espoirs de baisse taux", "Iran frappe navire dans d\u00e9troit d'Ormuz \u2014 p\u00e9trole +2,4%", "D\u00e9cisions immigration Cour Supr\u00eame \u2014 sentiment mixte sur les march\u00e9s"]}};
+var T_STATIC = {
+  ar: {
+  "Market Spikes & Liquidations": "\u062a\u0642\u0644\u0628\u0627\u062a \u0627\u0644\u0633\u0648\u0642 \u0648\u0627\u0644\u062a\u0635\u0641\u064a\u0627\u062a",
+  "Events & Risk Signals": "\u0627\u0644\u0623\u062d\u062f\u0627\u062b \u0648\u0625\u0634\u0627\u0631\u0627\u062a \u0627\u0644\u0645\u062e\u0627\u0637\u0631",
+  "Stock Spikes": "\u062a\u0642\u0644\u0628\u0627\u062a \u0627\u0644\u0623\u0633\u0647\u0645",
+  "Market Events": "\u0623\u062d\u062f\u0627\u062b \u0627\u0644\u0633\u0648\u0642",
+  "Events & Catalysts": "\u0627\u0644\u0623\u062d\u062f\u0627\u062b \u0648\u0627\u0644\u0645\u062d\u0641\u0632\u0627\u062a",
+  "MACRO CRITICAL": "\u062d\u0631\u062c \u0627\u0642\u062a\u0635\u0627\u062f\u064a",
+  "REGULATORY": "\u062a\u0646\u0638\u064a\u0645\u064a",
+  "DERIVATIVES": "\u0645\u0634\u062a\u0642\u0627\u062a",
+  "SEASONALITY": "\u0645\u0648\u0633\u0645\u064a\u0629",
+  "EARNINGS WIN": "\u0646\u062a\u0627\u0626\u062c \u0625\u064a\u062c\u0627\u0628\u064a\u0629",
+  "GEOPOLITICS": "\u062c\u064a\u0648\u0633\u064a\u0627\u0633\u064a",
+  "POSITIVE": "\u0625\u064a\u062c\u0627\u0628\u064a",
+  "Cycle & Seasonality Intelligence": "\u0630\u0643\u0627\u0621 \u0627\u0644\u062f\u0648\u0631\u0627\u062a \u0648\u0627\u0644\u0645\u0648\u0633\u0645\u064a\u0629",
+  "BTC Halving Cycle": "\u062f\u0648\u0631\u0629 \u062a\u0646\u0635\u064a\u0641 \u0628\u064a\u062a\u0643\u0648\u064a\u0646",
+  "Altcoin Season Index": "\u0645\u0624\u0634\u0631 \u0645\u0648\u0633\u0645 \u0623\u0644\u062a\u0643\u0648\u064a\u0646",
+  "June Seasonality": "\u0645\u0648\u0633\u0645\u064a\u0629 \u064a\u0648\u0646\u064a\u0648",
+  "BTC Season": "BTC \u0645\u0648\u0633\u0645",
+  "Alt Season": "\u0645\u0648\u0633\u0645 \u0623\u0644\u062a",
+  "Neutral": "\u0645\u062d\u0627\u064a\u062f",
+  "Historical Monthly Performance (BTC avg)": "\u0627\u0644\u0623\u062f\u0627\u0621 \u0627\u0644\u0634\u0647\u0631\u064a \u0627\u0644\u062a\u0627\u0631\u064a\u062e\u064a (\u0645\u062a\u0648\u0633\u0637 BTC)",
+  "Days Since Halving": "\u0623\u064a\u0627\u0645 \u0645\u0646\u0630 \u0627\u0644\u062a\u0646\u0635\u064a\u0641",
+  "Cycle Phase": "\u0645\u0631\u062d\u0644\u0629 \u0627\u0644\u062f\u0648\u0631\u0629",
+  "ATH Distance": "\u0627\u0644\u0645\u0633\u0627\u0641\u0629 \u0645\u0646 \u0627\u0644\u0630\u0631\u0648\u0629",
+  "Next Halving Est.": "\u0627\u0644\u062a\u0646\u0635\u064a\u0641 \u0627\u0644\u062a\u0627\u0644\u064a",
+  "Correction": "\u062a\u0635\u062d\u064a\u062d",
+  "Top Gainer": "\u0623\u0643\u0628\u0631 \u0631\u0627\u0628\u062d",
+  "Top Loser": "\u0623\u0643\u0628\u0631 \u062e\u0627\u0633\u0631",
+  "10Y Yield": "\u0639\u0627\u0626\u062f 10 \u0633\u0646\u0648\u0627\u062a",
+  "PCE Inflation": "\u062a\u0636\u062e\u0645 PCE",
+  "Sector Performance": "\u0623\u062f\u0627\u0621 \u0627\u0644\u0642\u0637\u0627\u0639\u0627\u062a",
+  "\u25b2 Top Gainers (24h)": "\u25b2 \u0623\u0643\u0628\u0631 \u0627\u0644\u0631\u0627\u0628\u062d\u064a\u0646 (24 \u0633\u0627\u0639\u0629)",
+  "\u25bc Top Losers (24h)": "\u25bc \u0623\u0643\u0628\u0631 \u0627\u0644\u062e\u0627\u0633\u0631\u064a\u0646 (24 \u0633\u0627\u0639\u0629)"
+},
+  fr: {
+  "Market Spikes & Liquidations": "Pics du march\u00e9 & Liquidations",
+  "Events & Risk Signals": "\u00c9v\u00e9nements & Signaux de risque",
+  "Stock Spikes": "Pics des actions",
+  "Market Events": "\u00c9v\u00e9nements du march\u00e9",
+  "Events & Catalysts": "\u00c9v\u00e9nements & Catalyseurs",
+  "MACRO CRITICAL": "MACRO CRITIQUE",
+  "REGULATORY": "R\u00c9GLEMENTAIRE",
+  "DERIVATIVES": "D\u00c9RIV\u00c9S",
+  "SEASONALITY": "SAISONNALIT\u00c9",
+  "EARNINGS WIN": "BONS R\u00c9SULTATS",
+  "GEOPOLITICS": "G\u00c9OPOLITIQUE",
+  "POSITIVE": "POSITIF",
+  "Cycle & Seasonality Intelligence": "Intelligence Cycle & Saisonnalit\u00e9",
+  "BTC Halving Cycle": "Cycle de halving Bitcoin",
+  "Altcoin Season Index": "Indice saison Altcoin",
+  "June Seasonality": "Saisonnalit\u00e9 Juin",
+  "BTC Season": "Saison BTC",
+  "Alt Season": "Saison Alt",
+  "Neutral": "Neutre",
+  "Historical Monthly Performance (BTC avg)": "Performance mensuelle historique (moy. BTC)",
+  "Days Since Halving": "Jours depuis le halving",
+  "Cycle Phase": "Phase du cycle",
+  "ATH Distance": "Distance depuis l'ATH",
+  "Next Halving Est.": "Prochain halving est.",
+  "Correction": "Correction",
+  "Top Gainer": "Meilleur performeur",
+  "Top Loser": "Plus grande baisse",
+  "10Y Yield": "Rendement 10 ans",
+  "PCE Inflation": "Inflation PCE",
+  "Sector Performance": "Performance secteurs",
+  "\u25b2 Top Gainers (24h)": "\u25b2 Meilleures hausses (24h)",
+  "\u25bc Top Losers (24h)": "\u25bc Plus grosses baisses (24h)"
+}
+};
+
+function setLang(lang, btn) {
+  var dirs = { en: 'ltr', ar: 'rtl', fr: 'ltr' };
+  document.documentElement.lang = lang;
+  document.documentElement.dir = dirs[lang];
+  document.querySelectorAll('.lang-btn').forEach(function(b) { b.classList.remove('active'); });
+  btn.classList.add('active');
+  // Translate .t elements
+  document.querySelectorAll('.t[data-' + lang + ']').forEach(function(el) {
+    el.textContent = el.dataset[lang];
+  });
+  // Translate static labels in dynamic blocks
+  var SELECTORS = '.alert-section-header, .event-badge, .gl-col-header, .cycle-header, .cycle-panel-title, .h-stat-lbl, .season-bar-header, .sector-title, .events-header';
+  var map = (lang === 'en') ? null : (T_STATIC[lang] || {});
+  document.querySelectorAll(SELECTORS).forEach(function(el) {
+    if (!el.dataset.enStatic) el.dataset.enStatic = el.textContent.trim();
+    var key = el.dataset.enStatic;
+    if (lang === 'en') {
+      el.textContent = key;
+      return;
+    }
+    // Handle date-suffixed strings like "Sector Performance — June 26, 2026"
+    var emdash = '\u2014';
+    var parts = key.split(' ' + emdash + ' ');
+    var lookupKey = parts[0].trim();
+    var translated = map[key] || map[lookupKey];
+    if (translated) {
+      el.textContent = parts.length > 1 ? translated + ' ' + emdash + ' ' + parts.slice(1).join(' ' + emdash + ' ') : translated;
+    }
+  });
+  // Also translate market-stat labels
+  document.querySelectorAll('.market-stat .label').forEach(function(el) {
+    if (el.querySelector('.t[data-en]')) return;
+    if (!el.dataset.enStatic) el.dataset.enStatic = el.textContent.trim();
+    var key = el.dataset.enStatic;
+    if (lang === 'en') { el.textContent = key; return; }
+    var translated = (T_STATIC[lang] || {})[key];
+    if (translated) el.textContent = translated;
+  });
+  // Translate daily news content via T_DAILY (injected at build time)
+  if (typeof T_DAILY !== 'undefined') {
+    var daily = (lang === 'en') ? null : (T_DAILY[lang] || {});
+    document.querySelectorAll('.event-name, .event-desc, .cycle-desc-text, .alt-score-sub').forEach(function(el) {
+      if (!el.dataset.enDaily) el.dataset.enDaily = el.textContent.trim();
+      if (lang === 'en') { el.textContent = el.dataset.enDaily; return; }
+      var tr = daily[el.dataset.enDaily];
+      if (tr) el.textContent = tr;
+    });
+    // Alert bullets (indexed, since they contain HTML)
+    var ab = T_DAILY._alert_bullets;
+    document.querySelectorAll('.alert-list li').forEach(function(el, i) {
+      if (!el.dataset.enDaily) el.dataset.enDaily = el.textContent.trim();
+      if (lang === 'en') { el.textContent = el.dataset.enDaily; return; }
+      if (ab && ab[lang] && ab[lang][i]) el.textContent = ab[lang][i];
+    });
+  }
+}
+</script>
+</body>
+</html>
